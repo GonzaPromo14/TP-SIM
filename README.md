@@ -4,6 +4,4 @@
  - Chiesa María Paula                        67395<br/> 
  - Frastas Facundo Damián                    67394<br/>  
  - García Rampini Agustín - [@aegr-dev](https://github.com/aegr-dev) - 67594<br/>  
- - Luzara Ezequiel                           67788<br/>  
-
-
+ - Luzara Ezequiel - [@eze95luzara](https://github.com/eze95luzara) - 67788<br/>
