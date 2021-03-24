@@ -1,0 +1,10 @@
+D:\UTN - 2021\SIM\Programas\TP1-C\TP1-C\bin\Debug\TP1-C.exe.config
+D:\UTN - 2021\SIM\Programas\TP1-C\TP1-C\bin\Debug\TP1-C.exe
+D:\UTN - 2021\SIM\Programas\TP1-C\TP1-C\bin\Debug\TP1-C.pdb
+D:\UTN - 2021\SIM\Programas\TP1-C\TP1-C\obj\Debug\TP1-C.csprojAssemblyReference.cache
+D:\UTN - 2021\SIM\Programas\TP1-C\TP1-C\obj\Debug\TP1_C.frmPrincipal.resources
+D:\UTN - 2021\SIM\Programas\TP1-C\TP1-C\obj\Debug\TP1_C.Properties.Resources.resources
+D:\UTN - 2021\SIM\Programas\TP1-C\TP1-C\obj\Debug\TP1-C.csproj.GenerateResource.cache
+D:\UTN - 2021\SIM\Programas\TP1-C\TP1-C\obj\Debug\TP1-C.csproj.CoreCompileInputs.cache
+D:\UTN - 2021\SIM\Programas\TP1-C\TP1-C\obj\Debug\TP1-C.exe
+D:\UTN - 2021\SIM\Programas\TP1-C\TP1-C\obj\Debug\TP1-C.pdb
