@@ -306,6 +306,9 @@ namespace TP1_C
             return cantPaginas;
         }
 
-        
+        private void frmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

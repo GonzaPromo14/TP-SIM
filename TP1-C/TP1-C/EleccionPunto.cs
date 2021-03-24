@@ -10,11 +10,18 @@ using System.Windows.Forms;
 
 namespace TP1_C
 {
-    public partial class EleccionPunto : Form
+    public partial class frmEleccionPunto : Form
     {
-        public EleccionPunto()
+        public frmEleccionPunto()
         {
             InitializeComponent();
+        }
+
+        private void btnNumerosAleatorios_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmPrincipal principal = new frmPrincipal();
+            principal.Show();
         }
     }
 }

@@ -402,6 +402,7 @@
             this.Controls.Add(this.lbl);
             this.Name = "frmPrincipal";
             this.Text = "Trabajo práctico 1 Simulación";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmPrincipal_FormClosing);
             this.Load += new System.EventHandler(this.frmPrincipal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdNumeros)).EndInit();
             this.ResumeLayout(false);
