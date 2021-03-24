@@ -54,6 +54,14 @@
             this.label8 = new System.Windows.Forms.Label();
             this.lblMetodoElegido = new System.Windows.Forms.Label();
             this.lblError = new System.Windows.Forms.Label();
+            this.lblPagina = new System.Windows.Forms.Label();
+            this.btnAnterior = new System.Windows.Forms.Button();
+            this.btnSiguiente = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtPagina = new System.Windows.Forms.TextBox();
+            this.btnIr = new System.Windows.Forms.Button();
+            this.lblErrorPagina = new System.Windows.Forms.Label();
+            this.lblSemillaInicial = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grdNumeros)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,6 +73,7 @@
             this.lbl.Size = new System.Drawing.Size(90, 13);
             this.lbl.TabIndex = 0;
             this.lbl.Text = "Ingresar variables";
+            this.lbl.Click += new System.EventHandler(this.lbl_Click);
             // 
             // label1
             // 
@@ -281,11 +290,94 @@
             this.lblError.Size = new System.Drawing.Size(0, 13);
             this.lblError.TabIndex = 21;
             // 
+            // lblPagina
+            // 
+            this.lblPagina.AutoSize = true;
+            this.lblPagina.Location = new System.Drawing.Point(612, 387);
+            this.lblPagina.Name = "lblPagina";
+            this.lblPagina.Size = new System.Drawing.Size(73, 13);
+            this.lblPagina.TabIndex = 22;
+            this.lblPagina.Text = "Página 0 de 0";
+            // 
+            // btnAnterior
+            // 
+            this.btnAnterior.Enabled = false;
+            this.btnAnterior.Location = new System.Drawing.Point(554, 382);
+            this.btnAnterior.Name = "btnAnterior";
+            this.btnAnterior.Size = new System.Drawing.Size(29, 23);
+            this.btnAnterior.TabIndex = 23;
+            this.btnAnterior.Text = "<";
+            this.btnAnterior.UseVisualStyleBackColor = true;
+            this.btnAnterior.Click += new System.EventHandler(this.btnAnterior_Click);
+            // 
+            // btnSiguiente
+            // 
+            this.btnSiguiente.Enabled = false;
+            this.btnSiguiente.Location = new System.Drawing.Point(708, 382);
+            this.btnSiguiente.Name = "btnSiguiente";
+            this.btnSiguiente.Size = new System.Drawing.Size(29, 23);
+            this.btnSiguiente.TabIndex = 24;
+            this.btnSiguiente.Text = ">";
+            this.btnSiguiente.UseVisualStyleBackColor = true;
+            this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(551, 418);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(57, 13);
+            this.label9.TabIndex = 25;
+            this.label9.Text = "Ir a página";
+            // 
+            // txtPagina
+            // 
+            this.txtPagina.Enabled = false;
+            this.txtPagina.Location = new System.Drawing.Point(614, 415);
+            this.txtPagina.Name = "txtPagina";
+            this.txtPagina.Size = new System.Drawing.Size(71, 20);
+            this.txtPagina.TabIndex = 26;
+            // 
+            // btnIr
+            // 
+            this.btnIr.Enabled = false;
+            this.btnIr.Location = new System.Drawing.Point(691, 413);
+            this.btnIr.Name = "btnIr";
+            this.btnIr.Size = new System.Drawing.Size(46, 23);
+            this.btnIr.TabIndex = 27;
+            this.btnIr.Text = "Ir";
+            this.btnIr.UseVisualStyleBackColor = true;
+            this.btnIr.Click += new System.EventHandler(this.btnIr_Click);
+            // 
+            // lblErrorPagina
+            // 
+            this.lblErrorPagina.AutoSize = true;
+            this.lblErrorPagina.Location = new System.Drawing.Point(551, 440);
+            this.lblErrorPagina.Name = "lblErrorPagina";
+            this.lblErrorPagina.Size = new System.Drawing.Size(0, 13);
+            this.lblErrorPagina.TabIndex = 28;
+            // 
+            // lblSemillaInicial
+            // 
+            this.lblSemillaInicial.AutoSize = true;
+            this.lblSemillaInicial.Location = new System.Drawing.Point(40, 331);
+            this.lblSemillaInicial.Name = "lblSemillaInicial";
+            this.lblSemillaInicial.Size = new System.Drawing.Size(0, 13);
+            this.lblSemillaInicial.TabIndex = 29;
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 462);
+            this.Controls.Add(this.lblSemillaInicial);
+            this.Controls.Add(this.lblErrorPagina);
+            this.Controls.Add(this.btnIr);
+            this.Controls.Add(this.txtPagina);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.btnSiguiente);
+            this.Controls.Add(this.btnAnterior);
+            this.Controls.Add(this.lblPagina);
             this.Controls.Add(this.lblError);
             this.Controls.Add(this.lblMetodoElegido);
             this.Controls.Add(this.label8);
@@ -345,6 +437,14 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lblMetodoElegido;
         private System.Windows.Forms.Label lblError;
+        private System.Windows.Forms.Label lblPagina;
+        private System.Windows.Forms.Button btnAnterior;
+        private System.Windows.Forms.Button btnSiguiente;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtPagina;
+        private System.Windows.Forms.Button btnIr;
+        private System.Windows.Forms.Label lblErrorPagina;
+        private System.Windows.Forms.Label lblSemillaInicial;
     }
 }
 

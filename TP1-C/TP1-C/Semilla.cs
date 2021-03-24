@@ -13,6 +13,7 @@ namespace TP1_C
         private double c;
         private double a;
         private double m;
+        private double valorAleatorioGenerado;
 
 
         public Semilla(double x0, double c, double a, double m)
@@ -22,6 +23,16 @@ namespace TP1_C
             this.c = c;
             this.a = a;
             this.m = m;
+        }
+
+        public Semilla(double x0, double c, double a, double m, int iteracion, double valorAleatorioGenerado)
+        {
+            this.valorSemilla = x0;
+            this.iteracion = iteracion;
+            this.c = c;
+            this.a = a;
+            this.m = m;
+            this.valorAleatorioGenerado = valorAleatorioGenerado;
         }
 
         public double getValorSemilla()
@@ -59,6 +70,27 @@ namespace TP1_C
             return this.m;
         }
 
+        public double getValorAleatorioGenerado()
+        {
+            return this.valorAleatorioGenerado;
+        }
 
+        public void setValorAleatorioGenerado(double valorAleatorioGenerado)
+        {
+            this.valorAleatorioGenerado = valorAleatorioGenerado;
+        }
+        
+
+        public double calcularAxic()
+        {
+            return (this.a * this.valorSemilla) + this.c;
+        }
+
+        public String[] convertirStringData()
+        {
+            return new string[] {this.iteracion.ToString(), calcularAxic().ToString(), this.valorSemilla.ToString(), this.valorAleatorioGenerado.ToString()};
+        }
+
+        
     }
 }

@@ -16,7 +16,13 @@ namespace TP1_C
 
         Metodo metodoElegido = new Metodo();
         Semilla sem;
+        int valoresAGenerar = 24;
+        int cantItemsPorPag = 10;
+        int paginaActual = 1;
+        Semilla[] valoresGeneradosParaGrilla;
 
+        //Con array
+        SemillaArray semillaArray = new SemillaArray(20);
 
         public frmPrincipal()
         {
@@ -61,30 +67,39 @@ namespace TP1_C
             bool validacion = datosValidos();
             if (validacion)
             {
+                semillaArray.clear();
                 double semilla = Double.Parse(txtXo.Text);
                 double c = Double.Parse(txtC.Text);
                 double a = Double.Parse(txtA.Text);
                 double m = Double.Parse(txtM.Text);
+                valoresGeneradosParaGrilla = new Semilla[valoresAGenerar];
                 sem = new Semilla(semilla, c, a, m);
                 grdNumeros.Rows.Clear();
-                for (int i = 0; i <= 20; i++)
+                for (int i = 0; i <= valoresAGenerar; i++)
                 {
                     if (i == 0)
                     {
-                        grdNumeros.Rows.Add(new string[] { i.ToString(), "", sem.getValorSemilla().ToString(), "" });
+                        lblSemillaInicial.Text = "Semilla inicial: " + sem.getValorSemilla().ToString();
                     }
                     else
                     {
                         sem.sumarIteracion();
-                        double axic = (sem.getValorSemilla() * a) + c;
+                        double axic = sem.calcularAxic();
                         double siguienteSemilla = axic % m;
                         double valorAleatorioGenerado = siguienteSemilla / (m - 1);
                         valorAleatorioGenerado = Math.Truncate(valorAleatorioGenerado * 10000)/10000;
-                        grdNumeros.Rows.Add(new string[] { sem.getIteracion().ToString(), axic.ToString(), siguienteSemilla.ToString(), valorAleatorioGenerado.ToString() });
                         sem.setValorSemilla(siguienteSemilla);
+                        semillaArray.add(new Semilla(sem.getValorSemilla(), c, a, m, i, valorAleatorioGenerado));
                     }
                 }
+                paginaActual = 1;
+                llenarGrilla(paginaActual, cantItemsPorPag);
                 btnProximo.Enabled = true;
+                btnSiguiente.Enabled = true;
+                btnAnterior.Enabled = false;
+                btnIr.Enabled = true;
+                txtPagina.Enabled = true;
+                lblPagina.Text = "Página 1 de " + calcularValorTotalPaginas().ToString();
                 
             }
             
@@ -183,8 +198,114 @@ namespace TP1_C
             double siguienteSemilla = axic % sem.getM();
             double valorAleatorioGenerado = siguienteSemilla / (sem.getM() - 1);
             valorAleatorioGenerado = Math.Truncate(valorAleatorioGenerado * 10000) / 10000;
-            grdNumeros.Rows.Add(new string[] { sem.getIteracion().ToString(), axic.ToString(), siguienteSemilla.ToString(), valorAleatorioGenerado.ToString() });
             sem.setValorSemilla(siguienteSemilla);
+            semillaArray.add(new Semilla(siguienteSemilla, sem.getC(), sem.getA(), sem.getM(), sem.getIteracion(), valorAleatorioGenerado));
+            llenarGrilla(calcularValorTotalPaginas(), cantItemsPorPag);
+            lblPagina.Text = "Página " + calcularValorTotalPaginas().ToString() + " de " + calcularValorTotalPaginas().ToString();
+            btnSiguiente.Enabled = false;
+            btnAnterior.Enabled = true;
+            paginaActual = calcularValorTotalPaginas();
         }
+
+        private void lbl_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void llenarGrilla(int pagina, int cantItemsPorPag)
+        {
+            grdNumeros.Rows.Clear();
+            int final = (pagina * cantItemsPorPag);
+            int inicio = final - cantItemsPorPag;
+            for (int i = inicio; i<final; i++)
+            {
+                if (i >= semillaArray.size())
+                {
+                    break;
+                }
+                grdNumeros.Rows.Add(semillaArray.get(i).convertirStringData());
+            }
+        }
+
+        private void btnIr_Click(object sender, EventArgs e)
+        {
+            if (txtPagina.Text != "")
+            {
+                if (Int32.TryParse(txtPagina.Text, out int result))
+                {
+                    int paginaMoverse = Int32.Parse(txtPagina.Text);
+                    if (paginaMoverse <= calcularValorTotalPaginas())
+                    {
+                        lblErrorPagina.Text = "";
+                        lblPagina.Text = "Página " + paginaMoverse.ToString() + " de " + calcularValorTotalPaginas().ToString();
+                        llenarGrilla(paginaMoverse, cantItemsPorPag);
+                        paginaActual = paginaMoverse;
+                        btnAnterior.Enabled = true;
+                        btnSiguiente.Enabled = true;
+                        if (paginaMoverse == 1)
+                        {
+                            btnAnterior.Enabled = false;
+                            btnSiguiente.Enabled = true;
+                        }
+                        if (paginaMoverse == calcularValorTotalPaginas())
+                        {
+                            btnAnterior.Enabled = true;
+                            btnSiguiente.Enabled = false;
+                        }
+                    }
+                    else
+                    {
+                        lblErrorPagina.Text = "* Ingresó una página mayor a la esperada";
+                        lblErrorPagina.ForeColor = Color.Red;
+                    }
+
+                }
+                else
+                {
+                    lblErrorPagina.Text = "* Ingrese un valor válido";
+                    lblErrorPagina.ForeColor = Color.Red;
+                }
+            }
+        }
+
+        private void btnSiguiente_Click(object sender, EventArgs e)
+        {
+            btnAnterior.Enabled = true;
+            paginaActual++;
+            if (paginaActual == calcularValorTotalPaginas())
+            {
+                btnSiguiente.Enabled = false;
+            }
+            lblPagina.Text = "Página " + paginaActual.ToString() + " de " + calcularValorTotalPaginas().ToString();
+            llenarGrilla(paginaActual, cantItemsPorPag);
+            lblErrorPagina.Text = "";
+        }
+
+        private void btnAnterior_Click(object sender, EventArgs e)
+        {
+            paginaActual--;
+            btnSiguiente.Enabled = true;
+            if (paginaActual == 1)
+            {
+                btnAnterior.Enabled = false;
+            }
+            lblPagina.Text = "Página " + paginaActual.ToString() + " de " + calcularValorTotalPaginas().ToString();
+            llenarGrilla(paginaActual, cantItemsPorPag);
+            lblErrorPagina.Text = "";
+        }
+
+        private int calcularValorTotalPaginas()
+        {
+            int cantPaginas = semillaArray.size() / cantItemsPorPag;
+            double resto = semillaArray.size() % cantItemsPorPag;
+            if (resto != 0)
+            {
+                cantPaginas++;
+                return cantPaginas;
+            }
+            return cantPaginas;
+        }
+
+        
     }
 }
