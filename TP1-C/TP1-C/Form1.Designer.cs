@@ -28,6 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.lbl = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -62,7 +66,13 @@
             this.btnIr = new System.Windows.Forms.Button();
             this.lblErrorPagina = new System.Windows.Forms.Label();
             this.lblSemillaInicial = new System.Windows.Forms.Label();
+            this.cmbIntervalos = new System.Windows.Forms.ComboBox();
+            this.btnGraficar = new System.Windows.Forms.Button();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.grdNumeros)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // lbl
@@ -293,7 +303,7 @@
             // lblPagina
             // 
             this.lblPagina.AutoSize = true;
-            this.lblPagina.Location = new System.Drawing.Point(612, 387);
+            this.lblPagina.Location = new System.Drawing.Point(561, 392);
             this.lblPagina.Name = "lblPagina";
             this.lblPagina.Size = new System.Drawing.Size(73, 13);
             this.lblPagina.TabIndex = 22;
@@ -302,7 +312,7 @@
             // btnAnterior
             // 
             this.btnAnterior.Enabled = false;
-            this.btnAnterior.Location = new System.Drawing.Point(554, 382);
+            this.btnAnterior.Location = new System.Drawing.Point(503, 387);
             this.btnAnterior.Name = "btnAnterior";
             this.btnAnterior.Size = new System.Drawing.Size(29, 23);
             this.btnAnterior.TabIndex = 23;
@@ -313,7 +323,7 @@
             // btnSiguiente
             // 
             this.btnSiguiente.Enabled = false;
-            this.btnSiguiente.Location = new System.Drawing.Point(708, 382);
+            this.btnSiguiente.Location = new System.Drawing.Point(657, 387);
             this.btnSiguiente.Name = "btnSiguiente";
             this.btnSiguiente.Size = new System.Drawing.Size(29, 23);
             this.btnSiguiente.TabIndex = 24;
@@ -324,7 +334,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(551, 418);
+            this.label9.Location = new System.Drawing.Point(500, 423);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(57, 13);
             this.label9.TabIndex = 25;
@@ -333,7 +343,7 @@
             // txtPagina
             // 
             this.txtPagina.Enabled = false;
-            this.txtPagina.Location = new System.Drawing.Point(614, 415);
+            this.txtPagina.Location = new System.Drawing.Point(563, 420);
             this.txtPagina.Name = "txtPagina";
             this.txtPagina.Size = new System.Drawing.Size(71, 20);
             this.txtPagina.TabIndex = 26;
@@ -341,7 +351,7 @@
             // btnIr
             // 
             this.btnIr.Enabled = false;
-            this.btnIr.Location = new System.Drawing.Point(691, 413);
+            this.btnIr.Location = new System.Drawing.Point(640, 418);
             this.btnIr.Name = "btnIr";
             this.btnIr.Size = new System.Drawing.Size(46, 23);
             this.btnIr.TabIndex = 27;
@@ -352,7 +362,7 @@
             // lblErrorPagina
             // 
             this.lblErrorPagina.AutoSize = true;
-            this.lblErrorPagina.Location = new System.Drawing.Point(551, 440);
+            this.lblErrorPagina.Location = new System.Drawing.Point(500, 445);
             this.lblErrorPagina.Name = "lblErrorPagina";
             this.lblErrorPagina.Size = new System.Drawing.Size(0, 13);
             this.lblErrorPagina.TabIndex = 28;
@@ -365,11 +375,56 @@
             this.lblSemillaInicial.Size = new System.Drawing.Size(0, 13);
             this.lblSemillaInicial.TabIndex = 29;
             // 
+            // cmbIntervalos
+            // 
+            this.cmbIntervalos.FormattingEnabled = true;
+            this.cmbIntervalos.Items.AddRange(new object[] {
+            "5",
+            "10",
+            "15",
+            "20"});
+            this.cmbIntervalos.Location = new System.Drawing.Point(43, 323);
+            this.cmbIntervalos.Name = "cmbIntervalos";
+            this.cmbIntervalos.Size = new System.Drawing.Size(73, 21);
+            this.cmbIntervalos.TabIndex = 30;
+            this.cmbIntervalos.Text = "Intervalos";
+            this.cmbIntervalos.SelectedIndexChanged += new System.EventHandler(this.cmbIntervalos_SelectedIndexChanged);
+            // 
+            // btnGraficar
+            // 
+            this.btnGraficar.Enabled = false;
+            this.btnGraficar.Location = new System.Drawing.Point(41, 350);
+            this.btnGraficar.Name = "btnGraficar";
+            this.btnGraficar.Size = new System.Drawing.Size(75, 23);
+            this.btnGraficar.TabIndex = 31;
+            this.btnGraficar.Text = "Graficar";
+            this.btnGraficar.UseVisualStyleBackColor = true;
+            this.btnGraficar.Click += new System.EventHandler(this.btnGraficar_Click);
+            // 
+            // chart1
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(716, 12);
+            this.chart1.Name = "chart1";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
+            this.chart1.Size = new System.Drawing.Size(570, 429);
+            this.chart1.TabIndex = 32;
+            this.chart1.Text = "chart1";
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 462);
+            this.ClientSize = new System.Drawing.Size(1298, 534);
+            this.Controls.Add(this.chart1);
+            this.Controls.Add(this.btnGraficar);
+            this.Controls.Add(this.cmbIntervalos);
             this.Controls.Add(this.lblSemillaInicial);
             this.Controls.Add(this.lblErrorPagina);
             this.Controls.Add(this.btnIr);
@@ -405,6 +460,8 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmPrincipal_FormClosing);
             this.Load += new System.EventHandler(this.frmPrincipal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdNumeros)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -446,6 +503,10 @@
         private System.Windows.Forms.Button btnIr;
         private System.Windows.Forms.Label lblErrorPagina;
         private System.Windows.Forms.Label lblSemillaInicial;
+        private System.Windows.Forms.ComboBox cmbIntervalos;
+        private System.Windows.Forms.Button btnGraficar;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.BindingSource bindingSource1;
     }
 }
 
