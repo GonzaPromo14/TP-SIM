@@ -57,5 +57,10 @@ namespace TP1_C
             return this.count;
         }
 
+        public double getRandom(int index)
+        {
+            return arraySemilla[index].getValorAleatorioGenerado();
+        }
+
     }
 }

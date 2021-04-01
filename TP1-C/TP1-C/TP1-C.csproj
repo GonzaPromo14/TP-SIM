@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -58,6 +59,19 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="ChiCuadrado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChiCuadrado.Designer.cs">
+      <DependentUpon>ChiCuadrado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KolmogorovSmirnov.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KolmogorovSmirnov.Designer.cs">
+      <DependentUpon>KolmogorovSmirnov.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GestorGraficos.cs" />
     <Compile Include="Metodo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -68,6 +82,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChiCuadrado.resx">
+      <DependentUpon>ChiCuadrado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KolmogorovSmirnov.resx">
+      <DependentUpon>KolmogorovSmirnov.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

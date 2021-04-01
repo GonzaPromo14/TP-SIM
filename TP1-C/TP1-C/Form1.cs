@@ -21,6 +21,12 @@ namespace TP1_C
         int paginaActual = 1;
         Semilla[] valoresGeneradosParaGrilla;
 
+        GestorGraficos gGraficos = new GestorGraficos(true);
+
+        double min = Double.MaxValue;
+        double max = Double.MinValue;
+
+
         //Con array
         SemillaArray semillaArray = new SemillaArray(20);
 
@@ -75,22 +81,26 @@ namespace TP1_C
                 valoresGeneradosParaGrilla = new Semilla[valoresAGenerar];
                 sem = new Semilla(semilla, c, a, m);
                 grdNumeros.Rows.Clear();
-                for (int i = 0; i <= valoresAGenerar; i++)
+
+                lblSemillaInicial.Text = "Semilla inicial: " + sem.getValorSemilla().ToString();
+                
+                for (int i = 1; i <= valoresAGenerar; i++)
                 {
-                    if (i == 0)
-                    {
-                        lblSemillaInicial.Text = "Semilla inicial: " + sem.getValorSemilla().ToString();
-                    }
-                    else
-                    {
-                        sem.sumarIteracion();
-                        double axic = sem.calcularAxic();
-                        double siguienteSemilla = axic % m;
-                        double valorAleatorioGenerado = siguienteSemilla / (m - 1);
-                        valorAleatorioGenerado = Math.Truncate(valorAleatorioGenerado * 10000)/10000;
-                        sem.setValorSemilla(siguienteSemilla);
-                        semillaArray.add(new Semilla(sem.getValorSemilla(), c, a, m, i, valorAleatorioGenerado));
-                    }
+
+                    sem.sumarIteracion();
+                    double axic = sem.calcularAxic();
+                    double siguienteSemilla = axic % m;
+                    double valorAleatorioGenerado = siguienteSemilla / (m - 1);
+                    valorAleatorioGenerado = Math.Truncate(valorAleatorioGenerado * 10000)/10000;
+
+                    //--------------- Voy calculando el max y minimo para el grafico
+                    if (valorAleatorioGenerado < min) { min = valorAleatorioGenerado; }
+                    if (valorAleatorioGenerado > max) { max = valorAleatorioGenerado; }
+
+
+                    sem.setValorSemilla(siguienteSemilla);
+                    semillaArray.add(new Semilla(sem.getValorSemilla(), c, a, m, i, valorAleatorioGenerado));
+                    
                 }
                 paginaActual = 1;
                 llenarGrilla(paginaActual, cantItemsPorPag);
@@ -100,7 +110,13 @@ namespace TP1_C
                 btnIr.Enabled = true;
                 txtPagina.Enabled = true;
                 lblPagina.Text = "Página 1 de " + calcularValorTotalPaginas().ToString();
+
                 
+                //valores necesarios para graficar
+                gGraficos.setMin(min);
+                gGraficos.setMax(max);
+                gGraficos.setCantidadMuestras(valoresAGenerar);
+                gGraficos.setMuestras(semillaArray);
             }
             
         }
@@ -309,6 +325,32 @@ namespace TP1_C
         private void frmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        //Si se cambia el intervalo seleccionado 
+        private void cmbIntervalos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnGraficar.Enabled = true;
+            string i = cmbIntervalos.SelectedItem.ToString();
+            gGraficos.setCantIntervalos(Convert.ToInt32(i));
+            gGraficos.setIntervMedio();
+            
+            gGraficos.calcularPasos();
+            gGraficos.calcularIntervalos();
+            gGraficos.calcularIntervalosGrafico();
+        }
+
+        private void btnGraficar_Click(object sender, EventArgs e)
+        {
+            gGraficos.graficar(chart1);
+
+        }
+
+        private void btnAtras_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmEleccionPunto frmEleccion = new frmEleccionPunto();
+            frmEleccion.Show();
         }
     }
 }

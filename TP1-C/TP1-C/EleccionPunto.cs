@@ -23,5 +23,25 @@ namespace TP1_C
             frmPrincipal principal = new frmPrincipal();
             principal.Show();
         }
+
+        private void btnKolmoSmirnov_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            KolmogorovSmirnov kolmogorov = new KolmogorovSmirnov();
+            kolmogorov.Show();
+        }
+
+        private void btnChiCuadrado_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ChiCuadrado chiCuadrado = new ChiCuadrado();
+            chiCuadrado.Show();
+
+        }
+
+        private void EleccionPunto_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

@@ -30,8 +30,9 @@
         {
             this.btnNumerosAleatorios = new System.Windows.Forms.Button();
             this.btnChiCuadrado = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnKolmoSmirnov = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EleccionPunto_FormClosing);
             // 
             // btnNumerosAleatorios
             // 
@@ -51,22 +52,24 @@
             this.btnChiCuadrado.TabIndex = 1;
             this.btnChiCuadrado.Text = "ChiCuadrado";
             this.btnChiCuadrado.UseVisualStyleBackColor = true;
+            this.btnChiCuadrado.Click += new System.EventHandler(this.btnChiCuadrado_Click);
             // 
-            // button3
+            // btnKolmoSmirnov
             // 
-            this.button3.Location = new System.Drawing.Point(12, 102);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(156, 39);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Multiplicativo";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnKolmoSmirnov.Location = new System.Drawing.Point(12, 102);
+            this.btnKolmoSmirnov.Name = "btnKolmoSmirnov";
+            this.btnKolmoSmirnov.Size = new System.Drawing.Size(156, 39);
+            this.btnKolmoSmirnov.TabIndex = 2;
+            this.btnKolmoSmirnov.Text = "Kolmogorov Smirnov";
+            this.btnKolmoSmirnov.UseVisualStyleBackColor = true;
+            this.btnKolmoSmirnov.Click += new System.EventHandler(this.btnKolmoSmirnov_Click);
             // 
             // frmEleccionPunto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(199, 164);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btnKolmoSmirnov);
             this.Controls.Add(this.btnChiCuadrado);
             this.Controls.Add(this.btnNumerosAleatorios);
             this.Name = "frmEleccionPunto";
@@ -79,6 +82,6 @@
 
         private System.Windows.Forms.Button btnNumerosAleatorios;
         private System.Windows.Forms.Button btnChiCuadrado;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnKolmoSmirnov;
     }
 }
