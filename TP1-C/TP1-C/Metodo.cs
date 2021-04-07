@@ -10,6 +10,7 @@ namespace TP1_C
     {
         private bool lineal;
         private bool hayElegido;
+        private bool random = false;
 
         public Metodo()
         {
@@ -31,6 +32,18 @@ namespace TP1_C
             this.hayElegido = true;
             this.lineal = lineal;
         }
+
+        public void setRandom()
+        {
+            this.random = true;
+        }
+
+        public bool isRandom()
+        {
+            return this.random;
+        }
+
+
 
     }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
 namespace TP1_C
@@ -26,7 +27,7 @@ namespace TP1_C
 
         public void calcularPasos()
         {
-            //calculo los pasos de cada intervalo a partir del max, min y cantidad de intervalos
+            //calculo el ancho de cada intervalo
 
             double aux = (max - min) / cantIntervalos;
             aux = Math.Truncate(aux * 10000) / 10000;
@@ -56,9 +57,14 @@ namespace TP1_C
 
         public void calcularIntervalosGrafico()
         {
+            /*
             for (int i = 0; i < cantIntervalos; i++)
             {
                 intervMedio[i] = Convert.ToString(Math.Round((intervalos[i][0] + intervalos[i][1]) / 2, 3));
+            }*/
+            for(int i=0; i<cantIntervalos; i++)
+            {
+                intervMedio[i] = Convert.ToString(i+1);
             }
         }
 
@@ -73,10 +79,11 @@ namespace TP1_C
             //Frecuencias observadas 
             for (int i = 0; i < cantidadMuestras; i++)
             {
+                double rand = muestras.getRandom(i);
                 //cuento los randoms que aparecen en cada intervalo
                 for (int j = 0; j < cantIntervalos; j++)
                 {
-                    if (muestras.getRandom(i) >= intervalos[j][0] && muestras.getRandom(i) < intervalos[j][1])
+                    if (rand >= intervalos[j][0] && rand < intervalos[j][1])
                     {
                         frecuenciasObservadas[j]++;
                     }
@@ -91,6 +98,23 @@ namespace TP1_C
                 frecuenciasEsperadas[i] = cantidadMuestras / cantIntervalos;
             }
 
+        }
+
+        public void llenarGrillaFrecuencias(DataGridView grillaFrecuencias)
+        {
+            grillaFrecuencias.Rows.Clear();
+
+            for(int i=0; i<cantIntervalos; i++)
+            {
+                int intervalo = i + 1;
+                double li = intervalos[i][0];
+                double ls = intervalos[i][1];
+                double frecObservadas = frecuenciasObservadas[i];
+                double frecEsperadas = frecuenciasEsperadas[i];
+
+                grillaFrecuencias.Rows.Add(intervalo, li, ls, frecObservadas, frecEsperadas);
+
+            }
         }
 
         //----------------------------GRAFICAR----------------------------------------------//

@@ -25,6 +25,15 @@ namespace TP1_C
             this.m = m;
         }
 
+        public Semilla()
+        {
+            this.valorSemilla = 0;
+            this.iteracion = 0;
+            this.c = 0;
+            this.a = 0;
+            this.m = 0;
+        }
+
         public Semilla(double x0, double c, double a, double m, int iteracion, double valorAleatorioGenerado)
         {
             this.valorSemilla = x0;

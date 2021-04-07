@@ -73,35 +73,66 @@ namespace TP1_C
             bool validacion = datosValidos();
             if (validacion)
             {
-                semillaArray.clear();
-                double semilla = Double.Parse(txtXo.Text);
-                double c = Double.Parse(txtC.Text);
-                double a = Double.Parse(txtA.Text);
-                double m = Double.Parse(txtM.Text);
-                valoresGeneradosParaGrilla = new Semilla[valoresAGenerar];
-                sem = new Semilla(semilla, c, a, m);
-                grdNumeros.Rows.Clear();
-
-                lblSemillaInicial.Text = "Semilla inicial: " + sem.getValorSemilla().ToString();
-                
-                for (int i = 1; i <= valoresAGenerar; i++)
+                //Veo si es random
+                if (metodoElegido.isRandom())
                 {
+                    semillaArray.clear();
+                    sem = new Semilla();
+                    grdNumeros.Rows.Clear();
 
-                    sem.sumarIteracion();
-                    double axic = sem.calcularAxic();
-                    double siguienteSemilla = axic % m;
-                    double valorAleatorioGenerado = siguienteSemilla / (m - 1);
-                    valorAleatorioGenerado = Math.Truncate(valorAleatorioGenerado * 10000)/10000;
+                    Random generadorRandom = new Random();
 
-                    //--------------- Voy calculando el max y minimo para el grafico
-                    if (valorAleatorioGenerado < min) { min = valorAleatorioGenerado; }
-                    if (valorAleatorioGenerado > max) { max = valorAleatorioGenerado; }
+                    for (int i = 1; i <= valoresAGenerar; i++)
+                    {
 
+                        //sem.sumarIteracion();
+                        double valorAleatorioGenerado = generadorRandom.NextDouble();
+                        valorAleatorioGenerado = Math.Truncate(valorAleatorioGenerado * 10000) / 10000;
 
-                    sem.setValorSemilla(siguienteSemilla);
-                    semillaArray.add(new Semilla(sem.getValorSemilla(), c, a, m, i, valorAleatorioGenerado));
-                    
+                        //--------------- Voy calculando el max y minimo para el grafico
+                        if (valorAleatorioGenerado < min) { min = valorAleatorioGenerado; }
+                        if (valorAleatorioGenerado > max) { max = valorAleatorioGenerado; }
+
+                        semillaArray.add(new Semilla(0, 0, 0, 0, i, valorAleatorioGenerado));
+
+                    }
+
                 }
+                //Es multiplicativo o lineal
+                else
+                {
+                    semillaArray.clear();
+                    double semilla = Double.Parse(txtXo.Text);
+                    double c = Double.Parse(txtC.Text);
+                    double a = Double.Parse(txtA.Text);
+                    double m = Double.Parse(txtM.Text);
+                    //valoresGeneradosParaGrilla = new Semilla[valoresAGenerar];
+                    sem = new Semilla(semilla, c, a, m);
+                    grdNumeros.Rows.Clear();
+
+                    lblSemillaInicial.Text = "Semilla inicial: " + sem.getValorSemilla().ToString();
+
+                    for (int i = 1; i <= valoresAGenerar; i++)
+                    {
+
+                        sem.sumarIteracion();
+                        double axic = sem.calcularAxic();
+                        double siguienteSemilla = axic % m;
+                        double valorAleatorioGenerado = siguienteSemilla / (m - 1);
+                        valorAleatorioGenerado = Math.Truncate(valorAleatorioGenerado * 10000) / 10000;
+
+                        //--------------- Voy calculando el max y minimo para el grafico
+                        if (valorAleatorioGenerado < min) { min = valorAleatorioGenerado; }
+                        if (valorAleatorioGenerado > max) { max = valorAleatorioGenerado; }
+
+
+                        sem.setValorSemilla(siguienteSemilla);
+                        semillaArray.add(new Semilla(sem.getValorSemilla(), c, a, m, i, valorAleatorioGenerado));
+
+                    }
+
+                }
+
                 paginaActual = 1;
                 llenarGrilla(paginaActual, cantItemsPorPag);
                 btnProximo.Enabled = true;
@@ -343,7 +374,37 @@ namespace TP1_C
         private void btnGraficar_Click(object sender, EventArgs e)
         {
             gGraficos.graficar(chart1);
+            gGraficos.llenarGrillaFrecuencias(grillaFrecuencias);
 
+
+        }
+
+        private void btnRandom_Click(object sender, EventArgs e)
+        {
+            btnLineal.Enabled = false;
+            btnMultiplicativo.Enabled = false;
+            btnRandom.Enabled = false;
+            metodoElegido.setRandom();
+            btnProximo.Enabled = false;
+            lblMetodoElegido.Text = "Random";
+            txtXo.Enabled = false;
+            txtXo.Text = 0.ToString();
+            txtG.Enabled = false;
+            txtG.Text = 0.ToString();
+            txtK.Enabled = false;
+            txtK.Text = 0.ToString();
+            txtA.Enabled = false;
+            txtA.Text = 0.ToString();
+            txtM.Enabled = false;
+            txtM.Text = 0.ToString();
+            txtC.Text = 0.ToString();
+            txtC.Enabled = false;
+            btnGenerar.Enabled = true;
+        }
+
+        private void txtCantidad_TextChanged(object sender, EventArgs e)
+        {
+            this.valoresAGenerar = Convert.ToInt32(txtCantidad.Text);
         }
     }
 }

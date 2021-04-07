@@ -29,10 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            this.lbl = new System.Windows.Forms.Label();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -70,20 +69,22 @@
             this.btnGraficar = new System.Windows.Forms.Button();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.grillaFrecuencias = new System.Windows.Forms.DataGridView();
+            this.colIntervalo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colLimiteInf = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colLimiteSup = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colFrecObs = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colFrecEsp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnRandom = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtCantidad = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.grdNumeros)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grillaFrecuencias)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // lbl
-            // 
-            this.lbl.AutoSize = true;
-            this.lbl.Location = new System.Drawing.Point(12, 77);
-            this.lbl.Name = "lbl";
-            this.lbl.Size = new System.Drawing.Size(90, 13);
-            this.lbl.TabIndex = 0;
-            this.lbl.Text = "Ingresar variables";
-            this.lbl.Click += new System.EventHandler(this.lbl_Click);
             // 
             // label1
             // 
@@ -277,7 +278,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(339, 9);
+            this.label8.Location = new System.Drawing.Point(355, 10);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(83, 13);
             this.label8.TabIndex = 19;
@@ -286,10 +287,11 @@
             // lblMetodoElegido
             // 
             this.lblMetodoElegido.AutoSize = true;
-            this.lblMetodoElegido.Location = new System.Drawing.Point(418, 9);
+            this.lblMetodoElegido.Location = new System.Drawing.Point(449, 10);
             this.lblMetodoElegido.Name = "lblMetodoElegido";
-            this.lblMetodoElegido.Size = new System.Drawing.Size(0, 13);
+            this.lblMetodoElegido.Size = new System.Drawing.Size(10, 13);
             this.lblMetodoElegido.TabIndex = 20;
+            this.lblMetodoElegido.Text = "-";
             // 
             // lblError
             // 
@@ -393,7 +395,7 @@
             // btnGraficar
             // 
             this.btnGraficar.Enabled = false;
-            this.btnGraficar.Location = new System.Drawing.Point(41, 350);
+            this.btnGraficar.Location = new System.Drawing.Point(108, 244);
             this.btnGraficar.Name = "btnGraficar";
             this.btnGraficar.Size = new System.Drawing.Size(75, 23);
             this.btnGraficar.TabIndex = 31;
@@ -403,27 +405,107 @@
             // 
             // chart1
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            chartArea4.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.chart1.Legends.Add(legend4);
             this.chart1.Location = new System.Drawing.Point(716, 12);
             this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            this.chart1.Series.Add(series4);
             this.chart1.Size = new System.Drawing.Size(570, 429);
             this.chart1.TabIndex = 32;
             this.chart1.Text = "chart1";
+            // 
+            // grillaFrecuencias
+            // 
+            this.grillaFrecuencias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grillaFrecuencias.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colIntervalo,
+            this.colLimiteInf,
+            this.colLimiteSup,
+            this.colFrecObs,
+            this.colFrecEsp});
+            this.grillaFrecuencias.Location = new System.Drawing.Point(716, 459);
+            this.grillaFrecuencias.Name = "grillaFrecuencias";
+            this.grillaFrecuencias.RowHeadersVisible = false;
+            this.grillaFrecuencias.Size = new System.Drawing.Size(570, 150);
+            this.grillaFrecuencias.TabIndex = 33;
+            // 
+            // colIntervalo
+            // 
+            this.colIntervalo.HeaderText = "Intervalo";
+            this.colIntervalo.Name = "colIntervalo";
+            // 
+            // colLimiteInf
+            // 
+            this.colLimiteInf.HeaderText = "Li";
+            this.colLimiteInf.Name = "colLimiteInf";
+            // 
+            // colLimiteSup
+            // 
+            this.colLimiteSup.HeaderText = "Ls";
+            this.colLimiteSup.Name = "colLimiteSup";
+            // 
+            // colFrecObs
+            // 
+            this.colFrecObs.HeaderText = "Frecuencia observada";
+            this.colFrecObs.Name = "colFrecObs";
+            // 
+            // colFrecEsp
+            // 
+            this.colFrecEsp.HeaderText = "Frecuencia esperada";
+            this.colFrecEsp.Name = "colFrecEsp";
+            // 
+            // btnRandom
+            // 
+            this.btnRandom.Location = new System.Drawing.Point(259, 4);
+            this.btnRandom.Name = "btnRandom";
+            this.btnRandom.Size = new System.Drawing.Size(75, 23);
+            this.btnRandom.TabIndex = 34;
+            this.btnRandom.Text = "Random";
+            this.btnRandom.UseVisualStyleBackColor = true;
+            this.btnRandom.Click += new System.EventHandler(this.btnRandom_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnGraficar);
+            this.groupBox1.Location = new System.Drawing.Point(12, 77);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(200, 288);
+            this.groupBox1.TabIndex = 35;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Ingresar variables";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(15, 36);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(49, 13);
+            this.label10.TabIndex = 36;
+            this.label10.Text = "Cantidad";
+            // 
+            // txtCantidad
+            // 
+            this.txtCantidad.Location = new System.Drawing.Point(89, 36);
+            this.txtCantidad.Name = "txtCantidad";
+            this.txtCantidad.Size = new System.Drawing.Size(77, 20);
+            this.txtCantidad.TabIndex = 37;
+            this.txtCantidad.TextChanged += new System.EventHandler(this.txtCantidad_TextChanged);
             // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1298, 534);
+            this.ClientSize = new System.Drawing.Size(1298, 749);
+            this.Controls.Add(this.txtCantidad);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.btnRandom);
+            this.Controls.Add(this.grillaFrecuencias);
             this.Controls.Add(this.chart1);
-            this.Controls.Add(this.btnGraficar);
             this.Controls.Add(this.cmbIntervalos);
             this.Controls.Add(this.lblSemillaInicial);
             this.Controls.Add(this.lblErrorPagina);
@@ -454,7 +536,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.lbl);
+            this.Controls.Add(this.groupBox1);
             this.Name = "frmPrincipal";
             this.Text = "Trabajo práctico 1 Simulación";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmPrincipal_FormClosing);
@@ -462,14 +544,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.grdNumeros)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grillaFrecuencias)).EndInit();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lbl;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -507,6 +589,16 @@
         private System.Windows.Forms.Button btnGraficar;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.BindingSource bindingSource1;
+        private System.Windows.Forms.DataGridView grillaFrecuencias;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colIntervalo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colLimiteInf;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colLimiteSup;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colFrecObs;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colFrecEsp;
+        private System.Windows.Forms.Button btnRandom;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtCantidad;
     }
 }
 
