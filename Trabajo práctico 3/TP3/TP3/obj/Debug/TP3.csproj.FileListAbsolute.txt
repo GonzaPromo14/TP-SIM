@@ -1,0 +1,13 @@
+D:\UTN - 2021\SIM\Programas\TP3\TP3\bin\Debug\TP3.exe.config
+D:\UTN - 2021\SIM\Programas\TP3\TP3\bin\Debug\TP3.exe
+D:\UTN - 2021\SIM\Programas\TP3\TP3\bin\Debug\TP3.pdb
+D:\UTN - 2021\SIM\Programas\TP3\TP3\obj\Debug\TP3.csprojAssemblyReference.cache
+D:\UTN - 2021\SIM\Programas\TP3\TP3\obj\Debug\TP3.Form1.resources
+D:\UTN - 2021\SIM\Programas\TP3\TP3\obj\Debug\TP3.Properties.Resources.resources
+D:\UTN - 2021\SIM\Programas\TP3\TP3\obj\Debug\TP3.csproj.GenerateResource.cache
+D:\UTN - 2021\SIM\Programas\TP3\TP3\obj\Debug\TP3.csproj.CoreCompileInputs.cache
+D:\UTN - 2021\SIM\Programas\TP3\TP3\obj\Debug\TP3.exe
+D:\UTN - 2021\SIM\Programas\TP3\TP3\obj\Debug\TP3.pdb
+D:\UTN - 2021\SIM\Programas\TP3\TP3\bin\Debug\Microsoft.VisualBasic.PowerPacks.dll
+D:\UTN - 2021\SIM\Programas\TP3\TP3\bin\Debug\Microsoft.VisualBasic.PowerPacks.xml
+D:\UTN - 2021\SIM\Programas\TP3\TP3\obj\Debug\TP3.csproj.CopyComplete
