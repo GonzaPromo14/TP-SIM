@@ -1,0 +1,28 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "MathNet.Numerics/4.15.0": {
+        "runtime": {
+          "lib/netstandard2.0/MathNet.Numerics.dll": {
+            "assemblyVersion": "4.15.0.0",
+            "fileVersion": "4.15.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "MathNet.Numerics/4.15.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-cP4QgPPiU7boMyL8npvuQyVGVYUd/JQY1AWa+Wl2f//fuJN40qwt9ABRazunZIcDLHg3SSlgD/e+3Lnp69jNTg==",
+      "path": "mathnet.numerics/4.15.0",
+      "hashPath": "mathnet.numerics.4.15.0.nupkg.sha512"
+    }
+  }
+}

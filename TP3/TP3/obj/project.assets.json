@@ -1,0 +1,114 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "MathNet.Numerics/4.15.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/MathNet.Numerics.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/MathNet.Numerics.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "MathNet.Numerics/4.15.0": {
+      "sha512": "cP4QgPPiU7boMyL8npvuQyVGVYUd/JQY1AWa+Wl2f//fuJN40qwt9ABRazunZIcDLHg3SSlgD/e+3Lnp69jNTg==",
+      "type": "package",
+      "path": "mathnet.numerics/4.15.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "icon.png",
+        "lib/net40/MathNet.Numerics.dll",
+        "lib/net40/MathNet.Numerics.xml",
+        "lib/net461/MathNet.Numerics.dll",
+        "lib/net461/MathNet.Numerics.xml",
+        "lib/netstandard1.3/MathNet.Numerics.dll",
+        "lib/netstandard1.3/MathNet.Numerics.xml",
+        "lib/netstandard2.0/MathNet.Numerics.dll",
+        "lib/netstandard2.0/MathNet.Numerics.xml",
+        "mathnet.numerics.4.15.0.nupkg.sha512",
+        "mathnet.numerics.nuspec"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETCoreApp,Version=v3.1": [
+      "MathNet.Numerics >= 4.15.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\Simon\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "D:\\UTN\\2021\\SIM\\TPs\\TP-SIM\\TP-SIM\\TP3\\TP3\\TP3.csproj",
+      "projectName": "TP3",
+      "projectPath": "D:\\UTN\\2021\\SIM\\TPs\\TP-SIM\\TP-SIM\\TP3\\TP3\\TP3.csproj",
+      "packagesPath": "C:\\Users\\Simon\\.nuget\\packages\\",
+      "outputPath": "D:\\UTN\\2021\\SIM\\TPs\\TP-SIM\\TP-SIM\\TP3\\TP3\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Microsoft\\Xamarin\\NuGet\\"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\Simon\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "netcoreapp3.1"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "projectReferences": {}
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
+        "dependencies": {
+          "MathNet.Numerics": {
+            "target": "Package",
+            "version": "[4.15.0, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          },
+          "Microsoft.WindowsDesktop.App.WindowsForms": {
+            "privateAssets": "none"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

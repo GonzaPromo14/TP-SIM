@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "uMS0+ki4rhge+seIRaXqblM2NGZ3ylDJ/88pQTO94cMSDKak97cLr0M6HZmIXS+hzjwIYRx0cgSj63Dg0h+USQ==",
+  "success": true,
+  "projectFilePath": "D:\\UTN\\2021\\SIM\\TPs\\TP-SIM\\TP-SIM\\TP3\\TP3\\TP3.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Simon\\.nuget\\packages\\mathnet.numerics\\4.15.0\\mathnet.numerics.4.15.0.nupkg.sha512"
+  ],
+  "logs": []
+}
