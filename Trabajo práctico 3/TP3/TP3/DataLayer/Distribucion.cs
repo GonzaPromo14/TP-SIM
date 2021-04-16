@@ -44,7 +44,6 @@ namespace TP3.DataLayer
             {
                 g.frecuenciasEsperadas[i] = g.getTamanioMuestra() / g.cantIntervalos;
 
-                //g.frecuenciasEsperadas[i] = ContinuousUniform.CDF()
             }
 
             //actualizo las probabilidades
@@ -63,10 +62,10 @@ namespace TP3.DataLayer
 
         }
         //EXPONENCIAL ##################################################################################################
-        public double generarNumeroExponencial(double rnd, double lamda)
+        public double generarNumeroExponencial(double rnd, double lambda)
         {
             double ln = Math.Log(1 - rnd);
-            double division = -1 / lamda;
+            double division = -1 / lambda;
             return Math.Round(division * ln, 4);
         }
 
@@ -95,12 +94,12 @@ namespace TP3.DataLayer
         }
 
         //POISSON ######################################################################################################
-        public double generarNumeroPoisson(Random r, double lamda)
+        public double generarNumeroPoisson(Random r, double lambda)
         {
             
             double p = 1;
             double x = -1;
-            double a = Math.Exp(-lamda);
+            double a = Math.Exp(-lambda);
             double u = 0;
             do
             {
@@ -109,17 +108,7 @@ namespace TP3.DataLayer
                 x = x + 1;
             } while (p >= a);
             return x;
-            /*
-            double n = -1;
-            double p = 1;
-            double a = Math.Exp(-lamda);
-            do
-            {
-                p *= r.NextDouble();
-                n++;
-            }
-            while (p >= a);
-            return n;*/
+
         }
 
 
@@ -134,7 +123,6 @@ namespace TP3.DataLayer
             //actualizo las probabilidades
             for (int i = 0; i < g.cantIntervalos; i++)
             {
-
                 g.probEsperadas[i] = Poisson.PMF(g.getLambda(), i);
             }
             //actualizo acumuladores

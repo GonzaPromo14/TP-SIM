@@ -39,6 +39,7 @@ namespace TP3
 
             Distribucion dist = new Distribucion(cmbDistribuciones.Text);
             grdNumeros.Rows.Clear();
+            
             gCalculos.obtenerMuestras();
 
             graficador.graficar(chart1,dataGridFrecuencias);
@@ -250,7 +251,7 @@ namespace TP3
             }
             catch (FormatException)
             {
-                if (txtA.Text != "" && txtA.Text != "-")
+                if (txtB.Text != "" && txtB.Text != "-")
                 {
                     MessageBox.Show("Ingrese un valor válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -266,7 +267,7 @@ namespace TP3
             }
             catch (FormatException)
             {
-                if (txtA.Text != "" && txtA.Text != "-")
+                if (txtLamda.Text != "" && txtLamda.Text != "-")
                 {
                     MessageBox.Show("Ingrese un valor válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -277,11 +278,11 @@ namespace TP3
         {
             try
             {
-                gCalculos.setLambda(double.Parse(txtLamda.Text));
+                gCalculos.setLambda(double.Parse(txtLamdaPoisson.Text));
             }
             catch (FormatException)
             {
-                if (txtA.Text != "" && txtA.Text != "-")
+                if (txtLamdaPoisson.Text != "" && txtLamdaPoisson.Text != "-")
                 {
                     MessageBox.Show("Ingrese un valor válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -297,7 +298,7 @@ namespace TP3
             }
             catch (FormatException)
             {
-                if (txtA.Text != "" && txtA.Text != "-")
+                if (txtMedia.Text != "" && txtMedia.Text != "-")
                 {
                     MessageBox.Show("Ingrese un valor válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -312,7 +313,7 @@ namespace TP3
             }
             catch (FormatException)
             {
-                if (txtA.Text != "" && txtA.Text != "-")
+                if (txtDesvEstandar.Text != "" && txtDesvEstandar.Text != "-")
                 {
                     MessageBox.Show("Ingrese un valor válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -327,7 +328,7 @@ namespace TP3
             }
             catch (FormatException)
             {
-                if (txtA.Text != "" && txtA.Text != "-")
+                if (txtTamanioMuestra.Text != "" && txtTamanioMuestra.Text != "-")
                 {
                     MessageBox.Show("Ingrese un valor válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }

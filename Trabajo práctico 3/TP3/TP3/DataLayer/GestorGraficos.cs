@@ -19,11 +19,7 @@ namespace TP3.DataLayer
         public void calcularEjeX()
         {
             intervMedio = new string[gestor.cantIntervalos]; //para el grafico
-            /*
-            for (int i = 0; i < cantIntervalos; i++)
-            {
-                intervMedio[i] = Convert.ToString(Math.Round((intervalos[i][0] + intervalos[i][1]) / 2, 3));
-            }*/
+
             for (int i = 0; i < gestor.cantIntervalos; i++)
             {
                 intervMedio[i] = "Intervalo "+(i+1);

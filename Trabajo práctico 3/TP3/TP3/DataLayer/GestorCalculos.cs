@@ -15,7 +15,7 @@ namespace TP3.DataLayer
         private double media;
         public double varianza;
         private double desvEstandar; //raiz de la varianza
-        private int k;
+        private int k = 12;
         
         private int tamanioMuestra = 10;
         private Distribucion dist;
