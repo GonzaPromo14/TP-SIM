@@ -325,6 +325,7 @@ namespace TP3
             try
             {
                 gCalculos.setTamanioMuestra(int.Parse(txtTamanioMuestra.Text));
+                cmbIntervalos.Enabled = false;
             }
             catch (FormatException)
             {
