@@ -28,12 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series15 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series16 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.cmbDistribuciones = new System.Windows.Forms.ComboBox();
-            this.lblDistribucionUniforme = new System.Windows.Forms.Label();
             this.lblValorA = new System.Windows.Forms.Label();
             this.lblValorB = new System.Windows.Forms.Label();
             this.txtA = new System.Windows.Forms.TextBox();
@@ -44,19 +43,10 @@
             this.random = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnGenerar = new System.Windows.Forms.Button();
-            this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
-            this.lineShape6 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.lineShape5 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.lineShape4 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.lineShape3 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.lineShape2 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.txtTamanioMuestra = new System.Windows.Forms.TextBox();
             this.lblTamanioMuestra = new System.Windows.Forms.Label();
-            this.lblDistribucionExponencial = new System.Windows.Forms.Label();
             this.lblLamda = new System.Windows.Forms.Label();
             this.txtLamda = new System.Windows.Forms.TextBox();
-            this.lblDistribucionPoisson = new System.Windows.Forms.Label();
             this.lblLamdaPoisson = new System.Windows.Forms.Label();
             this.txtLamdaPoisson = new System.Windows.Forms.TextBox();
             this.btnSiguiente = new System.Windows.Forms.Button();
@@ -65,7 +55,6 @@
             this.btnIr = new System.Windows.Forms.Button();
             this.txtPagina = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.lblDistribucionNormal = new System.Windows.Forms.Label();
             this.txtDesvEstandar = new System.Windows.Forms.TextBox();
             this.txtMedia = new System.Windows.Forms.TextBox();
             this.lblDesvEstandar = new System.Windows.Forms.Label();
@@ -75,14 +64,32 @@
             this.lblMetodoConvolucion = new System.Windows.Forms.Label();
             this.lblK = new System.Windows.Forms.Label();
             this.txtK = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.cmbIntervalos = new System.Windows.Forms.ComboBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.colDesde = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.groupUniforme = new System.Windows.Forms.GroupBox();
+            this.groupExponencial = new System.Windows.Forms.GroupBox();
+            this.groupPoisson = new System.Windows.Forms.GroupBox();
+            this.groupNormal = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dataGridFrecuencias = new System.Windows.Forms.DataGridView();
+            this.Num = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Min = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Max = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Observados = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProbObs = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AcumObs = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Esperados = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProbEsp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AcumEsperado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grdNumeros)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            this.groupUniforme.SuspendLayout();
+            this.groupExponencial.SuspendLayout();
+            this.groupPoisson.SuspendLayout();
+            this.groupNormal.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridFrecuencias)).BeginInit();
             this.SuspendLayout();
             // 
             // cmbDistribuciones
@@ -93,28 +100,18 @@
             "Exponencial",
             "Poisson",
             "Normal"});
-            this.cmbDistribuciones.Location = new System.Drawing.Point(12, 13);
+            this.cmbDistribuciones.Location = new System.Drawing.Point(87, 14);
             this.cmbDistribuciones.Name = "cmbDistribuciones";
-            this.cmbDistribuciones.Size = new System.Drawing.Size(121, 21);
+            this.cmbDistribuciones.Size = new System.Drawing.Size(100, 21);
             this.cmbDistribuciones.TabIndex = 0;
             this.cmbDistribuciones.Text = "Distribución";
             this.cmbDistribuciones.SelectedIndexChanged += new System.EventHandler(this.cmbDistribuciones_SelectedIndexChanged);
-            // 
-            // lblDistribucionUniforme
-            // 
-            this.lblDistribucionUniforme.AutoSize = true;
-            this.lblDistribucionUniforme.Enabled = false;
-            this.lblDistribucionUniforme.Location = new System.Drawing.Point(12, 64);
-            this.lblDistribucionUniforme.Name = "lblDistribucionUniforme";
-            this.lblDistribucionUniforme.Size = new System.Drawing.Size(105, 13);
-            this.lblDistribucionUniforme.TabIndex = 2;
-            this.lblDistribucionUniforme.Text = "Distribución uniforme";
             // 
             // lblValorA
             // 
             this.lblValorA.AutoSize = true;
             this.lblValorA.Enabled = false;
-            this.lblValorA.Location = new System.Drawing.Point(12, 88);
+            this.lblValorA.Location = new System.Drawing.Point(6, 28);
             this.lblValorA.Name = "lblValorA";
             this.lblValorA.Size = new System.Drawing.Size(81, 13);
             this.lblValorA.TabIndex = 3;
@@ -124,7 +121,7 @@
             // 
             this.lblValorB.AutoSize = true;
             this.lblValorB.Enabled = false;
-            this.lblValorB.Location = new System.Drawing.Point(12, 114);
+            this.lblValorB.Location = new System.Drawing.Point(6, 54);
             this.lblValorB.Name = "lblValorB";
             this.lblValorB.Size = new System.Drawing.Size(81, 13);
             this.lblValorB.TabIndex = 4;
@@ -133,7 +130,7 @@
             // txtA
             // 
             this.txtA.Enabled = false;
-            this.txtA.Location = new System.Drawing.Point(99, 85);
+            this.txtA.Location = new System.Drawing.Point(106, 25);
             this.txtA.Name = "txtA";
             this.txtA.Size = new System.Drawing.Size(76, 20);
             this.txtA.TabIndex = 5;
@@ -142,7 +139,7 @@
             // txtB
             // 
             this.txtB.Enabled = false;
-            this.txtB.Location = new System.Drawing.Point(99, 111);
+            this.txtB.Location = new System.Drawing.Point(106, 51);
             this.txtB.Name = "txtB";
             this.txtB.Size = new System.Drawing.Size(76, 20);
             this.txtB.TabIndex = 6;
@@ -152,7 +149,7 @@
             // 
             this.lblCondicionUniforme.AutoSize = true;
             this.lblCondicionUniforme.Enabled = false;
-            this.lblCondicionUniforme.Location = new System.Drawing.Point(12, 137);
+            this.lblCondicionUniforme.Location = new System.Drawing.Point(6, 84);
             this.lblCondicionUniforme.Name = "lblCondicionUniforme";
             this.lblCondicionUniforme.Size = new System.Drawing.Size(163, 13);
             this.lblCondicionUniforme.TabIndex = 7;
@@ -165,7 +162,7 @@
             this.numMuestra,
             this.random,
             this.valor});
-            this.grdNumeros.Location = new System.Drawing.Point(12, 213);
+            this.grdNumeros.Location = new System.Drawing.Point(6, 73);
             this.grdNumeros.Name = "grdNumeros";
             this.grdNumeros.RowHeadersVisible = false;
             this.grdNumeros.Size = new System.Drawing.Size(347, 256);
@@ -190,7 +187,7 @@
             // btnGenerar
             // 
             this.btnGenerar.Enabled = false;
-            this.btnGenerar.Location = new System.Drawing.Point(26, 169);
+            this.btnGenerar.Location = new System.Drawing.Point(6, 34);
             this.btnGenerar.Name = "btnGenerar";
             this.btnGenerar.Size = new System.Drawing.Size(75, 23);
             this.btnGenerar.TabIndex = 9;
@@ -198,74 +195,10 @@
             this.btnGenerar.UseVisualStyleBackColor = true;
             this.btnGenerar.Click += new System.EventHandler(this.btnGenerar_Click);
             // 
-            // shapeContainer1
-            // 
-            this.shapeContainer1.Location = new System.Drawing.Point(0, 0);
-            this.shapeContainer1.Margin = new System.Windows.Forms.Padding(0);
-            this.shapeContainer1.Name = "shapeContainer1";
-            this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
-            this.lineShape6,
-            this.lineShape5,
-            this.lineShape4,
-            this.lineShape3,
-            this.lineShape2,
-            this.lineShape1});
-            this.shapeContainer1.Size = new System.Drawing.Size(1370, 749);
-            this.shapeContainer1.TabIndex = 10;
-            this.shapeContainer1.TabStop = false;
-            // 
-            // lineShape6
-            // 
-            this.lineShape6.Name = "lineShape6";
-            this.lineShape6.X1 = 386;
-            this.lineShape6.X2 = 386;
-            this.lineShape6.Y1 = 159;
-            this.lineShape6.Y2 = 546;
-            // 
-            // lineShape5
-            // 
-            this.lineShape5.Name = "lineShape5";
-            this.lineShape5.X1 = 575;
-            this.lineShape5.X2 = 575;
-            this.lineShape5.Y1 = 51;
-            this.lineShape5.Y2 = 158;
-            // 
-            // lineShape4
-            // 
-            this.lineShape4.Name = "lineShape4";
-            this.lineShape4.X1 = 386;
-            this.lineShape4.X2 = 386;
-            this.lineShape4.Y1 = 52;
-            this.lineShape4.Y2 = 159;
-            // 
-            // lineShape3
-            // 
-            this.lineShape3.Name = "lineShape3";
-            this.lineShape3.X1 = 191;
-            this.lineShape3.X2 = 191;
-            this.lineShape3.Y1 = 51;
-            this.lineShape3.Y2 = 158;
-            // 
-            // lineShape2
-            // 
-            this.lineShape2.Name = "lineShape2";
-            this.lineShape2.X1 = 2;
-            this.lineShape2.X2 = 981;
-            this.lineShape2.Y1 = 160;
-            this.lineShape2.Y2 = 160;
-            // 
-            // lineShape1
-            // 
-            this.lineShape1.Name = "lineShape1";
-            this.lineShape1.X1 = -6;
-            this.lineShape1.X2 = 982;
-            this.lineShape1.Y1 = 50;
-            this.lineShape1.Y2 = 50;
-            // 
             // txtTamanioMuestra
             // 
             this.txtTamanioMuestra.Enabled = false;
-            this.txtTamanioMuestra.Location = new System.Drawing.Point(307, 13);
+            this.txtTamanioMuestra.Location = new System.Drawing.Point(309, 14);
             this.txtTamanioMuestra.Name = "txtTamanioMuestra";
             this.txtTamanioMuestra.Size = new System.Drawing.Size(90, 20);
             this.txtTamanioMuestra.TabIndex = 11;
@@ -275,27 +208,17 @@
             // lblTamanioMuestra
             // 
             this.lblTamanioMuestra.AutoSize = true;
-            this.lblTamanioMuestra.Location = new System.Drawing.Point(200, 15);
+            this.lblTamanioMuestra.Location = new System.Drawing.Point(202, 17);
             this.lblTamanioMuestra.Name = "lblTamanioMuestra";
             this.lblTamanioMuestra.Size = new System.Drawing.Size(101, 13);
             this.lblTamanioMuestra.TabIndex = 12;
             this.lblTamanioMuestra.Text = "Tamaño de muestra";
             // 
-            // lblDistribucionExponencial
-            // 
-            this.lblDistribucionExponencial.AutoSize = true;
-            this.lblDistribucionExponencial.Enabled = false;
-            this.lblDistribucionExponencial.Location = new System.Drawing.Point(200, 64);
-            this.lblDistribucionExponencial.Name = "lblDistribucionExponencial";
-            this.lblDistribucionExponencial.Size = new System.Drawing.Size(122, 13);
-            this.lblDistribucionExponencial.TabIndex = 13;
-            this.lblDistribucionExponencial.Text = "Distribución exponencial";
-            // 
             // lblLamda
             // 
             this.lblLamda.AutoSize = true;
             this.lblLamda.Enabled = false;
-            this.lblLamda.Location = new System.Drawing.Point(200, 88);
+            this.lblLamda.Location = new System.Drawing.Point(6, 26);
             this.lblLamda.Name = "lblLamda";
             this.lblLamda.Size = new System.Drawing.Size(76, 13);
             this.lblLamda.TabIndex = 14;
@@ -304,27 +227,17 @@
             // txtLamda
             // 
             this.txtLamda.Enabled = false;
-            this.txtLamda.Location = new System.Drawing.Point(287, 85);
+            this.txtLamda.Location = new System.Drawing.Point(88, 25);
             this.txtLamda.Name = "txtLamda";
             this.txtLamda.Size = new System.Drawing.Size(76, 20);
             this.txtLamda.TabIndex = 15;
             this.txtLamda.TextChanged += new System.EventHandler(this.txtLamda_TextChanged);
             // 
-            // lblDistribucionPoisson
-            // 
-            this.lblDistribucionPoisson.AutoSize = true;
-            this.lblDistribucionPoisson.Enabled = false;
-            this.lblDistribucionPoisson.Location = new System.Drawing.Point(400, 64);
-            this.lblDistribucionPoisson.Name = "lblDistribucionPoisson";
-            this.lblDistribucionPoisson.Size = new System.Drawing.Size(101, 13);
-            this.lblDistribucionPoisson.TabIndex = 16;
-            this.lblDistribucionPoisson.Text = "Distribución poisson";
-            // 
             // lblLamdaPoisson
             // 
             this.lblLamdaPoisson.AutoSize = true;
             this.lblLamdaPoisson.Enabled = false;
-            this.lblLamdaPoisson.Location = new System.Drawing.Point(400, 88);
+            this.lblLamdaPoisson.Location = new System.Drawing.Point(6, 28);
             this.lblLamdaPoisson.Name = "lblLamdaPoisson";
             this.lblLamdaPoisson.Size = new System.Drawing.Size(76, 13);
             this.lblLamdaPoisson.TabIndex = 17;
@@ -333,7 +246,7 @@
             // txtLamdaPoisson
             // 
             this.txtLamdaPoisson.Enabled = false;
-            this.txtLamdaPoisson.Location = new System.Drawing.Point(482, 88);
+            this.txtLamdaPoisson.Location = new System.Drawing.Point(89, 25);
             this.txtLamdaPoisson.Name = "txtLamdaPoisson";
             this.txtLamdaPoisson.Size = new System.Drawing.Size(76, 20);
             this.txtLamdaPoisson.TabIndex = 18;
@@ -342,7 +255,7 @@
             // btnSiguiente
             // 
             this.btnSiguiente.Enabled = false;
-            this.btnSiguiente.Location = new System.Drawing.Point(284, 475);
+            this.btnSiguiente.Location = new System.Drawing.Point(278, 335);
             this.btnSiguiente.Name = "btnSiguiente";
             this.btnSiguiente.Size = new System.Drawing.Size(75, 23);
             this.btnSiguiente.TabIndex = 19;
@@ -353,7 +266,7 @@
             // btnAnterior
             // 
             this.btnAnterior.Enabled = false;
-            this.btnAnterior.Location = new System.Drawing.Point(12, 475);
+            this.btnAnterior.Location = new System.Drawing.Point(6, 335);
             this.btnAnterior.Name = "btnAnterior";
             this.btnAnterior.Size = new System.Drawing.Size(75, 23);
             this.btnAnterior.TabIndex = 20;
@@ -364,7 +277,7 @@
             // lblPagina
             // 
             this.lblPagina.AutoSize = true;
-            this.lblPagina.Location = new System.Drawing.Point(119, 480);
+            this.lblPagina.Location = new System.Drawing.Point(113, 340);
             this.lblPagina.Name = "lblPagina";
             this.lblPagina.Size = new System.Drawing.Size(73, 13);
             this.lblPagina.TabIndex = 27;
@@ -373,7 +286,7 @@
             // btnIr
             // 
             this.btnIr.Enabled = false;
-            this.btnIr.Location = new System.Drawing.Point(152, 515);
+            this.btnIr.Location = new System.Drawing.Point(146, 375);
             this.btnIr.Name = "btnIr";
             this.btnIr.Size = new System.Drawing.Size(46, 23);
             this.btnIr.TabIndex = 30;
@@ -384,7 +297,7 @@
             // txtPagina
             // 
             this.txtPagina.Enabled = false;
-            this.txtPagina.Location = new System.Drawing.Point(75, 517);
+            this.txtPagina.Location = new System.Drawing.Point(69, 377);
             this.txtPagina.Name = "txtPagina";
             this.txtPagina.Size = new System.Drawing.Size(71, 20);
             this.txtPagina.TabIndex = 29;
@@ -392,26 +305,16 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(12, 520);
+            this.label9.Location = new System.Drawing.Point(6, 380);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(57, 13);
             this.label9.TabIndex = 28;
             this.label9.Text = "Ir a página";
             // 
-            // lblDistribucionNormal
-            // 
-            this.lblDistribucionNormal.AutoSize = true;
-            this.lblDistribucionNormal.Enabled = false;
-            this.lblDistribucionNormal.Location = new System.Drawing.Point(583, 64);
-            this.lblDistribucionNormal.Name = "lblDistribucionNormal";
-            this.lblDistribucionNormal.Size = new System.Drawing.Size(96, 13);
-            this.lblDistribucionNormal.TabIndex = 31;
-            this.lblDistribucionNormal.Text = "Distribución normal";
-            // 
             // txtDesvEstandar
             // 
             this.txtDesvEstandar.Enabled = false;
-            this.txtDesvEstandar.Location = new System.Drawing.Point(710, 108);
+            this.txtDesvEstandar.Location = new System.Drawing.Point(130, 51);
             this.txtDesvEstandar.Name = "txtDesvEstandar";
             this.txtDesvEstandar.Size = new System.Drawing.Size(76, 20);
             this.txtDesvEstandar.TabIndex = 35;
@@ -420,7 +323,7 @@
             // txtMedia
             // 
             this.txtMedia.Enabled = false;
-            this.txtMedia.Location = new System.Drawing.Point(710, 82);
+            this.txtMedia.Location = new System.Drawing.Point(130, 25);
             this.txtMedia.Name = "txtMedia";
             this.txtMedia.Size = new System.Drawing.Size(76, 20);
             this.txtMedia.TabIndex = 34;
@@ -430,7 +333,7 @@
             // 
             this.lblDesvEstandar.AutoSize = true;
             this.lblDesvEstandar.Enabled = false;
-            this.lblDesvEstandar.Location = new System.Drawing.Point(583, 111);
+            this.lblDesvEstandar.Location = new System.Drawing.Point(6, 51);
             this.lblDesvEstandar.Name = "lblDesvEstandar";
             this.lblDesvEstandar.Size = new System.Drawing.Size(118, 13);
             this.lblDesvEstandar.TabIndex = 33;
@@ -440,7 +343,7 @@
             // 
             this.lblMedia.AutoSize = true;
             this.lblMedia.Enabled = false;
-            this.lblMedia.Location = new System.Drawing.Point(583, 85);
+            this.lblMedia.Location = new System.Drawing.Point(6, 25);
             this.lblMedia.Name = "lblMedia";
             this.lblMedia.Size = new System.Drawing.Size(77, 13);
             this.lblMedia.TabIndex = 32;
@@ -450,7 +353,7 @@
             // 
             this.lblMetodo.AutoSize = true;
             this.lblMetodo.Enabled = false;
-            this.lblMetodo.Location = new System.Drawing.Point(583, 137);
+            this.lblMetodo.Location = new System.Drawing.Point(6, 75);
             this.lblMetodo.Name = "lblMetodo";
             this.lblMetodo.Size = new System.Drawing.Size(43, 13);
             this.lblMetodo.TabIndex = 36;
@@ -463,7 +366,7 @@
             this.cmbMetodo.Items.AddRange(new object[] {
             "Box - Muller",
             "Convolución"});
-            this.cmbMetodo.Location = new System.Drawing.Point(710, 134);
+            this.cmbMetodo.Location = new System.Drawing.Point(130, 75);
             this.cmbMetodo.Name = "cmbMetodo";
             this.cmbMetodo.Size = new System.Drawing.Size(76, 21);
             this.cmbMetodo.TabIndex = 37;
@@ -474,7 +377,7 @@
             // 
             this.lblMetodoConvolucion.AutoSize = true;
             this.lblMetodoConvolucion.Enabled = false;
-            this.lblMetodoConvolucion.Location = new System.Drawing.Point(814, 64);
+            this.lblMetodoConvolucion.Location = new System.Drawing.Point(260, 25);
             this.lblMetodoConvolucion.Name = "lblMetodoConvolucion";
             this.lblMetodoConvolucion.Size = new System.Drawing.Size(120, 13);
             this.lblMetodoConvolucion.TabIndex = 38;
@@ -484,7 +387,7 @@
             // 
             this.lblK.AutoSize = true;
             this.lblK.Enabled = false;
-            this.lblK.Location = new System.Drawing.Point(814, 88);
+            this.lblK.Location = new System.Drawing.Point(260, 48);
             this.lblK.Name = "lblK";
             this.lblK.Size = new System.Drawing.Size(55, 13);
             this.lblK.TabIndex = 39;
@@ -493,20 +396,11 @@
             // txtK
             // 
             this.txtK.Enabled = false;
-            this.txtK.Location = new System.Drawing.Point(875, 85);
+            this.txtK.Location = new System.Drawing.Point(332, 48);
             this.txtK.Name = "txtK";
-            this.txtK.Size = new System.Drawing.Size(76, 20);
+            this.txtK.Size = new System.Drawing.Size(48, 20);
             this.txtK.TabIndex = 40;
             this.txtK.Text = "12";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(400, 169);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 13);
-            this.label2.TabIndex = 41;
-            this.label2.Text = "Chi cuadrado";
             // 
             // cmbIntervalos
             // 
@@ -517,96 +411,210 @@
             "10",
             "15",
             "20"});
-            this.cmbIntervalos.Location = new System.Drawing.Point(238, 171);
+            this.cmbIntervalos.Location = new System.Drawing.Point(232, 36);
             this.cmbIntervalos.Name = "cmbIntervalos";
             this.cmbIntervalos.Size = new System.Drawing.Size(121, 21);
             this.cmbIntervalos.TabIndex = 42;
             this.cmbIntervalos.Text = "Intervalos";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colDesde});
-            this.dataGridView1.Location = new System.Drawing.Point(421, 208);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
-            this.dataGridView1.TabIndex = 43;
-            // 
-            // colDesde
-            // 
-            this.colDesde.HeaderText = "Desde";
-            this.colDesde.Name = "colDesde";
+            this.cmbIntervalos.SelectedIndexChanged += new System.EventHandler(this.cmbIntervalos_SelectedIndexChanged);
             // 
             // chart1
             // 
-            chartArea8.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea8);
-            legend8.Name = "Legend1";
-            this.chart1.Legends.Add(legend8);
-            this.chart1.Location = new System.Drawing.Point(690, 213);
+            chartArea4.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.chart1.Legends.Add(legend4);
+            this.chart1.Location = new System.Drawing.Point(421, 169);
             this.chart1.Name = "chart1";
-            series15.ChartArea = "ChartArea1";
-            series15.Legend = "Legend1";
-            series15.Name = "Observado";
-            series16.ChartArea = "ChartArea1";
-            series16.Legend = "Legend1";
-            series16.Name = "Esperado";
-            this.chart1.Series.Add(series15);
-            this.chart1.Series.Add(series16);
-            this.chart1.Size = new System.Drawing.Size(668, 450);
+            series7.ChartArea = "ChartArea1";
+            series7.Legend = "Legend1";
+            series7.Name = "Observado";
+            series8.ChartArea = "ChartArea1";
+            series8.Legend = "Legend1";
+            series8.Name = "Esperado";
+            this.chart1.Series.Add(series7);
+            this.chart1.Series.Add(series8);
+            this.chart1.Size = new System.Drawing.Size(937, 407);
             this.chart1.TabIndex = 44;
             this.chart1.Text = "chart1";
+            // 
+            // groupUniforme
+            // 
+            this.groupUniforme.Controls.Add(this.lblValorA);
+            this.groupUniforme.Controls.Add(this.lblValorB);
+            this.groupUniforme.Controls.Add(this.txtA);
+            this.groupUniforme.Controls.Add(this.txtB);
+            this.groupUniforme.Controls.Add(this.lblCondicionUniforme);
+            this.groupUniforme.Location = new System.Drawing.Point(21, 53);
+            this.groupUniforme.Name = "groupUniforme";
+            this.groupUniforme.Size = new System.Drawing.Size(188, 102);
+            this.groupUniforme.TabIndex = 45;
+            this.groupUniforme.TabStop = false;
+            this.groupUniforme.Text = "Distribución uniforme";
+            // 
+            // groupExponencial
+            // 
+            this.groupExponencial.Controls.Add(this.lblLamda);
+            this.groupExponencial.Controls.Add(this.txtLamda);
+            this.groupExponencial.Location = new System.Drawing.Point(228, 53);
+            this.groupExponencial.Name = "groupExponencial";
+            this.groupExponencial.Size = new System.Drawing.Size(171, 102);
+            this.groupExponencial.TabIndex = 46;
+            this.groupExponencial.TabStop = false;
+            this.groupExponencial.Text = "Distribución Exponencial";
+            // 
+            // groupPoisson
+            // 
+            this.groupPoisson.Controls.Add(this.lblLamdaPoisson);
+            this.groupPoisson.Controls.Add(this.txtLamdaPoisson);
+            this.groupPoisson.Location = new System.Drawing.Point(421, 53);
+            this.groupPoisson.Name = "groupPoisson";
+            this.groupPoisson.Size = new System.Drawing.Size(171, 102);
+            this.groupPoisson.TabIndex = 47;
+            this.groupPoisson.TabStop = false;
+            this.groupPoisson.Text = "Distribución Poisson";
+            // 
+            // groupNormal
+            // 
+            this.groupNormal.Controls.Add(this.lblMedia);
+            this.groupNormal.Controls.Add(this.txtMedia);
+            this.groupNormal.Controls.Add(this.lblDesvEstandar);
+            this.groupNormal.Controls.Add(this.lblMetodo);
+            this.groupNormal.Controls.Add(this.lblMetodoConvolucion);
+            this.groupNormal.Controls.Add(this.txtK);
+            this.groupNormal.Controls.Add(this.txtDesvEstandar);
+            this.groupNormal.Controls.Add(this.lblK);
+            this.groupNormal.Controls.Add(this.cmbMetodo);
+            this.groupNormal.Location = new System.Drawing.Point(614, 53);
+            this.groupNormal.Name = "groupNormal";
+            this.groupNormal.Size = new System.Drawing.Size(387, 102);
+            this.groupNormal.TabIndex = 48;
+            this.groupNormal.TabStop = false;
+            this.groupNormal.Text = "Distribución Normal";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(18, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(63, 13);
+            this.label1.TabIndex = 49;
+            this.label1.Text = "Seleccionar";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.grdNumeros);
+            this.groupBox1.Controls.Add(this.btnSiguiente);
+            this.groupBox1.Controls.Add(this.btnAnterior);
+            this.groupBox1.Controls.Add(this.cmbIntervalos);
+            this.groupBox1.Controls.Add(this.lblPagina);
+            this.groupBox1.Controls.Add(this.btnIr);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.btnGenerar);
+            this.groupBox1.Controls.Add(this.txtPagina);
+            this.groupBox1.Location = new System.Drawing.Point(21, 169);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(368, 407);
+            this.groupBox1.TabIndex = 50;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Graficar";
+            // 
+            // dataGridFrecuencias
+            // 
+            this.dataGridFrecuencias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridFrecuencias.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Num,
+            this.Min,
+            this.Max,
+            this.Observados,
+            this.ProbObs,
+            this.AcumObs,
+            this.Esperados,
+            this.ProbEsp,
+            this.AcumEsperado});
+            this.dataGridFrecuencias.Location = new System.Drawing.Point(421, 587);
+            this.dataGridFrecuencias.Name = "dataGridFrecuencias";
+            this.dataGridFrecuencias.RowHeadersVisible = false;
+            this.dataGridFrecuencias.Size = new System.Drawing.Size(937, 150);
+            this.dataGridFrecuencias.TabIndex = 51;
+            // 
+            // Num
+            // 
+            this.Num.HeaderText = "Num";
+            this.Num.Name = "Num";
+            // 
+            // Min
+            // 
+            this.Min.HeaderText = "Li";
+            this.Min.Name = "Min";
+            // 
+            // Max
+            // 
+            this.Max.HeaderText = "Ls";
+            this.Max.Name = "Max";
+            // 
+            // Observados
+            // 
+            this.Observados.HeaderText = "Observados";
+            this.Observados.Name = "Observados";
+            // 
+            // ProbObs
+            // 
+            this.ProbObs.HeaderText = "P(Oi)";
+            this.ProbObs.Name = "ProbObs";
+            // 
+            // AcumObs
+            // 
+            this.AcumObs.HeaderText = "Acumulado (Oi)";
+            this.AcumObs.Name = "AcumObs";
+            // 
+            // Esperados
+            // 
+            this.Esperados.HeaderText = "Esperados";
+            this.Esperados.Name = "Esperados";
+            // 
+            // ProbEsp
+            // 
+            this.ProbEsp.HeaderText = "P(Ei)";
+            this.ProbEsp.Name = "ProbEsp";
+            // 
+            // AcumEsperado
+            // 
+            this.AcumEsperado.HeaderText = "Acumulado (Ei)";
+            this.AcumEsperado.Name = "AcumEsperado";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.Controls.Add(this.dataGridFrecuencias);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.chart1);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.cmbIntervalos);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtK);
-            this.Controls.Add(this.lblK);
-            this.Controls.Add(this.lblMetodoConvolucion);
-            this.Controls.Add(this.cmbMetodo);
-            this.Controls.Add(this.lblMetodo);
-            this.Controls.Add(this.txtDesvEstandar);
-            this.Controls.Add(this.txtMedia);
-            this.Controls.Add(this.lblDesvEstandar);
-            this.Controls.Add(this.lblMedia);
-            this.Controls.Add(this.lblDistribucionNormal);
-            this.Controls.Add(this.btnIr);
-            this.Controls.Add(this.txtPagina);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.lblPagina);
-            this.Controls.Add(this.btnAnterior);
-            this.Controls.Add(this.btnSiguiente);
-            this.Controls.Add(this.txtLamdaPoisson);
-            this.Controls.Add(this.lblLamdaPoisson);
-            this.Controls.Add(this.lblDistribucionPoisson);
-            this.Controls.Add(this.txtLamda);
-            this.Controls.Add(this.lblLamda);
-            this.Controls.Add(this.lblDistribucionExponencial);
+            this.Controls.Add(this.groupExponencial);
             this.Controls.Add(this.lblTamanioMuestra);
             this.Controls.Add(this.txtTamanioMuestra);
-            this.Controls.Add(this.btnGenerar);
-            this.Controls.Add(this.grdNumeros);
-            this.Controls.Add(this.lblCondicionUniforme);
-            this.Controls.Add(this.txtB);
-            this.Controls.Add(this.txtA);
-            this.Controls.Add(this.lblValorB);
-            this.Controls.Add(this.lblValorA);
-            this.Controls.Add(this.lblDistribucionUniforme);
             this.Controls.Add(this.cmbDistribuciones);
-            this.Controls.Add(this.shapeContainer1);
+            this.Controls.Add(this.groupUniforme);
+            this.Controls.Add(this.groupPoisson);
+            this.Controls.Add(this.groupNormal);
+            this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
             this.Text = "Trabajo Práctico 3";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdNumeros)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            this.groupUniforme.ResumeLayout(false);
+            this.groupUniforme.PerformLayout();
+            this.groupExponencial.ResumeLayout(false);
+            this.groupExponencial.PerformLayout();
+            this.groupPoisson.ResumeLayout(false);
+            this.groupPoisson.PerformLayout();
+            this.groupNormal.ResumeLayout(false);
+            this.groupNormal.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridFrecuencias)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -615,7 +623,6 @@
         #endregion
 
         private System.Windows.Forms.ComboBox cmbDistribuciones;
-        private System.Windows.Forms.Label lblDistribucionUniforme;
         private System.Windows.Forms.Label lblValorA;
         private System.Windows.Forms.Label lblValorB;
         private System.Windows.Forms.TextBox txtA;
@@ -623,18 +630,10 @@
         private System.Windows.Forms.Label lblCondicionUniforme;
         private System.Windows.Forms.DataGridView grdNumeros;
         private System.Windows.Forms.Button btnGenerar;
-        private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
-        private Microsoft.VisualBasic.PowerPacks.LineShape lineShape1;
-        private Microsoft.VisualBasic.PowerPacks.LineShape lineShape3;
-        private Microsoft.VisualBasic.PowerPacks.LineShape lineShape2;
         private System.Windows.Forms.TextBox txtTamanioMuestra;
         private System.Windows.Forms.Label lblTamanioMuestra;
-        private Microsoft.VisualBasic.PowerPacks.LineShape lineShape4;
-        private System.Windows.Forms.Label lblDistribucionExponencial;
         private System.Windows.Forms.Label lblLamda;
         private System.Windows.Forms.TextBox txtLamda;
-        private Microsoft.VisualBasic.PowerPacks.LineShape lineShape5;
-        private System.Windows.Forms.Label lblDistribucionPoisson;
         private System.Windows.Forms.Label lblLamdaPoisson;
         private System.Windows.Forms.TextBox txtLamdaPoisson;
         private System.Windows.Forms.Button btnSiguiente;
@@ -643,7 +642,6 @@
         private System.Windows.Forms.Button btnIr;
         private System.Windows.Forms.TextBox txtPagina;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label lblDistribucionNormal;
         private System.Windows.Forms.TextBox txtDesvEstandar;
         private System.Windows.Forms.TextBox txtMedia;
         private System.Windows.Forms.Label lblDesvEstandar;
@@ -653,15 +651,27 @@
         private System.Windows.Forms.Label lblMetodoConvolucion;
         private System.Windows.Forms.Label lblK;
         private System.Windows.Forms.TextBox txtK;
-        private Microsoft.VisualBasic.PowerPacks.LineShape lineShape6;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cmbIntervalos;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colDesde;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.DataGridViewTextBoxColumn numMuestra;
         private System.Windows.Forms.DataGridViewTextBoxColumn random;
         private System.Windows.Forms.DataGridViewTextBoxColumn valor;
+        private System.Windows.Forms.GroupBox groupUniforme;
+        private System.Windows.Forms.GroupBox groupExponencial;
+        private System.Windows.Forms.GroupBox groupPoisson;
+        private System.Windows.Forms.GroupBox groupNormal;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.DataGridView dataGridFrecuencias;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Num;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Min;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Max;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Observados;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProbObs;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AcumObs;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Esperados;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProbEsp;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AcumEsperado;
     }
 }
 

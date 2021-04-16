@@ -27,15 +27,21 @@ namespace TP3
 
             this.gCalculos = new GestorCalculos();
             this.gPruebas = new GestorPruebas();
-            this.graficador = new GestorGraficos();
+            this.graficador = new GestorGraficos(gCalculos); //le paso el gestorCalculos al graficador para que tenga los datos
+
+
         }
 
         private void btnGenerar_Click(object sender, EventArgs e)
         {
+            cmbIntervalos.Enabled = true;
+
 
             Distribucion dist = new Distribucion(cmbDistribuciones.Text);
             grdNumeros.Rows.Clear();
             gCalculos.obtenerMuestras();
+
+            graficador.graficar(chart1,dataGridFrecuencias);
             
             paginador = new Paginador(gCalculos.getValoresGenerados(), 10);
             btnAnterior.Enabled = false;
@@ -144,8 +150,9 @@ namespace TP3
 
         private void enabledDistribucionUniforme(bool enabled)
         {
+            groupUniforme.Enabled = enabled;
             lblCondicionUniforme.Enabled = enabled;
-            lblDistribucionUniforme.Enabled = enabled;
+
             lblValorA.Enabled = enabled;
             lblValorB.Enabled = enabled;
             txtA.Enabled = enabled;
@@ -154,21 +161,24 @@ namespace TP3
 
         private void enabledDistribucionExponencial(bool enabled)
         {
-            lblDistribucionExponencial.Enabled = enabled;
+            groupExponencial.Enabled = enabled;
+
             txtLamda.Enabled = enabled;
             lblLamda.Enabled = enabled;
         }
 
         private void enabledDistribucionPoisson(bool enabled)
         {
-            lblDistribucionPoisson.Enabled = enabled;
+            groupPoisson.Enabled = enabled;
+
             txtLamdaPoisson.Enabled = enabled;
             lblLamdaPoisson.Enabled = enabled;
         }
 
         private void enabledDistribucionNormal(bool enabled)
         {
-            lblDistribucionNormal.Enabled = enabled;
+            groupNormal.Enabled = enabled;
+
             lblMedia.Enabled = enabled;
             lblDesvEstandar.Enabled = enabled;
             txtDesvEstandar.Enabled = enabled;
@@ -322,6 +332,14 @@ namespace TP3
                     MessageBox.Show("Ingrese un valor válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void cmbIntervalos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            gCalculos.actualizarIntervalos(int.Parse(cmbIntervalos.Text));
+            //Grafico con los intervalos elegidos
+            graficador.graficar(chart1, dataGridFrecuencias);
+            
         }
     }
 }

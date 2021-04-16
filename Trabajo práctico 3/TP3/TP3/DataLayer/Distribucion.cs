@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MathNet.Numerics;
+using MathNet.Numerics.Distributions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,6 +27,10 @@ namespace TP3.DataLayer
             this.distribucionElegida = distribucionElegida;
         }
 
+
+
+        //UNIFORME #####################################################################################################
+
         public double generarNumeroUniforme(double rnd, double A, double B)
         {
             double diferencia = B - A;
@@ -32,6 +38,31 @@ namespace TP3.DataLayer
             return Math.Round(rnd_generado, 4);
         }
 
+        public void obtenerEsperadosUniforme(GestorCalculos g)
+        {
+            for (int i = 0; i < g.cantIntervalos; i++)
+            {
+                g.frecuenciasEsperadas[i] = g.getTamanioMuestra() / g.cantIntervalos;
+
+                //g.frecuenciasEsperadas[i] = ContinuousUniform.CDF()
+            }
+
+            //actualizo las probabilidades
+            for (int i = 0; i < g.cantIntervalos; i++)
+            {
+                g.probEsperadas[i] = g.frecuenciasEsperadas[i] / g.getTamanioMuestra();
+            }
+            //actualizo acumuladores
+            g.acumProbEsperada[0] = g.probEsperadas[0];
+            for (int i = 1; i < g.cantIntervalos; i++)
+            {
+                g.acumProbEsperada[i] = g.acumProbEsperada[i - 1] + g.probEsperadas[i];
+
+            }
+
+
+        }
+        //EXPONENCIAL ##################################################################################################
         public double generarNumeroExponencial(double rnd, double lamda)
         {
             double ln = Math.Log(1 - rnd);
@@ -39,11 +70,37 @@ namespace TP3.DataLayer
             return Math.Round(division * ln, 4);
         }
 
+
+        public void obtenerEsperadosExponencial(GestorCalculos g)
+        {
+
+            for (int i = 0; i < g.cantIntervalos; i++)
+            {
+                g.frecuenciasEsperadas[i] = (Exponential.CDF(g.getLambda(), g.intervalos[i][1]) - Exponential.CDF(g.getLambda(), g.intervalos[i][0])) * g.getTamanioMuestra();
+
+            }
+
+            //actualizo las probabilidades
+            for (int i = 0; i < g.cantIntervalos; i++)
+            {
+                g.probEsperadas[i] = g.frecuenciasEsperadas[i] / g.getTamanioMuestra();
+            }
+            //actualizo acumuladores
+            g.acumProbEsperada[0] = g.probEsperadas[0];
+            for (int i = 1; i < g.cantIntervalos; i++)
+            {
+                g.acumProbEsperada[i] = g.acumProbEsperada[i - 1] + g.probEsperadas[i];
+
+            }
+        }
+
+        //POISSON ######################################################################################################
         public double generarNumeroPoisson(Random r, double lamda)
         {
+            
             double p = 1;
             double x = -1;
-            double a = Math.Pow(Math.E, lamda * -1);
+            double a = Math.Exp(-lamda);
             double u = 0;
             do
             {
@@ -52,8 +109,43 @@ namespace TP3.DataLayer
                 x = x + 1;
             } while (p >= a);
             return x;
+            /*
+            double n = -1;
+            double p = 1;
+            double a = Math.Exp(-lamda);
+            do
+            {
+                p *= r.NextDouble();
+                n++;
+            }
+            while (p >= a);
+            return n;*/
         }
 
+
+        public void obtenerEsperadosPoisson(GestorCalculos g)
+        {
+            for (int i = 0; i < g.cantIntervalos; i++)
+            {
+                //g.frecuenciasEsperadas[i] = (Poisson.CDF(g.lambda, g.intervalos[i][1]) - Poisson.CDF(g.lambda, g.intervalos[i][0])) * g.n;
+                g.frecuenciasEsperadas[i] = ((Math.Pow(g.getLambda(), i) * Math.Pow(Math.E, -g.getLambda())) / SpecialFunctions.Factorial(i)) * g.getTamanioMuestra();
+            }
+
+            //actualizo las probabilidades
+            for (int i = 0; i < g.cantIntervalos; i++)
+            {
+
+                g.probEsperadas[i] = Poisson.PMF(g.getLambda(), i);
+            }
+            //actualizo acumuladores
+            g.acumProbEsperada[0] = g.probEsperadas[0];
+            for (int i = 1; i < g.cantIntervalos; i++)
+            {
+                g.acumProbEsperada[i] = Poisson.CDF(g.getLambda(), i);
+            }
+        }
+
+        //NORMAL ######################################################################################################
         public double[] generarNumeroNormalBoxMuller(double r1, double r2, double media, double desv_estandar)
         {
             double calculo_raiz = Math.Sqrt((-2 * Math.Log(r1)));
@@ -73,6 +165,28 @@ namespace TP3.DataLayer
 
             double z = (sum - k/2) / (Math.Sqrt(k / 12));
             return Math.Round((z * desv_estandar) + media, 4);
+        }
+
+        public void obtenerEsperadosNormal(GestorCalculos g)
+        {
+            for (int i = 0; i < g.cantIntervalos; i++)
+            {
+                g.frecuenciasEsperadas[i] = (Normal.CDF(g.getMedia(), g.getDesviacion(), g.intervalos[i][1]) - Normal.CDF(g.getMedia(), g.getDesviacion(), g.intervalos[i][0])) * (g.getTamanioMuestra());
+            }
+
+            //actualizo las probabilidades
+            for (int i = 0; i < g.cantIntervalos; i++)
+            {
+                g.probEsperadas[i] = g.frecuenciasEsperadas[i] / g.getTamanioMuestra();
+            }
+            //actualizo acumuladores
+            g.acumProbEsperada[0] = g.probEsperadas[0];
+            for (int i = 1; i < g.cantIntervalos; i++)
+            {
+                g.acumProbEsperada[i] = g.acumProbEsperada[i - 1] + g.probEsperadas[i];
+
+            }
+
         }
     }
 
