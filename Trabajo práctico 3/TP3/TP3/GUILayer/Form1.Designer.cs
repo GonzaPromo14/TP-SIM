@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.cmbDistribuciones = new System.Windows.Forms.ComboBox();
             this.lblValorA = new System.Windows.Forms.Label();
             this.lblValorB = new System.Windows.Forms.Label();
@@ -82,6 +82,7 @@
             this.Esperados = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProbEsp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AcumEsperado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grdNumeros)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.groupUniforme.SuspendLayout();
@@ -202,7 +203,7 @@
             this.txtTamanioMuestra.Name = "txtTamanioMuestra";
             this.txtTamanioMuestra.Size = new System.Drawing.Size(90, 20);
             this.txtTamanioMuestra.TabIndex = 11;
-            this.txtTamanioMuestra.Text = "10";
+            this.txtTamanioMuestra.Text = "1000";
             this.txtTamanioMuestra.TextChanged += new System.EventHandler(this.txtTamanioMuestra_TextChanged);
             // 
             // lblTamanioMuestra
@@ -411,29 +412,29 @@
             "10",
             "15",
             "20"});
-            this.cmbIntervalos.Location = new System.Drawing.Point(232, 36);
+            this.cmbIntervalos.Location = new System.Drawing.Point(281, 36);
             this.cmbIntervalos.Name = "cmbIntervalos";
-            this.cmbIntervalos.Size = new System.Drawing.Size(121, 21);
+            this.cmbIntervalos.Size = new System.Drawing.Size(72, 21);
             this.cmbIntervalos.TabIndex = 42;
             this.cmbIntervalos.Text = "Intervalos";
             this.cmbIntervalos.SelectedIndexChanged += new System.EventHandler(this.cmbIntervalos_SelectedIndexChanged);
             // 
             // chart1
             // 
-            chartArea4.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.chart1.Legends.Add(legend4);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(421, 169);
             this.chart1.Name = "chart1";
-            series7.ChartArea = "ChartArea1";
-            series7.Legend = "Legend1";
-            series7.Name = "Observado";
-            series8.ChartArea = "ChartArea1";
-            series8.Legend = "Legend1";
-            series8.Name = "Esperado";
-            this.chart1.Series.Add(series7);
-            this.chart1.Series.Add(series8);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Observado";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Esperado";
+            this.chart1.Series.Add(series1);
+            this.chart1.Series.Add(series2);
             this.chart1.Size = new System.Drawing.Size(937, 407);
             this.chart1.TabIndex = 44;
             this.chart1.Text = "chart1";
@@ -503,6 +504,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.grdNumeros);
             this.groupBox1.Controls.Add(this.btnSiguiente);
             this.groupBox1.Controls.Add(this.btnAnterior);
@@ -582,6 +584,15 @@
             // 
             this.AcumEsperado.HeaderText = "Acumulado (Ei)";
             this.AcumEsperado.Name = "AcumEsperado";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(169, 39);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(106, 13);
+            this.label2.TabIndex = 43;
+            this.label2.Text = "Seleccionar intervalo";
             // 
             // Form1
             // 
@@ -672,6 +683,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Esperados;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProbEsp;
         private System.Windows.Forms.DataGridViewTextBoxColumn AcumEsperado;
+        private System.Windows.Forms.Label label2;
     }
 }
 

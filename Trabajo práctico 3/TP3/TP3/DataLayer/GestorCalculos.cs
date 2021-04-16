@@ -17,12 +17,12 @@ namespace TP3.DataLayer
         private double desvEstandar; //raiz de la varianza
         private int k = 12;
         
-        private int tamanioMuestra = 10;
+        private int tamanioMuestra = 1000;
         private Distribucion dist;
         private Random r = new Random();
         private List<ValorGenerado> generacionValores;
 
-        public int cantIntervalos;
+        public int cantIntervalos = 10; //Pongo uno por defecto así grafica
         public List<double[]> intervalos;// matriz de intervalos
         public double[] frecuenciasObservadas;
         public double[] frecuenciasEsperadas;
@@ -219,38 +219,9 @@ namespace TP3.DataLayer
                     break;
             }
 
+            actualizarIntervalos(cantIntervalos);
+
         }
-
-        /*
-        //calcula la media fila por fila
-        public void actualizarMedia(int i)
-        {
-            double mediaAnterior = this.media;
-
-            double mediaNueva = (1 / i) * ((i - 1) * mediaAnterior + generacionValores[i].getValorGenerado());
-
-            this.media = mediaNueva;
-        }
-
-        //calcula varianza fila por fila
-        public void actualizarVarianza(int i)
-        {
-            //tiene que ser al menos n=2
-            if(i == 1)
-            {
-                return;
-            }
-                        
-            double varianzaAnterior = this.varianza;
-
-            double aux1 = (i - 2) * varianzaAnterior;
-            double aux2 = (i / (i - 1)) * Math.Pow((this.media - generacionValores[i].getValorGenerado()), 2);
-
-            double varianzaNueva = (1 / (i - 1)) * (aux1 + aux2);
-
-            this.varianza = varianzaNueva;
-
-        }*/
 
         // SETTERS GETTERS ################################################################
 

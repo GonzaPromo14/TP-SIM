@@ -79,6 +79,7 @@ namespace TP3.DataLayer
             this.graficarHistogramaEsperado(grafico);
             llenarGrillaFrecuencias(grilla);
 
+            //Magia de stackoverflow
             double max = Double.MinValue;
             double min = Double.MaxValue;
 
@@ -98,10 +99,9 @@ namespace TP3.DataLayer
                     }
                 }
             }
-            //tmpChart.ChartAreas[0].AxisY.Maximum = max;
             tmpChart.ChartAreas[0].AxisY.Maximum = (Math.Ceiling((max / 10)) * 10);
             tmpChart.ChartAreas[0].AxisY.Minimum = (Math.Floor((min / 10)) * 10);
-            //tmpChart.ChartAreas[0].AxisY.Minimum = min;
+
 
         }
         //---------------------------------------------------------------------------------//
