@@ -28,8 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series15 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series16 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.cmbDistribuciones = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.lblDistribucionUniforme = new System.Windows.Forms.Label();
             this.lblValorA = new System.Windows.Forms.Label();
             this.lblValorB = new System.Windows.Forms.Label();
@@ -42,6 +45,7 @@
             this.valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnGenerar = new System.Windows.Forms.Button();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
+            this.lineShape6 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.lineShape5 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.lineShape4 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.lineShape3 = new Microsoft.VisualBasic.PowerPacks.LineShape();
@@ -71,13 +75,14 @@
             this.lblMetodoConvolucion = new System.Windows.Forms.Label();
             this.lblK = new System.Windows.Forms.Label();
             this.txtK = new System.Windows.Forms.TextBox();
-            this.lineShape6 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.label2 = new System.Windows.Forms.Label();
             this.cmbIntervalos = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.colDesde = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.grdNumeros)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // cmbDistribuciones
@@ -88,20 +93,12 @@
             "Exponencial",
             "Poisson",
             "Normal"});
-            this.cmbDistribuciones.Location = new System.Drawing.Point(107, 12);
+            this.cmbDistribuciones.Location = new System.Drawing.Point(12, 13);
             this.cmbDistribuciones.Name = "cmbDistribuciones";
             this.cmbDistribuciones.Size = new System.Drawing.Size(121, 21);
             this.cmbDistribuciones.TabIndex = 0;
+            this.cmbDistribuciones.Text = "Distribución";
             this.cmbDistribuciones.SelectedIndexChanged += new System.EventHandler(this.cmbDistribuciones_SelectedIndexChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Elegir distribución";
             // 
             // lblDistribucionUniforme
             // 
@@ -140,6 +137,7 @@
             this.txtA.Name = "txtA";
             this.txtA.Size = new System.Drawing.Size(76, 20);
             this.txtA.TabIndex = 5;
+            this.txtA.TextChanged += new System.EventHandler(this.txtA_TextChanged);
             // 
             // txtB
             // 
@@ -148,6 +146,7 @@
             this.txtB.Name = "txtB";
             this.txtB.Size = new System.Drawing.Size(76, 20);
             this.txtB.TabIndex = 6;
+            this.txtB.TextChanged += new System.EventHandler(this.txtB_TextChanged);
             // 
             // lblCondicionUniforme
             // 
@@ -168,13 +167,14 @@
             this.valor});
             this.grdNumeros.Location = new System.Drawing.Point(12, 213);
             this.grdNumeros.Name = "grdNumeros";
+            this.grdNumeros.RowHeadersVisible = false;
             this.grdNumeros.Size = new System.Drawing.Size(347, 256);
             this.grdNumeros.TabIndex = 8;
             this.grdNumeros.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdNumeros_CellContentClick);
             // 
             // numMuestra
             // 
-            this.numMuestra.HeaderText = "Muestra";
+            this.numMuestra.HeaderText = "N°";
             this.numMuestra.Name = "numMuestra";
             // 
             // random
@@ -210,9 +210,17 @@
             this.lineShape3,
             this.lineShape2,
             this.lineShape1});
-            this.shapeContainer1.Size = new System.Drawing.Size(981, 542);
+            this.shapeContainer1.Size = new System.Drawing.Size(1370, 749);
             this.shapeContainer1.TabIndex = 10;
             this.shapeContainer1.TabStop = false;
+            // 
+            // lineShape6
+            // 
+            this.lineShape6.Name = "lineShape6";
+            this.lineShape6.X1 = 386;
+            this.lineShape6.X2 = 386;
+            this.lineShape6.Y1 = 159;
+            this.lineShape6.Y2 = 546;
             // 
             // lineShape5
             // 
@@ -256,17 +264,18 @@
             // 
             // txtTamanioMuestra
             // 
-            this.txtTamanioMuestra.Location = new System.Drawing.Point(379, 12);
+            this.txtTamanioMuestra.Enabled = false;
+            this.txtTamanioMuestra.Location = new System.Drawing.Point(307, 13);
             this.txtTamanioMuestra.Name = "txtTamanioMuestra";
             this.txtTamanioMuestra.Size = new System.Drawing.Size(90, 20);
             this.txtTamanioMuestra.TabIndex = 11;
             this.txtTamanioMuestra.Text = "10";
-            this.txtTamanioMuestra.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.txtTamanioMuestra.TextChanged += new System.EventHandler(this.txtTamanioMuestra_TextChanged);
             // 
             // lblTamanioMuestra
             // 
             this.lblTamanioMuestra.AutoSize = true;
-            this.lblTamanioMuestra.Location = new System.Drawing.Point(272, 16);
+            this.lblTamanioMuestra.Location = new System.Drawing.Point(200, 15);
             this.lblTamanioMuestra.Name = "lblTamanioMuestra";
             this.lblTamanioMuestra.Size = new System.Drawing.Size(101, 13);
             this.lblTamanioMuestra.TabIndex = 12;
@@ -299,6 +308,7 @@
             this.txtLamda.Name = "txtLamda";
             this.txtLamda.Size = new System.Drawing.Size(76, 20);
             this.txtLamda.TabIndex = 15;
+            this.txtLamda.TextChanged += new System.EventHandler(this.txtLamda_TextChanged);
             // 
             // lblDistribucionPoisson
             // 
@@ -327,6 +337,7 @@
             this.txtLamdaPoisson.Name = "txtLamdaPoisson";
             this.txtLamdaPoisson.Size = new System.Drawing.Size(76, 20);
             this.txtLamdaPoisson.TabIndex = 18;
+            this.txtLamdaPoisson.TextChanged += new System.EventHandler(this.txtLamdaPoisson_TextChanged);
             // 
             // btnSiguiente
             // 
@@ -404,6 +415,7 @@
             this.txtDesvEstandar.Name = "txtDesvEstandar";
             this.txtDesvEstandar.Size = new System.Drawing.Size(76, 20);
             this.txtDesvEstandar.TabIndex = 35;
+            this.txtDesvEstandar.TextChanged += new System.EventHandler(this.txtDesvEstandar_TextChanged);
             // 
             // txtMedia
             // 
@@ -412,6 +424,7 @@
             this.txtMedia.Name = "txtMedia";
             this.txtMedia.Size = new System.Drawing.Size(76, 20);
             this.txtMedia.TabIndex = 34;
+            this.txtMedia.TextChanged += new System.EventHandler(this.txtMedia_TextChanged);
             // 
             // lblDesvEstandar
             // 
@@ -450,9 +463,9 @@
             this.cmbMetodo.Items.AddRange(new object[] {
             "Box - Muller",
             "Convolución"});
-            this.cmbMetodo.Location = new System.Drawing.Point(665, 134);
+            this.cmbMetodo.Location = new System.Drawing.Point(710, 134);
             this.cmbMetodo.Name = "cmbMetodo";
-            this.cmbMetodo.Size = new System.Drawing.Size(121, 21);
+            this.cmbMetodo.Size = new System.Drawing.Size(76, 21);
             this.cmbMetodo.TabIndex = 37;
             this.cmbMetodo.Text = "Box - Muller";
             this.cmbMetodo.SelectedIndexChanged += new System.EventHandler(this.cmbMetodo_SelectedIndexChanged);
@@ -486,14 +499,6 @@
             this.txtK.TabIndex = 40;
             this.txtK.Text = "12";
             // 
-            // lineShape6
-            // 
-            this.lineShape6.Name = "lineShape6";
-            this.lineShape6.X1 = 386;
-            this.lineShape6.X2 = 386;
-            this.lineShape6.Y1 = 159;
-            this.lineShape6.Y2 = 546;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -512,7 +517,7 @@
             "10",
             "15",
             "20"});
-            this.cmbIntervalos.Location = new System.Drawing.Point(238, 166);
+            this.cmbIntervalos.Location = new System.Drawing.Point(238, 171);
             this.cmbIntervalos.Name = "cmbIntervalos";
             this.cmbIntervalos.Size = new System.Drawing.Size(121, 21);
             this.cmbIntervalos.TabIndex = 42;
@@ -533,11 +538,32 @@
             this.colDesde.HeaderText = "Desde";
             this.colDesde.Name = "colDesde";
             // 
+            // chart1
+            // 
+            chartArea8.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea8);
+            legend8.Name = "Legend1";
+            this.chart1.Legends.Add(legend8);
+            this.chart1.Location = new System.Drawing.Point(690, 213);
+            this.chart1.Name = "chart1";
+            series15.ChartArea = "ChartArea1";
+            series15.Legend = "Legend1";
+            series15.Name = "Observado";
+            series16.ChartArea = "ChartArea1";
+            series16.Legend = "Legend1";
+            series16.Name = "Esperado";
+            this.chart1.Series.Add(series15);
+            this.chart1.Series.Add(series16);
+            this.chart1.Size = new System.Drawing.Size(668, 450);
+            this.chart1.TabIndex = 44;
+            this.chart1.Text = "chart1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(981, 542);
+            this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.Controls.Add(this.chart1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.cmbIntervalos);
             this.Controls.Add(this.label2);
@@ -573,7 +599,6 @@
             this.Controls.Add(this.lblValorB);
             this.Controls.Add(this.lblValorA);
             this.Controls.Add(this.lblDistribucionUniforme);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.cmbDistribuciones);
             this.Controls.Add(this.shapeContainer1);
             this.Name = "Form1";
@@ -581,6 +606,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdNumeros)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -589,7 +615,6 @@
         #endregion
 
         private System.Windows.Forms.ComboBox cmbDistribuciones;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblDistribucionUniforme;
         private System.Windows.Forms.Label lblValorA;
         private System.Windows.Forms.Label lblValorB;
@@ -618,9 +643,6 @@
         private System.Windows.Forms.Button btnIr;
         private System.Windows.Forms.TextBox txtPagina;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn numMuestra;
-        private System.Windows.Forms.DataGridViewTextBoxColumn random;
-        private System.Windows.Forms.DataGridViewTextBoxColumn valor;
         private System.Windows.Forms.Label lblDistribucionNormal;
         private System.Windows.Forms.TextBox txtDesvEstandar;
         private System.Windows.Forms.TextBox txtMedia;
@@ -636,6 +658,10 @@
         private System.Windows.Forms.ComboBox cmbIntervalos;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDesde;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numMuestra;
+        private System.Windows.Forms.DataGridViewTextBoxColumn random;
+        private System.Windows.Forms.DataGridViewTextBoxColumn valor;
     }
 }
 

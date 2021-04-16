@@ -26,5 +26,9 @@ namespace TP3.DataLayer
             return new string[] {this.muestra.ToString(), rnd, this.valorGenerado.ToString()};
         }
         
+        public double getValorGenerado()
+        {
+            return this.valorGenerado;
+        }
     }
 }

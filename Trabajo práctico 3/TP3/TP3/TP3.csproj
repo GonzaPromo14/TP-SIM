@@ -57,6 +57,9 @@
   <ItemGroup>
     <Compile Include="DataLayer\ArrayRnd.cs" />
     <Compile Include="DataLayer\Distribucion.cs" />
+    <Compile Include="DataLayer\GestorCalculos.cs" />
+    <Compile Include="DataLayer\GestorGraficos.cs" />
+    <Compile Include="DataLayer\GestorPruebas.cs" />
     <Compile Include="DataLayer\ValorGenerado.cs" />
     <Compile Include="GUILayer\Form1.cs">
       <SubType>Form</SubType>
@@ -93,6 +96,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="DataLayer\NewFolder1\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

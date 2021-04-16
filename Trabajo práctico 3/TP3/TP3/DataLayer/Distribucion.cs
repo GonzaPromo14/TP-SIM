@@ -9,12 +9,10 @@ namespace TP3.DataLayer
     class Distribucion
     {
         private String distribucionElegida;
-        private int tamanioMuestra;
 
-        public Distribucion(String distribucionElegida, int tamanioMuestra)
+        public Distribucion(String distribucionElegida)
         {
             this.distribucionElegida = distribucionElegida;
-            this.tamanioMuestra = tamanioMuestra;
         }
 
         public String getDistribucionElegida()
@@ -25,16 +23,6 @@ namespace TP3.DataLayer
         public void setDistribucionElegida(String distribucionElegida)
         {
             this.distribucionElegida = distribucionElegida;
-        }
-
-        public int getTamanioMuestra()
-        {
-            return this.tamanioMuestra;
-        }
-
-        public void setTamanioMuestra(int tamanioMuestra)
-        {
-            this.tamanioMuestra = tamanioMuestra;
         }
 
         public double generarNumeroUniforme(double rnd, double A, double B)

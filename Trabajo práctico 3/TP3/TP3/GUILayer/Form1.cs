@@ -15,16 +15,132 @@ namespace TP3
     public partial class Form1 : Form
     {
         Paginador paginador;
+        GestorGraficos graficador;
+        GestorPruebas gPruebas;
+        GestorCalculos gCalculos;
+
 
         public Form1()
         {
             InitializeComponent();
+            this.WindowState = FormWindowState.Maximized;
+
+            this.gCalculos = new GestorCalculos();
+            this.gPruebas = new GestorPruebas();
+            this.graficador = new GestorGraficos();
         }
 
+        private void btnGenerar_Click(object sender, EventArgs e)
+        {
+
+            Distribucion dist = new Distribucion(cmbDistribuciones.Text);
+            grdNumeros.Rows.Clear();
+            gCalculos.obtenerMuestras();
+            
+            paginador = new Paginador(gCalculos.getValoresGenerados(), 10);
+            btnAnterior.Enabled = false;
+            btnSiguiente.Enabled = paginador.getCantPaginas() == 1 ? false : true;
+            txtPagina.Enabled = paginador.getCantPaginas() == 1 ? false : true;
+            btnIr.Enabled = paginador.getCantPaginas() == 1 ? false : true;
+            paginador.obtenerPaginaActual(grdNumeros);
+            lblPagina.Text = "Página " + paginador.getPaginaActual().ToString() + " de " + paginador.getCantPaginas();
+            cmbIntervalos.Enabled = true;
+        }
+
+
+        //Setteo la distribucion en el gestor
         private void cmbDistribuciones_SelectedIndexChanged(object sender, EventArgs e)
         {
+            txtTamanioMuestra.Enabled = true;
+
             validacionesDistribuciones();
+            Distribucion dist = new Distribucion(cmbDistribuciones.Text);
+            gCalculos.setDistribucion(dist);
+            grdNumeros.Rows.Clear();
+
         }
+
+        private void grdNumeros_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnSiguiente_Click(object sender, EventArgs e)
+        {
+            grdNumeros.Rows.Clear();
+            btnAnterior.Enabled = true;
+            paginador.obtenerPaginaSiguiente(grdNumeros);
+            if (paginador.esUltimaPagina())
+            {
+                btnSiguiente.Enabled = false;
+            }
+            lblPagina.Text = "Página " + paginador.getPaginaActual().ToString() + " de " + paginador.getCantPaginas();
+
+        }
+
+        private void btnAnterior_Click(object sender, EventArgs e)
+        {
+            grdNumeros.Rows.Clear();
+            btnSiguiente.Enabled = true;
+            paginador.obtenerPaginaAnterior(grdNumeros);
+            if (paginador.esPaginaPrimera())
+            {
+                btnAnterior.Enabled = false;
+            }
+            lblPagina.Text = "Página " + paginador.getPaginaActual().ToString() + " de " + paginador.getCantPaginas();
+
+        }
+
+        private void btnIr_Click(object sender, EventArgs e)
+        {
+            btnSiguiente.Enabled = true;
+            btnAnterior.Enabled = true;
+            if (int.Parse(txtPagina.Text) >= paginador.getCantPaginas())
+            {
+                txtPagina.Text = paginador.getCantPaginas().ToString();
+                btnSiguiente.Enabled = false;
+                btnAnterior.Enabled = true;
+            }
+            if (int.Parse(txtPagina.Text) <= 0)
+            {
+                txtPagina.Text = 1.ToString();
+                btnSiguiente.Enabled = true;
+                btnAnterior.Enabled = false;
+            }
+            grdNumeros.Rows.Clear();
+            paginador.irAPagina(grdNumeros, int.Parse(txtPagina.Text));
+            lblPagina.Text = "Página " + paginador.getPaginaActual().ToString() + " de " + paginador.getCantPaginas();
+
+        }
+
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+        //VALIDADORES ####################################################################################
+
+
+        private void cmbMetodo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbMetodo.Text == "Convolución")
+            {
+                lblMetodoConvolucion.Enabled = true;
+                lblK.Enabled = true;
+                txtK.Enabled = true;
+            }
+            else
+            {
+                lblMetodoConvolucion.Enabled = false;
+                lblK.Enabled = false;
+                txtK.Enabled = false;
+            }
+        }
+
+
 
         private void enabledDistribucionUniforme(bool enabled)
         {
@@ -100,150 +216,112 @@ namespace TP3
             }
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void txtA_TextChanged(object sender, EventArgs e)
         {
+            try
+            {
+                gCalculos.setA(double.Parse(txtA.Text));
+            }
+            catch (FormatException)
+            {
+                if (txtA.Text != "" && txtA.Text != "-")
+                {
+                    MessageBox.Show("Ingrese un valor válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
 
         }
 
-        private void btnGenerar_Click(object sender, EventArgs e)
+        private void txtB_TextChanged(object sender, EventArgs e)
         {
-
-            Distribucion dist = new Distribucion(cmbDistribuciones.Text, Int32.Parse(txtTamanioMuestra.Text));
-            grdNumeros.Rows.Clear();
-            Random r = new Random();
-            List<ValorGenerado> generacionValores = new List<ValorGenerado>();
-
-
-
-            switch (dist.getDistribucionElegida())
+            try
             {
-                case "Uniforme":
-                    for (int i = 1; i <= dist.getTamanioMuestra(); i++)
-                    {
-                        double numero = Math.Round(r.NextDouble(), 4);
-                        double numeroGeneradoUniforme = dist.generarNumeroUniforme(numero, double.Parse(txtA.Text), double.Parse(txtB.Text));
-                        generacionValores.Add(new ValorGenerado(i, numero, numeroGeneradoUniforme));
-                    }
-                    break;
-                case "Exponencial":
-                    for (int i = 1; i <= dist.getTamanioMuestra(); i++)
-                    {
-                        double numero = Math.Round(r.NextDouble(), 4);
-                        double numeroGeneradoExponencial = dist.generarNumeroExponencial(numero, double.Parse(txtLamda.Text));
-                        generacionValores.Add(new ValorGenerado(i, numero, numeroGeneradoExponencial));
-                    }
-                    break;
-                case "Poisson":
-                    for (int i = 1; i <= dist.getTamanioMuestra(); i++)
-                    {
-                        generacionValores.Add(new ValorGenerado(i, -1, dist.generarNumeroPoisson(r, double.Parse(txtLamdaPoisson.Text))));
-                    }
-                    break;
-                case "Normal":
-                    if (cmbMetodo.Text == "Box - Muller")
-                    {
-                        int tamanioMuestra = dist.getTamanioMuestra() % 2 == 0 ? dist.getTamanioMuestra() : dist.getTamanioMuestra() + 1;
-                        for (int i = 1; i <= tamanioMuestra; i = i + 2)
-                        {
-                            double valorGenerado1 = r.NextDouble();
-                            double valorGenerado2 = r.NextDouble();
-                            double[] valoresGenerados = dist.generarNumeroNormalBoxMuller(valorGenerado1, valorGenerado2, double.Parse(txtMedia.Text), double.Parse(txtDesvEstandar.Text));
-                            generacionValores.Add(new ValorGenerado(i, valorGenerado1, valoresGenerados[0]));
-                            generacionValores.Add(new ValorGenerado(i + 1, valorGenerado2, valoresGenerados[1]));
-
-                        }
-                    }else
-                    {
-                        for (int i = 1; i<=dist.getTamanioMuestra(); i++)
-                        {
-                            generacionValores.Add(new ValorGenerado(i, -1, dist.generarNumeroNormalConvolucion(r, int.Parse(txtK.Text), double.Parse(txtMedia.Text), double.Parse(txtDesvEstandar.Text))));
-                        }
-                    }
-                    
-                    break;
+                gCalculos.setB(double.Parse(txtB.Text));
             }
-            paginador = new Paginador(generacionValores, 10);
-            btnAnterior.Enabled = false;
-            btnSiguiente.Enabled = paginador.getCantPaginas() == 1 ? false : true;
-            txtPagina.Enabled = paginador.getCantPaginas() == 1 ? false : true;
-            btnIr.Enabled = paginador.getCantPaginas() == 1 ? false : true;
-            paginador.obtenerPaginaActual(grdNumeros);
-            lblPagina.Text = "Página " + paginador.getPaginaActual().ToString() + " de " + paginador.getCantPaginas();
-            cmbIntervalos.Enabled = true;
-        }
-
-        private void grdNumeros_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
+            catch (FormatException)
+            {
+                if (txtA.Text != "" && txtA.Text != "-")
+                {
+                    MessageBox.Show("Ingrese un valor válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
 
         }
 
-        private void btnSiguiente_Click(object sender, EventArgs e)
+        private void txtLamda_TextChanged(object sender, EventArgs e)
         {
-            grdNumeros.Rows.Clear();
-            btnAnterior.Enabled = true;
-            paginador.obtenerPaginaSiguiente(grdNumeros);
-            if (paginador.esUltimaPagina())
+            try
             {
-                btnSiguiente.Enabled = false;
+                gCalculos.setLambda(double.Parse(txtLamda.Text));
             }
-            lblPagina.Text = "Página " + paginador.getPaginaActual().ToString() + " de " + paginador.getCantPaginas();
-
-        }
-
-        private void btnAnterior_Click(object sender, EventArgs e)
-        {
-            grdNumeros.Rows.Clear();
-            btnSiguiente.Enabled = true;
-            paginador.obtenerPaginaAnterior(grdNumeros);
-            if (paginador.esPaginaPrimera())
+            catch (FormatException)
             {
-                btnAnterior.Enabled = false;
-            }
-            lblPagina.Text = "Página " + paginador.getPaginaActual().ToString() + " de " + paginador.getCantPaginas();
-
-        }
-
-        private void btnIr_Click(object sender, EventArgs e)
-        {
-            btnSiguiente.Enabled = true;
-            btnAnterior.Enabled = true;
-            if (int.Parse(txtPagina.Text) >= paginador.getCantPaginas())
-            {
-                txtPagina.Text = paginador.getCantPaginas().ToString();
-                btnSiguiente.Enabled = false;
-                btnAnterior.Enabled = true;
-            }
-            if (int.Parse(txtPagina.Text) <= 0)
-            {
-                txtPagina.Text = 1.ToString();
-                btnSiguiente.Enabled = true;
-                btnAnterior.Enabled = false;
-            }
-            grdNumeros.Rows.Clear();
-            paginador.irAPagina(grdNumeros, int.Parse(txtPagina.Text));
-            lblPagina.Text = "Página " + paginador.getPaginaActual().ToString() + " de " + paginador.getCantPaginas();
-
-        }
-
-        private void cmbMetodo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cmbMetodo.Text == "Convolución")
-            {
-                lblMetodoConvolucion.Enabled = true;
-                lblK.Enabled = true;
-                txtK.Enabled = true;
-            }
-            else
-            {
-                lblMetodoConvolucion.Enabled = false;
-                lblK.Enabled = false;
-                txtK.Enabled = false;
+                if (txtA.Text != "" && txtA.Text != "-")
+                {
+                    MessageBox.Show("Ingrese un valor válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void txtLamdaPoisson_TextChanged(object sender, EventArgs e)
         {
+            try
+            {
+                gCalculos.setLambda(double.Parse(txtLamda.Text));
+            }
+            catch (FormatException)
+            {
+                if (txtA.Text != "" && txtA.Text != "-")
+                {
+                    MessageBox.Show("Ingrese un valor válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
 
+        }
+
+        private void txtMedia_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                gCalculos.setMedia(double.Parse(txtMedia.Text));
+            }
+            catch (FormatException)
+            {
+                if (txtA.Text != "" && txtA.Text != "-")
+                {
+                    MessageBox.Show("Ingrese un valor válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void txtDesvEstandar_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                gCalculos.setDesviacion(double.Parse(txtDesvEstandar.Text));
+            }
+            catch (FormatException)
+            {
+                if (txtA.Text != "" && txtA.Text != "-")
+                {
+                    MessageBox.Show("Ingrese un valor válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void txtTamanioMuestra_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                gCalculos.setTamanioMuestra(int.Parse(txtTamanioMuestra.Text));
+            }
+            catch (FormatException)
+            {
+                if (txtA.Text != "" && txtA.Text != "-")
+                {
+                    MessageBox.Show("Ingrese un valor válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }
