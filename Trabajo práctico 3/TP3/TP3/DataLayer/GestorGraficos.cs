@@ -38,8 +38,9 @@ namespace TP3.DataLayer
                 double frecObservadas = gestor.frecuenciasObservadas[i];
                 double probObservadas = gestor.probObservadas[i];
                 double acumObservadas = gestor.acumProbObservada[i];
+                
                 double frecEsperadas = gestor.frecuenciasEsperadas[i];
-                double probEsperadas = gestor.acumProbEsperada[i];
+                double probEsperadas = gestor.probEsperadas[i];
                 double acumEsperadas = gestor.acumProbEsperada[i];                
 
                 grillaFrecuencias.Rows.Add(intervalo, li, ls, frecObservadas,probObservadas,acumObservadas, frecEsperadas, probEsperadas, acumEsperadas);
@@ -79,7 +80,7 @@ namespace TP3.DataLayer
             this.graficarHistogramaEsperado(grafico);
             llenarGrillaFrecuencias(grilla);
 
-            //Magia de stackoverflow
+            //Magia de stackoverflow------------------------------
             double max = Double.MinValue;
             double min = Double.MaxValue;
 
