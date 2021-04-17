@@ -60,6 +60,7 @@
     <Compile Include="DataLayer\GestorCalculos.cs" />
     <Compile Include="DataLayer\GestorGraficos.cs" />
     <Compile Include="DataLayer\GestorPruebas.cs" />
+    <Compile Include="DataLayer\Truncador.cs" />
     <Compile Include="DataLayer\ValorGenerado.cs" />
     <Compile Include="GUILayer\Form1.cs">
       <SubType>Form</SubType>

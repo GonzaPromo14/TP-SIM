@@ -22,8 +22,8 @@ namespace TP3.DataLayer
 
         public string[] convertirStringData()
         {
-            String rnd = this.rnd == -1 ? "-" : this.rnd.ToString();
-            return new string[] {this.muestra.ToString(), rnd, this.valorGenerado.ToString()};
+            String rnd = this.rnd == -1 ? "-" : Truncador.Truncar(this.rnd).ToString();
+            return new string[] {this.muestra.ToString(), rnd, Truncador.Truncar(this.valorGenerado).ToString()};
         }
         
         public double getValorGenerado()

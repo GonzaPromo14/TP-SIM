@@ -43,14 +43,10 @@ namespace TP3.DataLayer
             for (int i = 0; i < g.cantIntervalos; i++)
             {
                 g.frecuenciasEsperadas[i] = g.getTamanioMuestra() / g.cantIntervalos;
-
-            }
-
-            //actualizo las probabilidades
-            for (int i = 0; i < g.cantIntervalos; i++)
-            {
                 g.probEsperadas[i] = g.frecuenciasEsperadas[i] / g.getTamanioMuestra();
+
             }
+
             //actualizo acumuladores
             g.acumProbEsperada[0] = g.probEsperadas[0];
             for (int i = 1; i < g.cantIntervalos; i++)
@@ -75,16 +71,17 @@ namespace TP3.DataLayer
 
             for (int i = 0; i < g.cantIntervalos; i++)
             {
-                g.frecuenciasEsperadas[i] = (Exponential.CDF(g.getLambda(), g.intervalos[i][1]) - Exponential.CDF(g.getLambda(), g.intervalos[i][0])) * g.getTamanioMuestra();
+
+                double probabilidad = (Exponential.CDF(g.getLambda(), g.intervalos[i][1]) - Exponential.CDF(g.getLambda(), g.intervalos[i][0]));
+                g.probEsperadas[i] = probabilidad;
+                g.frecuenciasEsperadas[i] = probabilidad * g.getTamanioMuestra();
+
+
 
             }
 
-            //actualizo las probabilidades
-            for (int i = 0; i < g.cantIntervalos; i++)
-            {
-                g.probEsperadas[i] = g.frecuenciasEsperadas[i] / g.getTamanioMuestra();
-            }
             //actualizo acumuladores
+
             g.acumProbEsperada[0] = g.probEsperadas[0];
             for (int i = 1; i < g.cantIntervalos; i++)
             {
@@ -159,14 +156,11 @@ namespace TP3.DataLayer
         {
             for (int i = 0; i < g.cantIntervalos; i++)
             {
-                g.frecuenciasEsperadas[i] = (Normal.CDF(g.getMedia(), g.getDesviacion(), g.intervalos[i][1]) - Normal.CDF(g.getMedia(), g.getDesviacion(), g.intervalos[i][0])) * (g.getTamanioMuestra());
+                double probabilidad = (Normal.CDF(g.getMedia(), g.getDesviacion(), g.intervalos[i][1]) - Normal.CDF(g.getMedia(), g.getDesviacion(), g.intervalos[i][0]));
+                g.probEsperadas[i] = probabilidad;
+                g.frecuenciasEsperadas[i] =  probabilidad* (g.getTamanioMuestra());
             }
 
-            //actualizo las probabilidades
-            for (int i = 0; i < g.cantIntervalos; i++)
-            {
-                g.probEsperadas[i] = g.frecuenciasEsperadas[i] / g.getTamanioMuestra();
-            }
             //actualizo acumuladores
             g.acumProbEsperada[0] = g.probEsperadas[0];
             for (int i = 1; i < g.cantIntervalos; i++)

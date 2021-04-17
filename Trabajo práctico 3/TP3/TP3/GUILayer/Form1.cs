@@ -61,6 +61,7 @@ namespace TP3
             txtTamanioMuestra.Enabled = true;
 
             validacionesDistribuciones();
+            
             Distribucion dist = new Distribucion(cmbDistribuciones.Text);
             gCalculos.setDistribucion(dist);
             grdNumeros.Rows.Clear();

@@ -33,15 +33,15 @@ namespace TP3.DataLayer
             for (int i = 0; i < gestor.getCantidadIntervalos(); i++)
             {
                 int intervalo = i + 1;
-                double li = gestor.intervalos[i][0];
-                double ls = gestor.intervalos[i][1];
-                double frecObservadas = gestor.frecuenciasObservadas[i];
-                double probObservadas = gestor.probObservadas[i];
-                double acumObservadas = gestor.acumProbObservada[i];
+                double li = Truncador.Truncar(gestor.intervalos[i][0]);
+                double ls = Truncador.Truncar(gestor.intervalos[i][1]);
+                double frecObservadas = Truncador.Truncar(gestor.frecuenciasObservadas[i]);
+                double probObservadas = Truncador.Truncar(gestor.probObservadas[i]);
+                double acumObservadas = Truncador.Truncar(gestor.acumProbObservada[i]);
                 
-                double frecEsperadas = gestor.frecuenciasEsperadas[i];
-                double probEsperadas = gestor.probEsperadas[i];
-                double acumEsperadas = gestor.acumProbEsperada[i];                
+                double frecEsperadas = Truncador.Truncar(gestor.frecuenciasEsperadas[i]);
+                double probEsperadas = Truncador.Truncar(gestor.probEsperadas[i]);
+                double acumEsperadas = Truncador.Truncar(gestor.acumProbEsperada[i]);                
 
                 grillaFrecuencias.Rows.Add(intervalo, li, ls, frecObservadas,probObservadas,acumObservadas, frecEsperadas, probEsperadas, acumEsperadas);
 

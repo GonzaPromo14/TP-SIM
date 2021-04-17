@@ -118,6 +118,7 @@ namespace TP3.DataLayer
                     if (generacionValores[i].getValorGenerado() >= intervalos[j][0] && generacionValores[i].getValorGenerado() < intervalos[j][1])
                     {
                         frecuenciasObservadas[j]++;
+
                     }
                 }
             }
@@ -151,7 +152,7 @@ namespace TP3.DataLayer
                     //calculo muestras y frecuencias
                     for (int i = 1; i <= tamanioMuestra; i++)
                     {
-                        double numero = Math.Round(r.NextDouble(), 4);
+                        double numero = r.NextDouble();
                         double numeroGeneradoUniforme = dist.generarNumeroUniforme(numero, A, B);
                         generacionValores.Add(new ValorGenerado(i, numero, numeroGeneradoUniforme));
                         
@@ -165,7 +166,7 @@ namespace TP3.DataLayer
                     //calculo muestras y frecuencias
                     for (int i = 1; i <= tamanioMuestra; i++)
                     {
-                        double numero = Math.Round(r.NextDouble(), 4);
+                        double numero = r.NextDouble();
                         double numeroGeneradoExponencial = dist.generarNumeroExponencial(numero, lambda);
                         generacionValores.Add(new ValorGenerado(i, numero, numeroGeneradoExponencial));
 
