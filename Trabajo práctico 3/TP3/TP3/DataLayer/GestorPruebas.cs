@@ -9,5 +9,17 @@ namespace TP3.DataLayer
     class GestorPruebas
     {
 
+        public void calcularEstadisticoCHI()
+        {
+
+        }
+
+        public void calcularEstadisticoKS()
+        {
+
+        }
+
+        
+
     }
 }

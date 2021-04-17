@@ -35,7 +35,7 @@ namespace TP3.DataLayer
         {
             double diferencia = B - A;
             double rnd_generado = A + (rnd * diferencia);
-            return Math.Round(rnd_generado, 4);
+            return rnd_generado;
         }
 
         public void obtenerEsperadosUniforme(GestorCalculos g)
@@ -66,7 +66,7 @@ namespace TP3.DataLayer
         {
             double ln = Math.Log(1 - rnd);
             double division = -1 / lambda;
-            return Math.Round(division * ln, 4);
+            return division * ln;
         }
 
 
@@ -152,7 +152,7 @@ namespace TP3.DataLayer
             }
 
             double z = (sum - k/2) / (Math.Sqrt(k / 12));
-            return Math.Round((z * desv_estandar) + media, 4);
+            return (z * desv_estandar) + media;
         }
 
         public void obtenerEsperadosNormal(GestorCalculos g)

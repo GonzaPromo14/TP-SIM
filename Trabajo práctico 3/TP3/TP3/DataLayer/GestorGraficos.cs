@@ -73,8 +73,6 @@ namespace TP3.DataLayer
 
         public void graficar(Chart grafico, DataGridView grilla)
         {
-
-
             calcularEjeX();
             this.graficarHistogramaObservado(grafico);
             this.graficarHistogramaEsperado(grafico);
@@ -102,7 +100,6 @@ namespace TP3.DataLayer
             }
             tmpChart.ChartAreas[0].AxisY.Maximum = (Math.Ceiling((max / 10)) * 10);
             tmpChart.ChartAreas[0].AxisY.Minimum = (Math.Floor((min / 10)) * 10);
-
 
         }
         //---------------------------------------------------------------------------------//
