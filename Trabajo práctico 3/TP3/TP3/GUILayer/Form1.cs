@@ -16,7 +16,6 @@ namespace TP3
     {
         Paginador paginador;
         GestorGraficos graficador;
-        GestorPruebas gPruebas;
         GestorCalculos gCalculos;
 
         Form2 ventana2;
@@ -27,7 +26,6 @@ namespace TP3
             this.WindowState = FormWindowState.Maximized;
 
             this.gCalculos = new GestorCalculos();
-            this.gPruebas = new GestorPruebas();
             this.graficador = new GestorGraficos(gCalculos); //le paso el gestorCalculos al graficador para que tenga los datos
 
 
@@ -348,7 +346,7 @@ namespace TP3
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ventana2 = new Form2(graficador);
+            ventana2 = new Form2(graficador, gCalculos);
             ventana2.Show();
         }
     }

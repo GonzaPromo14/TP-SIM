@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MathNet.Numerics.Distributions;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,16 +15,30 @@ namespace TP3.GUILayer
     public partial class Form2 : Form
     {
         GestorGraficos graficador;
-        public Form2(GestorGraficos g)
+        GestorCalculos gCalculos;
+        GestorPruebas gPruebas;
+        public Form2(GestorGraficos g, GestorCalculos gCalc)
         {
             InitializeComponent();
-
+            this.gCalculos = gCalc;
             this.graficador = g;
+            this.gPruebas = new GestorPruebas(gCalculos);
+            gPruebas.actualizarIntervalos();
+            gPruebas.llenarGrillaFrecuencias(dataGridFrecuencias);
+            double valorCalculado = gPruebas.cAcumulada[gPruebas.cantNuevaIntervalos - 1];
+            double valorTabulado = ChiSquared.InvCDF(8, 0.05);
+            lblPasaPrueba.Text = (valorCalculado <= valorTabulado) ? "Pasa prueba" : "No pasa prueba";
+            txtValorCalculado.Text = gPruebas.cAcumulada[gPruebas.cantNuevaIntervalos - 1].ToString();
+            txtValorTabulado.Text = ChiSquared.InvCDF(gPruebas.cantNuevaIntervalos, 0.05).ToString();
 
-            graficador.llenarGrillaFrecuencias(dataGridFrecuencias);
+
+            //graficador.llenarGrillaFrecuencias(dataGridFrecuencias);
 
         }
 
+        private void Form2_Load(object sender, EventArgs e)
+        {
 
+        }
     }
 }
