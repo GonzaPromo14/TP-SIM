@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TP3.DataLayer
 {
-    class GestorCalculos
+    public class GestorCalculos
     {
         private double A;
         private double B;

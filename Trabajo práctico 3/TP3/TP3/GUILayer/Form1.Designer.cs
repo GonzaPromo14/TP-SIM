@@ -72,6 +72,7 @@
             this.groupNormal = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.dataGridFrecuencias = new System.Windows.Forms.DataGridView();
             this.Num = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Min = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -82,7 +83,7 @@
             this.Esperados = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProbEsp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AcumEsperado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label2 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.grdNumeros)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.groupUniforme.SuspendLayout();
@@ -521,6 +522,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Graficar";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(169, 39);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(106, 13);
+            this.label2.TabIndex = 43;
+            this.label2.Text = "Seleccionar intervalo";
+            // 
             // dataGridFrecuencias
             // 
             this.dataGridFrecuencias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -585,20 +595,22 @@
             this.AcumEsperado.HeaderText = "Acumulado (Ei)";
             this.AcumEsperado.Name = "AcumEsperado";
             // 
-            // label2
+            // button1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(169, 39);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(106, 13);
-            this.label2.TabIndex = 43;
-            this.label2.Text = "Seleccionar intervalo";
+            this.button1.Location = new System.Drawing.Point(127, 660);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 53);
+            this.button1.TabIndex = 52;
+            this.button1.Text = "Prueba ventana nueva";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridFrecuencias);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.chart1);
@@ -684,6 +696,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ProbEsp;
         private System.Windows.Forms.DataGridViewTextBoxColumn AcumEsperado;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button1;
     }
 }
 

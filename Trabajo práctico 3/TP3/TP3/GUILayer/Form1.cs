@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TP3.DataLayer;
-
+using TP3.GUILayer;
 
 namespace TP3
 {
@@ -19,6 +19,7 @@ namespace TP3
         GestorPruebas gPruebas;
         GestorCalculos gCalculos;
 
+        Form2 ventana2;
 
         public Form1()
         {
@@ -343,6 +344,12 @@ namespace TP3
             //Grafico con los intervalos elegidos
             graficador.graficar(chart1, dataGridFrecuencias);
             
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ventana2 = new Form2(graficador);
+            ventana2.Show();
         }
     }
 }

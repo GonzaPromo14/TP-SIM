@@ -25,3 +25,4 @@ D:\UTN\2021\SIM\TPs\TP-SIM\TP-SIM\Trabajo práctico 3\TP3\TP3\obj\Debug\TP3.cspr
 D:\UTN\2021\SIM\TPs\TP-SIM\TP-SIM\Trabajo práctico 3\TP3\TP3\obj\Debug\TP3.csproj.CopyComplete
 D:\UTN\2021\SIM\TPs\TP-SIM\TP-SIM\Trabajo práctico 3\TP3\TP3\obj\Debug\TP3.exe
 D:\UTN\2021\SIM\TPs\TP-SIM\TP-SIM\Trabajo práctico 3\TP3\TP3\obj\Debug\TP3.pdb
+D:\UTN\2021\SIM\TPs\TP-SIM\TP-SIM\Trabajo práctico 3\TP3\TP3\obj\Debug\TP3.GUILayer.Form2.resources

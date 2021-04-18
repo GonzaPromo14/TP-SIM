@@ -9,7 +9,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 namespace TP3.DataLayer
 {
     
-    class GestorGraficos
+    public class GestorGraficos
     {
         GestorCalculos gestor;
         public string[] intervMedio;//es lo que aparece en el eje x

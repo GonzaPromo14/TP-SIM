@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace TP3.DataLayer
 {
-    class Distribucion
+    public class Distribucion
     {
         private String distribucionElegida;
 

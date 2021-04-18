@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TP3.DataLayer
 {
-    class ValorGenerado
+    public class ValorGenerado
     {
         private int muestra;
         private double rnd;
