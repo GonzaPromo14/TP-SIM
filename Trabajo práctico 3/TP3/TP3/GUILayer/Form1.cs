@@ -34,7 +34,7 @@ namespace TP3
         private void btnGenerar_Click(object sender, EventArgs e)
         {
             cmbIntervalos.Enabled = true;
-
+            button1.Enabled = true;
 
             Distribucion dist = new Distribucion(cmbDistribuciones.Text);
             grdNumeros.Rows.Clear();
@@ -58,7 +58,7 @@ namespace TP3
         private void cmbDistribuciones_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtTamanioMuestra.Enabled = true;
-
+            button1.Enabled = false;
             validacionesDistribuciones();
             
             Distribucion dist = new Distribucion(cmbDistribuciones.Text);
@@ -346,7 +346,7 @@ namespace TP3
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ventana2 = new Form2(graficador, gCalculos);
+            ventana2 = new Form2(graficador, gCalculos, cmbDistribuciones.Text);
             ventana2.Show();
         }
     }

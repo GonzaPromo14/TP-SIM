@@ -21,16 +21,19 @@ namespace TP3.DataLayer
         public double[] acumProbObservada;
         public double[] c;
         public double[] cAcumulada;
-
+        public int gradosLibertad;
+        public double nivelConfianza = 0.05;
 
         private double min;
         private double max;
         GestorCalculos gCalculos;
+        String distribucion;
 
-        public GestorPruebas(GestorCalculos g)
+        public GestorPruebas(GestorCalculos g, String distribucion)
         {
             this.gCalculos = g;
             this.generarNuevosIntervalos(g);
+            this.distribucion = distribucion;
         }
 
         public void generarNuevosIntervalos(GestorCalculos g)
@@ -142,7 +145,7 @@ namespace TP3.DataLayer
                 }
                 double calculo = Math.Pow(this.frecuenciasObservadas[valorIndexPruebas] - this.frecuenciasEsperadas[valorIndexPruebas], 2) / this.frecuenciasEsperadas[valorIndexPruebas];
                 c[valorIndexPruebas] = calculo;
-                cAcumulada[valorIndexPruebas] = (valorIndexPruebas == 0) ? calculo : c[valorIndexPruebas - 1] + calculo;
+                cAcumulada[valorIndexPruebas] = (valorIndexPruebas == 0) ? calculo : cAcumulada[valorIndexPruebas - 1] + calculo;
                 valorIndexPruebas++;
 
 
@@ -174,7 +177,22 @@ namespace TP3.DataLayer
             }
         }
 
-
+        public int calcularGradosLibertad()
+        {
+            switch (distribucion)
+            {
+                case "Uniforme":
+                    this.gradosLibertad = this.cantNuevaIntervalos - 1;
+                    break;
+                case "Normal":
+                    this.gradosLibertad = this.cantNuevaIntervalos - 1 - 2;
+                    break;
+                default:
+                    this.gradosLibertad = this.cantNuevaIntervalos - 1 - 1;
+                    break;
+            }
+            return this.gradosLibertad;
+        }
 
         public void calcularEstadisticoCHI()
         {

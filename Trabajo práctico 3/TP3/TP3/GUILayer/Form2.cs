@@ -17,20 +17,13 @@ namespace TP3.GUILayer
         GestorGraficos graficador;
         GestorCalculos gCalculos;
         GestorPruebas gPruebas;
-        public Form2(GestorGraficos g, GestorCalculos gCalc)
+        public Form2(GestorGraficos g, GestorCalculos gCalc, String distribucion)
         {
             InitializeComponent();
             this.gCalculos = gCalc;
             this.graficador = g;
-            this.gPruebas = new GestorPruebas(gCalculos);
-            gPruebas.actualizarIntervalos();
-            gPruebas.llenarGrillaFrecuencias(dataGridFrecuencias);
-            double valorCalculado = gPruebas.cAcumulada[gPruebas.cantNuevaIntervalos - 1];
-            double valorTabulado = ChiSquared.InvCDF(8, 0.05);
-            lblPasaPrueba.Text = (valorCalculado <= valorTabulado) ? "Pasa prueba" : "No pasa prueba";
-            txtValorCalculado.Text = gPruebas.cAcumulada[gPruebas.cantNuevaIntervalos - 1].ToString();
-            txtValorTabulado.Text = ChiSquared.InvCDF(gPruebas.cantNuevaIntervalos, 0.05).ToString();
-
+            this.gPruebas = new GestorPruebas(gCalculos, distribucion);
+            lblHipotesis.Text = "Los números poseen una distribución " + distribucion;
 
             //graficador.llenarGrillaFrecuencias(dataGridFrecuencias);
 
@@ -39,6 +32,27 @@ namespace TP3.GUILayer
         private void Form2_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void cmbConfianza_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnAceptarBondad.Enabled = true;
+        }
+
+        private void btnAceptarBondad_Click(object sender, EventArgs e)
+        {
+            gPruebas.actualizarIntervalos();
+            gPruebas.llenarGrillaFrecuencias(dataGridFrecuencias);
+            double gradosLibertad = gPruebas.calcularGradosLibertad();
+            double valorCalculado = gPruebas.cAcumulada[gPruebas.cantNuevaIntervalos - 1];
+            double confianza = double.Parse(cmbConfianza.Text);
+            double valorTabulado = ChiSquared.InvCDF(gradosLibertad, double.Parse(cmbConfianza.Text));
+            lblRechazo.Text = (valorCalculado <= valorTabulado) ? "No se rechaza la hipótesis nula" : "Se rechaza la hipótesis nula";
+            txtValorCalculado.Text = Truncador.Truncar(valorCalculado).ToString();
+            txtValorTabulado.Text = Truncador.Truncar(valorTabulado).ToString();
+            txtGradosLibertad.Text = gradosLibertad.ToString();
+            grbResultados.Visible = true;
+            btnAceptarBondad.Enabled = false;
         }
     }
 }
