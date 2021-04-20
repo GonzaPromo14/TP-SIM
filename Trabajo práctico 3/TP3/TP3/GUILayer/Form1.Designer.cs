@@ -84,6 +84,8 @@
             this.ProbEsp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AcumEsperado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
+            this.btnPruebaKS = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.grdNumeros)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.groupUniforme.SuspendLayout();
@@ -92,6 +94,7 @@
             this.groupNormal.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridFrecuencias)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // cmbDistribuciones
@@ -189,9 +192,9 @@
             // btnGenerar
             // 
             this.btnGenerar.Enabled = false;
-            this.btnGenerar.Location = new System.Drawing.Point(6, 34);
+            this.btnGenerar.Location = new System.Drawing.Point(6, 26);
             this.btnGenerar.Name = "btnGenerar";
-            this.btnGenerar.Size = new System.Drawing.Size(75, 23);
+            this.btnGenerar.Size = new System.Drawing.Size(134, 38);
             this.btnGenerar.TabIndex = 9;
             this.btnGenerar.Text = "Generar";
             this.btnGenerar.UseVisualStyleBackColor = true;
@@ -597,20 +600,40 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(127, 660);
+            this.button1.Location = new System.Drawing.Point(6, 32);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 53);
+            this.button1.Size = new System.Drawing.Size(350, 21);
             this.button1.TabIndex = 52;
-            this.button1.Text = "Prueba ventana nueva";
+            this.button1.Text = "Prueba CHI";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnPruebaKS
+            // 
+            this.btnPruebaKS.Location = new System.Drawing.Point(6, 59);
+            this.btnPruebaKS.Name = "btnPruebaKS";
+            this.btnPruebaKS.Size = new System.Drawing.Size(350, 21);
+            this.btnPruebaKS.TabIndex = 53;
+            this.btnPruebaKS.Text = "Prueba KS";
+            this.btnPruebaKS.UseVisualStyleBackColor = true;
+            this.btnPruebaKS.Click += new System.EventHandler(this.btnPruebaKS_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.button1);
+            this.groupBox2.Controls.Add(this.btnPruebaKS);
+            this.groupBox2.Location = new System.Drawing.Point(21, 593);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(368, 100);
+            this.groupBox2.TabIndex = 54;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Pruebas de Bondad";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1370, 749);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridFrecuencias);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.chart1);
@@ -622,6 +645,7 @@
             this.Controls.Add(this.groupPoisson);
             this.Controls.Add(this.groupNormal);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBox2);
             this.Name = "Form1";
             this.Text = "Trabajo Práctico 3";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -638,6 +662,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridFrecuencias)).EndInit();
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -697,6 +722,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn AcumEsperado;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnPruebaKS;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }
 

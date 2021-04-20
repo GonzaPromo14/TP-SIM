@@ -346,8 +346,18 @@ namespace TP3
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ventana2 = new Form2(graficador, gCalculos, cmbDistribuciones.Text);
+            ventana2 = new Form2(gCalculos, cmbDistribuciones.Text);
+            ventana2.Text = "Prueba CHI";
             ventana2.Show();
+        }
+
+        private void btnPruebaKS_Click(object sender, EventArgs e)
+        {
+            ventana2 = new Form2(gCalculos, cmbDistribuciones.Text);
+            ventana2.Text = "Prueba KS";
+            ventana2.comboKS();
+            ventana2.Show();
+
         }
     }
 }
