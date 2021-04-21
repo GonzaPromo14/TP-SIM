@@ -113,8 +113,8 @@ namespace TP3.DataLayer
         {
             for (int i = 0; i < g.cantIntervalos; i++)
             {
-                //g.frecuenciasEsperadas[i] = (Poisson.CDF(g.lambda, g.intervalos[i][1]) - Poisson.CDF(g.lambda, g.intervalos[i][0])) * g.n;
-                g.frecuenciasEsperadas[i] = ((Math.Pow(g.getLambda(), i) * Math.Pow(Math.E, -g.getLambda())) / SpecialFunctions.Factorial(i)) * g.getTamanioMuestra();
+                g.frecuenciasEsperadas[i] = (Poisson.CDF(g.getLambda(), g.intervalos[i][1]) - Poisson.CDF(g.getLambda(), g.intervalos[i][0])) * g.getTamanioMuestra();
+                //g.frecuenciasEsperadas[i] = ((Math.Pow(g.getLambda(), i) * Math.Pow(Math.E, -g.getLambda())) / SpecialFunctions.Factorial(i)) * g.getTamanioMuestra();
             }
 
             //actualizo las probabilidades

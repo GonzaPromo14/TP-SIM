@@ -35,6 +35,7 @@ namespace TP3
         {
             cmbIntervalos.Enabled = true;
             button1.Enabled = true;
+            btnPruebaKS.Enabled = (cmbDistribuciones.Text == "Poisson") ? false : true;
 
             Distribucion dist = new Distribucion(cmbDistribuciones.Text);
             grdNumeros.Rows.Clear();
@@ -64,6 +65,7 @@ namespace TP3
             Distribucion dist = new Distribucion(cmbDistribuciones.Text);
             gCalculos.setDistribucion(dist);
             grdNumeros.Rows.Clear();
+            if (cmbDistribuciones.Text == "Poisson") btnPruebaKS.Enabled = false;
 
         }
 

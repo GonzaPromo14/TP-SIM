@@ -43,6 +43,7 @@ namespace TP3.GUILayer
 
         private void btnAceptarBondad_Click(object sender, EventArgs e)
         {
+            gPruebas.actualizarIntervalos();
 
             if(this.Text == "Prueba CHI")
             {

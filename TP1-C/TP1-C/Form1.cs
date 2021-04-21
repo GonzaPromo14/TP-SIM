@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MathNet.Numerics.Distributions;
 
 
 namespace TP1_C
@@ -16,12 +17,13 @@ namespace TP1_C
 
         Metodo metodoElegido = new Metodo();
         Semilla sem;
-        int valoresAGenerar = 24;
+        int valoresAGenerar = 10;
         int cantItemsPorPag = 10;
         int paginaActual = 1;
         Semilla[] valoresGeneradosParaGrilla;
 
         GestorGraficos gGraficos = new GestorGraficos();
+        Dictionary<double, double> confianzaKS = new Dictionary<double, double>();
 
         double min = Double.MaxValue;
         double max = Double.MinValue;
@@ -63,6 +65,12 @@ namespace TP1_C
                 lblError.Text = "El valor M es incorrecto";
                 return false;
             }
+            esNumero = Int32.TryParse(txtCantidad.Text, out validacionEntero);
+            if (!esNumero)
+            {
+                lblError.Text = "El valor Cantidad es incorrecto";
+                return false;
+            }
             lblError.Text = "";
             return true;
 
@@ -73,6 +81,7 @@ namespace TP1_C
             bool validacion = datosValidos();
             if (validacion)
             {
+                this.valoresAGenerar = int.Parse(txtCantidad.Text);
                 //Veo si es random
                 if (metodoElegido.isRandom())
                 {
@@ -156,6 +165,7 @@ namespace TP1_C
         private void btnLineal_Click(object sender, EventArgs e)
         {
             btnMultiplicativo.Enabled = true;
+            btnRandom.Enabled = true;
             btnLineal.Enabled = false;
             metodoElegido.setLineal(true);
             btnProximo.Enabled = false;
@@ -177,6 +187,7 @@ namespace TP1_C
         private void btnMultiplicativo_Click(object sender, EventArgs e)
         {
             btnLineal.Enabled = true;
+            btnRandom.Enabled = true;
             btnMultiplicativo.Enabled = false;
             metodoElegido.setLineal(false);
             btnProximo.Enabled = false;
@@ -361,28 +372,66 @@ namespace TP1_C
         //Si se cambia el intervalo seleccionado 
         private void cmbIntervalos_SelectedIndexChanged(object sender, EventArgs e)
         {
-            btnGraficar.Enabled = true;
-            string i = cmbIntervalos.SelectedItem.ToString();
-            gGraficos.setCantIntervalos(Convert.ToInt32(i));
-            gGraficos.setIntervMedio();
-            
-            gGraficos.calcularPasos();
-            gGraficos.calcularIntervalos();
-            gGraficos.calcularIntervalosGrafico();
+            cmbPruebaBondad.Enabled = true;
+           
         }
 
         private void btnGraficar_Click(object sender, EventArgs e)
         {
+            string i = cmbIntervalos.SelectedItem.ToString();
+            gGraficos.setCantIntervalos(Convert.ToInt32(i));
+            gGraficos.setIntervMedio();
+
+            gGraficos.calcularPasos();
+            gGraficos.calcularIntervalos();
+            gGraficos.calcularIntervalosGrafico();
             gGraficos.graficar(chart1);
             gGraficos.llenarGrillaFrecuencias(grillaFrecuencias);
-
+            if (cmbPruebaBondad.Text == "Chi cuadrado")
+            {
+                double gradosLibertad = int.Parse(cmbIntervalos.Text) - 1;
+                lblGradosLibertad.Text = "Grados de libertad: " + gradosLibertad.ToString();
+                double intervaloConfianza = ChiSquared.InvCDF(gradosLibertad, double.Parse(cmbConfianza.Text));
+                double comparacion = gGraficos.cAcum[gGraficos.cantIntervalos - 1];
+                lblValorTabulado.Text = "Valor tabulado: " + intervaloConfianza.ToString();
+                if (comparacion < intervaloConfianza)
+                {
+                    lblRechazo.Text = "No se rechaza la hipótesis";
+                    lblRechazo.ForeColor = Color.Green;
+                }
+                else
+                {
+                    lblRechazo.Text = "Se rechaza la hipótesis";
+                    lblRechazo.ForeColor = Color.Red;
+                }
+            }
+            else
+            {
+                double gradosLibertad = int.Parse(txtCantidad.Text);
+                lblGradosLibertad.Text = "Grados de libertad: " + gradosLibertad.ToString();
+                double intervaloConfianza = confianzaKS[double.Parse(cmbConfianza.Text)] / Math.Sqrt(int.Parse(txtCantidad.Text));
+                double comparacion = gGraficos.maxEstadistico[gGraficos.cantIntervalos - 1];
+                lblValorTabulado.Text = "Valor tabulado: " + intervaloConfianza.ToString();
+                if (comparacion < intervaloConfianza)
+                {
+                    lblRechazo.Text = "No se rechaza la hipótesis";
+                    lblRechazo.ForeColor = Color.Green;
+                }
+                else
+                {
+                    lblRechazo.Text = "Se rechaza la hipótesis";
+                    lblRechazo.ForeColor = Color.Red;
+                }
+            }
+            
+            
 
         }
 
         private void btnRandom_Click(object sender, EventArgs e)
         {
-            btnLineal.Enabled = false;
-            btnMultiplicativo.Enabled = false;
+            btnLineal.Enabled = true;
+            btnMultiplicativo.Enabled = true;
             btnRandom.Enabled = false;
             metodoElegido.setRandom();
             btnProximo.Enabled = false;
@@ -404,7 +453,51 @@ namespace TP1_C
 
         private void txtCantidad_TextChanged(object sender, EventArgs e)
         {
-            this.valoresAGenerar = Convert.ToInt32(txtCantidad.Text);
+
+        }
+
+        private void cmbPruebaBondad_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbPruebaBondad.Text == "Kolmogorov")
+            {
+                cmbConfianza.Items.Clear();
+                double[] items = { 0.20, 0.10, 0.05, 0.02, 0.01, 0.005, 0.002, 0.001 };
+
+                System.Object[] ItemObject = new System.Object[8];
+                for (int i = 0; i < 8; i++)
+                {
+                    ItemObject[i] = items[i];
+                }
+                cmbConfianza.Items.AddRange(ItemObject);
+
+                //como aparece en el PDF para calcular ks
+                confianzaKS[0.20] = 1.07;
+                confianzaKS[0.10] = 1.22;
+                confianzaKS[0.05] = 1.36;
+                confianzaKS[0.02] = 1.52;
+                confianzaKS[0.01] = 1.63;
+                confianzaKS[0.005] = 1.73;
+                confianzaKS[0.002] = 1.85;
+                confianzaKS[0.001] = 1.95;
+            }
+            else
+            {
+                cmbConfianza.Items.Clear();
+                double[] items = { 0.995, 0.99, 0.975, 0.95, 0.9, 0.75, 0.25, 0.1, 0.05, 0.025, 0.01, 0.005 };
+                System.Object[] ItemObject = new System.Object[12];
+                for (int i = 0; i < 12; i++)
+                {
+                    ItemObject[i] = items[i]; 
+                }
+                cmbConfianza.Items.AddRange(ItemObject);
+            }
+            cmbConfianza.Enabled = true;
+        }
+
+        private void cmbConfianza_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnGraficar.Enabled = true;
+
         }
     }
 }

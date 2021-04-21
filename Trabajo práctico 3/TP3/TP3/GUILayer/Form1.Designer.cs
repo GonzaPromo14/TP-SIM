@@ -600,6 +600,7 @@
             // 
             // button1
             // 
+            this.button1.Enabled = false;
             this.button1.Location = new System.Drawing.Point(6, 32);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(350, 21);
@@ -610,6 +611,7 @@
             // 
             // btnPruebaKS
             // 
+            this.btnPruebaKS.Enabled = false;
             this.btnPruebaKS.Location = new System.Drawing.Point(6, 59);
             this.btnPruebaKS.Name = "btnPruebaKS";
             this.btnPruebaKS.Size = new System.Drawing.Size(350, 21);
