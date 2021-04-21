@@ -39,7 +39,7 @@ namespace TP3.DataLayer
         {
             //Inicializo los distintos contadores 
 
-            cantIntervalos = cant;
+            this.cantIntervalos = (dist.getDistribucionElegida() != "Poisson") ? cant : int.Parse(max.ToString()) - int.Parse(min.ToString());
             intervalos = new List<double[]>();
 
             frecuenciasObservadas = new double[cantIntervalos];
@@ -60,22 +60,38 @@ namespace TP3.DataLayer
 
         public void calcularLimitesIntervalos()
         {
-            //Calcula limite superior e inferior para cada intervalo segun el ancho
-            double ancho = (max - min) / cantIntervalos; //calculo el ancho de cada intervalo
-
-            //Primer intervalo
-            double[] primero = { min, min + ancho};
-            intervalos.Add(primero);
-
-            //calculo rangos
-            for (int i = 1; i < cantIntervalos; i++)
+            if (this.dist.getDistribucionElegida() != "Poisson")
             {
-                double inferior = intervalos.ElementAt(i - 1)[1];
-                double superior = (inferior + ancho);
-                double[] filaIntervalo = { inferior, superior};
+                double ancho = (max - min) / cantIntervalos; //calculo el ancho de cada intervalo
 
-                intervalos.Add(filaIntervalo);
+                //Primer intervalo
+                double[] primero = { min, min + ancho };
+                intervalos.Add(primero);
+
+                //calculo rangos
+                for (int i = 1; i < cantIntervalos; i++)
+                {
+                    double inferior = intervalos.ElementAt(i - 1)[1];
+                    double superior = (inferior + ancho);
+                    double[] filaIntervalo = { inferior, superior };
+
+                    intervalos.Add(filaIntervalo);
+                }
             }
+            else
+            {
+                double[] primero = { min, min + 1 };
+                intervalos.Add(primero);
+                for (int i = 1; i < cantIntervalos; i++)
+                {
+                    double inferior = intervalos.ElementAt(i - 1)[1];
+                    double superior = (inferior + 1);
+                    double[] filaIntervalo = { inferior, superior };
+                    intervalos.Add(filaIntervalo);
+                }
+            }
+            //Calcula limite superior e inferior para cada intervalo segun el ancho
+            
 
         }
 
