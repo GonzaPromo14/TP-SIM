@@ -12,11 +12,19 @@ namespace TP1_C
     {
 
         private int cantidadMuestras;
-        private SemillaArray muestras; //de acá saco los numeros aleatorios
-        private int cantIntervalos;
+        public SemillaArray muestras; //de acá saco los numeros aleatorios
+        public int cantIntervalos;
         private List<double[]> intervalos;// matriz de intervalos
         private double[] frecuenciasObservadas;
         private double[] frecuenciasEsperadas;
+        private double[] cEstadistico;
+        public double[] cAcum;
+        private double[] probabilidadObservada;
+        private double[] probabilidadEsperada;
+        private double[] probabilidadObservadaAc;
+        private double[] probabilidadEsperadaAc;
+        private double[] diferencia;
+        public double[] maxEstadistico;
         private double pasos;
         private double min;
         private double max;
@@ -40,7 +48,7 @@ namespace TP1_C
             //Este método calcula los rangos de cada intervalo a partir de los pasos
 
             //Primer intervalo
-            double[] primero = { Math.Truncate(min*10000)/10000, Math.Truncate(min*10000)/10000 };
+            double[] primero = { Math.Truncate(min*10000)/10000, Math.Truncate((min + pasos) *10000)/10000 };
             intervalos.Add(primero);
 
             //calculo rangos
@@ -73,7 +81,14 @@ namespace TP1_C
             //inicializo los contadores de frecuencias
             frecuenciasObservadas = new double[cantIntervalos];
             frecuenciasEsperadas = new double[cantIntervalos];
-
+            cAcum = new double[cantIntervalos];
+            cEstadistico = new double[cantIntervalos];
+            probabilidadObservada = new double[cantIntervalos];
+            probabilidadEsperada = new double[cantIntervalos];
+            probabilidadObservadaAc = new double[cantIntervalos];
+            probabilidadEsperadaAc = new double[cantIntervalos];
+            diferencia = new double[cantIntervalos];
+            maxEstadistico = new double[cantIntervalos];
 
 
             //Frecuencias observadas 
@@ -96,6 +111,15 @@ namespace TP1_C
             {
                 //depende de la distribucion, en este caso es uniforme siempre
                 frecuenciasEsperadas[i] = cantidadMuestras / cantIntervalos;
+                cEstadistico[i] = (Math.Pow((frecuenciasObservadas[i] - frecuenciasEsperadas[i]), 2)) / frecuenciasEsperadas[i];
+                cAcum[i] = (i != 0) ? cAcum[i - 1] + cEstadistico[i] : cEstadistico[i];
+                probabilidadObservada[i] = frecuenciasObservadas[i] / double.Parse(muestras.size().ToString());
+                probabilidadEsperada[i] = frecuenciasEsperadas[i] / double.Parse(muestras.size().ToString());
+                probabilidadObservadaAc[i] = (i != 0) ? probabilidadObservada[i] + probabilidadObservada[i - 1] : probabilidadObservada[i];
+                probabilidadEsperadaAc[i] = (i != 0) ? probabilidadEsperada[i] + probabilidadEsperada[i - 1] : probabilidadEsperada[i];
+                diferencia[i] = Math.Abs(probabilidadObservadaAc[i] - probabilidadEsperadaAc[i]);
+                if (i == 0) maxEstadistico[i] = diferencia[i];
+                else maxEstadistico[i] = (maxEstadistico[i - 1] > diferencia[i]) ? maxEstadistico[i-1] : diferencia[i];
             }
 
         }
@@ -111,8 +135,16 @@ namespace TP1_C
                 double ls = intervalos[i][1];
                 double frecObservadas = frecuenciasObservadas[i];
                 double frecEsperadas = frecuenciasEsperadas[i];
+                double c = cEstadistico[i];
+                double acum = cAcum[i];
+                double po = probabilidadObservada[i];
+                double pe = probabilidadEsperada[i];
+                double poAc = probabilidadObservadaAc[i];
+                double peAc = probabilidadEsperadaAc[i];
+                double dif = diferencia[i];
+                double maximo = maxEstadistico[i];
 
-                grillaFrecuencias.Rows.Add(intervalo, li, ls, frecObservadas, frecEsperadas);
+                grillaFrecuencias.Rows.Add(intervalo, li, ls, frecObservadas, frecEsperadas, c, acum, po, pe, poAc, peAc, dif, maximo);
 
             }
         }

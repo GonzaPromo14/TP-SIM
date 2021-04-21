@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -70,15 +70,28 @@
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.grillaFrecuencias = new System.Windows.Forms.DataGridView();
+            this.btnRandom = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtCantidad = new System.Windows.Forms.TextBox();
+            this.lblGradosLibertad = new System.Windows.Forms.Label();
+            this.cmbPruebaBondad = new System.Windows.Forms.ComboBox();
+            this.cmbConfianza = new System.Windows.Forms.ComboBox();
             this.colIntervalo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colLimiteInf = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colLimiteSup = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colFrecObs = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colFrecEsp = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnRandom = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.txtCantidad = new System.Windows.Forms.TextBox();
+            this.c = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cAcumulado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.probabilidadObservada = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.probabilidadEsperada = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.probabilidadObservadaAcumulada = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.probabilidadEsperadaAcumulada = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.diferencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.maxProbabilidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblRechazo = new System.Windows.Forms.Label();
+            this.lblValorTabulado = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grdNumeros)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
@@ -176,7 +189,7 @@
             this.colFormula,
             this.colSiguienteX,
             this.colNumeroGenerado});
-            this.grdNumeros.Location = new System.Drawing.Point(241, 77);
+            this.grdNumeros.Location = new System.Drawing.Point(259, 77);
             this.grdNumeros.Name = "grdNumeros";
             this.grdNumeros.Size = new System.Drawing.Size(444, 288);
             this.grdNumeros.TabIndex = 10;
@@ -305,7 +318,7 @@
             // lblPagina
             // 
             this.lblPagina.AutoSize = true;
-            this.lblPagina.Location = new System.Drawing.Point(561, 392);
+            this.lblPagina.Location = new System.Drawing.Point(440, 376);
             this.lblPagina.Name = "lblPagina";
             this.lblPagina.Size = new System.Drawing.Size(73, 13);
             this.lblPagina.TabIndex = 22;
@@ -314,7 +327,7 @@
             // btnAnterior
             // 
             this.btnAnterior.Enabled = false;
-            this.btnAnterior.Location = new System.Drawing.Point(503, 387);
+            this.btnAnterior.Location = new System.Drawing.Point(259, 371);
             this.btnAnterior.Name = "btnAnterior";
             this.btnAnterior.Size = new System.Drawing.Size(29, 23);
             this.btnAnterior.TabIndex = 23;
@@ -325,7 +338,7 @@
             // btnSiguiente
             // 
             this.btnSiguiente.Enabled = false;
-            this.btnSiguiente.Location = new System.Drawing.Point(657, 387);
+            this.btnSiguiente.Location = new System.Drawing.Point(674, 371);
             this.btnSiguiente.Name = "btnSiguiente";
             this.btnSiguiente.Size = new System.Drawing.Size(29, 23);
             this.btnSiguiente.TabIndex = 24;
@@ -336,7 +349,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(500, 423);
+            this.label9.Location = new System.Drawing.Point(363, 408);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(57, 13);
             this.label9.TabIndex = 25;
@@ -345,7 +358,7 @@
             // txtPagina
             // 
             this.txtPagina.Enabled = false;
-            this.txtPagina.Location = new System.Drawing.Point(563, 420);
+            this.txtPagina.Location = new System.Drawing.Point(426, 405);
             this.txtPagina.Name = "txtPagina";
             this.txtPagina.Size = new System.Drawing.Size(71, 20);
             this.txtPagina.TabIndex = 26;
@@ -353,7 +366,7 @@
             // btnIr
             // 
             this.btnIr.Enabled = false;
-            this.btnIr.Location = new System.Drawing.Point(640, 418);
+            this.btnIr.Location = new System.Drawing.Point(503, 403);
             this.btnIr.Name = "btnIr";
             this.btnIr.Size = new System.Drawing.Size(46, 23);
             this.btnIr.TabIndex = 27;
@@ -372,7 +385,7 @@
             // lblSemillaInicial
             // 
             this.lblSemillaInicial.AutoSize = true;
-            this.lblSemillaInicial.Location = new System.Drawing.Point(40, 331);
+            this.lblSemillaInicial.Location = new System.Drawing.Point(532, 9);
             this.lblSemillaInicial.Name = "lblSemillaInicial";
             this.lblSemillaInicial.Size = new System.Drawing.Size(0, 13);
             this.lblSemillaInicial.TabIndex = 29;
@@ -385,7 +398,7 @@
             "10",
             "15",
             "20"});
-            this.cmbIntervalos.Location = new System.Drawing.Point(43, 323);
+            this.cmbIntervalos.Location = new System.Drawing.Point(54, 246);
             this.cmbIntervalos.Name = "cmbIntervalos";
             this.cmbIntervalos.Size = new System.Drawing.Size(73, 21);
             this.cmbIntervalos.TabIndex = 30;
@@ -395,7 +408,7 @@
             // btnGraficar
             // 
             this.btnGraficar.Enabled = false;
-            this.btnGraficar.Location = new System.Drawing.Point(108, 244);
+            this.btnGraficar.Location = new System.Drawing.Point(160, 273);
             this.btnGraficar.Name = "btnGraficar";
             this.btnGraficar.Size = new System.Drawing.Size(75, 23);
             this.btnGraficar.TabIndex = 31;
@@ -405,16 +418,16 @@
             // 
             // chart1
             // 
-            chartArea4.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.chart1.Legends.Add(legend4);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(716, 12);
             this.chart1.Name = "chart1";
-            series4.ChartArea = "ChartArea1";
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.chart1.Series.Add(series4);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
             this.chart1.Size = new System.Drawing.Size(570, 429);
             this.chart1.TabIndex = 32;
             this.chart1.Text = "chart1";
@@ -427,12 +440,97 @@
             this.colLimiteInf,
             this.colLimiteSup,
             this.colFrecObs,
-            this.colFrecEsp});
-            this.grillaFrecuencias.Location = new System.Drawing.Point(716, 459);
+            this.colFrecEsp,
+            this.c,
+            this.cAcumulado,
+            this.probabilidadObservada,
+            this.probabilidadEsperada,
+            this.probabilidadObservadaAcumulada,
+            this.probabilidadEsperadaAcumulada,
+            this.diferencia,
+            this.maxProbabilidad});
+            this.grillaFrecuencias.Location = new System.Drawing.Point(18, 461);
             this.grillaFrecuencias.Name = "grillaFrecuencias";
             this.grillaFrecuencias.RowHeadersVisible = false;
-            this.grillaFrecuencias.Size = new System.Drawing.Size(570, 150);
+            this.grillaFrecuencias.Size = new System.Drawing.Size(1268, 150);
             this.grillaFrecuencias.TabIndex = 33;
+            // 
+            // btnRandom
+            // 
+            this.btnRandom.Location = new System.Drawing.Point(259, 4);
+            this.btnRandom.Name = "btnRandom";
+            this.btnRandom.Size = new System.Drawing.Size(75, 23);
+            this.btnRandom.TabIndex = 34;
+            this.btnRandom.Text = "Random";
+            this.btnRandom.UseVisualStyleBackColor = true;
+            this.btnRandom.Click += new System.EventHandler(this.btnRandom_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.cmbConfianza);
+            this.groupBox1.Controls.Add(this.cmbPruebaBondad);
+            this.groupBox1.Controls.Add(this.btnGraficar);
+            this.groupBox1.Controls.Add(this.cmbIntervalos);
+            this.groupBox1.Location = new System.Drawing.Point(12, 77);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(241, 328);
+            this.groupBox1.TabIndex = 35;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Ingresar variables";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(15, 36);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(49, 13);
+            this.label10.TabIndex = 36;
+            this.label10.Text = "Cantidad";
+            // 
+            // txtCantidad
+            // 
+            this.txtCantidad.Location = new System.Drawing.Point(89, 36);
+            this.txtCantidad.Name = "txtCantidad";
+            this.txtCantidad.Size = new System.Drawing.Size(77, 20);
+            this.txtCantidad.TabIndex = 37;
+            this.txtCantidad.TextChanged += new System.EventHandler(this.txtCantidad_TextChanged);
+            // 
+            // lblGradosLibertad
+            // 
+            this.lblGradosLibertad.AutoSize = true;
+            this.lblGradosLibertad.Location = new System.Drawing.Point(15, 418);
+            this.lblGradosLibertad.Name = "lblGradosLibertad";
+            this.lblGradosLibertad.Size = new System.Drawing.Size(93, 13);
+            this.lblGradosLibertad.TabIndex = 38;
+            this.lblGradosLibertad.Text = "Grados de libertad";
+            // 
+            // cmbPruebaBondad
+            // 
+            this.cmbPruebaBondad.Enabled = false;
+            this.cmbPruebaBondad.FormattingEnabled = true;
+            this.cmbPruebaBondad.Items.AddRange(new object[] {
+            "Chi cuadrado",
+            "Kolmogorov"});
+            this.cmbPruebaBondad.Location = new System.Drawing.Point(6, 273);
+            this.cmbPruebaBondad.Name = "cmbPruebaBondad";
+            this.cmbPruebaBondad.Size = new System.Drawing.Size(121, 21);
+            this.cmbPruebaBondad.TabIndex = 39;
+            this.cmbPruebaBondad.Text = "Prueba de bondad";
+            this.cmbPruebaBondad.SelectedIndexChanged += new System.EventHandler(this.cmbPruebaBondad_SelectedIndexChanged);
+            // 
+            // cmbConfianza
+            // 
+            this.cmbConfianza.Enabled = false;
+            this.cmbConfianza.FormattingEnabled = true;
+            this.cmbConfianza.Items.AddRange(new object[] {
+            "Chi cuadrado",
+            "Kolmogorov"});
+            this.cmbConfianza.Location = new System.Drawing.Point(54, 300);
+            this.cmbConfianza.Name = "cmbConfianza";
+            this.cmbConfianza.Size = new System.Drawing.Size(73, 21);
+            this.cmbConfianza.TabIndex = 40;
+            this.cmbConfianza.Text = "Confianza";
+            this.cmbConfianza.SelectedIndexChanged += new System.EventHandler(this.cmbConfianza_SelectedIndexChanged);
             // 
             // colIntervalo
             // 
@@ -459,54 +557,76 @@
             this.colFrecEsp.HeaderText = "Frecuencia esperada";
             this.colFrecEsp.Name = "colFrecEsp";
             // 
-            // btnRandom
+            // c
             // 
-            this.btnRandom.Location = new System.Drawing.Point(259, 4);
-            this.btnRandom.Name = "btnRandom";
-            this.btnRandom.Size = new System.Drawing.Size(75, 23);
-            this.btnRandom.TabIndex = 34;
-            this.btnRandom.Text = "Random";
-            this.btnRandom.UseVisualStyleBackColor = true;
-            this.btnRandom.Click += new System.EventHandler(this.btnRandom_Click);
+            this.c.HeaderText = "C";
+            this.c.Name = "c";
             // 
-            // groupBox1
+            // cAcumulado
             // 
-            this.groupBox1.Controls.Add(this.btnGraficar);
-            this.groupBox1.Location = new System.Drawing.Point(12, 77);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 288);
-            this.groupBox1.TabIndex = 35;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Ingresar variables";
+            this.cAcumulado.HeaderText = "C(AC)";
+            this.cAcumulado.Name = "cAcumulado";
             // 
-            // label10
+            // probabilidadObservada
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(15, 36);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(49, 13);
-            this.label10.TabIndex = 36;
-            this.label10.Text = "Cantidad";
+            this.probabilidadObservada.HeaderText = "Po";
+            this.probabilidadObservada.Name = "probabilidadObservada";
             // 
-            // txtCantidad
+            // probabilidadEsperada
             // 
-            this.txtCantidad.Location = new System.Drawing.Point(89, 36);
-            this.txtCantidad.Name = "txtCantidad";
-            this.txtCantidad.Size = new System.Drawing.Size(77, 20);
-            this.txtCantidad.TabIndex = 37;
-            this.txtCantidad.TextChanged += new System.EventHandler(this.txtCantidad_TextChanged);
+            this.probabilidadEsperada.HeaderText = "Pe";
+            this.probabilidadEsperada.Name = "probabilidadEsperada";
+            // 
+            // probabilidadObservadaAcumulada
+            // 
+            this.probabilidadObservadaAcumulada.HeaderText = "Po(AC)";
+            this.probabilidadObservadaAcumulada.Name = "probabilidadObservadaAcumulada";
+            // 
+            // probabilidadEsperadaAcumulada
+            // 
+            this.probabilidadEsperadaAcumulada.HeaderText = "Pe(AC)";
+            this.probabilidadEsperadaAcumulada.Name = "probabilidadEsperadaAcumulada";
+            // 
+            // diferencia
+            // 
+            this.diferencia.HeaderText = "Diferencia";
+            this.diferencia.Name = "diferencia";
+            // 
+            // maxProbabilidad
+            // 
+            this.maxProbabilidad.HeaderText = "MAX";
+            this.maxProbabilidad.Name = "maxProbabilidad";
+            // 
+            // lblRechazo
+            // 
+            this.lblRechazo.AutoSize = true;
+            this.lblRechazo.Location = new System.Drawing.Point(15, 631);
+            this.lblRechazo.Name = "lblRechazo";
+            this.lblRechazo.Size = new System.Drawing.Size(0, 13);
+            this.lblRechazo.TabIndex = 39;
+            // 
+            // lblValorTabulado
+            // 
+            this.lblValorTabulado.AutoSize = true;
+            this.lblValorTabulado.Location = new System.Drawing.Point(15, 439);
+            this.lblValorTabulado.Name = "lblValorTabulado";
+            this.lblValorTabulado.Size = new System.Drawing.Size(75, 13);
+            this.lblValorTabulado.TabIndex = 40;
+            this.lblValorTabulado.Text = "Valor tabulado";
             // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1298, 749);
+            this.Controls.Add(this.lblValorTabulado);
+            this.Controls.Add(this.lblRechazo);
+            this.Controls.Add(this.lblGradosLibertad);
             this.Controls.Add(this.txtCantidad);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.btnRandom);
             this.Controls.Add(this.grillaFrecuencias);
             this.Controls.Add(this.chart1);
-            this.Controls.Add(this.cmbIntervalos);
             this.Controls.Add(this.lblSemillaInicial);
             this.Controls.Add(this.lblErrorPagina);
             this.Controls.Add(this.btnIr);
@@ -590,15 +710,28 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.DataGridView grillaFrecuencias;
+        private System.Windows.Forms.Button btnRandom;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtCantidad;
+        private System.Windows.Forms.ComboBox cmbPruebaBondad;
+        private System.Windows.Forms.Label lblGradosLibertad;
+        private System.Windows.Forms.ComboBox cmbConfianza;
         private System.Windows.Forms.DataGridViewTextBoxColumn colIntervalo;
         private System.Windows.Forms.DataGridViewTextBoxColumn colLimiteInf;
         private System.Windows.Forms.DataGridViewTextBoxColumn colLimiteSup;
         private System.Windows.Forms.DataGridViewTextBoxColumn colFrecObs;
         private System.Windows.Forms.DataGridViewTextBoxColumn colFrecEsp;
-        private System.Windows.Forms.Button btnRandom;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox txtCantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn c;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cAcumulado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn probabilidadObservada;
+        private System.Windows.Forms.DataGridViewTextBoxColumn probabilidadEsperada;
+        private System.Windows.Forms.DataGridViewTextBoxColumn probabilidadObservadaAcumulada;
+        private System.Windows.Forms.DataGridViewTextBoxColumn probabilidadEsperadaAcumulada;
+        private System.Windows.Forms.DataGridViewTextBoxColumn diferencia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn maxProbabilidad;
+        private System.Windows.Forms.Label lblRechazo;
+        private System.Windows.Forms.Label lblValorTabulado;
     }
 }
 

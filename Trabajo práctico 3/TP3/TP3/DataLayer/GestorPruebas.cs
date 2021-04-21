@@ -36,7 +36,7 @@ namespace TP3.DataLayer
         public GestorPruebas(GestorCalculos g, String distribucion)
         {
             this.gCalculos = g;
-            this.generarNuevosIntervalos(g);
+            this.generarNuevosIntervalos(gCalculos);
             this.distribucion = distribucion;
         }
 
@@ -63,6 +63,7 @@ namespace TP3.DataLayer
 
         public void actualizarIntervalos()
         {
+
             int valorIndexPruebas = 0;
             for (int i = 0; i < gCalculos.getCantidadIntervalos(); i++)
             {
