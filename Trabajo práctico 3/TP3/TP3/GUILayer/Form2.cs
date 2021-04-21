@@ -24,11 +24,8 @@ namespace TP3.GUILayer
         {
             InitializeComponent();
             this.gCalculos = gCalc;
-            //this.graficador = g;
             this.gPruebas = new GestorPruebas(gCalculos, distribucion);
             lblHipotesis.Text = "Los números poseen una distribución " + distribucion;
-
-            //graficador.llenarGrillaFrecuencias(dataGridFrecuencias);
 
         }
 
@@ -39,13 +36,13 @@ namespace TP3.GUILayer
 
         private void cmbConfianza_SelectedIndexChanged(object sender, EventArgs e)
         {
+            gPruebas.generarNuevosIntervalos(gCalculos);
+            gPruebas.actualizarIntervalos();
             btnAceptarBondad.Enabled = true;
         }
 
         private void btnAceptarBondad_Click(object sender, EventArgs e)
         {
-
-            gPruebas.actualizarIntervalos();
 
             if(this.Text == "Prueba CHI")
             {
@@ -62,6 +59,7 @@ namespace TP3.GUILayer
                 txtGradosLibertad.Text = gradosLibertad.ToString();
                 grbResultados.Visible = true;
                 btnAceptarBondad.Enabled = false;
+                
 
             }
             else

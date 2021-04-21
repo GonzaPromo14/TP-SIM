@@ -12,7 +12,6 @@ namespace TP3.DataLayer
 
         public int cantIntervalos = 10; //Pongo uno por defecto así grafica
         public int cantNuevaIntervalos = 0;
-        //int nuevoPrincipio = 0;
 
         public List<double[]> intervalos;// matriz de intervalos
         public double[] frecuenciasObservadas;
@@ -42,7 +41,7 @@ namespace TP3.DataLayer
 
         public void generarNuevosIntervalos(GestorCalculos g)
         {
-            
+            cantNuevaIntervalos = 0;
             cantIntervalos = g.cantIntervalos;
             intervalos = new List<double[]>();
 
@@ -61,8 +60,9 @@ namespace TP3.DataLayer
             KS = new double[cantIntervalos];
         }
 
-        public void actualizarIntervalos()
+        public void actualizarIntervalos()//calculo los estadísticos 
         {
+            cantNuevaIntervalos = 0;
             int valorIndexPruebas = 0;
             for (int i = 0; i < gCalculos.getCantidadIntervalos(); i++)
             {
