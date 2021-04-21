@@ -27,8 +27,6 @@ namespace TP3.DataLayer
         public int gradosLibertad;
         public double nivelConfianza = 0.05;
 
-        private double min;
-        private double max;
         GestorCalculos gCalculos;
         String distribucion;
 
@@ -167,108 +165,6 @@ namespace TP3.DataLayer
             }
         }
 
-        /*public void actualizarIntervalos2()
-        {
-            //agrupo de principio a fin
-            for(int i = 0; i < intervalos.Count; i++)
-            {
-                if (frecuenciasEsperadas[i] >= 5) break;
-
-                intervalos[i + 1][0] = intervalos[i][0];//li cambia, ls queda igual
-                intervalos.RemoveAt(i);
-
-                frecuenciasObservadas[i + 1] += frecuenciasObservadas[i];
-                probObservadas[i + 1] += probObservadas[i];
-
-                frecuenciasEsperadas[i + 1] += frecuenciasEsperadas[i];
-                probEsperadas[i + 1] += probEsperadas[i];
-
-                cantNuevaIntervalos--;
-                nuevoPrincipio++;
-                
-            }
-
-
-            //agrupo de fin a principio
-            for(int i = intervalos.Count-1; i >= 0; i--)
-            {
-                if (frecuenciasEsperadas[i] >= 5) break;
-
-                intervalos[i - 1][1] = intervalos[i][1];
-                intervalos.RemoveAt(i);
-
-                frecuenciasObservadas[i - 1] += frecuenciasObservadas[i];
-                probObservadas[i - 1] += probObservadas[i];
-                acumProbObservada[i - 1] = acumProbObservada[i];
-
-                frecuenciasEsperadas[i - 1] += frecuenciasEsperadas[i];
-                probEsperadas[i - 1] += probEsperadas[i];
-                acumProbEsperada[i - 1] = acumProbEsperada[i];
-
-                cantNuevaIntervalos--;
-            }
-
-            for(int i = 0; i < intervalos.Count; i++)
-            {
-                double calculo = Math.Pow(frecuenciasObservadas[i] - frecuenciasEsperadas[i], 2) / frecuenciasEsperadas[i];
-                c[i] = calculo;
-                cAcumulada[i] = (i == 0) ? calculo : cAcumulada[i - 1] + calculo;
-                i++;
-            }
-        }*/
-
-        public void llenarGrillaFrecuenciasCHI(DataGridView grillaChi)
-        {
-            grillaChi.Rows.Clear();
-            grillaChi.Columns.Add("c", "C");
-            grillaChi.Columns.Add("cAc", "C(Ac)");
-            
-            for (int i = 0; i < this.cantNuevaIntervalos; i++)
-            {
-                int intervalo = i + 1;
-                double li = Truncador.Truncar(this.intervalos[i][0]);
-                double ls = Truncador.Truncar(this.intervalos[i][1]);
-                double frecObservadas = Truncador.Truncar(this.frecuenciasObservadas[i]);
-                double probObservadas = Truncador.Truncar(this.probObservadas[i]);
-                double acumObservadas = Truncador.Truncar(this.acumProbObservada[i]);
-
-                double frecEsperadas = Truncador.Truncar(this.frecuenciasEsperadas[i]);
-                double probEsperadas = Truncador.Truncar(this.probEsperadas[i]);
-                double acumEsperadas = Truncador.Truncar(this.acumProbEsperada[i]);
-                double c = Truncador.Truncar(this.c[i]);
-                double cac = Truncador.Truncar(this.cAcumulada[i]);
-
-                grillaChi.Rows.Add(intervalo, li, ls, frecObservadas, probObservadas, acumObservadas, frecEsperadas, probEsperadas, acumEsperadas, c, cac);
-
-            }
-        }
-
-        public void llenarGrillaFrecuenciasKS(DataGridView grillaChi)
-        {
-            grillaChi.Rows.Clear();
-            grillaChi.Columns.Add("resta", "|P(fo)ac - P(fe)ac|");
-            grillaChi.Columns.Add("max_ks", "Max ks");
-
-            for (int i = 0; i < this.cantNuevaIntervalos; i++)
-            {
-                int intervalo = i + 1;
-                double li = Truncador.Truncar(this.intervalos[i][0]);
-                double ls = Truncador.Truncar(this.intervalos[i][1]);
-                double frecObservadas = Truncador.Truncar(this.frecuenciasObservadas[i]);
-                double probObservadas = Truncador.Truncar(this.probObservadas[i]);
-                double acumObservadas = Truncador.Truncar(this.acumProbObservada[i]);
-
-                double frecEsperadas = Truncador.Truncar(this.frecuenciasEsperadas[i]);
-                double probEsperadas = Truncador.Truncar(this.probEsperadas[i]);
-                double acumEsperadas = Truncador.Truncar(this.acumProbEsperada[i]);
-                double resta_ks = Truncador.Truncar(this.restaKS[i]);
-                double maxKS = Truncador.Truncar(this.KS[i]);
-
-                grillaChi.Rows.Add(intervalo, li, ls, frecObservadas, probObservadas, acumObservadas, frecEsperadas, probEsperadas, acumEsperadas, resta_ks, maxKS);
-
-            }
-        }
-
         public int calcularGradosLibertad()
         {
             switch (distribucion)
@@ -285,18 +181,7 @@ namespace TP3.DataLayer
             }
             return this.gradosLibertad;
         }
-
-        public void calcularEstadisticoCHI()
-        {
-
-        }
-
-        public void calcularEstadisticoKS()
-        {
-
-        }
-
-        
+       
 
     }
 }

@@ -14,7 +14,6 @@ namespace TP3.GUILayer
 {
     public partial class Form2 : Form
     {
-        //GestorGraficos graficador;
         GestorCalculos gCalculos;
         GestorPruebas gPruebas;
         Dictionary<double, double> confianzaKS = new Dictionary<double, double>();
@@ -39,6 +38,16 @@ namespace TP3.GUILayer
             gPruebas.generarNuevosIntervalos(gCalculos);
             gPruebas.actualizarIntervalos();
             btnAceptarBondad.Enabled = true;
+
+            try
+            {
+                dataGridFrecuencias.Columns.Remove("c");
+                dataGridFrecuencias.Columns.Remove("cAc");
+                dataGridFrecuencias.Columns.Remove("reta");
+                dataGridFrecuencias.Columns.Remove("max_ks");
+            }
+            catch (System.ArgumentException ex) { }
+
         }
 
         private void btnAceptarBondad_Click(object sender, EventArgs e)
@@ -47,7 +56,8 @@ namespace TP3.GUILayer
 
             if(this.Text == "Prueba CHI")
             {
-                gPruebas.llenarGrillaFrecuenciasCHI(dataGridFrecuencias);
+                //gPruebas.llenarGrillaFrecuenciasCHI(dataGridFrecuencias);
+                llenarGrillaFrecuenciasCHI(dataGridFrecuencias);
                 double gradosLibertad = gPruebas.calcularGradosLibertad();
                 double valorCalculado = gPruebas.cAcumulada[gPruebas.cantNuevaIntervalos - 1];
                 double confianza = double.Parse(cmbConfianza.Text);
@@ -60,12 +70,12 @@ namespace TP3.GUILayer
                 txtGradosLibertad.Text = gradosLibertad.ToString();
                 grbResultados.Visible = true;
                 btnAceptarBondad.Enabled = false;
-                
 
             }
             else
             {
-                gPruebas.llenarGrillaFrecuenciasKS(dataGridFrecuencias);
+                //gPruebas.llenarGrillaFrecuenciasKS(dataGridFrecuencias);
+                llenarGrillaFrecuenciasKS(dataGridFrecuencias);
                 double gradosLibertad = gCalculos.getTamanioMuestra();
                 double valorCalculado = gPruebas.KS[gPruebas.cantNuevaIntervalos - 1];
                 double confianza = double.Parse(cmbConfianza.Text);
@@ -78,6 +88,7 @@ namespace TP3.GUILayer
                 txtGradosLibertad.Text = gradosLibertad.ToString();
                 grbResultados.Visible = true;
                 btnAceptarBondad.Enabled = false;
+
             }
 
         }
@@ -106,14 +117,57 @@ namespace TP3.GUILayer
         }
 
 
-        private void groupBox1_Enter(object sender, EventArgs e)
+        public void llenarGrillaFrecuenciasCHI(DataGridView grillaChi)
         {
+            grillaChi.Rows.Clear();
+            grillaChi.Columns.Add("c", "C");
+            grillaChi.Columns.Add("cAc", "C(Ac)");
 
+            for (int i = 0; i < gPruebas.cantNuevaIntervalos; i++)
+            {
+                int intervalo = i + 1;
+                double li = Truncador.Truncar(gPruebas.intervalos[i][0]);
+                double ls = Truncador.Truncar(gPruebas.intervalos[i][1]);
+                double frecObservadas = Truncador.Truncar(gPruebas.frecuenciasObservadas[i]);
+                double probObservadas = Truncador.Truncar(gPruebas.probObservadas[i]);
+                double acumObservadas = Truncador.Truncar(gPruebas.acumProbObservada[i]);
+
+                double frecEsperadas = Truncador.Truncar(gPruebas.frecuenciasEsperadas[i]);
+                double probEsperadas = Truncador.Truncar(gPruebas.probEsperadas[i]);
+                double acumEsperadas = Truncador.Truncar(gPruebas.acumProbEsperada[i]);
+                double c = Truncador.Truncar(gPruebas.c[i]);
+                double cac = Truncador.Truncar(gPruebas.cAcumulada[i]);
+
+                grillaChi.Rows.Add(intervalo, li, ls, frecObservadas, probObservadas, acumObservadas, frecEsperadas, probEsperadas, acumEsperadas, c, cac);
+
+            }
         }
 
-        private void grbResultados_Enter(object sender, EventArgs e)
+        public void llenarGrillaFrecuenciasKS(DataGridView grillaChi)
         {
+            grillaChi.Rows.Clear();
+            grillaChi.Columns.Add("resta", "|P(fo)ac - P(fe)ac|");
+            grillaChi.Columns.Add("max_ks", "Max ks");
 
+            for (int i = 0; i < gPruebas.cantNuevaIntervalos; i++)
+            {
+                int intervalo = i + 1;
+                double li = Truncador.Truncar(gPruebas.intervalos[i][0]);
+                double ls = Truncador.Truncar(gPruebas.intervalos[i][1]);
+                double frecObservadas = Truncador.Truncar(gPruebas.frecuenciasObservadas[i]);
+                double probObservadas = Truncador.Truncar(gPruebas.probObservadas[i]);
+                double acumObservadas = Truncador.Truncar(gPruebas.acumProbObservada[i]);
+
+                double frecEsperadas = Truncador.Truncar(gPruebas.frecuenciasEsperadas[i]);
+                double probEsperadas = Truncador.Truncar(gPruebas.probEsperadas[i]);
+                double acumEsperadas = Truncador.Truncar(gPruebas.acumProbEsperada[i]);
+                double resta_ks = Truncador.Truncar(gPruebas.restaKS[i]);
+                double maxKS = Truncador.Truncar(gPruebas.KS[i]);
+
+                grillaChi.Rows.Add(intervalo, li, ls, frecObservadas, probObservadas, acumObservadas, frecEsperadas, probEsperadas, acumEsperadas, resta_ks, maxKS);
+
+            }
         }
+
     }
 }

@@ -131,7 +131,6 @@ namespace TP3.GUILayer
             this.groupBox1.TabIndex = 60;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Hipótesis";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // lblHipotesis
             // 
@@ -215,7 +214,6 @@ namespace TP3.GUILayer
             this.grbResultados.TabIndex = 64;
             this.grbResultados.TabStop = false;
             this.grbResultados.Visible = false;
-            this.grbResultados.Enter += new System.EventHandler(this.grbResultados_Enter);
             // 
             // Num
             // 
