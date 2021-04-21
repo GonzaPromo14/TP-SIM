@@ -373,17 +373,18 @@ namespace TP1_C
         private void cmbIntervalos_SelectedIndexChanged(object sender, EventArgs e)
         {
             cmbPruebaBondad.Enabled = true;
-            string i = cmbIntervalos.SelectedItem.ToString();
-            gGraficos.setCantIntervalos(Convert.ToInt32(i));
-            gGraficos.setIntervMedio();
-            
-            gGraficos.calcularPasos();
-            gGraficos.calcularIntervalos();
-            gGraficos.calcularIntervalosGrafico();
+           
         }
 
         private void btnGraficar_Click(object sender, EventArgs e)
         {
+            string i = cmbIntervalos.SelectedItem.ToString();
+            gGraficos.setCantIntervalos(Convert.ToInt32(i));
+            gGraficos.setIntervMedio();
+
+            gGraficos.calcularPasos();
+            gGraficos.calcularIntervalos();
+            gGraficos.calcularIntervalosGrafico();
             gGraficos.graficar(chart1);
             gGraficos.llenarGrillaFrecuencias(grillaFrecuencias);
             if (cmbPruebaBondad.Text == "Chi cuadrado")
@@ -392,6 +393,24 @@ namespace TP1_C
                 lblGradosLibertad.Text = "Grados de libertad: " + gradosLibertad.ToString();
                 double intervaloConfianza = ChiSquared.InvCDF(gradosLibertad, double.Parse(cmbConfianza.Text));
                 double comparacion = gGraficos.cAcum[gGraficos.cantIntervalos - 1];
+                lblValorTabulado.Text = "Valor tabulado: " + intervaloConfianza.ToString();
+                if (comparacion < intervaloConfianza)
+                {
+                    lblRechazo.Text = "No se rechaza la hipótesis";
+                    lblRechazo.ForeColor = Color.Green;
+                }
+                else
+                {
+                    lblRechazo.Text = "Se rechaza la hipótesis";
+                    lblRechazo.ForeColor = Color.Red;
+                }
+            }
+            else
+            {
+                double gradosLibertad = int.Parse(txtCantidad.Text);
+                lblGradosLibertad.Text = "Grados de libertad: " + gradosLibertad.ToString();
+                double intervaloConfianza = confianzaKS[double.Parse(cmbConfianza.Text)] / Math.Sqrt(int.Parse(txtCantidad.Text));
+                double comparacion = gGraficos.maxEstadistico[gGraficos.cantIntervalos - 1];
                 lblValorTabulado.Text = "Valor tabulado: " + intervaloConfianza.ToString();
                 if (comparacion < intervaloConfianza)
                 {
