@@ -42,8 +42,20 @@ namespace TP3.GUILayer
             try
             {
                 dataGridFrecuencias.Columns.Remove("c");
+            }
+            catch (System.ArgumentException ex) { }
+            try
+            {
                 dataGridFrecuencias.Columns.Remove("cAc");
-                dataGridFrecuencias.Columns.Remove("reta");
+            }
+            catch (System.ArgumentException ex) { }
+            try
+            {
+                dataGridFrecuencias.Columns.Remove("resta");
+            }
+            catch (System.ArgumentException ex) { }
+            try
+            {
                 dataGridFrecuencias.Columns.Remove("max_ks");
             }
             catch (System.ArgumentException ex) { }
