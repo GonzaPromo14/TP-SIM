@@ -16,7 +16,7 @@ namespace TP1_C
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmEleccionPunto());
+            Application.Run(new frmPrincipal());
         }
     }
 }
