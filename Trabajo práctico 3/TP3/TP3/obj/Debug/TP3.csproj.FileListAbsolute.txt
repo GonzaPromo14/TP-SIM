@@ -1,0 +1,59 @@
+D:\UTN - 2021\SIM\Programas\TP3\TP3\bin\Debug\TP3.exe.config
+D:\UTN - 2021\SIM\Programas\TP3\TP3\bin\Debug\TP3.exe
+D:\UTN - 2021\SIM\Programas\TP3\TP3\bin\Debug\TP3.pdb
+D:\UTN - 2021\SIM\Programas\TP3\TP3\obj\Debug\TP3.csprojAssemblyReference.cache
+D:\UTN - 2021\SIM\Programas\TP3\TP3\obj\Debug\TP3.Form1.resources
+D:\UTN - 2021\SIM\Programas\TP3\TP3\obj\Debug\TP3.Properties.Resources.resources
+D:\UTN - 2021\SIM\Programas\TP3\TP3\obj\Debug\TP3.csproj.GenerateResource.cache
+D:\UTN - 2021\SIM\Programas\TP3\TP3\obj\Debug\TP3.csproj.CoreCompileInputs.cache
+D:\UTN - 2021\SIM\Programas\TP3\TP3\obj\Debug\TP3.exe
+D:\UTN - 2021\SIM\Programas\TP3\TP3\obj\Debug\TP3.pdb
+D:\UTN - 2021\SIM\Programas\TP3\TP3\bin\Debug\Microsoft.VisualBasic.PowerPacks.dll
+D:\UTN - 2021\SIM\Programas\TP3\TP3\bin\Debug\Microsoft.VisualBasic.PowerPacks.xml
+D:\UTN - 2021\SIM\Programas\TP3\TP3\obj\Debug\TP3.csproj.CopyComplete
+D:\UTN\2021\SIM\TPs\TP-SIM\TP-SIM\Trabajo práctico 3\TP3\TP3\bin\Debug\TP3.exe.config
+D:\UTN\2021\SIM\TPs\TP-SIM\TP-SIM\Trabajo práctico 3\TP3\TP3\bin\Debug\TP3.exe
+D:\UTN\2021\SIM\TPs\TP-SIM\TP-SIM\Trabajo práctico 3\TP3\TP3\bin\Debug\TP3.pdb
+D:\UTN\2021\SIM\TPs\TP-SIM\TP-SIM\Trabajo práctico 3\TP3\TP3\bin\Debug\MathNet.Numerics.dll
+D:\UTN\2021\SIM\TPs\TP-SIM\TP-SIM\Trabajo práctico 3\TP3\TP3\bin\Debug\MathNet.Numerics.xml
+D:\UTN\2021\SIM\TPs\TP-SIM\TP-SIM\Trabajo práctico 3\TP3\TP3\bin\Debug\Microsoft.VisualBasic.PowerPacks.xml
+D:\UTN\2021\SIM\TPs\TP-SIM\TP-SIM\Trabajo práctico 3\TP3\TP3\obj\Debug\TP3.csprojAssemblyReference.cache
+D:\UTN\2021\SIM\TPs\TP-SIM\TP-SIM\Trabajo práctico 3\TP3\TP3\obj\Debug\TP3.Form1.resources
+D:\UTN\2021\SIM\TPs\TP-SIM\TP-SIM\Trabajo práctico 3\TP3\TP3\obj\Debug\TP3.Properties.Resources.resources
+D:\UTN\2021\SIM\TPs\TP-SIM\TP-SIM\Trabajo práctico 3\TP3\TP3\obj\Debug\TP3.csproj.GenerateResource.cache
+D:\UTN\2021\SIM\TPs\TP-SIM\TP-SIM\Trabajo práctico 3\TP3\TP3\obj\Debug\TP3.csproj.CoreCompileInputs.cache
+D:\UTN\2021\SIM\TPs\TP-SIM\TP-SIM\Trabajo práctico 3\TP3\TP3\obj\Debug\TP3.csproj.CopyComplete
+D:\UTN\2021\SIM\TPs\TP-SIM\TP-SIM\Trabajo práctico 3\TP3\TP3\obj\Debug\TP3.exe
+D:\UTN\2021\SIM\TPs\TP-SIM\TP-SIM\Trabajo práctico 3\TP3\TP3\obj\Debug\TP3.pdb
+D:\UTN\2021\SIM\TPs\TP-SIM\TP-SIM\Trabajo práctico 3\TP3\TP3\obj\Debug\TP3.GUILayer.Form2.resources
+D:\UTN - 2021\SIM\Programas\TP-SIM\Trabajo práctico 3\TP3\TP3\bin\Debug\TP3.exe.config
+D:\UTN - 2021\SIM\Programas\TP-SIM\Trabajo práctico 3\TP3\TP3\bin\Debug\TP3.exe
+D:\UTN - 2021\SIM\Programas\TP-SIM\Trabajo práctico 3\TP3\TP3\bin\Debug\TP3.pdb
+D:\UTN - 2021\SIM\Programas\TP-SIM\Trabajo práctico 3\TP3\TP3\bin\Debug\MathNet.Numerics.dll
+D:\UTN - 2021\SIM\Programas\TP-SIM\Trabajo práctico 3\TP3\TP3\bin\Debug\Microsoft.VisualBasic.PowerPacks.dll
+D:\UTN - 2021\SIM\Programas\TP-SIM\Trabajo práctico 3\TP3\TP3\bin\Debug\MathNet.Numerics.xml
+D:\UTN - 2021\SIM\Programas\TP-SIM\Trabajo práctico 3\TP3\TP3\bin\Debug\Microsoft.VisualBasic.PowerPacks.xml
+D:\UTN - 2021\SIM\Programas\TP-SIM\Trabajo práctico 3\TP3\TP3\obj\Debug\TP3.csprojAssemblyReference.cache
+D:\UTN - 2021\SIM\Programas\TP-SIM\Trabajo práctico 3\TP3\TP3\obj\Debug\TP3.Form1.resources
+D:\UTN - 2021\SIM\Programas\TP-SIM\Trabajo práctico 3\TP3\TP3\obj\Debug\TP3.GUILayer.Form2.resources
+D:\UTN - 2021\SIM\Programas\TP-SIM\Trabajo práctico 3\TP3\TP3\obj\Debug\TP3.Properties.Resources.resources
+D:\UTN - 2021\SIM\Programas\TP-SIM\Trabajo práctico 3\TP3\TP3\obj\Debug\TP3.csproj.GenerateResource.cache
+D:\UTN - 2021\SIM\Programas\TP-SIM\Trabajo práctico 3\TP3\TP3\obj\Debug\TP3.csproj.CoreCompileInputs.cache
+D:\UTN - 2021\SIM\Programas\TP-SIM\Trabajo práctico 3\TP3\TP3\obj\Debug\TP3.csproj.CopyComplete
+D:\UTN - 2021\SIM\Programas\TP-SIM\Trabajo práctico 3\TP3\TP3\obj\Debug\TP3.exe
+D:\UTN - 2021\SIM\Programas\TP-SIM\Trabajo práctico 3\TP3\TP3\obj\Debug\TP3.pdb
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\Trabajo Practico 01\TP-SIM-ramaPoissonRangos\Trabajo práctico 3\TP3\TP3\bin\Debug\TP3.exe.config
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\Trabajo Practico 01\TP-SIM-ramaPoissonRangos\Trabajo práctico 3\TP3\TP3\bin\Debug\TP3.exe
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\Trabajo Practico 01\TP-SIM-ramaPoissonRangos\Trabajo práctico 3\TP3\TP3\bin\Debug\TP3.pdb
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\Trabajo Practico 01\TP-SIM-ramaPoissonRangos\Trabajo práctico 3\TP3\TP3\bin\Debug\MathNet.Numerics.dll
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\Trabajo Practico 01\TP-SIM-ramaPoissonRangos\Trabajo práctico 3\TP3\TP3\bin\Debug\MathNet.Numerics.xml
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\Trabajo Practico 01\TP-SIM-ramaPoissonRangos\Trabajo práctico 3\TP3\TP3\bin\Debug\Microsoft.VisualBasic.PowerPacks.xml
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\Trabajo Practico 01\TP-SIM-ramaPoissonRangos\Trabajo práctico 3\TP3\TP3\obj\Debug\TP3.csprojAssemblyReference.cache
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\Trabajo Practico 01\TP-SIM-ramaPoissonRangos\Trabajo práctico 3\TP3\TP3\obj\Debug\TP3.Form1.resources
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\Trabajo Practico 01\TP-SIM-ramaPoissonRangos\Trabajo práctico 3\TP3\TP3\obj\Debug\TP3.GUILayer.Form2.resources
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\Trabajo Practico 01\TP-SIM-ramaPoissonRangos\Trabajo práctico 3\TP3\TP3\obj\Debug\TP3.Properties.Resources.resources
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\Trabajo Practico 01\TP-SIM-ramaPoissonRangos\Trabajo práctico 3\TP3\TP3\obj\Debug\TP3.csproj.GenerateResource.cache
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\Trabajo Practico 01\TP-SIM-ramaPoissonRangos\Trabajo práctico 3\TP3\TP3\obj\Debug\TP3.csproj.CoreCompileInputs.cache
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\Trabajo Practico 01\TP-SIM-ramaPoissonRangos\Trabajo práctico 3\TP3\TP3\obj\Debug\TP3.csproj.CopyComplete
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\Trabajo Practico 01\TP-SIM-ramaPoissonRangos\Trabajo práctico 3\TP3\TP3\obj\Debug\TP3.exe
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\Trabajo Practico 01\TP-SIM-ramaPoissonRangos\Trabajo práctico 3\TP3\TP3\obj\Debug\TP3.pdb
