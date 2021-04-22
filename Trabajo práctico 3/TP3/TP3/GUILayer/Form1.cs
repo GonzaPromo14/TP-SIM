@@ -235,16 +235,10 @@ namespace TP3
         {
             try
             {   
-                if(double.Parse(txtA.Text) > 0.00)
-                {
-                    gCalculos.setA(double.Parse(txtA.Text));
+              
+                gCalculos.setA(double.Parse(txtA.Text));
                 btnGenerar.Enabled = true;
-                }
-                else
-                {
-                    MessageBox.Show("Ingrese numero positivo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    btnGenerar.Enabled = false;
-                }
+                
                
             }
             catch (FormatException)
@@ -264,16 +258,10 @@ namespace TP3
         {
             try
             {
-                if(double.Parse(txtB.Text) > 0.00)
-                {
-                    gCalculos.setB(double.Parse(txtB.Text));
+                
+                gCalculos.setB(double.Parse(txtB.Text));
                 btnGenerar.Enabled = true;
-                }
-                else
-                {
-                    MessageBox.Show("Ingrese numero positivo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    btnGenerar.Enabled = false;
-                }
+                
             }
             catch (FormatException)
             {
@@ -342,16 +330,10 @@ namespace TP3
         {
             try
             {
-                if(double.Parse(txtMedia.Text) > 0)
-                {
+                
                     gCalculos.setMedia(double.Parse(txtMedia.Text));
                     btnGenerar.Enabled = true;
-                }
-                else
-                {
-                    MessageBox.Show("Ingrese numero positivo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    btnGenerar.Enabled = false;
-                }
+                
             }
             catch (FormatException)
             {
@@ -367,16 +349,9 @@ namespace TP3
         {
             try
             {
-                 if(double.Parse(txtDesvEstandar.Text) > 0)
-                {
-                    gCalculos.setDesviacion(double.Parse(txtDesvEstandar.Text));
-                    btnGenerar.Enabled = true;
-                }
-                else
-                {
-                    MessageBox.Show("Ingrese numero positivo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    btnGenerar.Enabled = false;
-                }
+                 
+                gCalculos.setDesviacion(double.Parse(txtDesvEstandar.Text));
+                btnGenerar.Enabled = true;
                 
             }
             catch (FormatException)

@@ -58,3 +58,31 @@ C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\Trabajo Practico 01\TP
 C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\Trabajo Practico 01\TP-SIM-ramaPoissonRangos\TP1-C\TP1-C\obj\Debug\TP1-C.csproj.CopyComplete
 C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\Trabajo Practico 01\TP-SIM-ramaPoissonRangos\TP1-C\TP1-C\obj\Debug\TP1-C.exe
 C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\Trabajo Practico 01\TP-SIM-ramaPoissonRangos\TP1-C\TP1-C\obj\Debug\TP1-C.pdb
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\simon\TP1-C\TP1-C\bin\Debug\TP1-C.exe.config
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\simon\TP1-C\TP1-C\bin\Debug\TP1-C.exe
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\simon\TP1-C\TP1-C\bin\Debug\TP1-C.pdb
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\simon\TP1-C\TP1-C\bin\Debug\MathNet.Numerics.dll
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\simon\TP1-C\TP1-C\bin\Debug\MathNet.Numerics.xml
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\simon\TP1-C\TP1-C\obj\Debug\TP1-C.csprojAssemblyReference.cache
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\simon\TP1-C\TP1-C\obj\Debug\TP1_C.frmEleccionPunto.resources
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\simon\TP1-C\TP1-C\obj\Debug\TP1_C.frmPrincipal.resources
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\simon\TP1-C\TP1-C\obj\Debug\TP1_C.Properties.Resources.resources
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\simon\TP1-C\TP1-C\obj\Debug\TP1-C.csproj.GenerateResource.cache
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\simon\TP1-C\TP1-C\obj\Debug\TP1-C.csproj.CoreCompileInputs.cache
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\simon\TP1-C\TP1-C\obj\Debug\TP1-C.csproj.CopyComplete
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\simon\TP1-C\TP1-C\obj\Debug\TP1-C.exe
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\simon\TP1-C\TP1-C\obj\Debug\TP1-C.pdb
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\Trabajo Practico 01 y 03\TP1-C\TP1-C\bin\Debug\TP1-C.exe.config
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\Trabajo Practico 01 y 03\TP1-C\TP1-C\bin\Debug\TP1-C.exe
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\Trabajo Practico 01 y 03\TP1-C\TP1-C\bin\Debug\TP1-C.pdb
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\Trabajo Practico 01 y 03\TP1-C\TP1-C\bin\Debug\MathNet.Numerics.dll
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\Trabajo Practico 01 y 03\TP1-C\TP1-C\bin\Debug\MathNet.Numerics.xml
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\Trabajo Practico 01 y 03\TP1-C\TP1-C\obj\Debug\TP1-C.csprojAssemblyReference.cache
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\Trabajo Practico 01 y 03\TP1-C\TP1-C\obj\Debug\TP1_C.frmEleccionPunto.resources
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\Trabajo Practico 01 y 03\TP1-C\TP1-C\obj\Debug\TP1_C.frmPrincipal.resources
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\Trabajo Practico 01 y 03\TP1-C\TP1-C\obj\Debug\TP1_C.Properties.Resources.resources
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\Trabajo Practico 01 y 03\TP1-C\TP1-C\obj\Debug\TP1-C.csproj.GenerateResource.cache
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\Trabajo Practico 01 y 03\TP1-C\TP1-C\obj\Debug\TP1-C.csproj.CoreCompileInputs.cache
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\Trabajo Practico 01 y 03\TP1-C\TP1-C\obj\Debug\TP1-C.csproj.CopyComplete
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\Trabajo Practico 01 y 03\TP1-C\TP1-C\obj\Debug\TP1-C.exe
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\Trabajo Practico 01 y 03\TP1-C\TP1-C\obj\Debug\TP1-C.pdb

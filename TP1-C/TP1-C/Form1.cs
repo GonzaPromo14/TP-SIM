@@ -41,7 +41,7 @@ namespace TP1_C
         {
             int validacionEntero;
             bool esNumero;
-
+            
             esNumero = Int32.TryParse(txtCantidad.Text, out validacionEntero);
             if (!esNumero | (0 > validacionEntero))
             {
@@ -52,6 +52,11 @@ namespace TP1_C
             if (!esNumero  | (0 > validacionEntero))
             {
                 lblError.Text = "El valor Xo es incorrecto";
+                return false;
+            }
+            if( !(metodoElegido.isLineal()) && validacionEntero % 2 == 0 )
+            {
+                lblError.Text = "El valor Xo no es impar";
                 return false;
             }
             esNumero = Int32.TryParse(txtC.Text, out validacionEntero);
@@ -72,9 +77,8 @@ namespace TP1_C
                 lblError.Text = "El valor M es incorrecto";
                 return false;
             }
-                       
-            
-            lblError.Text = "";
+
+            lblError.Text = " ";
             return true;
 
         }
@@ -245,6 +249,41 @@ namespace TP1_C
             else
             {
                 txtM.Text = "";
+            }
+        }
+
+        private void txtC_TextChanged(object sender, EventArgs e)
+        {
+            
+
+            if (txtC.Text != "")
+            {
+                int validacionEnteroM;
+                bool esNumeroM;
+                esNumeroM = Int32.TryParse(txtM.Text, out validacionEnteroM);
+
+                int validacionEnteroC;
+                bool esNumeroC;
+                esNumeroC = Int32.TryParse(txtC.Text, out validacionEnteroC);
+
+                if ( metodoElegido.isLineal() && esNumeroM && esNumeroC)
+                {
+                   
+                    if( (validacionEnteroM % 2 == 0) && (validacionEnteroC % 2 == 0) )
+                    {
+                        lblError.Text = "C y M no son primos";
+                    }
+                    else
+                    {
+                        lblError.Text = " ";
+                    }                   
+                    
+
+                }
+            }
+            else
+            {
+                txtC.Text = "";
             }
         }
 
@@ -500,5 +539,7 @@ namespace TP1_C
             btnGraficar.Enabled = true;
 
         }
+
+       
     }
 }

@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\TP3"
+    "\\TP3",
+    "\\TP3\\GUILayer"
   ],
-  "SelectedNode": "\\TP3.sln",
+  "SelectedNode": "\\TP3\\GUILayer\\Form1.cs",
   "PreviewInSolutionExplorer": false
 }

@@ -70,13 +70,6 @@
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.grillaFrecuencias = new System.Windows.Forms.DataGridView();
-            this.btnRandom = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.txtCantidad = new System.Windows.Forms.TextBox();
-            this.lblGradosLibertad = new System.Windows.Forms.Label();
-            this.cmbPruebaBondad = new System.Windows.Forms.ComboBox();
-            this.cmbConfianza = new System.Windows.Forms.ComboBox();
             this.colIntervalo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colLimiteInf = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colLimiteSup = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -90,6 +83,13 @@
             this.probabilidadEsperadaAcumulada = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.diferencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.maxProbabilidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnRandom = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmbConfianza = new System.Windows.Forms.ComboBox();
+            this.cmbPruebaBondad = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtCantidad = new System.Windows.Forms.TextBox();
+            this.lblGradosLibertad = new System.Windows.Forms.Label();
             this.lblRechazo = new System.Windows.Forms.Label();
             this.lblValorTabulado = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grdNumeros)).BeginInit();
@@ -169,6 +169,7 @@
             this.txtC.Name = "txtC";
             this.txtC.Size = new System.Drawing.Size(100, 20);
             this.txtC.TabIndex = 8;
+            this.txtC.TextChanged += new System.EventHandler(this.txtC_TextChanged);
             // 
             // btnGenerar
             // 
@@ -455,82 +456,6 @@
             this.grillaFrecuencias.Size = new System.Drawing.Size(1268, 150);
             this.grillaFrecuencias.TabIndex = 33;
             // 
-            // btnRandom
-            // 
-            this.btnRandom.Location = new System.Drawing.Point(259, 4);
-            this.btnRandom.Name = "btnRandom";
-            this.btnRandom.Size = new System.Drawing.Size(75, 23);
-            this.btnRandom.TabIndex = 34;
-            this.btnRandom.Text = "Random";
-            this.btnRandom.UseVisualStyleBackColor = true;
-            this.btnRandom.Click += new System.EventHandler(this.btnRandom_Click);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.cmbConfianza);
-            this.groupBox1.Controls.Add(this.cmbPruebaBondad);
-            this.groupBox1.Controls.Add(this.btnGraficar);
-            this.groupBox1.Controls.Add(this.cmbIntervalos);
-            this.groupBox1.Location = new System.Drawing.Point(12, 77);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(241, 328);
-            this.groupBox1.TabIndex = 35;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Ingresar variables";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(15, 36);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(49, 13);
-            this.label10.TabIndex = 36;
-            this.label10.Text = "Cantidad";
-            // 
-            // txtCantidad
-            // 
-            this.txtCantidad.Location = new System.Drawing.Point(89, 36);
-            this.txtCantidad.Name = "txtCantidad";
-            this.txtCantidad.Size = new System.Drawing.Size(77, 20);
-            this.txtCantidad.TabIndex = 37;
-            // 
-            // lblGradosLibertad
-            // 
-            this.lblGradosLibertad.AutoSize = true;
-            this.lblGradosLibertad.Location = new System.Drawing.Point(15, 418);
-            this.lblGradosLibertad.Name = "lblGradosLibertad";
-            this.lblGradosLibertad.Size = new System.Drawing.Size(93, 13);
-            this.lblGradosLibertad.TabIndex = 38;
-            this.lblGradosLibertad.Text = "Grados de libertad";
-            // 
-            // cmbPruebaBondad
-            // 
-            this.cmbPruebaBondad.Enabled = false;
-            this.cmbPruebaBondad.FormattingEnabled = true;
-            this.cmbPruebaBondad.Items.AddRange(new object[] {
-            "Chi cuadrado",
-            "Kolmogorov"});
-            this.cmbPruebaBondad.Location = new System.Drawing.Point(6, 273);
-            this.cmbPruebaBondad.Name = "cmbPruebaBondad";
-            this.cmbPruebaBondad.Size = new System.Drawing.Size(121, 21);
-            this.cmbPruebaBondad.TabIndex = 39;
-            this.cmbPruebaBondad.Text = "Prueba de bondad";
-            this.cmbPruebaBondad.SelectedIndexChanged += new System.EventHandler(this.cmbPruebaBondad_SelectedIndexChanged);
-            // 
-            // cmbConfianza
-            // 
-            this.cmbConfianza.Enabled = false;
-            this.cmbConfianza.FormattingEnabled = true;
-            this.cmbConfianza.Items.AddRange(new object[] {
-            "Chi cuadrado",
-            "Kolmogorov"});
-            this.cmbConfianza.Location = new System.Drawing.Point(54, 300);
-            this.cmbConfianza.Name = "cmbConfianza";
-            this.cmbConfianza.Size = new System.Drawing.Size(73, 21);
-            this.cmbConfianza.TabIndex = 40;
-            this.cmbConfianza.Text = "Confianza";
-            this.cmbConfianza.SelectedIndexChanged += new System.EventHandler(this.cmbConfianza_SelectedIndexChanged);
-            // 
             // colIntervalo
             // 
             this.colIntervalo.HeaderText = "Intervalo";
@@ -595,6 +520,82 @@
             // 
             this.maxProbabilidad.HeaderText = "MAX";
             this.maxProbabilidad.Name = "maxProbabilidad";
+            // 
+            // btnRandom
+            // 
+            this.btnRandom.Location = new System.Drawing.Point(259, 4);
+            this.btnRandom.Name = "btnRandom";
+            this.btnRandom.Size = new System.Drawing.Size(75, 23);
+            this.btnRandom.TabIndex = 34;
+            this.btnRandom.Text = "Random";
+            this.btnRandom.UseVisualStyleBackColor = true;
+            this.btnRandom.Click += new System.EventHandler(this.btnRandom_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.cmbConfianza);
+            this.groupBox1.Controls.Add(this.cmbPruebaBondad);
+            this.groupBox1.Controls.Add(this.btnGraficar);
+            this.groupBox1.Controls.Add(this.cmbIntervalos);
+            this.groupBox1.Location = new System.Drawing.Point(12, 77);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(241, 328);
+            this.groupBox1.TabIndex = 35;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Ingresar variables";
+            // 
+            // cmbConfianza
+            // 
+            this.cmbConfianza.Enabled = false;
+            this.cmbConfianza.FormattingEnabled = true;
+            this.cmbConfianza.Items.AddRange(new object[] {
+            "Chi cuadrado",
+            "Kolmogorov"});
+            this.cmbConfianza.Location = new System.Drawing.Point(54, 300);
+            this.cmbConfianza.Name = "cmbConfianza";
+            this.cmbConfianza.Size = new System.Drawing.Size(73, 21);
+            this.cmbConfianza.TabIndex = 40;
+            this.cmbConfianza.Text = "Confianza";
+            this.cmbConfianza.SelectedIndexChanged += new System.EventHandler(this.cmbConfianza_SelectedIndexChanged);
+            // 
+            // cmbPruebaBondad
+            // 
+            this.cmbPruebaBondad.Enabled = false;
+            this.cmbPruebaBondad.FormattingEnabled = true;
+            this.cmbPruebaBondad.Items.AddRange(new object[] {
+            "Chi cuadrado",
+            "Kolmogorov"});
+            this.cmbPruebaBondad.Location = new System.Drawing.Point(6, 273);
+            this.cmbPruebaBondad.Name = "cmbPruebaBondad";
+            this.cmbPruebaBondad.Size = new System.Drawing.Size(121, 21);
+            this.cmbPruebaBondad.TabIndex = 39;
+            this.cmbPruebaBondad.Text = "Prueba de bondad";
+            this.cmbPruebaBondad.SelectedIndexChanged += new System.EventHandler(this.cmbPruebaBondad_SelectedIndexChanged);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(15, 36);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(49, 13);
+            this.label10.TabIndex = 36;
+            this.label10.Text = "Cantidad";
+            // 
+            // txtCantidad
+            // 
+            this.txtCantidad.Location = new System.Drawing.Point(89, 36);
+            this.txtCantidad.Name = "txtCantidad";
+            this.txtCantidad.Size = new System.Drawing.Size(77, 20);
+            this.txtCantidad.TabIndex = 37;
+            // 
+            // lblGradosLibertad
+            // 
+            this.lblGradosLibertad.AutoSize = true;
+            this.lblGradosLibertad.Location = new System.Drawing.Point(15, 418);
+            this.lblGradosLibertad.Name = "lblGradosLibertad";
+            this.lblGradosLibertad.Size = new System.Drawing.Size(93, 13);
+            this.lblGradosLibertad.TabIndex = 38;
+            this.lblGradosLibertad.Text = "Grados de libertad";
             // 
             // lblRechazo
             // 
