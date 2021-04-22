@@ -72,3 +72,18 @@ C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\simon\Trabajo práctic
 C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\simon\Trabajo práctico 3\TP3\TP3\obj\Debug\TP3.csproj.CopyComplete
 C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\simon\Trabajo práctico 3\TP3\TP3\obj\Debug\TP3.exe
 C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\simon\Trabajo práctico 3\TP3\TP3\obj\Debug\TP3.pdb
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\Trabajo Practico 01 y 03\Trabajo práctico 3\TP3\TP3\bin\Debug\TP3.exe.config
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\Trabajo Practico 01 y 03\Trabajo práctico 3\TP3\TP3\bin\Debug\TP3.exe
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\Trabajo Practico 01 y 03\Trabajo práctico 3\TP3\TP3\bin\Debug\TP3.pdb
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\Trabajo Practico 01 y 03\Trabajo práctico 3\TP3\TP3\bin\Debug\MathNet.Numerics.dll
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\Trabajo Practico 01 y 03\Trabajo práctico 3\TP3\TP3\bin\Debug\MathNet.Numerics.xml
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\Trabajo Practico 01 y 03\Trabajo práctico 3\TP3\TP3\bin\Debug\Microsoft.VisualBasic.PowerPacks.xml
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\Trabajo Practico 01 y 03\Trabajo práctico 3\TP3\TP3\obj\Debug\TP3.csprojAssemblyReference.cache
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\Trabajo Practico 01 y 03\Trabajo práctico 3\TP3\TP3\obj\Debug\TP3.Form1.resources
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\Trabajo Practico 01 y 03\Trabajo práctico 3\TP3\TP3\obj\Debug\TP3.GUILayer.Form2.resources
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\Trabajo Practico 01 y 03\Trabajo práctico 3\TP3\TP3\obj\Debug\TP3.Properties.Resources.resources
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\Trabajo Practico 01 y 03\Trabajo práctico 3\TP3\TP3\obj\Debug\TP3.csproj.GenerateResource.cache
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\Trabajo Practico 01 y 03\Trabajo práctico 3\TP3\TP3\obj\Debug\TP3.csproj.CoreCompileInputs.cache
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\Trabajo Practico 01 y 03\Trabajo práctico 3\TP3\TP3\obj\Debug\TP3.csproj.CopyComplete
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\Trabajo Practico 01 y 03\Trabajo práctico 3\TP3\TP3\obj\Debug\TP3.exe
+C:\Users\Ezequiel\UTN\Simulacion - 4K1\Trabajos Practicos\Trabajo Practico 01 y 03\Trabajo práctico 3\TP3\TP3\obj\Debug\TP3.pdb

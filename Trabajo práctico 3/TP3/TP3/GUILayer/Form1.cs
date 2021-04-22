@@ -36,7 +36,15 @@ namespace TP3
             cmbIntervalos.Enabled = true;
             button1.Enabled = true;
             btnPruebaKS.Enabled = (cmbDistribuciones.Text == "Poisson") ? false : true;            
-
+            if (cmbDistribuciones.Text == "Uniforme")
+            {
+                if (int.Parse(txtA.Text) > int.Parse(txtB.Text))
+                {
+                    String aux = txtA.Text;
+                    txtA.Text = txtB.Text;
+                    txtB.Text = aux;
+                }
+            }
             Distribucion dist = new Distribucion(cmbDistribuciones.Text);
             grdNumeros.Rows.Clear();
             
@@ -259,8 +267,18 @@ namespace TP3
             try
             {
                 
-                gCalculos.setB(double.Parse(txtB.Text));
-                btnGenerar.Enabled = true;
+
+                if(double.Parse(txtA.Text) > double.Parse(txtB.Text))
+                {
+                    MessageBox.Show("el valor de B tiene que ser mayor que el de A", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    btnGenerar.Enabled = false;
+                }
+                else
+                {
+                    gCalculos.setB(double.Parse(txtB.Text));
+                    btnGenerar.Enabled = true;
+                }
+                
                 
             }
             catch (FormatException)

@@ -289,6 +289,7 @@ namespace TP1_C
 
         private void txtXo_TextChanged(object sender, EventArgs e)
         {
+
         }
 
         private void btnProximo_Click(object sender, EventArgs e)
