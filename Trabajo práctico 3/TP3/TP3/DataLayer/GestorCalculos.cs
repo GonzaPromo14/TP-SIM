@@ -235,7 +235,7 @@ namespace TP3.DataLayer
                     }
                     break;
             }
-            max += 0.001;
+            max = (dist.getDistribucionElegida() == "Poisson") ? max + 1 : max + 0.001;
             actualizarIntervalos(cantIntervalos);
 
         }
