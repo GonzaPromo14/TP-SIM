@@ -46,7 +46,7 @@ namespace TP1_C
         public void calcularIntervalos()
         {
             //Este método calcula los rangos de cada intervalo a partir de los pasos
-
+            intervalos = new List<double[]>();
             //Primer intervalo
             double[] primero = { Math.Truncate(min*10000)/10000, Math.Truncate((min + pasos) *10000)/10000 };
             intervalos.Add(primero);

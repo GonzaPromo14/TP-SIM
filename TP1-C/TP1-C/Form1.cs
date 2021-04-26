@@ -54,11 +54,11 @@ namespace TP1_C
                 lblError.Text = "El valor Xo es incorrecto";
                 return false;
             }
-            if( !(metodoElegido.isLineal()) && validacionEntero % 2 == 0 )
-            {
-                lblError.Text = "El valor Xo no es impar";
-                return false;
-            }
+            //if( !(metodoElegido.isLineal()) && validacionEntero % 2 == 0 )
+            //{
+            //    lblError.Text = "El valor Xo no es impar";
+            //    return false;
+            //}
             esNumero = Int32.TryParse(txtC.Text, out validacionEntero);
             if (!esNumero | (0 > validacionEntero))
             {
@@ -85,6 +85,8 @@ namespace TP1_C
 
         private void btnGenerar_Click(object sender, EventArgs e)
         {
+            min = Double.MaxValue;
+            max = Double.MinValue;
             bool validacion = datosValidos();
             if (validacion)
             {
@@ -150,6 +152,7 @@ namespace TP1_C
                 }
 
                 paginaActual = 1;
+                max += 0.001;
                 llenarGrilla(paginaActual, cantItemsPorPag);
                 btnProximo.Enabled = true;
                 btnSiguiente.Enabled = true;
@@ -421,6 +424,8 @@ namespace TP1_C
 
         private void btnGraficar_Click(object sender, EventArgs e)
         {
+            gGraficos.setMin(min);
+            gGraficos.setMax(max);
             string i = cmbIntervalos.SelectedItem.ToString();
             gGraficos.setCantIntervalos(Convert.ToInt32(i));
             gGraficos.setIntervMedio();

@@ -73,7 +73,7 @@ namespace TP3.GUILayer
                 double gradosLibertad = gPruebas.calcularGradosLibertad();
                 double valorCalculado = gPruebas.cAcumulada[gPruebas.cantNuevaIntervalos - 1];
                 double confianza = double.Parse(cmbConfianza.Text);
-
+                gradosLibertad = (gradosLibertad <= 0) ? 1 : gradosLibertad;
                 double valorTabulado = ChiSquared.InvCDF(gradosLibertad, confianza);
 
                 lblRechazo.Text = (valorCalculado <= valorTabulado) ? "No se rechaza la hipótesis nula" : "Se rechaza la hipótesis nula";
