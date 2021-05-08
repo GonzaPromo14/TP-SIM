@@ -42,6 +42,16 @@ namespace TP_Montecarlo
         int probabilidadInferior = 2;
         int probabilidadAcumulada = 3;
 
+        //Cantidad de simulaciones
+        int cantidadSimulaciones;
+
+
+        //Vector para paginacion
+        double[][] simulaciones;
+        double recorridoVector;
+        double desde;
+        double hasta;
+
         public GestorCalculos()
         {
             probabilidadDemandaTortas = new double[7][];
@@ -76,7 +86,7 @@ namespace TP_Montecarlo
             }
         }
 
-        public void inicializarParametrosCalculos(double costoPorTorta, double precioVenta, double costoMulta, double produccion)
+        public void inicializarParametrosCalculos(double costoPorTorta, double precioVenta, double costoMulta, double produccion, int cantidadSimulaciones, double desde, double hasta, long cantidadMostrar)
         {
             this.costoPorTorta = costoPorTorta;
             this.precioVenta = precioVenta;
@@ -86,6 +96,12 @@ namespace TP_Montecarlo
                 new double[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
             );
             this.setVectorEstadoActual(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+            this.cantidadSimulaciones = cantidadSimulaciones + 1;
+            this.simulaciones = new double[cantidadMostrar + 1][];
+            this.simulaciones[0] = new double[]{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+            this.desde = desde;
+            this.hasta = hasta;
+            this.recorridoVector = 0;
         }
 
         public void setVectorEstadoActual(
@@ -155,6 +171,7 @@ namespace TP_Montecarlo
             Random r = new Random();
             for (int i = 0; i < cantidadSimulaciones; i++)
             {
+                double diaActual = this.vectorEstadoAnterior[this.dia] + 1;
                 double rndDemanda = r.NextDouble();
                 double rndMulta = r.NextDouble();
                 double demandaNueva = this.obtenerDemanda(rndDemanda);
@@ -165,7 +182,7 @@ namespace TP_Montecarlo
                 double totalActual = venta - multaNueva - costoProduccionTorta;
                 double totalAcumuladoActual = vectorEstadoAnterior[this.totalAcumulado] + totalActual;
                 this.setVectorEstadoActual(
-                    this.vectorEstadoAnterior[this.dia] + 1,
+                    diaActual,
                     rndDemanda,
                     demandaNueva,
                     this.produccion,
@@ -177,23 +194,42 @@ namespace TP_Montecarlo
                     totalActual,
                     totalAcumuladoActual
                     );
+                if (diaActual >= this.desde && diaActual <= this.hasta)
+                {
+                    this.simulaciones[long.Parse(recorridoVector.ToString())] = new double[] {
+                    diaActual, rndDemanda, demandaNueva, this.produccion, sobranteActual, rndMulta, multaNueva, venta,
+                    costoProduccionTorta, totalActual, totalAcumuladoActual};
+                    recorridoVector++;
+                }
                 this.setVectorEstadoAnterior(this.vectorEstadoActual);
-                grd.Rows.Add(
-                    this.vectorEstadoAnterior[this.dia],
-                    this.vectorEstadoAnterior[this.randomDemanda],
-                    this.vectorEstadoAnterior[this.demanda],
-                    this.vectorEstadoAnterior[this.stock],
-                    this.vectorEstadoAnterior[this.sobrante],
-                    this.vectorEstadoAnterior[this.randomMulta],
-                    this.vectorEstadoAnterior[this.multa],
-                    this.vectorEstadoAnterior[this.venta],
-                    this.vectorEstadoAnterior[this.costoTorta],
-                    this.vectorEstadoAnterior[this.total],
-                    this.vectorEstadoAnterior[this.totalAcumulado]
-                    );
+
+
+
+                //grd.Rows.Add(
+                //    this.vectorEstadoAnterior[this.dia],
+                //    this.vectorEstadoAnterior[this.randomDemanda],
+                //    this.vectorEstadoAnterior[this.demanda],
+                //    this.vectorEstadoAnterior[this.stock],
+                //    this.vectorEstadoAnterior[this.sobrante],
+                //    this.vectorEstadoAnterior[this.randomMulta],
+                //    this.vectorEstadoAnterior[this.multa],
+                //    this.vectorEstadoAnterior[this.venta],
+                //    this.vectorEstadoAnterior[this.costoTorta],
+                //    this.vectorEstadoAnterior[this.total],
+                //    this.vectorEstadoAnterior[this.totalAcumulado]
+                //    );
 
             }
         }
 
+        public double[][] getSimulaciones()
+        {
+            return this.simulaciones;
+        }
+
+        public double totalFinal()
+        {
+            return this.getVectorEstadoActual()[totalAcumulado];
+        }
     }
 }

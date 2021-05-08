@@ -30,15 +30,23 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtProduccionDiaria = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtMulta = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtPrecioVenta = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtCostoTorta = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.txtCantidadSimulaciones = new System.Windows.Forms.TextBox();
             this.grdProbabilidadesDemandaTorta = new System.Windows.Forms.DataGridView();
+            this.demandaTortas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.probabilidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.probabilidadAcumuladaDemanda = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grdProbabilidadesMulta = new System.Windows.Forms.DataGridView();
             this.multa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.probabilidadMulta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.probabilidadAcumuladaMulta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.demandaTortas = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.probabilidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.probabilidadAcumuladaDemanda = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grdSimulaciones = new System.Windows.Forms.DataGridView();
             this.dia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rndDemanda = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,20 +59,17 @@
             this.costoTorta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalAcumuladoSimulacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtCostoTorta = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtPrecioVenta = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtMulta = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtProduccionDiaria = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtHasta = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.txtDesde = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtHasta = new System.Windows.Forms.TextBox();
             this.btnSimular = new System.Windows.Forms.Button();
+            this.btnSiguiente = new System.Windows.Forms.Button();
+            this.btnAnterior = new System.Windows.Forms.Button();
+            this.lblPagina = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtTotal = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdProbabilidadesDemandaTorta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdProbabilidadesMulta)).BeginInit();
@@ -100,12 +105,81 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ingreso de datos";
             // 
+            // txtProduccionDiaria
+            // 
+            this.txtProduccionDiaria.Location = new System.Drawing.Point(144, 133);
+            this.txtProduccionDiaria.Name = "txtProduccionDiaria";
+            this.txtProduccionDiaria.Size = new System.Drawing.Size(100, 20);
+            this.txtProduccionDiaria.TabIndex = 9;
+            this.txtProduccionDiaria.Text = "50";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(44, 136);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(89, 13);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Producción diaria";
+            // 
+            // txtMulta
+            // 
+            this.txtMulta.Location = new System.Drawing.Point(144, 107);
+            this.txtMulta.Name = "txtMulta";
+            this.txtMulta.Size = new System.Drawing.Size(100, 20);
+            this.txtMulta.TabIndex = 7;
+            this.txtMulta.Text = "300";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(56, 110);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(77, 13);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Costo de multa";
+            // 
+            // txtPrecioVenta
+            // 
+            this.txtPrecioVenta.Location = new System.Drawing.Point(144, 81);
+            this.txtPrecioVenta.Name = "txtPrecioVenta";
+            this.txtPrecioVenta.Size = new System.Drawing.Size(100, 20);
+            this.txtPrecioVenta.TabIndex = 5;
+            this.txtPrecioVenta.Text = "30";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(51, 84);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(82, 13);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Precio de venta";
+            // 
+            // txtCostoTorta
+            // 
+            this.txtCostoTorta.Location = new System.Drawing.Point(144, 55);
+            this.txtCostoTorta.Name = "txtCostoTorta";
+            this.txtCostoTorta.Size = new System.Drawing.Size(100, 20);
+            this.txtCostoTorta.TabIndex = 3;
+            this.txtCostoTorta.Text = "10";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(57, 58);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(76, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Costo por torta";
+            // 
             // txtCantidadSimulaciones
             // 
             this.txtCantidadSimulaciones.Location = new System.Drawing.Point(144, 29);
             this.txtCantidadSimulaciones.Name = "txtCantidadSimulaciones";
             this.txtCantidadSimulaciones.Size = new System.Drawing.Size(100, 20);
             this.txtCantidadSimulaciones.TabIndex = 1;
+            this.txtCantidadSimulaciones.TextChanged += new System.EventHandler(this.txtCantidadSimulaciones_TextChanged);
             // 
             // grdProbabilidadesDemandaTorta
             // 
@@ -114,10 +188,25 @@
             this.demandaTortas,
             this.probabilidad,
             this.probabilidadAcumuladaDemanda});
-            this.grdProbabilidadesDemandaTorta.Location = new System.Drawing.Point(382, 12);
+            this.grdProbabilidadesDemandaTorta.Location = new System.Drawing.Point(769, 12);
             this.grdProbabilidadesDemandaTorta.Name = "grdProbabilidadesDemandaTorta";
             this.grdProbabilidadesDemandaTorta.Size = new System.Drawing.Size(345, 189);
             this.grdProbabilidadesDemandaTorta.TabIndex = 3;
+            // 
+            // demandaTortas
+            // 
+            this.demandaTortas.HeaderText = "Demanda de tortas";
+            this.demandaTortas.Name = "demandaTortas";
+            // 
+            // probabilidad
+            // 
+            this.probabilidad.HeaderText = "P()";
+            this.probabilidad.Name = "probabilidad";
+            // 
+            // probabilidadAcumuladaDemanda
+            // 
+            this.probabilidadAcumuladaDemanda.HeaderText = "P(AC)";
+            this.probabilidadAcumuladaDemanda.Name = "probabilidadAcumuladaDemanda";
             // 
             // grdProbabilidadesMulta
             // 
@@ -126,9 +215,9 @@
             this.multa,
             this.probabilidadMulta,
             this.probabilidadAcumuladaMulta});
-            this.grdProbabilidadesMulta.Location = new System.Drawing.Point(382, 207);
+            this.grdProbabilidadesMulta.Location = new System.Drawing.Point(370, 12);
             this.grdProbabilidadesMulta.Name = "grdProbabilidadesMulta";
-            this.grdProbabilidadesMulta.Size = new System.Drawing.Size(344, 89);
+            this.grdProbabilidadesMulta.Size = new System.Drawing.Size(344, 189);
             this.grdProbabilidadesMulta.TabIndex = 4;
             // 
             // multa
@@ -146,21 +235,6 @@
             this.probabilidadAcumuladaMulta.HeaderText = "P(AC)";
             this.probabilidadAcumuladaMulta.Name = "probabilidadAcumuladaMulta";
             // 
-            // demandaTortas
-            // 
-            this.demandaTortas.HeaderText = "Demanda de tortas";
-            this.demandaTortas.Name = "demandaTortas";
-            // 
-            // probabilidad
-            // 
-            this.probabilidad.HeaderText = "P()";
-            this.probabilidad.Name = "probabilidad";
-            // 
-            // probabilidadAcumuladaDemanda
-            // 
-            this.probabilidadAcumuladaDemanda.HeaderText = "P(AC)";
-            this.probabilidadAcumuladaDemanda.Name = "probabilidadAcumuladaDemanda";
-            // 
             // grdSimulaciones
             // 
             this.grdSimulaciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -176,7 +250,7 @@
             this.costoTorta,
             this.total,
             this.totalAcumuladoSimulacion});
-            this.grdSimulaciones.Location = new System.Drawing.Point(12, 351);
+            this.grdSimulaciones.Location = new System.Drawing.Point(12, 302);
             this.grdSimulaciones.Name = "grdSimulaciones";
             this.grdSimulaciones.Size = new System.Drawing.Size(1102, 224);
             this.grdSimulaciones.TabIndex = 5;
@@ -236,74 +310,6 @@
             this.totalAcumuladoSimulacion.HeaderText = "Total(AC)";
             this.totalAcumuladoSimulacion.Name = "totalAcumuladoSimulacion";
             // 
-            // txtCostoTorta
-            // 
-            this.txtCostoTorta.Location = new System.Drawing.Point(144, 55);
-            this.txtCostoTorta.Name = "txtCostoTorta";
-            this.txtCostoTorta.Size = new System.Drawing.Size(100, 20);
-            this.txtCostoTorta.TabIndex = 3;
-            this.txtCostoTorta.Text = "10";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(57, 58);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(76, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Costo por torta";
-            // 
-            // txtPrecioVenta
-            // 
-            this.txtPrecioVenta.Location = new System.Drawing.Point(144, 81);
-            this.txtPrecioVenta.Name = "txtPrecioVenta";
-            this.txtPrecioVenta.Size = new System.Drawing.Size(100, 20);
-            this.txtPrecioVenta.TabIndex = 5;
-            this.txtPrecioVenta.Text = "30";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(51, 84);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(82, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Precio de venta";
-            // 
-            // txtMulta
-            // 
-            this.txtMulta.Location = new System.Drawing.Point(144, 107);
-            this.txtMulta.Name = "txtMulta";
-            this.txtMulta.Size = new System.Drawing.Size(100, 20);
-            this.txtMulta.TabIndex = 7;
-            this.txtMulta.Text = "300";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(56, 110);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(77, 13);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Costo de multa";
-            // 
-            // txtProduccionDiaria
-            // 
-            this.txtProduccionDiaria.Location = new System.Drawing.Point(144, 133);
-            this.txtProduccionDiaria.Name = "txtProduccionDiaria";
-            this.txtProduccionDiaria.Size = new System.Drawing.Size(100, 20);
-            this.txtProduccionDiaria.TabIndex = 9;
-            this.txtProduccionDiaria.Text = "50";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(44, 136);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(89, 13);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Producción diaria";
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.txtHasta);
@@ -317,21 +323,12 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Muestra de datos";
             // 
-            // txtDesde
+            // txtHasta
             // 
-            this.txtDesde.Location = new System.Drawing.Point(144, 23);
-            this.txtDesde.Name = "txtDesde";
-            this.txtDesde.Size = new System.Drawing.Size(100, 20);
-            this.txtDesde.TabIndex = 11;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 30);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(38, 13);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "Desde";
+            this.txtHasta.Location = new System.Drawing.Point(144, 49);
+            this.txtHasta.Name = "txtHasta";
+            this.txtHasta.Size = new System.Drawing.Size(100, 20);
+            this.txtHasta.TabIndex = 13;
             // 
             // label7
             // 
@@ -342,12 +339,22 @@
             this.label7.TabIndex = 12;
             this.label7.Text = "Hasta";
             // 
-            // txtHasta
+            // txtDesde
             // 
-            this.txtHasta.Location = new System.Drawing.Point(144, 49);
-            this.txtHasta.Name = "txtHasta";
-            this.txtHasta.Size = new System.Drawing.Size(100, 20);
-            this.txtHasta.TabIndex = 13;
+            this.txtDesde.Location = new System.Drawing.Point(144, 23);
+            this.txtDesde.Name = "txtDesde";
+            this.txtDesde.Size = new System.Drawing.Size(100, 20);
+            this.txtDesde.TabIndex = 11;
+            this.txtDesde.Text = "1";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 30);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(38, 13);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Desde";
             // 
             // btnSimular
             // 
@@ -359,11 +366,64 @@
             this.btnSimular.UseVisualStyleBackColor = true;
             this.btnSimular.Click += new System.EventHandler(this.btnSimular_Click);
             // 
+            // btnSiguiente
+            // 
+            this.btnSiguiente.Enabled = false;
+            this.btnSiguiente.Location = new System.Drawing.Point(258, 532);
+            this.btnSiguiente.Name = "btnSiguiente";
+            this.btnSiguiente.Size = new System.Drawing.Size(75, 23);
+            this.btnSiguiente.TabIndex = 31;
+            this.btnSiguiente.Text = "Siguiente";
+            this.btnSiguiente.UseVisualStyleBackColor = true;
+            this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
+            // 
+            // btnAnterior
+            // 
+            this.btnAnterior.Enabled = false;
+            this.btnAnterior.Location = new System.Drawing.Point(12, 532);
+            this.btnAnterior.Name = "btnAnterior";
+            this.btnAnterior.Size = new System.Drawing.Size(75, 23);
+            this.btnAnterior.TabIndex = 32;
+            this.btnAnterior.Text = "Anterior";
+            this.btnAnterior.UseVisualStyleBackColor = true;
+            this.btnAnterior.Click += new System.EventHandler(this.btnAnterior_Click);
+            // 
+            // lblPagina
+            // 
+            this.lblPagina.AutoSize = true;
+            this.lblPagina.Location = new System.Drawing.Point(133, 537);
+            this.lblPagina.Name = "lblPagina";
+            this.lblPagina.Size = new System.Drawing.Size(73, 13);
+            this.lblPagina.TabIndex = 33;
+            this.lblPagina.Text = "Página 0 de 0";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(977, 542);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(31, 13);
+            this.label8.TabIndex = 34;
+            this.label8.Text = "Total";
+            // 
+            // txtTotal
+            // 
+            this.txtTotal.Enabled = false;
+            this.txtTotal.Location = new System.Drawing.Point(1014, 539);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.Size = new System.Drawing.Size(100, 20);
+            this.txtTotal.TabIndex = 35;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1126, 587);
+            this.Controls.Add(this.txtTotal);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.btnSiguiente);
+            this.Controls.Add(this.btnAnterior);
+            this.Controls.Add(this.lblPagina);
             this.Controls.Add(this.btnSimular);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.grdSimulaciones);
@@ -381,6 +441,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -423,6 +484,11 @@
         private System.Windows.Forms.TextBox txtDesde;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnSimular;
+        private System.Windows.Forms.Button btnSiguiente;
+        private System.Windows.Forms.Button btnAnterior;
+        private System.Windows.Forms.Label lblPagina;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtTotal;
     }
 }
 
