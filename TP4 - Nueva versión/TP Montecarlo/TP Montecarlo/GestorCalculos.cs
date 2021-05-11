@@ -187,7 +187,7 @@ namespace TP_Montecarlo
                 double demandaNueva = this.obtenerDemanda(rndDemanda);
                 double vendidas = demandaNueva > this.produccion ? this.produccion : demandaNueva;
                 double sobranteActual = this.produccion - demandaNueva <0 ? 0 : this.produccion - demandaNueva;
-                double promedioATirar = (1 / diaActual) * ((diaActual - 1) * vectorEstadoAnterior[this.sobrante] + sobranteActual);
+                double promedioATirar = (1 / diaActual) * ((diaActual - 1) * vectorEstadoAnterior[this.promedioATirar] + sobranteActual);
                 double rndMulta = r.NextDouble();
                 double multaNueva = this.obtenerMulta(rndMulta,sobranteActual);
                 double gananciaMulta = vendidas * this.precioVenta - this.produccion * this.costoPorTorta - multaNueva;
@@ -206,8 +206,8 @@ namespace TP_Montecarlo
                     rndMulta,
                     multaNueva,
                     gananciaMulta,
-                    utilidadMulta,//cambiar
-                    costoPermiso,//cambiar
+                    utilidadMulta,
+                    costoPermiso,
                     gananciaPermiso,
                     utilidadPermiso
                     );
@@ -220,28 +220,17 @@ namespace TP_Montecarlo
                 }
                 this.setVectorEstadoAnterior(this.vectorEstadoActual);
 
-
-
-                //grd.Rows.Add(
-                //    this.vectorEstadoAnterior[this.dia],
-                //    this.vectorEstadoAnterior[this.randomDemanda],
-                //    this.vectorEstadoAnterior[this.demanda],
-                //    this.vectorEstadoAnterior[this.stock],
-                //    this.vectorEstadoAnterior[this.sobrante],
-                //    this.vectorEstadoAnterior[this.randomMulta],
-                //    this.vectorEstadoAnterior[this.multa],
-                //    this.vectorEstadoAnterior[this.venta],
-                //    this.vectorEstadoAnterior[this.costoTorta],
-                //    this.vectorEstadoAnterior[this.total],
-                //    this.vectorEstadoAnterior[this.totalAcumulado]
-                //    );
-
             }
         }
 
         public double[][] getSimulaciones()
         {
             return this.simulaciones;
+        }
+
+        public double getResultadoSimulación(long i, int j)
+        {
+            return this.simulaciones[i][j];
         }
 
         public double totalFinal()

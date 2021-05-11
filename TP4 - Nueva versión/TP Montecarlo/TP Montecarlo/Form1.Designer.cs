@@ -28,21 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle45 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle41 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle42 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle43 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle44 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtProduccionDiaria = new System.Windows.Forms.TextBox();
@@ -74,6 +74,13 @@
             this.lblPagina = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.txtTotal = new System.Windows.Forms.TextBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtC = new System.Windows.Forms.TextBox();
+            this.txtB = new System.Windows.Forms.TextBox();
+            this.txtA = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.dia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rndDemanda = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.demanda = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -88,13 +95,6 @@
             this.permiso = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gananciaPermiso = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.utilidadPermiso = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdProbabilidadesDemandaTorta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdProbabilidadesMulta)).BeginInit();
@@ -281,14 +281,14 @@
             this.permiso,
             this.gananciaPermiso,
             this.utilidadPermiso});
-            dataGridViewCellStyle45.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle45.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle45.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle45.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle45.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle45.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle45.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grdSimulaciones.DefaultCellStyle = dataGridViewCellStyle45;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grdSimulaciones.DefaultCellStyle = dataGridViewCellStyle15;
             this.grdSimulaciones.EnableHeadersVisualStyles = false;
             this.grdSimulaciones.Location = new System.Drawing.Point(12, 302);
             this.grdSimulaciones.Name = "grdSimulaciones";
@@ -400,115 +400,11 @@
             this.txtTotal.Size = new System.Drawing.Size(100, 20);
             this.txtTotal.TabIndex = 35;
             // 
-            // dia
-            // 
-            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dia.DefaultCellStyle = dataGridViewCellStyle31;
-            this.dia.HeaderText = "Día";
-            this.dia.Name = "dia";
-            // 
-            // rndDemanda
-            // 
-            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.rndDemanda.DefaultCellStyle = dataGridViewCellStyle32;
-            this.rndDemanda.HeaderText = "RND Demanda";
-            this.rndDemanda.Name = "rndDemanda";
-            // 
-            // demanda
-            // 
-            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.demanda.DefaultCellStyle = dataGridViewCellStyle33;
-            this.demanda.HeaderText = "Demanda";
-            this.demanda.Name = "demanda";
-            // 
-            // vendidas
-            // 
-            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.vendidas.DefaultCellStyle = dataGridViewCellStyle34;
-            this.vendidas.HeaderText = "Vendidas";
-            this.vendidas.Name = "vendidas";
-            // 
-            // stock
-            // 
-            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.stock.DefaultCellStyle = dataGridViewCellStyle35;
-            this.stock.HeaderText = "Stock";
-            this.stock.Name = "stock";
-            // 
-            // sobrante
-            // 
-            dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.sobrante.DefaultCellStyle = dataGridViewCellStyle36;
-            this.sobrante.HeaderText = "Sobrante";
-            this.sobrante.Name = "sobrante";
-            // 
-            // promedioATirar
-            // 
-            dataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.promedioATirar.DefaultCellStyle = dataGridViewCellStyle37;
-            this.promedioATirar.HeaderText = "Promedio a tirar por día";
-            this.promedioATirar.Name = "promedioATirar";
-            // 
-            // rndMulta
-            // 
-            dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.rndMulta.DefaultCellStyle = dataGridViewCellStyle38;
-            this.rndMulta.HeaderText = "RND Multa";
-            this.rndMulta.Name = "rndMulta";
-            // 
-            // multaGenerada
-            // 
-            dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle39.BackColor = System.Drawing.Color.White;
-            this.multaGenerada.DefaultCellStyle = dataGridViewCellStyle39;
-            this.multaGenerada.HeaderText = "Multa";
-            this.multaGenerada.Name = "multaGenerada";
-            // 
-            // gananciaMulta
-            // 
-            dataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle40.BackColor = System.Drawing.Color.White;
-            this.gananciaMulta.DefaultCellStyle = dataGridViewCellStyle40;
-            this.gananciaMulta.HeaderText = "Ganancia con multa";
-            this.gananciaMulta.Name = "gananciaMulta";
-            // 
-            // utilidadMulta
-            // 
-            dataGridViewCellStyle41.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle41.BackColor = System.Drawing.Color.White;
-            this.utilidadMulta.DefaultCellStyle = dataGridViewCellStyle41;
-            this.utilidadMulta.HeaderText = "Utilidad con multa";
-            this.utilidadMulta.Name = "utilidadMulta";
-            // 
-            // permiso
-            // 
-            dataGridViewCellStyle42.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle42.BackColor = System.Drawing.Color.White;
-            this.permiso.DefaultCellStyle = dataGridViewCellStyle42;
-            this.permiso.HeaderText = "Costo por permiso";
-            this.permiso.Name = "permiso";
-            // 
-            // gananciaPermiso
-            // 
-            dataGridViewCellStyle43.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle43.BackColor = System.Drawing.Color.White;
-            this.gananciaPermiso.DefaultCellStyle = dataGridViewCellStyle43;
-            this.gananciaPermiso.HeaderText = "Ganancia con Permiso";
-            this.gananciaPermiso.Name = "gananciaPermiso";
-            // 
-            // utilidadPermiso
-            // 
-            dataGridViewCellStyle44.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle44.BackColor = System.Drawing.Color.White;
-            this.utilidadPermiso.DefaultCellStyle = dataGridViewCellStyle44;
-            this.utilidadPermiso.HeaderText = "Utilidad con permiso";
-            this.utilidadPermiso.Name = "utilidadPermiso";
-            // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.textBox3);
-            this.groupBox3.Controls.Add(this.textBox2);
-            this.groupBox3.Controls.Add(this.textBox1);
+            this.groupBox3.Controls.Add(this.txtC);
+            this.groupBox3.Controls.Add(this.txtB);
+            this.groupBox3.Controls.Add(this.txtA);
             this.groupBox3.Controls.Add(this.label11);
             this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Controls.Add(this.label9);
@@ -519,23 +415,38 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Resultados";
             // 
-            // label9
+            // txtC
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(7, 29);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(141, 13);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "a) Promedio de tortas tiradas";
+            this.txtC.BackColor = System.Drawing.Color.GhostWhite;
+            this.txtC.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtC.Location = new System.Drawing.Point(198, 78);
+            this.txtC.Name = "txtC";
+            this.txtC.ReadOnly = true;
+            this.txtC.Size = new System.Drawing.Size(100, 20);
+            this.txtC.TabIndex = 5;
+            this.txtC.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label10
+            // txtB
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(7, 55);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(149, 13);
-            this.label10.TabIndex = 1;
-            this.label10.Text = "b) Utilidad promedio con multa";
+            this.txtB.BackColor = System.Drawing.Color.GhostWhite;
+            this.txtB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtB.Location = new System.Drawing.Point(198, 52);
+            this.txtB.Name = "txtB";
+            this.txtB.ReadOnly = true;
+            this.txtB.Size = new System.Drawing.Size(100, 20);
+            this.txtB.TabIndex = 4;
+            this.txtB.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtA
+            // 
+            this.txtA.BackColor = System.Drawing.Color.GhostWhite;
+            this.txtA.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtA.Location = new System.Drawing.Point(198, 26);
+            this.txtA.Name = "txtA";
+            this.txtA.ReadOnly = true;
+            this.txtA.Size = new System.Drawing.Size(100, 20);
+            this.txtA.TabIndex = 3;
+            this.txtA.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label11
             // 
@@ -546,28 +457,127 @@
             this.label11.TabIndex = 2;
             this.label11.Text = "c) Utilidad promedio con permiso";
             // 
-            // textBox1
+            // label10
             // 
-            this.textBox1.BackColor = System.Drawing.Color.White;
-            this.textBox1.Location = new System.Drawing.Point(198, 26);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 3;
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(7, 55);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(149, 13);
+            this.label10.TabIndex = 1;
+            this.label10.Text = "b) Utilidad promedio con multa";
             // 
-            // textBox2
+            // label9
             // 
-            this.textBox2.BackColor = System.Drawing.Color.White;
-            this.textBox2.Location = new System.Drawing.Point(198, 52);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 4;
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(7, 29);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(141, 13);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "a) Promedio de tortas tiradas";
             // 
-            // textBox3
+            // dia
             // 
-            this.textBox3.Location = new System.Drawing.Point(198, 78);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dia.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dia.HeaderText = "Día";
+            this.dia.Name = "dia";
+            // 
+            // rndDemanda
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.rndDemanda.DefaultCellStyle = dataGridViewCellStyle2;
+            this.rndDemanda.HeaderText = "RND Demanda";
+            this.rndDemanda.Name = "rndDemanda";
+            // 
+            // demanda
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.demanda.DefaultCellStyle = dataGridViewCellStyle3;
+            this.demanda.HeaderText = "Demanda";
+            this.demanda.Name = "demanda";
+            // 
+            // vendidas
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.vendidas.DefaultCellStyle = dataGridViewCellStyle4;
+            this.vendidas.HeaderText = "Vendidas";
+            this.vendidas.Name = "vendidas";
+            // 
+            // stock
+            // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.stock.DefaultCellStyle = dataGridViewCellStyle5;
+            this.stock.HeaderText = "Stock";
+            this.stock.Name = "stock";
+            // 
+            // sobrante
+            // 
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.sobrante.DefaultCellStyle = dataGridViewCellStyle6;
+            this.sobrante.HeaderText = "Sobrante";
+            this.sobrante.Name = "sobrante";
+            // 
+            // promedioATirar
+            // 
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.promedioATirar.DefaultCellStyle = dataGridViewCellStyle7;
+            this.promedioATirar.HeaderText = "Promedio a tirar por día";
+            this.promedioATirar.Name = "promedioATirar";
+            // 
+            // rndMulta
+            // 
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.rndMulta.DefaultCellStyle = dataGridViewCellStyle8;
+            this.rndMulta.HeaderText = "RND Multa";
+            this.rndMulta.Name = "rndMulta";
+            // 
+            // multaGenerada
+            // 
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
+            this.multaGenerada.DefaultCellStyle = dataGridViewCellStyle9;
+            this.multaGenerada.HeaderText = "Multa";
+            this.multaGenerada.Name = "multaGenerada";
+            // 
+            // gananciaMulta
+            // 
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
+            this.gananciaMulta.DefaultCellStyle = dataGridViewCellStyle10;
+            this.gananciaMulta.HeaderText = "Ganancia con multa";
+            this.gananciaMulta.Name = "gananciaMulta";
+            // 
+            // utilidadMulta
+            // 
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.White;
+            this.utilidadMulta.DefaultCellStyle = dataGridViewCellStyle11;
+            this.utilidadMulta.HeaderText = "Utilidad promedio con multa";
+            this.utilidadMulta.Name = "utilidadMulta";
+            // 
+            // permiso
+            // 
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
+            this.permiso.DefaultCellStyle = dataGridViewCellStyle12;
+            this.permiso.HeaderText = "Costo por permiso";
+            this.permiso.Name = "permiso";
+            // 
+            // gananciaPermiso
+            // 
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
+            this.gananciaPermiso.DefaultCellStyle = dataGridViewCellStyle13;
+            this.gananciaPermiso.HeaderText = "Ganancia con Permiso";
+            this.gananciaPermiso.Name = "gananciaPermiso";
+            // 
+            // utilidadPermiso
+            // 
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.White;
+            this.utilidadPermiso.DefaultCellStyle = dataGridViewCellStyle14;
+            this.utilidadPermiso.HeaderText = "Utilidad promedio con permiso";
+            this.utilidadPermiso.Name = "utilidadPermiso";
             // 
             // Form1
             // 
@@ -636,6 +646,13 @@
         private System.Windows.Forms.Label lblPagina;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtTotal;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.TextBox txtC;
+        private System.Windows.Forms.TextBox txtB;
+        private System.Windows.Forms.TextBox txtA;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DataGridViewTextBoxColumn dia;
         private System.Windows.Forms.DataGridViewTextBoxColumn rndDemanda;
         private System.Windows.Forms.DataGridViewTextBoxColumn demanda;
@@ -650,13 +667,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn permiso;
         private System.Windows.Forms.DataGridViewTextBoxColumn gananciaPermiso;
         private System.Windows.Forms.DataGridViewTextBoxColumn utilidadPermiso;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
     }
 }
 

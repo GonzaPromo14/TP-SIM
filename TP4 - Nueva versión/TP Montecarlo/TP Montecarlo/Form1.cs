@@ -72,6 +72,12 @@ namespace TP_Montecarlo
                 );
             int cantidadSimulaciones = int.Parse(txtCantidadSimulaciones.Text);
             gestorCalculos.generarSimulacion(cantidadSimulaciones, grdSimulaciones);
+
+            txtA.Text = Truncador.Truncar(gestorCalculos.getResultadoSimulación(cantidadDiasAMostrar, 6)).ToString();
+            txtB.Text = "$" + Truncador.Truncar(gestorCalculos.getResultadoSimulación(cantidadDiasAMostrar, 10)).ToString();
+            txtC.Text = "$" + Truncador.Truncar(gestorCalculos.getResultadoSimulación(cantidadDiasAMostrar, 13)).ToString();
+
+
             p = new Paginador(gestorCalculos.getSimulaciones(), 10);
             p.obtenerPaginaActual(grdSimulaciones);
             btnSiguiente.Enabled = p.getCantPaginas() == 1 ? false : true;

@@ -10,7 +10,7 @@ namespace TP_Montecarlo
     {
         public static double Truncar(double num)
         {
-            return Math.Truncate(10000 * num) / 10000;
+            return Math.Truncate(1000 * num) / 1000;
         }
     }
 }
