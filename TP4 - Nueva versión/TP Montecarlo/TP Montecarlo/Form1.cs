@@ -56,14 +56,17 @@ namespace TP_Montecarlo
 
         private void btnSimular_Click(object sender, EventArgs e)
         {
+
+            if (!validarInputs()) return;
+
             grdSimulaciones.Rows.Clear();
             Random r = new Random();
             long cantidadDiasAMostrar = long.Parse(txtHasta.Text) - long.Parse(txtDesde.Text);
 
             gestorCalculos.inicializarParametrosCalculos(
-                int.Parse(txtCostoTorta.Text),
-                int.Parse(txtPrecioVenta.Text),
-                int.Parse(txtMulta.Text),
+                double.Parse(txtCostoTorta.Text),
+                double.Parse(txtPrecioVenta.Text),
+                double.Parse(txtMulta.Text),
                 int.Parse(txtProduccionDiaria.Text),
                 int.Parse(txtCantidadSimulaciones.Text),
                 double.Parse(txtDesde.Text),
@@ -114,6 +117,117 @@ namespace TP_Montecarlo
         private void txtCantidadSimulaciones_TextChanged(object sender, EventArgs e)
         {
             txtHasta.Text = txtCantidadSimulaciones.Text;
+        }
+
+        //######################################################## VALIDACIONES ########################################################
+        private bool validarInputs()
+        {
+            bool cantidad = validarCantidad();
+            bool desde = validarDesde();
+            bool hasta = validarHasta();
+            bool costo = validarCosto();
+            bool precio = validarPrecio();
+            bool multa = validarMulta();
+
+            return (cantidad && desde && hasta && costo && precio && multa);
+        }
+
+
+        private bool validarCantidad()
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(txtCantidadSimulaciones.Text, "[^0-9]"))
+            {
+                MessageBox.Show("Ingrese solo números positivos en el campo 'Cantidad de simulaciones'", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtCantidadSimulaciones.Text = "";
+                return false;
+            }
+            return true;
+        }
+
+        private bool validarDesde()
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(txtDesde.Text, "[^0-9]"))
+            {
+                MessageBox.Show("Ingrese solo números positivos en el campo 'Desde'","Error",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtDesde.Text = "";
+                return false;
+            }
+            return true;
+        }
+
+        private bool validarHasta()
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(txtHasta.Text, "[^0-9]"))
+            {
+                MessageBox.Show("Ingrese solo números positivos en el campo 'Hasta'", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtHasta.Text = "";
+                return false;
+            }
+            try
+            {
+                if (int.Parse(txtHasta.Text) < int.Parse(txtDesde.Text))
+                {
+                    MessageBox.Show("El valor 'Hasta' no puede ser menor a 'Desde'", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtHasta.Text = "";
+                    return false;
+                }
+            }
+            catch(System.FormatException e) { }
+            return true;
+        }
+
+        private bool validarCosto()
+        {
+            double costo = -1;
+            try
+            {
+                costo = double.Parse(txtCostoTorta.Text);
+            }
+            catch (System.FormatException e) { };
+
+            if (costo<0)
+            {
+                MessageBox.Show("Ingrese un número positivo en el campo 'Costo por torta'", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtCostoTorta.Text = "";
+                return false;
+            }
+            return true;
+        }
+
+        private bool validarPrecio()
+        {
+            double precio = -1;
+            try
+            {
+                precio = double.Parse(txtPrecioVenta.Text);
+            }
+            catch (System.FormatException e) { };
+
+            if (precio < 0)
+            {
+                MessageBox.Show("Ingrese un número positivo en el campo 'Precio de venta'", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtCostoTorta.Text = "";
+                return false;
+            }
+            return true;
+        }
+
+        private bool validarMulta()
+        {
+            double multa = -1;
+            try
+            {
+                multa = double.Parse(txtPrecioVenta.Text);
+            }
+            catch (System.FormatException e) { };
+
+            if (multa < 0)
+            {
+                MessageBox.Show("Ingrese un número positivo en el campo 'Costo de multa'", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtCostoTorta.Text = "";
+                return false;
+            }
+            return true;
         }
     }
 }
