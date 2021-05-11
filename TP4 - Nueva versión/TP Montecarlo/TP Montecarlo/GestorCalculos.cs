@@ -10,27 +10,31 @@ namespace TP_Montecarlo
     class GestorCalculos
     {
         //Vectores estado
-        double[] vectorEstadoActual = new double[11];
-        double[] vectorEstadoAnterior = new double[11];
+        double[] vectorEstadoActual = new double[14];
+        double[] vectorEstadoAnterior = new double[14];
 
         //Atributos de los vectores
         int dia = 0;
         int randomDemanda = 1;
         int demanda = 2;
-        int stock = 3;
-        int sobrante = 4;
-        int randomMulta = 5;
-        int multa = 6;
-        int venta = 7;
-        int costoTorta = 8;
-        int total = 9;
-        int totalAcumulado = 10;
+        int vendidas = 3;
+        int stock = 4;
+        int sobrante = 5;
+        int promedioATirar = 6;
+        int randomMulta = 7;
+        int multa = 8;
+        int gananciaMulta = 9;
+        int utilidadMulta = 10;
+        int costoPorPermiso = 11;
+        int gananciaPermiso = 12;
+        int utilidadPermiso = 13;
 
         //Parámetros para los cálculos
         double costoPorTorta;
         double precioVenta;
         double costoMulta;
         double produccion;
+        double costoPermiso = 200;
 
         //Tabla de probabilidades
         double[][] probabilidadDemandaTortas;
@@ -93,12 +97,12 @@ namespace TP_Montecarlo
             this.costoMulta = costoMulta;
             this.produccion = produccion;
             this.setVectorEstadoAnterior(
-                new double[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+                new double[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0}
             );
-            this.setVectorEstadoActual(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+            this.setVectorEstadoActual(0,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
             this.cantidadSimulaciones = cantidadSimulaciones + 1;
             this.simulaciones = new double[cantidadMostrar + 1][];
-            this.simulaciones[0] = new double[]{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+            this.simulaciones[0] = new double[]{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
             this.desde = desde;
             this.hasta = hasta;
             this.recorridoVector = 0;
@@ -108,26 +112,33 @@ namespace TP_Montecarlo
             double dia,
             double randomDemanda,
             double demanda,
+            double vendidas,
             double stock,
             double sobrante,
+            double promedioATirar,
             double randomMulta,
             double multa,
-            double venta,
-            double costoTorta,
-            double total,
-            double totalAcumulado)
+            double gananciaMulta,
+            double utilidadMulta,
+            double costoPermiso,
+            double gananciaPermiso,
+            double utilidadPermiso)
         {
             vectorEstadoActual[this.dia] = dia;
             vectorEstadoActual[this.randomDemanda] = randomDemanda;
             vectorEstadoActual[this.demanda] = demanda;
+            vectorEstadoActual[this.vendidas] = vendidas;
             vectorEstadoActual[this.stock] = stock;
             vectorEstadoActual[this.sobrante] = sobrante;
+            vectorEstadoActual[this.promedioATirar] = promedioATirar;
             vectorEstadoActual[this.randomMulta] = randomMulta;
             vectorEstadoActual[this.multa] = multa;
-            vectorEstadoActual[this.venta] = venta;
-            vectorEstadoActual[this.costoTorta] = costoTorta;
-            vectorEstadoActual[this.total] = total;
-            vectorEstadoActual[this.totalAcumulado] = totalAcumulado;
+            vectorEstadoActual[this.gananciaMulta] = gananciaMulta;
+            vectorEstadoActual[this.utilidadMulta] = utilidadMulta;
+            vectorEstadoActual[this.costoPorPermiso] = costoPermiso;
+            vectorEstadoActual[this.gananciaPermiso] = gananciaPermiso;
+            vectorEstadoActual[this.utilidadPermiso] = utilidadPermiso;
+
 
         }
 
@@ -161,9 +172,9 @@ namespace TP_Montecarlo
             return demandaGenerada;
         }
 
-        public double obtenerMulta(double probabilidad)
+        public double obtenerMulta(double probabilidad, double sobrante)
         {
-            return probabilidad < this.probabilidadMultas[0][probabilidadAcumulada] ? this.costoMulta : 0;
+            return (probabilidad < this.probabilidadMultas[0][probabilidadAcumulada]) && (sobrante != 0) ? this.costoMulta : 0;
         }
 
         public void generarSimulacion(int cantidadSimulaciones, DataGridView grd)
@@ -173,32 +184,38 @@ namespace TP_Montecarlo
             {
                 double diaActual = this.vectorEstadoAnterior[this.dia] + 1;
                 double rndDemanda = r.NextDouble();
-                double rndMulta = r.NextDouble();
                 double demandaNueva = this.obtenerDemanda(rndDemanda);
-                double sobranteActual = demandaNueva > this.produccion ? 0 : this.produccion - demandaNueva;
-                double multaNueva = this.obtenerMulta(rndMulta);
-                double venta = (sobranteActual == 0) ? this.produccion * this.precioVenta : (this.produccion - demandaNueva) * this.precioVenta;
-                double costoProduccionTorta = this.costoPorTorta * this.produccion;
-                double totalActual = venta - multaNueva - costoProduccionTorta;
-                double totalAcumuladoActual = vectorEstadoAnterior[this.totalAcumulado] + totalActual;
+                double vendidas = demandaNueva > this.produccion ? this.produccion : demandaNueva;
+                double sobranteActual = this.produccion - demandaNueva <0 ? 0 : this.produccion - demandaNueva;
+                double promedioATirar = (1 / diaActual) * ((diaActual - 1) * vectorEstadoAnterior[this.sobrante] + sobranteActual);
+                double rndMulta = r.NextDouble();
+                double multaNueva = this.obtenerMulta(rndMulta,sobranteActual);
+                double gananciaMulta = vendidas * this.precioVenta - this.produccion * this.costoPorTorta - multaNueva;
+                double utilidadMulta =(1/diaActual)*((diaActual-1) * vectorEstadoAnterior[this.utilidadMulta] + gananciaMulta);//utilidad promedio
+                double costoPermiso = diaActual % 7 == 0 ? this.costoPermiso : 0;
+                double gananciaPermiso = (vendidas*this.precioVenta)-(this.produccion*costoPorTorta)-costoPermiso;
+                double utilidadPermiso = (1 / diaActual) * ((diaActual - 1) * vectorEstadoAnterior[this.utilidadPermiso] + gananciaPermiso);//utilidad promedio
                 this.setVectorEstadoActual(
                     diaActual,
                     rndDemanda,
                     demandaNueva,
+                    vendidas,
                     this.produccion,
                     sobranteActual,
+                    promedioATirar,
                     rndMulta,
                     multaNueva,
-                    venta,
-                    costoProduccionTorta,
-                    totalActual,
-                    totalAcumuladoActual
+                    gananciaMulta,
+                    utilidadMulta,//cambiar
+                    costoPermiso,//cambiar
+                    gananciaPermiso,
+                    utilidadPermiso
                     );
                 if (diaActual >= this.desde && diaActual <= this.hasta)
                 {
                     this.simulaciones[long.Parse(recorridoVector.ToString())] = new double[] {
-                    diaActual, rndDemanda, demandaNueva, this.produccion, sobranteActual, rndMulta, multaNueva, venta,
-                    costoProduccionTorta, totalActual, totalAcumuladoActual};
+                    diaActual, rndDemanda, demandaNueva,vendidas, this.produccion, sobranteActual, promedioATirar,rndMulta, multaNueva, gananciaMulta,
+                    utilidadMulta, costoPermiso, gananciaPermiso, utilidadPermiso};
                     recorridoVector++;
                 }
                 this.setVectorEstadoAnterior(this.vectorEstadoActual);
@@ -229,7 +246,7 @@ namespace TP_Montecarlo
 
         public double totalFinal()
         {
-            return this.getVectorEstadoActual()[totalAcumulado];
+            return this.getVectorEstadoActual()[gananciaPermiso];
         }
     }
 }

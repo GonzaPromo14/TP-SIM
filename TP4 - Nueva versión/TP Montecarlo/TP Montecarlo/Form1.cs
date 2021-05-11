@@ -17,12 +17,41 @@ namespace TP_Montecarlo
         public Form1()
         {
             InitializeComponent();
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             gestorCalculos = new GestorCalculos();
             gestorCalculos.llenarGrillas(grdProbabilidadesDemandaTorta, grdProbabilidadesMulta);
+
+            //colores//
+
+            grdSimulaciones.Columns[1].DefaultCellStyle.BackColor = Color.FromArgb(217, 225, 242);
+            grdSimulaciones.Columns[7].DefaultCellStyle.BackColor = Color.FromArgb(217, 225, 242);
+
+            grdSimulaciones.Columns[6].HeaderCell.Style.BackColor = Color.FromArgb(244, 176, 132);
+            grdSimulaciones.Columns[6].DefaultCellStyle.BackColor = Color.FromArgb(252, 228, 214);
+
+
+            grdSimulaciones.Columns[8].HeaderCell.Style.BackColor = Color.FromArgb(226, 239, 218);
+            grdSimulaciones.Columns[9].HeaderCell.Style.BackColor = Color.FromArgb(226, 239, 218);
+            grdSimulaciones.Columns[10].HeaderCell.Style.BackColor = Color.FromArgb(169, 208, 142);
+            grdSimulaciones.Columns[10].DefaultCellStyle.BackColor = Color.FromArgb(226, 239, 218);
+
+
+            grdSimulaciones.Columns[11].HeaderCell.Style.BackColor = Color.FromArgb(255, 242, 204);
+            grdSimulaciones.Columns[12].HeaderCell.Style.BackColor = Color.FromArgb(255, 242, 204);
+            grdSimulaciones.Columns[13].HeaderCell.Style.BackColor = Color.FromArgb(255, 217, 102);
+            grdSimulaciones.Columns[13].DefaultCellStyle.BackColor = Color.FromArgb(255, 242, 204);
+
+
+
+            foreach (DataGridViewColumn col in grdSimulaciones.Columns)
+            {
+                col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+
         }
 
         private void btnSimular_Click(object sender, EventArgs e)
