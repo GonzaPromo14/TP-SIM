@@ -85,7 +85,7 @@ namespace TP_Montecarlo
             p.obtenerPaginaActual(grdSimulaciones);
             btnSiguiente.Enabled = p.getCantPaginas() == 1 ? false : true;
             lblPagina.Text = "Página " + p.getPaginaActual().ToString() + " de " + p.getCantPaginas();
-            txtTotal.Text = gestorCalculos.totalFinal().ToString();
+            //txtTotal.Text = gestorCalculos.totalFinal().ToString();
 
         }
 
@@ -128,8 +128,9 @@ namespace TP_Montecarlo
             bool costo = validarCosto();
             bool precio = validarPrecio();
             bool multa = validarMulta();
+            bool produccion = validarProduccion();
 
-            return (cantidad && desde && hasta && costo && precio && multa);
+            return (cantidad && desde && hasta && costo && precio && multa && produccion);
         }
 
 
@@ -206,7 +207,7 @@ namespace TP_Montecarlo
             if (precio < 0)
             {
                 MessageBox.Show("Ingrese un número positivo en el campo 'Precio de venta'", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtCostoTorta.Text = "";
+                txtPrecioVenta.Text = "";
                 return false;
             }
             return true;
@@ -217,14 +218,32 @@ namespace TP_Montecarlo
             double multa = -1;
             try
             {
-                multa = double.Parse(txtPrecioVenta.Text);
+                multa = double.Parse(txtMulta.Text);
             }
             catch (System.FormatException e) { };
 
             if (multa < 0)
             {
                 MessageBox.Show("Ingrese un número positivo en el campo 'Costo de multa'", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtCostoTorta.Text = "";
+                txtMulta.Text = "";
+                return false;
+            }
+            return true;
+        }
+
+        private bool validarProduccion()
+        {
+            double produccion = -1;
+            try
+            {
+                produccion = double.Parse(txtProduccionDiaria.Text);
+            }
+            catch (System.FormatException e) { };
+
+            if (produccion < 0)
+            {
+                MessageBox.Show("Ingrese un número positivo en el campo 'Producción diaria'", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtProduccionDiaria.Text = "";
                 return false;
             }
             return true;
