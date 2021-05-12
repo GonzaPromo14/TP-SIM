@@ -210,6 +210,13 @@ namespace TP_Montecarlo
                 txtPrecioVenta.Text = "";
                 return false;
             }
+
+            if (double.Parse(txtPrecioVenta.Text) < int.Parse(txtCostoTorta.Text))
+                {
+                    MessageBox.Show("El valor 'Precio de venta' no puede ser menor a 'Costo por torta'", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtHasta.Text = "";
+                    return false;
+                }
             return true;
         }
 
