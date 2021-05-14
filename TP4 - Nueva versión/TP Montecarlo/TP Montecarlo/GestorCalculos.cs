@@ -10,24 +10,26 @@ namespace TP_Montecarlo
     class GestorCalculos
     {
         //Vectores estado
-        double[] vectorEstadoActual = new double[14];
-        double[] vectorEstadoAnterior = new double[14];
+        double[] vectorEstadoActual = new double[16];
+        double[] vectorEstadoAnterior = new double[16];
 
         //Atributos de los vectores
         int dia = 0;
         int randomDemanda = 1;
         int demanda = 2;
         int vendidas = 3;
-        int stock = 4;
-        int sobrante = 5;
-        int promedioATirar = 6;
-        int randomMulta = 7;
-        int multa = 8;
-        int gananciaMulta = 9;
-        int utilidadMulta = 10;
-        int costoPorPermiso = 11;
-        int gananciaPermiso = 12;
-        int utilidadPermiso = 13;
+        int faltantes = 4;
+        int promedioFaltantes = 5;
+        int stock = 6;
+        int sobrante = 7;
+        int promedioATirar = 8;
+        int randomMulta = 9;
+        int multa = 10;
+        int gananciaMulta = 11;
+        int utilidadMulta = 12;
+        int costoPorPermiso = 13;
+        int gananciaPermiso = 14;
+        int utilidadPermiso = 15;
 
         //Parámetros para los cálculos
         double costoPorTorta;
@@ -97,12 +99,12 @@ namespace TP_Montecarlo
             this.costoMulta = costoMulta;
             this.produccion = produccion;
             this.setVectorEstadoAnterior(
-                new double[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0}
+                new double[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0,0,0}
             );
-            this.setVectorEstadoActual(0,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+            this.setVectorEstadoActual(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0);
             this.cantidadSimulaciones = cantidadSimulaciones + 1;
             this.simulaciones = new double[cantidadMostrar + 1][];
-            this.simulaciones[0] = new double[]{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+            this.simulaciones[0] = new double[]{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ,0};
             this.desde = desde;
             this.hasta = hasta;
             this.recorridoVector = 0;
@@ -113,6 +115,8 @@ namespace TP_Montecarlo
             double randomDemanda,
             double demanda,
             double vendidas,
+            double faltantes,
+            double promedioFaltantes,
             double stock,
             double sobrante,
             double promedioATirar,
@@ -128,6 +132,8 @@ namespace TP_Montecarlo
             vectorEstadoActual[this.randomDemanda] = randomDemanda;
             vectorEstadoActual[this.demanda] = demanda;
             vectorEstadoActual[this.vendidas] = vendidas;
+            vectorEstadoActual[this.faltantes] = faltantes;
+            vectorEstadoActual[this.promedioFaltantes] = promedioFaltantes;
             vectorEstadoActual[this.stock] = stock;
             vectorEstadoActual[this.sobrante] = sobrante;
             vectorEstadoActual[this.promedioATirar] = promedioATirar;
@@ -182,10 +188,13 @@ namespace TP_Montecarlo
             Random r = new Random();
             for (int i = 0; i < cantidadSimulaciones; i++)
             {
+
                 double diaActual = this.vectorEstadoAnterior[this.dia] + 1;
                 double rndDemanda = r.NextDouble();
                 double demandaNueva = this.obtenerDemanda(rndDemanda);
                 double vendidas = demandaNueva > this.produccion ? this.produccion : demandaNueva;
+                double faltantes = demandaNueva > this.produccion ? demandaNueva - this.produccion : 0;
+                double promedioFaltantes = (1 / diaActual) * ((diaActual - 1) * vectorEstadoAnterior[this.promedioFaltantes] + faltantes);
                 double sobranteActual = this.produccion - demandaNueva <0 ? 0 : this.produccion - demandaNueva;
                 double promedioATirar = (1 / diaActual) * ((diaActual - 1) * vectorEstadoAnterior[this.promedioATirar] + sobranteActual);
                 double rndMulta = r.NextDouble();
@@ -195,11 +204,14 @@ namespace TP_Montecarlo
                 double costoPermiso = diaActual % 7 == 0 ? this.costoPermiso : 0;
                 double gananciaPermiso = (vendidas*this.precioVenta)-(this.produccion*costoPorTorta)-costoPermiso;
                 double utilidadPermiso = (1 / diaActual) * ((diaActual - 1) * vectorEstadoAnterior[this.utilidadPermiso] + gananciaPermiso);//utilidad promedio
+                
                 this.setVectorEstadoActual(
                     diaActual,
                     rndDemanda,
                     demandaNueva,
                     vendidas,
+                    faltantes,
+                    promedioFaltantes,
                     this.produccion,
                     sobranteActual,
                     promedioATirar,
@@ -214,7 +226,7 @@ namespace TP_Montecarlo
                 if (diaActual >= this.desde && diaActual <= this.hasta)
                 {
                     this.simulaciones[long.Parse(recorridoVector.ToString())] = new double[] {
-                    diaActual, rndDemanda, demandaNueva,vendidas, this.produccion, sobranteActual, promedioATirar,rndMulta, multaNueva, gananciaMulta,
+                    diaActual, rndDemanda, demandaNueva,vendidas,faltantes,promedioFaltantes, this.produccion, sobranteActual, promedioATirar,rndMulta, multaNueva, gananciaMulta,
                     utilidadMulta, costoPermiso, gananciaPermiso, utilidadPermiso};
                     recorridoVector++;
                 }

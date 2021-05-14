@@ -28,29 +28,34 @@ namespace TP_Montecarlo
             //colores//
 
             grdSimulaciones.Columns[1].DefaultCellStyle.BackColor = Color.FromArgb(217, 225, 242);
-            grdSimulaciones.Columns[7].DefaultCellStyle.BackColor = Color.FromArgb(217, 225, 242);
-
-            grdSimulaciones.Columns[6].HeaderCell.Style.BackColor = Color.FromArgb(244, 176, 132);
-            grdSimulaciones.Columns[6].DefaultCellStyle.BackColor = Color.FromArgb(252, 228, 214);
+            grdSimulaciones.Columns[9].DefaultCellStyle.BackColor = Color.FromArgb(217, 225, 242);
 
 
-            grdSimulaciones.Columns[8].HeaderCell.Style.BackColor = Color.FromArgb(226, 239, 218);
-            grdSimulaciones.Columns[9].HeaderCell.Style.BackColor = Color.FromArgb(226, 239, 218);
-            grdSimulaciones.Columns[10].HeaderCell.Style.BackColor = Color.FromArgb(169, 208, 142);
-            grdSimulaciones.Columns[10].DefaultCellStyle.BackColor = Color.FromArgb(226, 239, 218);
+            grdSimulaciones.Columns[5].HeaderCell.Style.BackColor = Color.FromArgb(244, 176, 132);
+            grdSimulaciones.Columns[5].DefaultCellStyle.BackColor = Color.FromArgb(252, 228, 214);
+
+            grdSimulaciones.Columns[8].HeaderCell.Style.BackColor = Color.FromArgb(244, 176, 132);
+            grdSimulaciones.Columns[8].DefaultCellStyle.BackColor = Color.FromArgb(252, 228, 214);
 
 
-            grdSimulaciones.Columns[11].HeaderCell.Style.BackColor = Color.FromArgb(255, 242, 204);
-            grdSimulaciones.Columns[12].HeaderCell.Style.BackColor = Color.FromArgb(255, 242, 204);
-            grdSimulaciones.Columns[13].HeaderCell.Style.BackColor = Color.FromArgb(255, 217, 102);
-            grdSimulaciones.Columns[13].DefaultCellStyle.BackColor = Color.FromArgb(255, 242, 204);
+            grdSimulaciones.Columns[10].HeaderCell.Style.BackColor = Color.FromArgb(226, 239, 218);
+            grdSimulaciones.Columns[11].HeaderCell.Style.BackColor = Color.FromArgb(226, 239, 218);
+            grdSimulaciones.Columns[12].HeaderCell.Style.BackColor = Color.FromArgb(169, 208, 142);
+            grdSimulaciones.Columns[12].DefaultCellStyle.BackColor = Color.FromArgb(226, 239, 218);
 
+
+            grdSimulaciones.Columns[13].HeaderCell.Style.BackColor = Color.FromArgb(255, 242, 204);
+            grdSimulaciones.Columns[14].HeaderCell.Style.BackColor = Color.FromArgb(255, 242, 204);
+            grdSimulaciones.Columns[15].HeaderCell.Style.BackColor = Color.FromArgb(255, 217, 102);
+            grdSimulaciones.Columns[15].DefaultCellStyle.BackColor = Color.FromArgb(255, 242, 204);
 
 
             foreach (DataGridViewColumn col in grdSimulaciones.Columns)
             {
                 col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                col.Width = 80;
             }
+
 
         }
 
@@ -76,9 +81,11 @@ namespace TP_Montecarlo
             int cantidadSimulaciones = int.Parse(txtCantidadSimulaciones.Text);
             gestorCalculos.generarSimulacion(cantidadSimulaciones, grdSimulaciones);
 
-            txtA.Text = Truncador.Truncar(gestorCalculos.getResultadoSimulación(cantidadDiasAMostrar, 6)).ToString();
-            txtB.Text = "$" + Truncador.Truncar(gestorCalculos.getResultadoSimulación(cantidadDiasAMostrar, 10)).ToString();
-            txtC.Text = "$" + Truncador.Truncar(gestorCalculos.getResultadoSimulación(cantidadDiasAMostrar, 13)).ToString();
+
+            txtA.Text = Truncador.Truncar(gestorCalculos.getResultadoSimulación(cantidadDiasAMostrar, 5)).ToString();
+            txtB.Text = Truncador.Truncar(gestorCalculos.getResultadoSimulación(cantidadDiasAMostrar, 8)).ToString();
+            txtC.Text = "$" + Truncador.Truncar(gestorCalculos.getResultadoSimulación(cantidadDiasAMostrar, 12)).ToString();
+            txtD.Text = "$" + Truncador.Truncar(gestorCalculos.getResultadoSimulación(cantidadDiasAMostrar, 15)).ToString();
 
 
             p = new Paginador(gestorCalculos.getSimulaciones(), 10);

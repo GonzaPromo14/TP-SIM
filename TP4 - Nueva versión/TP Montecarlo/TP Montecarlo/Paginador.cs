@@ -49,15 +49,19 @@ namespace TP_Montecarlo
                     datos[i][2].ToString(),
                     datos[i][3].ToString(),
                     datos[i][4].ToString(),
-                    datos[i][5].ToString(),
-                    Truncador.Truncar(datos[i][6]).ToString(),
-                    Truncador.Truncar(datos[i][7]).ToString(),
-                    datos[i][8].ToString(),
-                    datos[i][9].ToString(),
-                    Truncador.Truncar(datos[i][10]).ToString(),
+                    Truncador.Truncar(datos[i][5]).ToString(),
+                    datos[i][6].ToString(),
+                    datos[i][7].ToString(),
+                    Truncador.Truncar(datos[i][8]).ToString(),
+                    Truncador.Truncar(datos[i][9]).ToString(),
+                    datos[i][10].ToString(),
                     datos[i][11].ToString(),
-                    datos[i][12].ToString(),
-                    Truncador.Truncar(datos[i][13]).ToString()
+                    Truncador.Truncar(datos[i][12]).ToString(),
+                    datos[i][13].ToString(),
+                    datos[i][14].ToString(),
+                    Truncador.Truncar(datos[i][15]).ToString()
+
+
                 });
             }
 
