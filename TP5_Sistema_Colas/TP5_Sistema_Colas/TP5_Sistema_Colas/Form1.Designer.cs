@@ -28,13 +28,211 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.evento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.reloj = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rnd_camion_zon1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tiempo_llegada_camion_zon1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.llegada_camion_zona_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rnd1_reparacion_zona1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rnd2_reparacion_zona1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.reparacion_zona1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cola_zona1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estado_zona1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnAceptar = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.evento,
+            this.reloj,
+            this.rnd_camion_zon1,
+            this.tiempo_llegada_camion_zon1,
+            this.llegada_camion_zona_1,
+            this.rnd1_reparacion_zona1,
+            this.rnd2_reparacion_zona1,
+            this.reparacion_zona1,
+            this.cola_zona1,
+            this.estado_zona1});
+            this.dataGridView1.Location = new System.Drawing.Point(12, 165);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(1188, 305);
+            this.dataGridView1.TabIndex = 0;
+            // 
+            // evento
+            // 
+            this.evento.HeaderText = "Evento";
+            this.evento.Name = "evento";
+            // 
+            // reloj
+            // 
+            this.reloj.HeaderText = "Reloj";
+            this.reloj.Name = "reloj";
+            // 
+            // rnd_camion_zon1
+            // 
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.rnd_camion_zon1.DefaultCellStyle = dataGridViewCellStyle1;
+            this.rnd_camion_zon1.HeaderText = "RND";
+            this.rnd_camion_zon1.Name = "rnd_camion_zon1";
+            // 
+            // tiempo_llegada_camion_zon1
+            // 
+            this.tiempo_llegada_camion_zon1.HeaderText = "Tiempo llegada";
+            this.tiempo_llegada_camion_zon1.Name = "tiempo_llegada_camion_zon1";
+            // 
+            // llegada_camion_zona_1
+            // 
+            this.llegada_camion_zona_1.HeaderText = "Llegada";
+            this.llegada_camion_zona_1.Name = "llegada_camion_zona_1";
+            // 
+            // rnd1_reparacion_zona1
+            // 
+            this.rnd1_reparacion_zona1.HeaderText = "RND1";
+            this.rnd1_reparacion_zona1.Name = "rnd1_reparacion_zona1";
+            // 
+            // rnd2_reparacion_zona1
+            // 
+            this.rnd2_reparacion_zona1.HeaderText = "RND2";
+            this.rnd2_reparacion_zona1.Name = "rnd2_reparacion_zona1";
+            // 
+            // reparacion_zona1
+            // 
+            this.reparacion_zona1.HeaderText = "Reparación";
+            this.reparacion_zona1.Name = "reparacion_zona1";
+            // 
+            // cola_zona1
+            // 
+            this.cola_zona1.HeaderText = "Cola camiones";
+            this.cola_zona1.Name = "cola_zona1";
+            // 
+            // estado_zona1
+            // 
+            this.estado_zona1.HeaderText = "Estado";
+            this.estado_zona1.Name = "estado_zona1";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 27);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(127, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Cantidad de simulaciones";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 49);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(38, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Desde";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 72);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Hasta";
+            // 
+            // btnAceptar
+            // 
+            this.btnAceptar.Location = new System.Drawing.Point(184, 95);
+            this.btnAceptar.Name = "btnAceptar";
+            this.btnAceptar.Size = new System.Drawing.Size(75, 23);
+            this.btnAceptar.TabIndex = 4;
+            this.btnAceptar.Text = "Aceptar";
+            this.btnAceptar.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.btnAceptar);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(265, 124);
+            this.groupBox1.TabIndex = 5;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Ingreso de datos";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(139, 24);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 6;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(50, 46);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.TabIndex = 7;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(50, 69);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(100, 20);
+            this.textBox3.TabIndex = 7;
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(1214, 485);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.dataGridView1);
+            this.Name = "Form1";
+            this.Text = "TP5 Sistemas de colas";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn evento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn reloj;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rnd_camion_zon1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tiempo_llegada_camion_zon1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn llegada_camion_zona_1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rnd1_reparacion_zona1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rnd2_reparacion_zona1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn reparacion_zona1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cola_zona1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn estado_zona1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnAceptar;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
