@@ -16,6 +16,7 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
             this.tiempo = tiempo;
             this.camion = camion;
             this.zona = zona;
+            this.nombre = "Fin servicio " + "(" + camion.nombre + ")" + "(" + zona.nombre + ")";
 
         }
 
@@ -35,7 +36,7 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
 
                 zona.generarProximoFinServicio(vecZona);
 
-                Evento proximoFin = new Fin_servicio(vecZona[Constantes.colTiempoReparacion], proximoCamion, zona);
+                Evento proximoFin = new Fin_servicio(vecZona[Constantes.colProximoFinReparacion], proximoCamion, zona);
                 controlador.eventos.Enqueue(proximoFin);
             }
             else

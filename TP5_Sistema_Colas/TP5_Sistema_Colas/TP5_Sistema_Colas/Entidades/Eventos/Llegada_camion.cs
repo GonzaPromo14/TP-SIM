@@ -26,7 +26,7 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
 
             zona.generarProximaLlegada(vecZona);
 
-            //creo el proximo camion y guardo el evento
+            //creo la proxima llegada
             Camion proximoCamion = new Camion(vecZona[Constantes.colProximaLlegada], "");
             controlador.camiones.Add(proximoCamion);
 
@@ -41,7 +41,7 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
                 //si el camion llega y pasa a ser atendido creo el proximo fin de servicio y guardo el evento
                 zona.generarProximoFinServicio(vecZona);
 
-                Evento proximoFin = new Fin_servicio(vecZona[Constantes.colTiempoReparacion], camion, zona);
+                Evento proximoFin = new Fin_servicio(vecZona[Constantes.colProximoFinReparacion], camion, zona);
                 controlador.eventos.Enqueue(proximoFin);
             }
 

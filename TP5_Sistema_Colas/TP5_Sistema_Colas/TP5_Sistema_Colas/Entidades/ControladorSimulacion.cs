@@ -86,10 +86,10 @@ namespace TP5_Sistema_Colas.Entidades
 
                 vectorActual[0][0] = evento.nombre;
                 vectorActual[0][1] = evento.tiempo;
-                //Console.WriteLine("Evento cargado");
+
                 evento.ocurrir(this);
 
-                //Console.WriteLine(evento.ToString());
+
 
                 //cargar vectorActual a grilla
 
