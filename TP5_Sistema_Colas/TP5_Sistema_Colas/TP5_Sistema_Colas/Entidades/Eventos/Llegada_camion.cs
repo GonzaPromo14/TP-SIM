@@ -24,12 +24,6 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
         {
             Console.WriteLine("############# Ocurre llegada  ###########");
 
-            //si la zona está ocupada mando el camion a la cola sino lo atiendo
-            if (zona.estaOcupada()) zona.cola.Enqueue(camion);
-            else zona.asignarCamion(camion);
-
-
-            //genero una proxima llegada y un proximo fin de servicio
             dynamic[] vecZona = new dynamic[9];
 
             zona.generarProximaLlegada(vecZona);
@@ -41,16 +35,24 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
             Evento proximaLlegada = new Llegada_camion(vecZona[Constantes.colProximaLlegada], camion, zona);
             controlador.eventos.Enqueue(proximaLlegada);
 
-            //creo proximo fin de servicio y guardo el evento
-            zona.generarProximoFinServicio(vecZona);
+            //si la zona está ocupada mando el camion a la cola sino lo atiendo
+            if (zona.estaOcupada()) zona.cola.Enqueue(camion);
+            else
+            {
+                zona.asignarCamion(camion);
+                //si el camion llega y pasa a ser atendido creo el proximo fin de servicio y guardo el evento
+                zona.generarProximoFinServicio(vecZona);
 
-            Evento proximoFin = new Fin_servicio(vecZona[Constantes.colTiempoReparacion], camion, zona);
-            controlador.eventos.Enqueue(proximoFin);
+                Evento proximoFin = new Fin_servicio(vecZona[Constantes.colTiempoReparacion], camion, zona);
+                controlador.eventos.Enqueue(proximoFin);
+            }
 
-
+            //cola y estado
             vecZona[Constantes.colCola] = zona.cola.Count();
             vecZona[Constantes.colEstado] = zona.getEstado();
 
+            //actualizo vector
+            controlador.vectorActual[zona.numero] = vecZona;
         }
 
         public override string ToString()

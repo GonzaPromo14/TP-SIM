@@ -16,7 +16,7 @@ namespace TP5_Sistema_Colas.Entidades.Objetos
 
         string estado;
         public string nombre;
-        int numero;
+        public int numero;
 
         double mediaLlegadas;
         double mediaServicio;

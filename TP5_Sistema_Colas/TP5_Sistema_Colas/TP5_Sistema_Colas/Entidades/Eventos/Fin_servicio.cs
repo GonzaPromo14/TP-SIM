@@ -23,6 +23,8 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
         {
             Console.WriteLine("############# Ocurre Fin servicio  ###########");
 
+
+
             //veo si tiene que entrar en otra zona
         }
     }

@@ -20,8 +20,11 @@ namespace TP5_Sistema_Colas.Entidades
         public PriorityQueue<Evento> eventos;
         public List<Camion> camiones;
 
+        int iteraciones;
+        int desde;
+        int hasta;
         //-------------------------------------------------
-        public void simular(int iteraciones, int desde , int hasta)
+        public void simular()
         {
             camiones = new List<Camion>();
 
@@ -60,8 +63,6 @@ namespace TP5_Sistema_Colas.Entidades
 
 
             iteraciones = 2;
-
-            
 
             //loop principal
             for(int i=1; i<=iteraciones; i++)
