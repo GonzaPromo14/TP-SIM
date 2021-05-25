@@ -34,7 +34,13 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
             controlador.eventos.Enqueue(proximaLlegada);
 
             //si la zona está ocupada mando el camion a la cola sino lo atiendo
-            if (zona.estaOcupada()) zona.cola.Enqueue(camion);
+            if (zona.estaOcupada())
+            {
+                zona.cola.Enqueue(camion);
+                vecZona[Constantes.colRND1Reparacion] = "-";
+                vecZona[Constantes.colRND2Reparacion] = "-";
+                vecZona[Constantes.colTiempoReparacion] = "-";
+            }
             else
             {
                 zona.asignarCamion(camion);
@@ -45,10 +51,7 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
                 controlador.eventos.Enqueue(proximoFin);
             }
 
-            vecZona[Constantes.colRND1Reparacion] = "-";
-            vecZona[Constantes.colRND2Reparacion] = "-";
-            vecZona[Constantes.colTiempoReparacion] = "-";
-            vecZona[Constantes.colProximoFinReparacion] = "-";
+
 
 
 

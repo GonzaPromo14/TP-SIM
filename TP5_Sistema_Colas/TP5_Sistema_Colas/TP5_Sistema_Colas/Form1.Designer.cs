@@ -136,7 +136,7 @@
             this.dgvPrueba.EnableHeadersVisualStyles = false;
             this.dgvPrueba.Location = new System.Drawing.Point(12, 168);
             this.dgvPrueba.Name = "dgvPrueba";
-            this.dgvPrueba.Size = new System.Drawing.Size(1188, 500);
+            this.dgvPrueba.Size = new System.Drawing.Size(1346, 500);
             this.dgvPrueba.TabIndex = 7;
             // 
             // colEvento
@@ -153,7 +153,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1214, 749);
+            this.ClientSize = new System.Drawing.Size(1370, 749);
             this.Controls.Add(this.dgvPrueba);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);

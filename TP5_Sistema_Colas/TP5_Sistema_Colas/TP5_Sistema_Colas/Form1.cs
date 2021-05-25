@@ -25,6 +25,11 @@ namespace TP5_Sistema_Colas
 
         public void cargarColumnas()
         {
+            //Para que no se muevan las dos primeras
+            dgvPrueba.Columns[0].Frozen = true;
+            dgvPrueba.Columns[0].Width = 200;
+            dgvPrueba.Columns[1].Frozen = true;
+
             Color color;
             string pos;
             for (int i= 0; i < 2; i++)
