@@ -23,6 +23,9 @@ namespace TP5_Sistema_Colas.Entidades
         public static int colCola = 7;
         public static int colEstado = 8;
 
+        //------------- Algunos valores esenciales
+        public static int cantidadHorasSemana = 168;
+
         //------------- Columnas Metricas
     }
 }

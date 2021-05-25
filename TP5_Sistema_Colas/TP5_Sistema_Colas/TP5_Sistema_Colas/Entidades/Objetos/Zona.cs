@@ -41,9 +41,9 @@ namespace TP5_Sistema_Colas.Entidades.Objetos
         {
             double horaReloj = controlador.vectorActual.ElementAt(0)[Constantes.colReloj];
 
-            vecZona[Constantes.colRNDLlegada] = semilla.NextDouble();
-            vecZona[Constantes.colTiempoLlegada] = Exponential.Sample(semilla, mediaLlegadas); //esto hay que ver si se cambia
-            vecZona[Constantes.colProximaLlegada] = horaReloj + vecZona[Constantes.colTiempoLlegada];
+            vecZona[Constantes.colRNDLlegada] = Truncador.Truncar(semilla.NextDouble());
+            vecZona[Constantes.colTiempoLlegada] = Truncador.Truncar(Exponential.Sample(semilla, mediaLlegadas)); //esto hay que ver si se cambia
+            vecZona[Constantes.colProximaLlegada] = Truncador.Truncar(horaReloj + vecZona[Constantes.colTiempoLlegada]);
 
         }
 
@@ -51,9 +51,9 @@ namespace TP5_Sistema_Colas.Entidades.Objetos
         {
             double horaReloj = controlador.vectorActual.ElementAt(0)[Constantes.colReloj];
 
-            vecZona[Constantes.colRND1Reparacion] = semilla.NextDouble();
-            vecZona[Constantes.colRND2Reparacion] = semilla.NextDouble();
-            vecZona[Constantes.colTiempoReparacion] = Normal.Sample(semilla,mediaServicio,desvServicio);//esto hay que ver si se cambia
+            vecZona[Constantes.colRND1Reparacion] = Truncador.Truncar(semilla.NextDouble());
+            vecZona[Constantes.colRND2Reparacion] = Truncador.Truncar(semilla.NextDouble());
+            vecZona[Constantes.colTiempoReparacion] = Truncador.Truncar(Normal.Sample(semilla,mediaServicio,desvServicio));//esto hay que ver si se cambia
             vecZona[Constantes.colProximoFinReparacion] = horaReloj + vecZona[Constantes.colTiempoReparacion];
         }
 

@@ -77,7 +77,7 @@ namespace TP5_Sistema_Colas.Entidades
 
             pantalla.cargarLinea(vectorActual);
             
-            iteraciones = 20;
+            iteraciones = 10;
             vectorAnterior = vectorActual;//esto se hace solo la primera vez para que ande
 
             //loop principal
