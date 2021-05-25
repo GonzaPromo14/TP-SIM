@@ -29,6 +29,7 @@ namespace TP5_Sistema_Colas
             dgvPrueba.Columns[0].Frozen = true;
             dgvPrueba.Columns[0].Width = 200;
             dgvPrueba.Columns[1].Frozen = true;
+            dgvPrueba.Columns[1].DefaultCellStyle.BackColor = Color.LightBlue;
 
             Color color;
             string pos;
@@ -89,6 +90,7 @@ namespace TP5_Sistema_Colas
 
         public void cargarLinea(List<dynamic[]> vector)
         {
+            
             dynamic[] linea = new dynamic[20];
             
             int pos = 0;
@@ -107,6 +109,7 @@ namespace TP5_Sistema_Colas
 
         private void button1_Click(object sender, EventArgs e)
         {
+            dgvPrueba.Rows.Clear();
             controlador.simular();
         }
     }

@@ -51,10 +51,6 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
                 controlador.eventos.Enqueue(proximoFin);
             }
 
-
-
-
-
             //cola y estado
             vecZona[Constantes.colCola] = zona.cola.Count();
             vecZona[Constantes.colEstado] = zona.getEstado();

@@ -14,8 +14,8 @@ namespace TP5_Sistema_Colas.Entidades
         Form1 pantalla;
         //Por favor no le muestren esto a la Meles
         //--------------------------------------------------
-        public List<dynamic[]> vectorAnterior = new List<dynamic[]>();
-        public List<dynamic[]> vectorActual = new List<dynamic[]>();
+        public List<dynamic[]> vectorAnterior;
+        public List<dynamic[]> vectorActual;
 
         public Evento evento;
         public PriorityQueue<Evento> eventos;
@@ -33,6 +33,9 @@ namespace TP5_Sistema_Colas.Entidades
         public void simular()
         {
             pantalla.datos = new System.Data.DataTable();
+
+            vectorAnterior = new List<dynamic[]>();
+            vectorActual = new List<dynamic[]>();
 
             camiones = new List<Camion>();
 
