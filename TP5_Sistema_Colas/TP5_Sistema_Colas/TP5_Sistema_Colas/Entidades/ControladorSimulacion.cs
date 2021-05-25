@@ -40,6 +40,8 @@ namespace TP5_Sistema_Colas.Entidades
             camiones = new List<Camion>();
             Camion.contador = 1;// reinicia la numeracion de camiones
 
+            //creacion de las zonas
+
             Zona zona1 = new Zona(1, "Libre", this, 0.43, 2, 1.1);
             Zona zona2 = new Zona(2, "Libre", this, 0.16, 5.8, 3.1);
             /*
@@ -74,6 +76,7 @@ namespace TP5_Sistema_Colas.Entidades
             //falta agregar la parte de metricas
 
             pantalla.cargarLinea(vectorActual);
+            
             iteraciones = 20;
             vectorAnterior = vectorActual;//esto se hace solo la primera vez para que ande
 
@@ -86,14 +89,11 @@ namespace TP5_Sistema_Colas.Entidades
                 //saco el evento con tiempo más proximo de la cola
                 evento = eventos.Dequeue();
 
-                //Console.WriteLine(evento.ToString());
 
-                vectorActual[0][0] = evento.nombre;
-                vectorActual[0][1] = evento.tiempo;
+                vectorActual[0][Constantes.colEvento] = evento.nombre;
+                vectorActual[0][Constantes.colReloj] = evento.tiempo;
 
                 evento.ocurrir(this);
-
-
 
                 //cargar vectorActual a grilla
 
