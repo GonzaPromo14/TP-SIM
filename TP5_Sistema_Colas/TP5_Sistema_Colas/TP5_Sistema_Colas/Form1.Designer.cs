@@ -28,18 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.evento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.reloj = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rnd_camion_zon1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tiempo_llegada_camion_zon1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.llegada_camion_zona_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rnd1_reparacion_zona1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rnd2_reparacion_zona1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.reparacion_zona1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cola_zona1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.estado_zona1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -49,80 +37,12 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.dgvPrueba = new System.Windows.Forms.DataGridView();
+            this.colEvento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colReloj = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPrueba)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.evento,
-            this.reloj,
-            this.rnd_camion_zon1,
-            this.tiempo_llegada_camion_zon1,
-            this.llegada_camion_zona_1,
-            this.rnd1_reparacion_zona1,
-            this.rnd2_reparacion_zona1,
-            this.reparacion_zona1,
-            this.cola_zona1,
-            this.estado_zona1});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 165);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1188, 305);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // evento
-            // 
-            this.evento.HeaderText = "Evento";
-            this.evento.Name = "evento";
-            // 
-            // reloj
-            // 
-            this.reloj.HeaderText = "Reloj";
-            this.reloj.Name = "reloj";
-            // 
-            // rnd_camion_zon1
-            // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.rnd_camion_zon1.DefaultCellStyle = dataGridViewCellStyle1;
-            this.rnd_camion_zon1.HeaderText = "RND";
-            this.rnd_camion_zon1.Name = "rnd_camion_zon1";
-            // 
-            // tiempo_llegada_camion_zon1
-            // 
-            this.tiempo_llegada_camion_zon1.HeaderText = "Tiempo llegada";
-            this.tiempo_llegada_camion_zon1.Name = "tiempo_llegada_camion_zon1";
-            // 
-            // llegada_camion_zona_1
-            // 
-            this.llegada_camion_zona_1.HeaderText = "Llegada";
-            this.llegada_camion_zona_1.Name = "llegada_camion_zona_1";
-            // 
-            // rnd1_reparacion_zona1
-            // 
-            this.rnd1_reparacion_zona1.HeaderText = "RND1";
-            this.rnd1_reparacion_zona1.Name = "rnd1_reparacion_zona1";
-            // 
-            // rnd2_reparacion_zona1
-            // 
-            this.rnd2_reparacion_zona1.HeaderText = "RND2";
-            this.rnd2_reparacion_zona1.Name = "rnd2_reparacion_zona1";
-            // 
-            // reparacion_zona1
-            // 
-            this.reparacion_zona1.HeaderText = "Reparación";
-            this.reparacion_zona1.Name = "reparacion_zona1";
-            // 
-            // cola_zona1
-            // 
-            this.cola_zona1.HeaderText = "Cola camiones";
-            this.cola_zona1.Name = "cola_zona1";
-            // 
-            // estado_zona1
-            // 
-            this.estado_zona1.HeaderText = "Estado";
-            this.estado_zona1.Name = "estado_zona1";
             // 
             // label1
             // 
@@ -207,36 +127,46 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // dgvPrueba
+            // 
+            this.dgvPrueba.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPrueba.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colEvento,
+            this.colReloj});
+            this.dgvPrueba.EnableHeadersVisualStyles = false;
+            this.dgvPrueba.Location = new System.Drawing.Point(12, 168);
+            this.dgvPrueba.Name = "dgvPrueba";
+            this.dgvPrueba.Size = new System.Drawing.Size(1188, 500);
+            this.dgvPrueba.TabIndex = 7;
+            // 
+            // colEvento
+            // 
+            this.colEvento.HeaderText = "Evento";
+            this.colEvento.Name = "colEvento";
+            // 
+            // colReloj
+            // 
+            this.colReloj.HeaderText = "Reloj";
+            this.colReloj.Name = "colReloj";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1214, 485);
+            this.ClientSize = new System.Drawing.Size(1214, 749);
+            this.Controls.Add(this.dgvPrueba);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.dataGridView1);
             this.Name = "Form1";
             this.Text = "TP5 Sistemas de colas";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPrueba)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn evento;
-        private System.Windows.Forms.DataGridViewTextBoxColumn reloj;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rnd_camion_zon1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tiempo_llegada_camion_zon1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn llegada_camion_zona_1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rnd1_reparacion_zona1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rnd2_reparacion_zona1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn reparacion_zona1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cola_zona1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn estado_zona1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -246,6 +176,9 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridView dgvPrueba;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colEvento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colReloj;
     }
 }
 

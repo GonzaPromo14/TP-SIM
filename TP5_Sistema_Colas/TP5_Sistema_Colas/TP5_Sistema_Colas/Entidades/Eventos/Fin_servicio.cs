@@ -21,11 +21,47 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
 
         public override void ocurrir(ControladorSimulacion controlador)
         {
-            Console.WriteLine("############# Ocurre Fin servicio  ###########");
 
+            dynamic vecZona = controlador.vectorActual[zona.numero];
 
+            vecZona[Constantes.colRNDLlegada] = "-";
+            vecZona[Constantes.colTiempoLlegada] = "-";
+
+            //hago pasar al proximo camion si no hay ninguno cambio estado a libre
+            if (zona.quedanCamiones())
+            {
+                Camion proximoCamion = zona.cola.Dequeue();
+                zona.asignarCamion(proximoCamion);
+
+                zona.generarProximoFinServicio(vecZona);
+
+                Evento proximoFin = new Fin_servicio(vecZona[Constantes.colTiempoReparacion], proximoCamion, zona);
+                controlador.eventos.Enqueue(proximoFin);
+            }
+            else
+            {
+                zona.asignarCamion(null);
+                //no hay proxima reparacion
+                vecZona[Constantes.colRND1Reparacion] = "-";
+                vecZona[Constantes.colRND2Reparacion] = "-";
+                vecZona[Constantes.colTiempoReparacion] = "-";
+                vecZona[Constantes.colProximoFinReparacion] = "-";
+
+            }
+
+            //cola y estado
+            vecZona[Constantes.colCola] = zona.cola.Count();
+            vecZona[Constantes.colEstado] = zona.getEstado();
 
             //veo si tiene que entrar en otra zona
+
+            //actualizo vector
+            controlador.vectorActual[zona.numero] = vecZona;
+        }
+
+        public override string ToString()
+        {
+            return "Evento: " + nombre + " | Hora:" + Math.Round(tiempo, 2).ToString();
         }
     }
 }

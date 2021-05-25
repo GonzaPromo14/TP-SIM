@@ -28,6 +28,7 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
         {
             public int Compare(Evento x, Evento y)
             {
+
                 return x.tiempo.CompareTo(y.tiempo);
             }
         }

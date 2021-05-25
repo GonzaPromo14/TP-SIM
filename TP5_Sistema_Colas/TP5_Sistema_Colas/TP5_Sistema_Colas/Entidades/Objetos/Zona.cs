@@ -39,15 +39,17 @@ namespace TP5_Sistema_Colas.Entidades.Objetos
 
         public void generarProximaLlegada(dynamic[] vecZona)
         {
+            double horaReloj = controlador.vectorActual.ElementAt(0)[Constantes.colReloj];
+
             vecZona[Constantes.colRNDLlegada] = semilla.NextDouble();
             vecZona[Constantes.colTiempoLlegada] = Exponential.Sample(semilla, mediaLlegadas); //esto hay que ver si se cambia
-            vecZona[Constantes.colProximaLlegada] = vecZona[Constantes.colTiempoLlegada];
+            vecZona[Constantes.colProximaLlegada] = horaReloj + vecZona[Constantes.colTiempoLlegada];
 
         }
 
         public void generarProximoFinServicio(dynamic[] vecZona)
         {
-            double horaReloj = controlador.vectorActual.ElementAt(0)[Constantes.colEvento];
+            double horaReloj = controlador.vectorActual.ElementAt(0)[Constantes.colReloj];
 
             vecZona[Constantes.colRND1Reparacion] = semilla.NextDouble();
             vecZona[Constantes.colRND2Reparacion] = semilla.NextDouble();
@@ -68,6 +70,11 @@ namespace TP5_Sistema_Colas.Entidades.Objetos
         public void asignarCamion(Camion camion)
         {
             this.ocupado_con = camion;
+        }
+
+        public bool quedanCamiones()
+        {
+            return this.cola.Count == 0 ? false : true;
         }
 
         public dynamic[] iniciarZona()

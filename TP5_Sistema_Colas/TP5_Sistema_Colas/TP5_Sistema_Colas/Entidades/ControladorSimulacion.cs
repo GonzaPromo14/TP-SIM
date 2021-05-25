@@ -11,6 +11,7 @@ namespace TP5_Sistema_Colas.Entidades
 {
     class ControladorSimulacion
     {
+        Form1 pantalla;
         //Por favor no le muestren esto a la Meles
         //--------------------------------------------------
         public List<dynamic[]> vectorAnterior = new List<dynamic[]>();
@@ -23,9 +24,16 @@ namespace TP5_Sistema_Colas.Entidades
         int iteraciones;
         int desde;
         int hasta;
+
+        public ControladorSimulacion(Form1 pantalla)
+        {
+            this.pantalla = pantalla;
+        }
         //-------------------------------------------------
         public void simular()
         {
+            pantalla.datos = new System.Data.DataTable();
+
             camiones = new List<Camion>();
 
             Zona zona1 = new Zona(1, "Libre", this, 0.43, 2, 1.1);
@@ -43,7 +51,7 @@ namespace TP5_Sistema_Colas.Entidades
             eventos = new PriorityQueue<Evento>(new Evento());//los eventos se van a ir ordenando por tiempo de menor a mayor
            
             dynamic[] vecEventoReloj = { "INICIALIZACION", 0 };
-            vectorAnterior.Add(vecEventoReloj);
+            vectorActual.Add(vecEventoReloj);
 
             dynamic[] vecZona1 = zona1.iniciarZona();
             dynamic[] vecZona2 = zona2.iniciarZona();
@@ -56,16 +64,17 @@ namespace TP5_Sistema_Colas.Entidades
             dynamic[] vecZona8 = zona8.iniciarZona();            
              */
 
-            vectorAnterior.Add(vecZona1);
-            vectorAnterior.Add(vecZona2);
+            vectorActual.Add(vecZona1);
+            vectorActual.Add(vecZona2);
 
             //falta agregar la parte de metricas
 
-
-            iteraciones = 2;
+            pantalla.cargarLinea(vectorActual);
+            iteraciones = 20;
+            vectorAnterior = vectorActual;//esto se hace solo la primera vez para que ande
 
             //loop principal
-            for(int i=1; i<=iteraciones; i++)
+            for (int i=1; i<=iteraciones; i++)
             {
 
                 vectorActual = vectorAnterior;
@@ -73,24 +82,31 @@ namespace TP5_Sistema_Colas.Entidades
                 //saco el evento con tiempo más proximo de la cola
                 evento = eventos.Dequeue();
 
+                //Console.WriteLine(evento.ToString());
 
-                vectorActual.ElementAt(0)[0] = evento.nombre;
-                vectorActual.ElementAt(0)[1] = evento.tiempo;
-
+                vectorActual[0][0] = evento.nombre;
+                vectorActual[0][1] = evento.tiempo;
+                //Console.WriteLine("Evento cargado");
                 evento.ocurrir(this);
-                
-                Console.WriteLine(evento.ToString());
-                
+
+                //Console.WriteLine(evento.ToString());
+
                 //cargar vectorActual a grilla
 
+                pantalla.cargarLinea(vectorActual);
 
+                
                 //actualizo vectores
                 vectorAnterior = vectorActual;
+
+
             }
 
-            
 
+            
         }
+
+
 
 
     }

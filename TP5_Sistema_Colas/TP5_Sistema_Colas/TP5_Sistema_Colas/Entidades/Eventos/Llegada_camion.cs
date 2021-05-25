@@ -22,8 +22,6 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
 
         public override void ocurrir(ControladorSimulacion controlador)
         {
-            Console.WriteLine("############# Ocurre llegada  ###########");
-
             dynamic[] vecZona = new dynamic[9];
 
             zona.generarProximaLlegada(vecZona);
@@ -32,7 +30,7 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
             Camion proximoCamion = new Camion(vecZona[Constantes.colProximaLlegada], "");
             controlador.camiones.Add(proximoCamion);
 
-            Evento proximaLlegada = new Llegada_camion(vecZona[Constantes.colProximaLlegada], camion, zona);
+            Evento proximaLlegada = new Llegada_camion(vecZona[Constantes.colProximaLlegada], proximoCamion, zona);
             controlador.eventos.Enqueue(proximaLlegada);
 
             //si la zona está ocupada mando el camion a la cola sino lo atiendo
@@ -46,6 +44,13 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
                 Evento proximoFin = new Fin_servicio(vecZona[Constantes.colTiempoReparacion], camion, zona);
                 controlador.eventos.Enqueue(proximoFin);
             }
+
+            vecZona[Constantes.colRND1Reparacion] = "-";
+            vecZona[Constantes.colRND2Reparacion] = "-";
+            vecZona[Constantes.colTiempoReparacion] = "-";
+            vecZona[Constantes.colProximoFinReparacion] = "-";
+
+
 
             //cola y estado
             vecZona[Constantes.colCola] = zona.cola.Count();
