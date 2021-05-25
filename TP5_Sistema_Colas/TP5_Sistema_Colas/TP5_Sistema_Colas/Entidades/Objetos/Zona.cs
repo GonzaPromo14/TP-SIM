@@ -12,7 +12,7 @@ namespace TP5_Sistema_Colas.Entidades.Objetos
     {
         ControladorSimulacion controlador;
         Camion ocupado_con;
-        Queue<Camion> cola;
+        public Queue<Camion> cola;
 
         string estado;
         public string nombre;
@@ -42,6 +42,7 @@ namespace TP5_Sistema_Colas.Entidades.Objetos
             vecZona[Constantes.colRNDLlegada] = semilla.NextDouble();
             vecZona[Constantes.colTiempoLlegada] = Exponential.Sample(semilla, mediaLlegadas); //esto hay que ver si se cambia
             vecZona[Constantes.colProximaLlegada] = vecZona[Constantes.colTiempoLlegada];
+
         }
 
         public void generarProximoFinServicio(dynamic[] vecZona)
@@ -54,19 +55,32 @@ namespace TP5_Sistema_Colas.Entidades.Objetos
             vecZona[Constantes.colProximoFinReparacion] = horaReloj + vecZona[Constantes.colTiempoReparacion];
         }
 
+        public bool estaOcupada()
+        {
+            return ocupado_con == null ?  false :  true;
+        }
+
+        public string getEstado()
+        {
+            return this.estaOcupada() ? "Ocupada" : "Libre";
+        }
+
+        public void asignarCamion(Camion camion)
+        {
+            this.ocupado_con = camion;
+        }
 
         public dynamic[] iniciarZona()
         {
             dynamic[] vecZona = new dynamic[9];
 
             generarProximaLlegada(vecZona);
-
             //creo el camion
-            Camion camion = new Camion(vecZona[Constantes.colProximaLlegada],"");
+            Camion camion = new Camion(vecZona[Constantes.colProximaLlegada], "");
             controlador.camiones.Add(camion);
 
             //creo el primer evento proxima llegada de la zona
-            Evento evento = new Llegada_camion(vecZona[Constantes.colProximaLlegada],camion,this);
+            Evento evento = new Llegada_camion(vecZona[Constantes.colProximaLlegada], camion, this);
             controlador.eventos.Enqueue(evento);
 
             vecZona[Constantes.colRND1Reparacion] = "-";
