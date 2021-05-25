@@ -12,6 +12,7 @@ namespace TP5_Sistema_Colas.Entidades.Objetos
         public string estado;
         public string nombre;
         public double hora_llegada;
+        public double hora_salida;
         public bool tienePrioridad;
 
         public Camion(double hora_llegada, string estado)
@@ -21,6 +22,11 @@ namespace TP5_Sistema_Colas.Entidades.Objetos
             this.hora_llegada = hora_llegada;
             this.tienePrioridad = false;
             contador += 1;
+        }
+
+        public void setEstado(string estado)
+        {
+            this.estado = estado;
         }
     }
 }

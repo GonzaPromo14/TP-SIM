@@ -11,14 +11,19 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
     class Fin_servicio : Evento
     {
 
-        public Fin_servicio(double tiempo, Camion camion)
+        public Fin_servicio(double tiempo, Camion camion, Zona zona)
         {
+            this.tiempo = tiempo;
+            this.camion = camion;
+            this.zona = zona;
 
         }
 
         public override void ocurrir(ControladorSimulacion controlador)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("############# Ocurre Fin servicio  ###########");
+
+            //veo si tiene que entrar en otra zona
         }
     }
 }

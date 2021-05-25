@@ -12,24 +12,7 @@ namespace TP5_Sistema_Colas.Entidades
     class ControladorSimulacion
     {
         //Por favor no le muestren esto a la Meles
-        //------------------COLUMNAS-------------------------
-        public int colEvento = 0;
-        public int colReloj = 1;
-
-        public int colRNDLlegada = 0;
-        public int colTiempoLlegada = 1;
-        public int colProximaLlegada = 2;
-        public int colRND1Reparacion = 3;
-        public int colRND2Reparacion = 4;
-        public int colTiempoReparacion = 5;
-        public int colProximoFinReparacion = 6;
-        public int colCola = 7;
-        public int colEstado = 8;
-
-
-
         //--------------------------------------------------
-
         public List<dynamic[]> vectorAnterior = new List<dynamic[]>();
         public List<dynamic[]> vectorActual = new List<dynamic[]>();
 
@@ -73,6 +56,9 @@ namespace TP5_Sistema_Colas.Entidades
             vectorAnterior.Add(vecZona1);
             vectorAnterior.Add(vecZona2);
 
+            //falta agregar la parte de metricas
+
+
             iteraciones = 2;
 
             
@@ -81,10 +67,19 @@ namespace TP5_Sistema_Colas.Entidades
             for(int i=1; i<=iteraciones; i++)
             {
 
+                vectorActual = vectorAnterior;
+
                 //saco el evento con tiempo más proximo de la cola
                 evento = eventos.Dequeue();
+
+
+                vectorActual.ElementAt(0)[0] = evento.nombre;
+                vectorActual.ElementAt(0)[1] = evento.tiempo;
+
                 evento.ocurrir(this);
+                
                 Console.WriteLine(evento.ToString());
+                
                 //cargar vectorActual a grilla
 
 

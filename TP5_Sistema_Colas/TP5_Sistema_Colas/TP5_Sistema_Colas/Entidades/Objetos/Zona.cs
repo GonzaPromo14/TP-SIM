@@ -12,6 +12,8 @@ namespace TP5_Sistema_Colas.Entidades.Objetos
     {
         ControladorSimulacion controlador;
         Camion ocupado_con;
+        Queue<Camion> cola;
+
         string estado;
         public string nombre;
         int numero;
@@ -32,41 +34,24 @@ namespace TP5_Sistema_Colas.Entidades.Objetos
             this.desvServicio = desvServicio;
             this.numero = num;
             this.semilla = new Random();
+            this.cola = new Queue<Camion>();
         }
 
-        public double generarTiempoLlegada()
+        public void generarProximaLlegada(dynamic[] vecZona)
         {
-            double rnd = controlador.vectorAnterior.ElementAt(this.numero)[controlador.colRNDLlegada];
-            double tiempoLlegada = Exponential.Sample(semilla, mediaLlegadas);
-
-            return tiempoLlegada;
+            vecZona[Constantes.colRNDLlegada] = semilla.NextDouble();
+            vecZona[Constantes.colTiempoLlegada] = Exponential.Sample(semilla, mediaLlegadas); //esto hay que ver si se cambia
+            vecZona[Constantes.colProximaLlegada] = vecZona[Constantes.colTiempoLlegada];
         }
 
-        public double generarProximaLlegada()
+        public void generarProximoFinServicio(dynamic[] vecZona)
         {
-            double reloj = controlador.vectorAnterior.ElementAt(0)[controlador.colReloj]; //busco el tiempo del reloj para sumar
-            double tiempo = controlador.vectorAnterior.ElementAt(this.numero)[controlador.colTiempoLlegada];
+            double horaReloj = controlador.vectorActual.ElementAt(0)[Constantes.colEvento];
 
-            return reloj + tiempo;
-        }
-
-        public double generarTiempoFinServicio()
-        {
-            double rnd1 = controlador.vectorAnterior.ElementAt(this.numero)[controlador.colRND1Reparacion];
-            double rnd2 = controlador.vectorAnterior.ElementAt(this.numero)[controlador.colRND2Reparacion];
-            
-            double tiempo = Normal.Sample(semilla, mediaServicio, desvServicio);//esto hay que ver si se cambia
-
-            return tiempo;
-
-        }
-
-        public double generarProximoFinServicio()
-        {
-            double reloj = controlador.vectorAnterior.ElementAt(0)[controlador.colReloj]; //busco el tiempo del reloj para sumar
-            double tiempo = controlador.vectorAnterior.ElementAt(this.numero)[controlador.colTiempoReparacion];
-
-            return reloj + tiempo;
+            vecZona[Constantes.colRND1Reparacion] = semilla.NextDouble();
+            vecZona[Constantes.colRND2Reparacion] = semilla.NextDouble();
+            vecZona[Constantes.colTiempoReparacion] = Normal.Sample(semilla,mediaServicio,desvServicio);//esto hay que ver si se cambia
+            vecZona[Constantes.colProximoFinReparacion] = horaReloj + vecZona[Constantes.colTiempoReparacion];
         }
 
 
@@ -74,25 +59,23 @@ namespace TP5_Sistema_Colas.Entidades.Objetos
         {
             dynamic[] vecZona = new dynamic[9];
 
-            vecZona[controlador.colRNDLlegada] = semilla.NextDouble();
-            vecZona[controlador.colTiempoLlegada] = Exponential.Sample(semilla, mediaLlegadas); //esto hay que ver si se cambia
-            vecZona[controlador.colProximaLlegada] = vecZona[controlador.colTiempoLlegada];
+            generarProximaLlegada(vecZona);
 
             //creo el camion
-            Camion camion = new Camion(vecZona[controlador.colProximaLlegada],"");
+            Camion camion = new Camion(vecZona[Constantes.colProximaLlegada],"");
             controlador.camiones.Add(camion);
 
-            //creo la primera proxima llegada de la zona
-            Evento evento = new Llegada_camion(vecZona[controlador.colProximaLlegada],camion,this);
+            //creo el primer evento proxima llegada de la zona
+            Evento evento = new Llegada_camion(vecZona[Constantes.colProximaLlegada],camion,this);
             controlador.eventos.Enqueue(evento);
 
-            vecZona[controlador.colRND1Reparacion] = "-";
-            vecZona[controlador.colRND2Reparacion] = "-";
-            vecZona[controlador.colTiempoReparacion] = "-";
-            vecZona[controlador.colProximoFinReparacion] = "-";
+            vecZona[Constantes.colRND1Reparacion] = "-";
+            vecZona[Constantes.colRND2Reparacion] = "-";
+            vecZona[Constantes.colTiempoReparacion] = "-";
+            vecZona[Constantes.colProximoFinReparacion] = "-";
 
-            vecZona[controlador.colCola] = 0;
-            vecZona[controlador.colEstado] = "Libre";
+            vecZona[Constantes.colCola] = 0;
+            vecZona[Constantes.colEstado] = "Libre";
 
             return vecZona;
         }
