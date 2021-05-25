@@ -38,6 +38,7 @@ namespace TP5_Sistema_Colas.Entidades
             vectorActual = new List<dynamic[]>();
 
             camiones = new List<Camion>();
+            Camion.contador = 1;// reinicia la numeracion de camiones
 
             Zona zona1 = new Zona(1, "Libre", this, 0.43, 2, 1.1);
             Zona zona2 = new Zona(2, "Libre", this, 0.16, 5.8, 3.1);
