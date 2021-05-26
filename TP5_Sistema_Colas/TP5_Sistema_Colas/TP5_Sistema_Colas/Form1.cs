@@ -88,6 +88,7 @@ namespace TP5_Sistema_Colas
             }
         }
 
+        /*
         public void cargarLinea(List<dynamic[]> vector)
         {
             
@@ -105,7 +106,18 @@ namespace TP5_Sistema_Colas
             }
 
             dgvPrueba.Rows.Add(linea);
+        }*/
+
+        public void cargarLinea(dynamic[] vector)
+        {
+            /*
+            dynamic[] result = new dynamic[20];
+            Array.Copy(vector, 0, result, 0, 20);
+*/
+            dgvPrueba.Rows.Add(vector);
         }
+
+
 
         private void button1_Click(object sender, EventArgs e)
         {

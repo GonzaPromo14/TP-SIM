@@ -20,6 +20,7 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
 
         }
 
+        /*
         public override void ocurrir(ControladorSimulacion controlador)
         {
 
@@ -58,6 +59,42 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
 
             //actualizo vector
             controlador.vectorActual[zona.numero] = vecZona;
+        }
+        */
+        public override void ocurrir(ControladorSimulacion controlador)
+        {
+
+            controlador.vectorActual[Constantes.colRNDLlegada + zona.offset] = "-";
+            controlador.vectorActual[Constantes.colTiempoLlegada + zona.offset] = "-";
+
+            //hago pasar al proximo camion si no hay ninguno cambio estado a libre
+            if (zona.quedanCamiones())
+            {
+                Camion proximoCamion = zona.cola.Dequeue();
+                zona.asignarCamion(proximoCamion);
+
+                zona.generarProximoFinServicio(controlador.vectorActual);
+
+                Evento proximoFin = new Fin_servicio(controlador.vectorActual[Constantes.colProximoFinReparacion + zona.offset], proximoCamion, zona);
+                controlador.eventos.Enqueue(proximoFin);
+            }
+            else
+            {
+                zona.asignarCamion(null);
+                //no hay proxima reparacion
+                controlador.vectorActual[Constantes.colRND1Reparacion + zona.offset] = "-";
+                controlador.vectorActual[Constantes.colRND2Reparacion + zona.offset] = "-";
+                controlador.vectorActual[Constantes.colTiempoReparacion + zona.offset] = "-";
+                controlador.vectorActual[Constantes.colProximoFinReparacion + zona.offset] = "-";
+
+            }
+
+            //cola y estado
+            controlador.vectorActual[Constantes.colCola + zona.offset] = zona.cola.Count();
+            controlador.vectorActual[Constantes.colEstado +zona.offset] = zona.getEstado();
+
+            //veo si tiene que entrar en otra zona
+
         }
 
         public override string ToString()
