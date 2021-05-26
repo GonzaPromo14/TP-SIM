@@ -20,49 +20,9 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
             this.camion = camion;
         }
 
-        /*
         public override void ocurrir(ControladorSimulacion controlador)
         {
-            dynamic[] vecZona = new dynamic[9];
-
-            zona.generarProximaLlegada(vecZona);
-
-            //creo la proxima llegada
-            Camion proximoCamion = new Camion(vecZona[Constantes.colProximaLlegada], "");
-            controlador.camiones.Add(proximoCamion);
-
-            Evento proximaLlegada = new Llegada_camion(vecZona[Constantes.colProximaLlegada], proximoCamion, zona);
-            controlador.eventos.Enqueue(proximaLlegada);
-
-            //si la zona está ocupada mando el camion a la cola sino lo atiendo
-            if (zona.estaOcupada())
-            {
-                zona.cola.Enqueue(camion);
-                vecZona[Constantes.colRND1Reparacion] = "-";
-                vecZona[Constantes.colRND2Reparacion] = "-";
-                vecZona[Constantes.colTiempoReparacion] = "-";
-            }
-            else
-            {
-                zona.asignarCamion(camion);
-                //si el camion llega y pasa a ser atendido creo el proximo fin de servicio y guardo el evento
-                zona.generarProximoFinServicio(vecZona);
-
-                Evento proximoFin = new Fin_servicio(vecZona[Constantes.colProximoFinReparacion], camion, zona);
-                controlador.eventos.Enqueue(proximoFin);
-            }
-
-            //cola y estado
-            vecZona[Constantes.colCola] = zona.cola.Count();
-            vecZona[Constantes.colEstado] = zona.getEstado();
-
-            //actualizo vector
-            controlador.vectorActual[zona.numero] = vecZona;
-        }
-        */
-
-        public override void ocurrir(ControladorSimulacion controlador)
-        {
+            //actualizo el vector con los tiempos 
             zona.generarProximaLlegada(controlador.vectorActual);
 
             //creo la proxima llegada
@@ -72,10 +32,10 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
             Evento proximaLlegada = new Llegada_camion(controlador.vectorActual[Constantes.colProximaLlegada+zona.offset], proximoCamion, zona);
             controlador.eventos.Enqueue(proximaLlegada);
 
-            //si la zona está ocupada mando el camion a la cola sino lo atiendo
+            //si la zona está ocupada mando el camion a la cola, sino lo atiendo
             if (zona.estaOcupada())
             {
-                zona.cola.Enqueue(camion);
+                zona.mandarACola(camion);
                 controlador.vectorActual[Constantes.colRND1Reparacion + zona.offset] = "-";
                 controlador.vectorActual[Constantes.colRND2Reparacion + zona.offset] = "-";
                 controlador.vectorActual[Constantes.colTiempoReparacion+ zona.offset] = "-";
@@ -90,11 +50,11 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
                 controlador.eventos.Enqueue(proximoFin);
             }
 
+
+            controlador.vectorActual[Constantes.colSeVaAOtraZona + zona.offset] = "-";
             //cola y estado
             controlador.vectorActual[Constantes.colCola + zona.offset] = zona.cola.Count();
             controlador.vectorActual[Constantes.colEstado+ zona.offset] = zona.getEstado();
-
-       
         }
 
         public override string ToString()

@@ -14,9 +14,6 @@ namespace TP5_Sistema_Colas.Entidades
         Form1 pantalla;
         //Por favor no le muestren esto a la Meles
         //--------------------------------------------------
-        //public List<dynamic[]> vectorAnterior;
-        //public List<dynamic[]> vectorActual;
-
         public dynamic[] vectorAnterior;
         public dynamic[] vectorActual;
 
@@ -24,6 +21,7 @@ namespace TP5_Sistema_Colas.Entidades
         public Evento evento;
         public PriorityQueue<Evento> eventos;
         public List<Camion> camiones;
+        public List<Zona> zonas;
 
         int iteraciones;
         int desde;
@@ -36,60 +34,55 @@ namespace TP5_Sistema_Colas.Entidades
         //-------------------------------------------------
         public void simular()
         {
-            //vectorAnterior = new List<dynamic[]>();
-            //vectorActual = new List<dynamic[]>();
-
-            vectorAnterior = new dynamic[20];
-            vectorActual = new dynamic[20];
+            vectorAnterior = new dynamic[82];
+            vectorActual = new dynamic[82];
 
             camiones = new List<Camion>();
+            zonas = new List<Zona>();
             Camion.contador = 1;// reinicia la numeracion de camiones
 
             //creacion de las zonas
 
             Zona zona1 = new Zona(1, "Libre", this, 0.43, 2, 1.1);
             Zona zona2 = new Zona(2, "Libre", this, 0.16, 5.8, 3.1);
-            /*
             Zona zona3 = new Zona(3, "Libre", this, 0.14, 6.2, 2.7);
             Zona zona4 = new Zona(4, "Libre", this, 0.1, 6.1, 6.1);
             Zona zona5 = new Zona(5, "Libre", this, 0.09, 10.9, 5.2);
             Zona zona6 = new Zona(6, "Libre", this, 0.08, 11.2, 3.9);
             Zona zona7 = new Zona(7, "Libre", this, 0.05, 9, 5.8);
-            Zona zona8 = new Zona(8, "Libre", this, 0.05, 18.7, 13);             
-             */
+            Zona zona8 = new Zona(8, "Libre", this, 0.05, 18.7, 13);
+
+            zonas.Add(zona1);
+            zonas.Add(zona2);
+            zonas.Add(zona3);
+            zonas.Add(zona4);
+            zonas.Add(zona5);
+            zonas.Add(zona6);
+            zonas.Add(zona7);
+            zonas.Add(zona8);
+
 
             // inicializacion 
-            eventos = new PriorityQueue<Evento>(new Evento());//los eventos se van a ir ordenando por tiempo de menor a mayor
-
-            //dynamic[] vecEventoReloj = { "INICIALIZACION", 0 };
-            //vectorActual.Add(vecEventoReloj);
+            //los eventos se van a ir ordenando por tiempo de menor a mayor, entonces con eventos.Dequeue() siempre tengo el proximo evento
+            eventos = new PriorityQueue<Evento>(new Evento());
 
             vectorActual[Constantes.colEvento] = "INICIALIZACION";
             vectorActual[Constantes.colReloj] = 0;
 
             zona1.iniciarZona(vectorActual);
             zona2.iniciarZona(vectorActual);
-
-            /**
-            dynamic[] vecZona1 = zona1.iniciarZona();
-            dynamic[] vecZona2 = zona2.iniciarZona();
-            /*
-            dynamic[] vecZona3 = zona3.iniciarZona();
-            dynamic[] vecZona4 = zona4.iniciarZona();
-            dynamic[] vecZona5 = zona5.iniciarZona();
-            dynamic[] vecZona6 = zona6.iniciarZona();
-            dynamic[] vecZona7 = zona7.iniciarZona();
-            dynamic[] vecZona8 = zona8.iniciarZona();            
-             */
-            /*
-            vectorActual.Add(vecZona1);
-            vectorActual.Add(vecZona2);
-            */
+            zona3.iniciarZona(vectorActual);
+            zona4.iniciarZona(vectorActual);
+            zona5.iniciarZona(vectorActual);
+            zona6.iniciarZona(vectorActual);
+            zona7.iniciarZona(vectorActual);
+            zona8.iniciarZona(vectorActual);
+            
             //falta agregar la parte de metricas
 
             pantalla.cargarLinea(vectorActual);
             
-            iteraciones = 10;
+            iteraciones = 20;
             vectorAnterior = vectorActual;//esto se hace solo la primera vez para que ande
 
             //loop principal
@@ -101,11 +94,6 @@ namespace TP5_Sistema_Colas.Entidades
                 //saco el evento con tiempo más proximo de la cola
                 evento = eventos.Dequeue();
 
-                /*
-                vectorActual[0][Constantes.colEvento] = evento.nombre;
-                vectorActual[0][Constantes.colReloj] = evento.tiempo;
-                */
-
                 vectorActual[Constantes.colEvento] = evento.nombre;
                 vectorActual[Constantes.colReloj] = evento.tiempo;
 
@@ -116,19 +104,10 @@ namespace TP5_Sistema_Colas.Entidades
 
                 pantalla.cargarLinea(vectorActual);
 
-                
                 //actualizo vectores
                 vectorAnterior = vectorActual;
-
-
             }
 
-
-            
         }
-
-
-
-
     }
 }

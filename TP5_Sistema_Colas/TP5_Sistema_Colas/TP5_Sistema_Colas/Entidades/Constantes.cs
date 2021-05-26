@@ -21,9 +21,11 @@ namespace TP5_Sistema_Colas.Entidades
         public static int colRND2Reparacion = 6;
         public static int colTiempoReparacion = 7;
         public static int colProximoFinReparacion = 8;
-        public static int colCola = 9;
-        public static int colEstado = 10;
+        public static int colSeVaAOtraZona = 9;
+        public static int colCola = 10;
+        public static int colEstado = 11;
 
+        public static int cantidadColumnasZona = 10;
         /*
         public static int colRNDLlegada = 0;
         public static int colTiempoLlegada = 1;

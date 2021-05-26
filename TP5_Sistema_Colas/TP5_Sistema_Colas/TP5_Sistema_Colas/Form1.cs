@@ -33,7 +33,7 @@ namespace TP5_Sistema_Colas
 
             Color color;
             string pos;
-            for (int i= 0; i < 2; i++)
+            for (int i= 0; i < 8; i++)
             {
       
 
@@ -75,6 +75,10 @@ namespace TP5_Sistema_Colas
                 dgvPrueba.Columns.Add(pos, "Proximo fin reparacion");
                 dgvPrueba.Columns[pos].HeaderCell.Style.BackColor = color;
                 dgvPrueba.Columns[pos].DefaultCellStyle.BackColor = Color.Yellow;
+
+                pos = "seVaAOtraZona" + i.ToString();
+                dgvPrueba.Columns.Add(pos, "Se va a otra zona");
+                dgvPrueba.Columns[pos].HeaderCell.Style.BackColor = color;
 
                 pos = "cola" + i.ToString();
                 dgvPrueba.Columns.Add(pos, "Cola");

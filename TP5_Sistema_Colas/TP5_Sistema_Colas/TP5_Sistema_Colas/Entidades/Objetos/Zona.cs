@@ -11,10 +11,11 @@ namespace TP5_Sistema_Colas.Entidades.Objetos
     class Zona
     {
         ControladorSimulacion controlador;
+        
         Camion ocupado_con;
-        public Queue<Camion> cola;
         public int offset; //para las columnas
 
+        public List<Camion> cola;
         string estado;
         public string nombre;
         public int numero;
@@ -23,7 +24,7 @@ namespace TP5_Sistema_Colas.Entidades.Objetos
         double mediaServicio;
         double desvServicio;
 
-        Random semilla;
+        public Random semilla;
 
         public Zona(int num, string estado, ControladorSimulacion cont, double mediaLlegadas, double mediaServicio, double desvServicio)
         {
@@ -35,24 +36,12 @@ namespace TP5_Sistema_Colas.Entidades.Objetos
             this.desvServicio = desvServicio;
             this.numero = num;
             this.semilla = new Random();
-            this.cola = new Queue<Camion>();
+            this.cola = new List<Camion>();
 
-            this.offset = (num - 1) * 9;
+            this.offset = (num - 1) * Constantes.cantidadColumnasZona;
         }
 
-        /*
-        public void generarProximaLlegada(dynamic[] vecZona)
-        {
-            double horaReloj = controlador.vectorActual.ElementAt(0)[Constantes.colReloj];
-
-            vecZona[Constantes.colRNDLlegada] = Truncador.Truncar(semilla.NextDouble());
-            vecZona[Constantes.colTiempoLlegada] = Truncador.Truncar(Exponential.Sample(semilla, mediaLlegadas)); //esto hay que ver si se cambia
-            vecZona[Constantes.colProximaLlegada] = Truncador.Truncar(horaReloj + vecZona[Constantes.colTiempoLlegada]);
-
-        }
-
-        */
-
+        //actualiza el vector con los random y el tiempo de llegada
         public void generarProximaLlegada(dynamic[] vector)
         {
             double horaReloj = controlador.vectorActual[Constantes.colReloj];
@@ -62,17 +51,8 @@ namespace TP5_Sistema_Colas.Entidades.Objetos
             vector[Constantes.colProximaLlegada + offset] = Truncador.Truncar(horaReloj + vector[Constantes.colTiempoLlegada + offset]);
 
         }
-        /*
-        public void generarProximoFinServicio(dynamic[] vecZona)
-        {
-            double horaReloj = controlador.vectorActual.ElementAt(0)[Constantes.colReloj];
 
-            vecZona[Constantes.colRND1Reparacion] = Truncador.Truncar(semilla.NextDouble());
-            vecZona[Constantes.colRND2Reparacion] = Truncador.Truncar(semilla.NextDouble());
-            vecZona[Constantes.colTiempoReparacion] = Truncador.Truncar(Normal.Sample(semilla,mediaServicio,desvServicio));//esto hay que ver si se cambia
-            vecZona[Constantes.colProximoFinReparacion] = horaReloj + vecZona[Constantes.colTiempoReparacion];
-        }
-        */
+        //actualiza el vector con los random y el tiempo de fin de servicio
         public void generarProximoFinServicio(dynamic[] vector)
         {
             double horaReloj = controlador.vectorActual[Constantes.colReloj];
@@ -103,32 +83,21 @@ namespace TP5_Sistema_Colas.Entidades.Objetos
             return this.cola.Count == 0 ? false : true;
         }
 
-        /*
-        public dynamic[] iniciarZona()
+        public void mandarACola(Camion camion)
         {
-            dynamic[] vecZona = new dynamic[9];
-
-            generarProximaLlegada(vecZona);
-            //creo el camion
-            Camion camion = new Camion(vecZona[Constantes.colProximaLlegada], "");
-            controlador.camiones.Add(camion);
-
-            //creo el primer evento proxima llegada de la zona
-            Evento evento = new Llegada_camion(vecZona[Constantes.colProximaLlegada], camion, this);
-            controlador.eventos.Enqueue(evento);
-
-            vecZona[Constantes.colRND1Reparacion] = "-";
-            vecZona[Constantes.colRND2Reparacion] = "-";
-            vecZona[Constantes.colTiempoReparacion] = "-";
-            vecZona[Constantes.colProximoFinReparacion] = "-";
-
-            vecZona[Constantes.colCola] = 0;
-            vecZona[Constantes.colEstado] = "Libre";
-
-            return vecZona;
+            if (camion.tienePrioridad) cola.Insert(0, camion); //si tiene prioridad lo agrego al principio de la cola
+            else cola.Add(camion);
         }
-        */
 
+        public Camion traerDeCola()
+        {
+            Camion proximo = cola[0];
+            cola.RemoveAt(0);
+
+            return proximo;
+        }
+
+        //Para el vector inicial
         public void iniciarZona(dynamic[] vector)
         {
 
