@@ -24,6 +24,8 @@ namespace TP5_Sistema_Colas.Entidades
         public List<Zona> zonas;
 
         int iteraciones;
+        public int contadorCamiones; //para la capacidad
+        int capacidadMAX = 93;
         int desde;
         int hasta;
 
@@ -34,12 +36,13 @@ namespace TP5_Sistema_Colas.Entidades
         //-------------------------------------------------
         public void simular()
         {
+            contadorCamiones = 0;
             vectorAnterior = new dynamic[82];
             vectorActual = new dynamic[82];
 
             camiones = new List<Camion>();
             zonas = new List<Zona>();
-            Camion.contador = 1;// reinicia la numeracion de camiones
+            Camion.numeracion = 1;// reinicia la numeracion de camiones
 
             //creacion de las zonas
 

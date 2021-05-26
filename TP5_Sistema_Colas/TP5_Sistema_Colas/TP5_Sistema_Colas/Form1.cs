@@ -127,6 +127,8 @@ namespace TP5_Sistema_Colas
         {
             dgvPrueba.Rows.Clear();
             controlador.simular();
+
+            txtCamiones.Text = controlador.contadorCamiones.ToString();
         }
     }
 }

@@ -40,6 +40,8 @@
             this.dgvPrueba = new System.Windows.Forms.DataGridView();
             this.colEvento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colReloj = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtCamiones = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrueba)).BeginInit();
             this.SuspendLayout();
@@ -149,11 +151,31 @@
             this.colReloj.HeaderText = "Reloj";
             this.colReloj.Name = "colReloj";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(774, 38);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(100, 13);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Camiones en predio";
+            // 
+            // txtCamiones
+            // 
+            this.txtCamiones.Location = new System.Drawing.Point(880, 35);
+            this.txtCamiones.Name = "txtCamiones";
+            this.txtCamiones.ReadOnly = true;
+            this.txtCamiones.Size = new System.Drawing.Size(58, 20);
+            this.txtCamiones.TabIndex = 9;
+            this.txtCamiones.Text = "0";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.Controls.Add(this.txtCamiones);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.dgvPrueba);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
@@ -163,6 +185,7 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrueba)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -179,6 +202,8 @@
         private System.Windows.Forms.DataGridView dgvPrueba;
         private System.Windows.Forms.DataGridViewTextBoxColumn colEvento;
         private System.Windows.Forms.DataGridViewTextBoxColumn colReloj;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtCamiones;
     }
 }
 

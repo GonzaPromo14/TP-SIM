@@ -22,6 +22,7 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
 
         public override void ocurrir(ControladorSimulacion controlador)
         {
+            bool seFueAOtraZona = false; // para manejar el contador
 
             controlador.vectorActual[Constantes.colRNDLlegada + zona.offset] = "-";
             controlador.vectorActual[Constantes.colTiempoLlegada + zona.offset] = "-";
@@ -43,7 +44,6 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
                     }
                 }
 
-
                 //le asigno prioridad al camion para que vaya al principio
                 camion.tienePrioridad = true;
                  
@@ -51,9 +51,14 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
                 Evento llegadaCamionZonaNueva = new Llegada_camion(controlador.vectorActual[Constantes.colReloj], camion, proximaZona);
                 controlador.eventos.Enqueue(llegadaCamionZonaNueva);
 
-                controlador.vectorActual[Constantes.colSeVaAOtraZona + zona.offset] = camion.nombre+ " se fue a: " + proximaZona.nombre;
+                //para que no se cuente este evento como un nuevo camion
+                seFueAOtraZona = true;
+                controlador.contadorCamiones--;
 
+                controlador.vectorActual[Constantes.colSeVaAOtraZona + zona.offset] = camion.nombre+ " se fue a: " + proximaZona.nombre;
             }
+
+            if (!seFueAOtraZona) controlador.contadorCamiones--; // si no se fue a otra zona, se fue del predio
 
             //hago pasar al proximo camion y calculo su proximo fin de servicio, si no hay ninguno asigno null a la zona y eso cambia el estado a libre
             if (zona.quedanCamiones())

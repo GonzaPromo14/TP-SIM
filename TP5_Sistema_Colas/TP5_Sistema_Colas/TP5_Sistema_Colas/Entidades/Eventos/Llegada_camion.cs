@@ -22,6 +22,9 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
 
         public override void ocurrir(ControladorSimulacion controlador)
         {
+            //actualizo contador
+            controlador.contadorCamiones++;
+
             //actualizo el vector con los tiempos 
             zona.generarProximaLlegada(controlador.vectorActual);
 

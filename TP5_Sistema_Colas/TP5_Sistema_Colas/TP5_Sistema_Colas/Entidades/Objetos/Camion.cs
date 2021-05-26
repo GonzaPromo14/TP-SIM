@@ -8,7 +8,7 @@ namespace TP5_Sistema_Colas.Entidades.Objetos
 {
     class Camion
     {
-        public static int contador = 1;
+        public static int numeracion = 1;
         public string estado;
         public string nombre;
         public double hora_llegada;
@@ -18,10 +18,10 @@ namespace TP5_Sistema_Colas.Entidades.Objetos
         public Camion(double hora_llegada, string estado)
         {
             this.estado = estado;
-            this.nombre = "C" + contador.ToString();
+            this.nombre = "C" + numeracion.ToString();
             this.hora_llegada = hora_llegada;
             this.tienePrioridad = false;
-            contador += 1;
+            numeracion += 1;
         }
 
         public void setEstado(string estado)
