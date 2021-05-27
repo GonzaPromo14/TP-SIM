@@ -20,7 +20,18 @@ namespace TP5_Sistema_Colas
             InitializeComponent();
             this.controlador = controlador;
 
-            dataGridView1.Columns[4].Width = 200;
+            dataGridView1.Columns[2].Width = 50;
+            dataGridView1.Columns[3].Width = 50;
+            dataGridView1.Columns[5].Width = 200;
+
+            DataGridViewButtonColumn button = new DataGridViewButtonColumn();
+            
+            button.Name = "button";
+            button.HeaderText = "Historial";
+            button.Text = "Ver";
+            button.UseColumnTextForButtonValue = true;
+            dataGridView1.Columns.Add(button);
+            
             cargarGrilla();
         }
 
@@ -43,7 +54,7 @@ namespace TP5_Sistema_Colas
                 }
                 else salida = camion.hora_salida.ToString();
 
-                string[] fila = { camion.nombre, camion.hora_llegada.ToString(), salida, espera, camion.zonasPasadas };
+                string[] fila = { camion.nombre, camion.estado,camion.hora_llegada.ToString(), salida, espera, camion.zonasPasadas };
                 dataGridView1.Rows.Add(fila);
             }
         }

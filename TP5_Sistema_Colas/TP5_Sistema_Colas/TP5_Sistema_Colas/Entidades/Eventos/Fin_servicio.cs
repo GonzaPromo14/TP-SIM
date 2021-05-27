@@ -58,10 +58,11 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
                 controlador.vectorActual[Constantes.colSeVaAOtraZona + zona.offset] = camion.nombre+ " se fue a: " + proximaZona.nombre;
             }
 
-            if (!seFueAOtraZona)
+            if (!seFueAOtraZona) // si no se fue a otra zona, se fue del predio
             {
-                controlador.contadorCamiones--; // si no se fue a otra zona, se fue del predio
+                controlador.contadorCamiones--;
                 camion.hora_salida = controlador.vectorActual[Constantes.colReloj];
+                camion.setEstado("Reparacion Finalizada");
             }
 
             //hago pasar al proximo camion y calculo su proximo fin de servicio, si no hay ninguno asigno null a la zona y eso cambia el estado a libre
@@ -70,6 +71,7 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
                 Camion proximoCamion = zona.traerDeCola();
 
                 zona.asignarCamion(proximoCamion);
+                proximoCamion.setEstado("Siendo reparado");
                 camion.tiempo_espera = controlador.vectorActual[Constantes.colReloj] - camion.hora_llegada;
                 zona.generarProximoFinServicio(controlador.vectorActual);
 

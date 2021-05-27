@@ -24,7 +24,7 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
             if (!camion.tienePrioridad)//si no viene de otra zona, es un camion nuevo, lo agrego a la lista
             {
                 camion.hora_llegada = controlador.vectorActual[Constantes.colReloj];
-                camion.nombre += Camion.numeracion.ToString();
+                camion.nombre += Camion.numeracion.ToString();//le doy un numero
                 
                 controlador.camiones.Add(camion);
                 controlador.contadorCamiones++;
@@ -50,6 +50,7 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
             if (zona.estaOcupada())
             {
                 zona.mandarACola(camion);
+                camion.setEstado("Esperando Atencion");
                 controlador.vectorActual[Constantes.colRND1Reparacion + zona.offset] = "-";
                 controlador.vectorActual[Constantes.colRND2Reparacion + zona.offset] = "-";
                 controlador.vectorActual[Constantes.colTiempoReparacion+ zona.offset] = "-";
@@ -57,6 +58,7 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
             else
             {
                 zona.asignarCamion(camion);
+                camion.setEstado("Siendo reparado");
                 //si el camion llega y pasa a ser atendido creo el proximo fin de servicio y guardo el evento
                 zona.generarProximoFinServicio(controlador.vectorActual);
 
