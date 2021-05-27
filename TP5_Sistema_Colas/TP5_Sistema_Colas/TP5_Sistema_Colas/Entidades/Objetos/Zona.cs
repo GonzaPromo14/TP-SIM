@@ -8,7 +8,7 @@ using TP5_Sistema_Colas.Entidades.Eventos;
 
 namespace TP5_Sistema_Colas.Entidades.Objetos
 {
-    class Zona
+    public class Zona
     {
         ControladorSimulacion controlador;
         
@@ -97,6 +97,17 @@ namespace TP5_Sistema_Colas.Entidades.Objetos
             return proximo;
         }
 
+        public double getMediaLlegadas()
+        {
+            return this.mediaLlegadas;
+        }
+
+        public void aumentarMedia()
+        {
+            this.mediaLlegadas = mediaLlegadas * 1.0024;
+
+        }
+
         //Para el vector inicial
         public void iniciarZona(dynamic[] vector)
         {
@@ -104,7 +115,6 @@ namespace TP5_Sistema_Colas.Entidades.Objetos
             generarProximaLlegada(vector);
             //creo el camion
             Camion camion = new Camion(vector[Constantes.colProximaLlegada + offset], "");
-            controlador.camiones.Add(camion);
 
             //creo el primer evento proxima llegada de la zona
             Evento evento = new Llegada_camion(vector[Constantes.colProximaLlegada + offset], camion, this);

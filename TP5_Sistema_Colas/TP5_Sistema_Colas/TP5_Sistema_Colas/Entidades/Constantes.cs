@@ -26,17 +26,7 @@ namespace TP5_Sistema_Colas.Entidades
         public static int colEstado = 11;
 
         public static int cantidadColumnasZona = 10;
-        /*
-        public static int colRNDLlegada = 0;
-        public static int colTiempoLlegada = 1;
-        public static int colProximaLlegada = 2;
-        public static int colRND1Reparacion = 3;
-        public static int colRND2Reparacion = 4;
-        public static int colTiempoReparacion = 5;
-        public static int colProximoFinReparacion = 6;
-        public static int colCola = 7;
-        public static int colEstado = 8;
-        */
+
         //------------- Algunos valores esenciales
         public static int cantidadHorasSemana = 168;
 

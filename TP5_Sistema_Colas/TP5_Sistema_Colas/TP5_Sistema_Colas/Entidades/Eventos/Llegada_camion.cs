@@ -14,23 +14,34 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
         public Llegada_camion(double tiempo, Camion camion, Zona zona)
         {
             this.tiempo = tiempo;
-            this.nombre = "Llegada camion " + "(" + camion.nombre + ")" + "(" + zona.nombre + ")";
-            
             this.zona = zona;
             this.camion = camion;
         }
 
         public override void ocurrir(ControladorSimulacion controlador)
         {
-            //actualizo contador
-            controlador.contadorCamiones++;
+            //actualizo contador y nombre del camion
+            if (!camion.tienePrioridad)//si no viene de otra zona, es un camion nuevo, lo agrego a la lista
+            {
+                camion.hora_llegada = controlador.vectorActual[Constantes.colReloj];
+                camion.nombre += Camion.numeracion.ToString();
+                
+                controlador.camiones.Add(camion);
+                controlador.contadorCamiones++;
+                Camion.numeracion++;
 
-            //actualizo el vector con los tiempos 
+            }
+
+            controlador.vectorActual[Constantes.colEvento] = "Llegada camion " + "(" + camion.nombre + ")" + "(" + zona.nombre + ")";
+
+            camion.zonasPasadas += "("+zona.nombre+")";
+
+
+            //actualizo el vector con los tiempos de proxima llegada
             zona.generarProximaLlegada(controlador.vectorActual);
 
             //creo la proxima llegada
             Camion proximoCamion = new Camion(controlador.vectorActual[Constantes.colProximaLlegada + zona.offset], "");
-            controlador.camiones.Add(proximoCamion);
 
             Evento proximaLlegada = new Llegada_camion(controlador.vectorActual[Constantes.colProximaLlegada+zona.offset], proximoCamion, zona);
             controlador.eventos.Enqueue(proximaLlegada);

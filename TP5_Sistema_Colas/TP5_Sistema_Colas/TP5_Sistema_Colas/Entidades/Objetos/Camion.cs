@@ -6,22 +6,24 @@ using System.Threading.Tasks;
 
 namespace TP5_Sistema_Colas.Entidades.Objetos
 {
-    class Camion
+    public class Camion
     {
-        public static int numeracion = 1;
+        public static int numeracion = 0;
         public string estado;
         public string nombre;
         public double hora_llegada;
         public double hora_salida;
+        public double tiempo_espera;
         public bool tienePrioridad;
+        public string zonasPasadas = "";
 
         public Camion(double hora_llegada, string estado)
         {
             this.estado = estado;
-            this.nombre = "C" + numeracion.ToString();
+            this.nombre = "C";
             this.hora_llegada = hora_llegada;
             this.tienePrioridad = false;
-            numeracion += 1;
+            this.tiempo_espera = 0;
         }
 
         public void setEstado(string estado)

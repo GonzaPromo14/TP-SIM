@@ -9,7 +9,7 @@ using TP5_Sistema_Colas.Entidades.Eventos;
 
 namespace TP5_Sistema_Colas.Entidades
 {
-    class ControladorSimulacion
+    public class ControladorSimulacion
     {
         Form1 pantalla;
         //Por favor no le muestren esto a la Meles
@@ -26,6 +26,7 @@ namespace TP5_Sistema_Colas.Entidades
         int iteraciones;
         public int contadorCamiones; //para la capacidad
         int capacidadMAX = 93;
+
         int desde;
         int hasta;
 
@@ -36,6 +37,8 @@ namespace TP5_Sistema_Colas.Entidades
         //-------------------------------------------------
         public void simular()
         {
+            Constantes.cantidadHorasSemana = 168;
+
             contadorCamiones = 0;
             vectorAnterior = new dynamic[82];
             vectorActual = new dynamic[82];
@@ -97,9 +100,15 @@ namespace TP5_Sistema_Colas.Entidades
                 //saco el evento con tiempo más proximo de la cola
                 evento = eventos.Dequeue();
 
-                vectorActual[Constantes.colEvento] = evento.nombre;
                 vectorActual[Constantes.colReloj] = evento.tiempo;
 
+                //aumento las medias en 0,24
+
+                if(vectorActual[Constantes.colReloj] >= Constantes.cantidadHorasSemana)
+                {
+                    Constantes.cantidadHorasSemana += 168;
+                    foreach (Zona zona in zonas) zona.aumentarMedia();
+                }
 
                 evento.ocurrir(this);
 

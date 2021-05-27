@@ -14,7 +14,8 @@ namespace TP5_Sistema_Colas
     public partial class Form1 : Form
     {
         ControladorSimulacion controlador;
-        public DataTable datos;
+        FormCamiones form2;
+
         public Form1()
         {
             InitializeComponent();
@@ -30,6 +31,8 @@ namespace TP5_Sistema_Colas
             dgvPrueba.Columns[0].Width = 200;
             dgvPrueba.Columns[1].Frozen = true;
             dgvPrueba.Columns[1].DefaultCellStyle.BackColor = Color.LightBlue;
+
+
 
             Color color;
             string pos;
@@ -87,9 +90,8 @@ namespace TP5_Sistema_Colas
                 pos = "estado" + i.ToString();
                 dgvPrueba.Columns.Add(pos, "Estado");
                 dgvPrueba.Columns[pos].HeaderCell.Style.BackColor = color;
-
-
             }
+
         }
 
         /*
@@ -129,6 +131,14 @@ namespace TP5_Sistema_Colas
             controlador.simular();
 
             txtCamiones.Text = controlador.contadorCamiones.ToString();
+            txtMedia.Text = controlador.zonas[0].getMediaLlegadas().ToString();
+        }
+
+        private void btnCamiones_Click(object sender, EventArgs e)
+        {
+            form2 = new FormCamiones(controlador);
+            form2.Show();
+         
         }
     }
 }

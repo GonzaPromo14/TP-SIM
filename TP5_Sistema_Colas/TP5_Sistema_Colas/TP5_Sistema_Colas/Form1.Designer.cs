@@ -42,6 +42,9 @@
             this.colReloj = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label4 = new System.Windows.Forms.Label();
             this.txtCamiones = new System.Windows.Forms.TextBox();
+            this.media1 = new System.Windows.Forms.Label();
+            this.txtMedia = new System.Windows.Forms.TextBox();
+            this.btnCamiones = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrueba)).BeginInit();
             this.SuspendLayout();
@@ -169,11 +172,42 @@
             this.txtCamiones.TabIndex = 9;
             this.txtCamiones.Text = "0";
             // 
+            // media1
+            // 
+            this.media1.AutoSize = true;
+            this.media1.Location = new System.Drawing.Point(774, 68);
+            this.media1.Name = "media1";
+            this.media1.Size = new System.Drawing.Size(73, 13);
+            this.media1.TabIndex = 10;
+            this.media1.Text = "Media Zona 1";
+            // 
+            // txtMedia
+            // 
+            this.txtMedia.Location = new System.Drawing.Point(880, 65);
+            this.txtMedia.Name = "txtMedia";
+            this.txtMedia.ReadOnly = true;
+            this.txtMedia.Size = new System.Drawing.Size(58, 20);
+            this.txtMedia.TabIndex = 11;
+            this.txtMedia.Text = "0";
+            // 
+            // btnCamiones
+            // 
+            this.btnCamiones.Location = new System.Drawing.Point(507, 107);
+            this.btnCamiones.Name = "btnCamiones";
+            this.btnCamiones.Size = new System.Drawing.Size(99, 29);
+            this.btnCamiones.TabIndex = 12;
+            this.btnCamiones.Text = "Ver camiones";
+            this.btnCamiones.UseVisualStyleBackColor = true;
+            this.btnCamiones.Click += new System.EventHandler(this.btnCamiones_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.Controls.Add(this.btnCamiones);
+            this.Controls.Add(this.txtMedia);
+            this.Controls.Add(this.media1);
             this.Controls.Add(this.txtCamiones);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.dgvPrueba);
@@ -204,6 +238,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colReloj;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtCamiones;
+        private System.Windows.Forms.Label media1;
+        private System.Windows.Forms.TextBox txtMedia;
+        private System.Windows.Forms.Button btnCamiones;
     }
 }
 

@@ -8,7 +8,7 @@ using TP5_Sistema_Colas.Entidades.Objetos;
 
 namespace TP5_Sistema_Colas.Entidades.Eventos
 {
-    class Evento : IComparer<Evento>
+    public class Evento : IComparer<Evento>
     {
 
         public string nombre;

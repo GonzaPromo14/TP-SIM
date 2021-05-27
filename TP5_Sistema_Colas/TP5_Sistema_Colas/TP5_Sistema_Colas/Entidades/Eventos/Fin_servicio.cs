@@ -16,7 +16,6 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
             this.tiempo = tiempo;
             this.camion = camion;
             this.zona = zona;
-            this.nombre = "Fin servicio " + "(" + camion.nombre + ")" + "(" + zona.nombre + ")";
           
         }
 
@@ -24,6 +23,7 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
         {
             bool seFueAOtraZona = false; // para manejar el contador
 
+            controlador.vectorActual[Constantes.colEvento] = "Fin servicio " + "(" + camion.nombre + ")" + "(" + zona.nombre + ")";
             controlador.vectorActual[Constantes.colRNDLlegada + zona.offset] = "-";
             controlador.vectorActual[Constantes.colTiempoLlegada + zona.offset] = "-";
 
@@ -58,7 +58,11 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
                 controlador.vectorActual[Constantes.colSeVaAOtraZona + zona.offset] = camion.nombre+ " se fue a: " + proximaZona.nombre;
             }
 
-            if (!seFueAOtraZona) controlador.contadorCamiones--; // si no se fue a otra zona, se fue del predio
+            if (!seFueAOtraZona)
+            {
+                controlador.contadorCamiones--; // si no se fue a otra zona, se fue del predio
+                camion.hora_salida = controlador.vectorActual[Constantes.colReloj];
+            }
 
             //hago pasar al proximo camion y calculo su proximo fin de servicio, si no hay ninguno asigno null a la zona y eso cambia el estado a libre
             if (zona.quedanCamiones())
@@ -66,7 +70,7 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
                 Camion proximoCamion = zona.traerDeCola();
 
                 zona.asignarCamion(proximoCamion);
-
+                camion.tiempo_espera = controlador.vectorActual[Constantes.colReloj] - camion.hora_llegada;
                 zona.generarProximoFinServicio(controlador.vectorActual);
 
                 Evento proximoFin = new Fin_servicio(controlador.vectorActual[Constantes.colProximoFinReparacion + zona.offset], proximoCamion, zona);
