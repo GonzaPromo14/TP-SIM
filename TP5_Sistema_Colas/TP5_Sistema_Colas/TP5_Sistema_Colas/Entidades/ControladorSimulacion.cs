@@ -16,20 +16,20 @@ namespace TP5_Sistema_Colas.Entidades
         //--------------------------------------------------
         public dynamic[] vectorAnterior;
         public dynamic[] vectorActual;
-        //public List<dynamic[]> simulaciones;
-        public dynamic[][] simulaciones;
+        public List<dynamic[]> simulaciones;
+        //public List[][] simulaciones;
 
         public Evento evento;
         public PriorityQueue<Evento> eventos;
         public List<Camion> camiones;
         public List<Zona> zonas;
 
-        int iteraciones;
+        public int iteraciones;
         public int contadorCamiones; //para la capacidad
         int capacidadMAX = 93;
 
-        int desde;
-        int hasta;
+        public int desde = 500;
+        public int hasta = 700;
 
         public ControladorSimulacion(Form1 pantalla)
         {
@@ -38,8 +38,8 @@ namespace TP5_Sistema_Colas.Entidades
         //-------------------------------------------------
         public void simular()
         {
-            //simulaciones = new List<dynamic[]>();
-            simulaciones = new dynamic[21][];
+            simulaciones = new List<dynamic[]>();
+            //simulaciones = new dynamic[hasta - desde][];
             Constantes.cantidadHorasSemana = 168;
 
             contadorCamiones = 0;
@@ -87,13 +87,13 @@ namespace TP5_Sistema_Colas.Entidades
             zona6.iniciarZona(vectorActual);
             zona7.iniciarZona(vectorActual);
             zona8.iniciarZona(vectorActual);
-            
+
             //falta agregar la parte de metricas
 
             //pantalla.cargarLinea(vectorActual, 0);
-            
-            iteraciones = 20;
-            simulaciones[0] = vectorActual.ToArray();
+
+            if (desde == 0) simulaciones.Add(vectorActual.ToArray());
+            //simulaciones.Add(vectorActual.ToArray());
             vectorAnterior = vectorActual;//esto se hace solo la primera vez para que ande
 
             //loop principal
@@ -123,17 +123,23 @@ namespace TP5_Sistema_Colas.Entidades
 
                 //actualizo vectores
                 vectorActual[Constantes.colNumeroSimulacion] = i;
-                simulaciones[i] = vectorActual.ToArray();
-
+                //if (i >= desde && i<=hasta) simulaciones[i - (hasta-desde) - 1] = vectorActual.ToArray();
+                if (i>=desde && i<=hasta) simulaciones.Add(vectorActual.ToArray());
                 vectorAnterior = vectorActual;
 
             }
+            
 
         }
 
-        public dynamic[][] getSimulaciones()
+        public List<dynamic[]> getSimulaciones()
         {
             return this.simulaciones;
+        }
+
+        public dynamic[] getUltimaSimulacion()
+        {
+            return this.vectorActual;
         }
     }
 }

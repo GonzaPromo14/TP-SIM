@@ -62,8 +62,8 @@ namespace TP5_Sistema_Colas.Entidades.Objetos
             //double rnd1 = Truncador.Truncar(semilla.NextDouble());
             //double rnd2 = Truncador.Truncar(semilla.NextDouble());
 
-            vector[Constantes.colRND1Reparacion + offset] = semilla.NextDouble();
-            vector[Constantes.colRND2Reparacion + offset] = semilla.NextDouble();
+            vector[Constantes.colRND1Reparacion + offset] = Truncador.Truncar(semilla.NextDouble());
+            vector[Constantes.colRND2Reparacion + offset] = Truncador.Truncar(semilla.NextDouble());
             //vector[Constantes.colTiempoReparacion + offset] = Truncador.Truncar(Distribuciones.NormalDist(rnd1, rnd2, mediaServicio, desvServicio));
             vector[Constantes.colTiempoReparacion + offset] = Math.Abs(Truncador.Truncar(Normal.Sample(semilla, mediaServicio, desvServicio)));//esto hay que ver si se cambia
             vector[Constantes.colProximoFinReparacion + offset] = horaReloj + vector[Constantes.colTiempoReparacion + offset];

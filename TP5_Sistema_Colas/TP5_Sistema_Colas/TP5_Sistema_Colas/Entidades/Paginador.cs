@@ -16,11 +16,11 @@ namespace TP5_Sistema_Colas.Entidades
         bool ultimaPagina;
         bool primeraPagina;
 
-        public Paginador(dynamic[][] datos, int cantItemsPorPag)
+        public Paginador(List<dynamic[]> datos, int cantItemsPorPag)
         {
             this.cantItemsPorPag = cantItemsPorPag == 0 ? 10 : cantItemsPorPag;
-            int cantPaginas = datos.Length / cantItemsPorPag;
-            double resto = datos.Length % cantItemsPorPag;
+            int cantPaginas = datos.Count / cantItemsPorPag;
+            double resto = datos.Count % cantItemsPorPag;
             if (resto != 0)
             {
                 cantPaginas++;
@@ -32,13 +32,13 @@ namespace TP5_Sistema_Colas.Entidades
             this.ultimaPagina = false;
         }
 
-        public void obtenerPaginaActual(dynamic[][] datos,DataGridView view)
+        public void obtenerPaginaActual(List<dynamic[]> datos,DataGridView view)
         {
             int final = this.paginaActual * this.cantItemsPorPag;
             int inicio = final - this.cantItemsPorPag;
             for (int i = inicio; i < final; i++)
             {
-                if (i >= datos.Length)
+                if (i >= datos.Count)
                 {
                     break;
                 }
@@ -51,13 +51,13 @@ namespace TP5_Sistema_Colas.Entidades
 
         }
 
-        public void obtenerPaginaAnterior(dynamic[][] datos, DataGridView view)
+        public void obtenerPaginaAnterior(List<dynamic[]> datos, DataGridView view)
         {
             this.setPaginaActual(this.paginaActual - 1);
             this.obtenerPaginaActual(datos, view);
         }
 
-        public void obtenerPaginaSiguiente(dynamic[][] datos, DataGridView view)
+        public void obtenerPaginaSiguiente(List<dynamic[]> datos, DataGridView view)
         {
             this.setPaginaActual(this.paginaActual + 1);
             this.obtenerPaginaActual(datos, view);
@@ -93,7 +93,7 @@ namespace TP5_Sistema_Colas.Entidades
             return this.primeraPagina;
         }
 
-        public void irAPagina(dynamic[][] datos, DataGridView view, int pagina)
+        public void irAPagina(List<dynamic[]> datos, DataGridView view, int pagina)
         {
             this.setPaginaActual(pagina);
             this.obtenerPaginaActual(datos, view);

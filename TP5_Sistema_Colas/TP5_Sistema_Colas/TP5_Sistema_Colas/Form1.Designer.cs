@@ -31,11 +31,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnAceptar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtHasta = new System.Windows.Forms.TextBox();
+            this.txtDesde = new System.Windows.Forms.TextBox();
+            this.txtCantSimulaciones = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.dgvSimulaciones = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
@@ -50,8 +49,14 @@
             this.colNumeroSimulacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colEvento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colReloj = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnMostrarRnd = new System.Windows.Forms.Button();
+            this.dgvFinal = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSimulaciones)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFinal)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -81,24 +86,15 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "Hasta";
             // 
-            // btnAceptar
-            // 
-            this.btnAceptar.Location = new System.Drawing.Point(184, 95);
-            this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(75, 23);
-            this.btnAceptar.TabIndex = 4;
-            this.btnAceptar.Text = "Aceptar";
-            this.btnAceptar.UseVisualStyleBackColor = true;
-            // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.txtHasta);
+            this.groupBox1.Controls.Add(this.txtDesde);
+            this.groupBox1.Controls.Add(this.txtCantSimulaciones);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.btnAceptar);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(265, 124);
@@ -106,34 +102,34 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ingreso de datos";
             // 
-            // textBox3
+            // txtHasta
             // 
-            this.textBox3.Location = new System.Drawing.Point(50, 69);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 7;
+            this.txtHasta.Location = new System.Drawing.Point(50, 69);
+            this.txtHasta.Name = "txtHasta";
+            this.txtHasta.Size = new System.Drawing.Size(100, 20);
+            this.txtHasta.TabIndex = 7;
             // 
-            // textBox2
+            // txtDesde
             // 
-            this.textBox2.Location = new System.Drawing.Point(50, 46);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 7;
+            this.txtDesde.Location = new System.Drawing.Point(50, 46);
+            this.txtDesde.Name = "txtDesde";
+            this.txtDesde.Size = new System.Drawing.Size(100, 20);
+            this.txtDesde.TabIndex = 7;
             // 
-            // textBox1
+            // txtCantSimulaciones
             // 
-            this.textBox1.Location = new System.Drawing.Point(139, 24);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 6;
+            this.txtCantSimulaciones.Location = new System.Drawing.Point(139, 24);
+            this.txtCantSimulaciones.Name = "txtCantSimulaciones";
+            this.txtCantSimulaciones.Size = new System.Drawing.Size(100, 20);
+            this.txtCantSimulaciones.TabIndex = 6;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(507, 58);
+            this.button1.Location = new System.Drawing.Point(192, 95);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(99, 39);
+            this.button1.Size = new System.Drawing.Size(67, 23);
             this.button1.TabIndex = 6;
-            this.button1.Text = "PRUEBA";
+            this.button1.Text = "Aceptar";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -188,7 +184,7 @@
             // 
             // btnCamiones
             // 
-            this.btnCamiones.Location = new System.Drawing.Point(507, 107);
+            this.btnCamiones.Location = new System.Drawing.Point(839, 107);
             this.btnCamiones.Name = "btnCamiones";
             this.btnCamiones.Size = new System.Drawing.Size(99, 29);
             this.btnCamiones.TabIndex = 12;
@@ -227,11 +223,11 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(411, 499);
+            this.button2.Location = new System.Drawing.Point(12, 142);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(127, 23);
             this.button2.TabIndex = 16;
-            this.button2.Text = "Prueba de ocultos";
+            this.button2.Text = "Ocultar RND";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -250,11 +246,50 @@
             this.colReloj.HeaderText = "Reloj";
             this.colReloj.Name = "colReloj";
             // 
+            // btnMostrarRnd
+            // 
+            this.btnMostrarRnd.Location = new System.Drawing.Point(144, 142);
+            this.btnMostrarRnd.Name = "btnMostrarRnd";
+            this.btnMostrarRnd.Size = new System.Drawing.Size(127, 23);
+            this.btnMostrarRnd.TabIndex = 17;
+            this.btnMostrarRnd.Text = "Mostrar RND";
+            this.btnMostrarRnd.UseVisualStyleBackColor = true;
+            // 
+            // dgvFinal
+            // 
+            this.dgvFinal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvFinal.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3});
+            this.dgvFinal.EnableHeadersVisualStyles = false;
+            this.dgvFinal.Location = new System.Drawing.Point(12, 515);
+            this.dgvFinal.Name = "dgvFinal";
+            this.dgvFinal.Size = new System.Drawing.Size(1346, 104);
+            this.dgvFinal.TabIndex = 18;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Número";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Evento";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Reloj";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.Controls.Add(this.dgvFinal);
+            this.Controls.Add(this.btnMostrarRnd);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.lblPagina);
             this.Controls.Add(this.btnSiguiente);
@@ -265,13 +300,13 @@
             this.Controls.Add(this.txtCamiones);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.dgvSimulaciones);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
             this.Text = "TP5 Sistemas de colas";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSimulaciones)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFinal)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -281,11 +316,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtHasta;
+        private System.Windows.Forms.TextBox txtDesde;
+        private System.Windows.Forms.TextBox txtCantSimulaciones;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dgvSimulaciones;
         private System.Windows.Forms.Label label4;
@@ -300,6 +334,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colNumeroSimulacion;
         private System.Windows.Forms.DataGridViewTextBoxColumn colEvento;
         private System.Windows.Forms.DataGridViewTextBoxColumn colReloj;
+        private System.Windows.Forms.Button btnMostrarRnd;
+        private System.Windows.Forms.DataGridView dgvFinal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
     }
 }
 
