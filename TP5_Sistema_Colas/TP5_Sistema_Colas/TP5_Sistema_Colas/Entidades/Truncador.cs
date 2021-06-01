@@ -10,7 +10,7 @@ namespace TP5_Sistema_Colas.Entidades
     {
         public static double Truncar(double num)
         {
-            return Math.Truncate(100 * num) / 100;
+            return Math.Truncate(10000 * num) / 10000;
         }
     }
 }

@@ -37,16 +37,21 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.dgvPrueba = new System.Windows.Forms.DataGridView();
-            this.colEvento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colReloj = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvSimulaciones = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
             this.txtCamiones = new System.Windows.Forms.TextBox();
             this.media1 = new System.Windows.Forms.Label();
             this.txtMedia = new System.Windows.Forms.TextBox();
             this.btnCamiones = new System.Windows.Forms.Button();
+            this.btnAnterior = new System.Windows.Forms.Button();
+            this.btnSiguiente = new System.Windows.Forms.Button();
+            this.lblPagina = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.colNumeroSimulacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colEvento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colReloj = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPrueba)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSimulaciones)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -132,27 +137,18 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // dgvPrueba
+            // dgvSimulaciones
             // 
-            this.dgvPrueba.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPrueba.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvSimulaciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSimulaciones.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colNumeroSimulacion,
             this.colEvento,
             this.colReloj});
-            this.dgvPrueba.EnableHeadersVisualStyles = false;
-            this.dgvPrueba.Location = new System.Drawing.Point(12, 168);
-            this.dgvPrueba.Name = "dgvPrueba";
-            this.dgvPrueba.Size = new System.Drawing.Size(1346, 500);
-            this.dgvPrueba.TabIndex = 7;
-            // 
-            // colEvento
-            // 
-            this.colEvento.HeaderText = "Evento";
-            this.colEvento.Name = "colEvento";
-            // 
-            // colReloj
-            // 
-            this.colReloj.HeaderText = "Reloj";
-            this.colReloj.Name = "colReloj";
+            this.dgvSimulaciones.EnableHeadersVisualStyles = false;
+            this.dgvSimulaciones.Location = new System.Drawing.Point(12, 168);
+            this.dgvSimulaciones.Name = "dgvSimulaciones";
+            this.dgvSimulaciones.Size = new System.Drawing.Size(1346, 291);
+            this.dgvSimulaciones.TabIndex = 7;
             // 
             // label4
             // 
@@ -200,24 +196,82 @@
             this.btnCamiones.UseVisualStyleBackColor = true;
             this.btnCamiones.Click += new System.EventHandler(this.btnCamiones_Click);
             // 
+            // btnAnterior
+            // 
+            this.btnAnterior.Location = new System.Drawing.Point(12, 465);
+            this.btnAnterior.Name = "btnAnterior";
+            this.btnAnterior.Size = new System.Drawing.Size(75, 23);
+            this.btnAnterior.TabIndex = 13;
+            this.btnAnterior.Text = "Anterior";
+            this.btnAnterior.UseVisualStyleBackColor = true;
+            this.btnAnterior.Click += new System.EventHandler(this.btnAnterior_Click);
+            // 
+            // btnSiguiente
+            // 
+            this.btnSiguiente.Location = new System.Drawing.Point(1283, 465);
+            this.btnSiguiente.Name = "btnSiguiente";
+            this.btnSiguiente.Size = new System.Drawing.Size(75, 23);
+            this.btnSiguiente.TabIndex = 14;
+            this.btnSiguiente.Text = "Siguiente";
+            this.btnSiguiente.UseVisualStyleBackColor = true;
+            this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
+            // 
+            // lblPagina
+            // 
+            this.lblPagina.AutoSize = true;
+            this.lblPagina.Location = new System.Drawing.Point(738, 470);
+            this.lblPagina.Name = "lblPagina";
+            this.lblPagina.Size = new System.Drawing.Size(73, 13);
+            this.lblPagina.TabIndex = 15;
+            this.lblPagina.Text = "Página 0 de 0";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(411, 499);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(127, 23);
+            this.button2.TabIndex = 16;
+            this.button2.Text = "Prueba de ocultos";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // colNumeroSimulacion
+            // 
+            this.colNumeroSimulacion.HeaderText = "Número";
+            this.colNumeroSimulacion.Name = "colNumeroSimulacion";
+            // 
+            // colEvento
+            // 
+            this.colEvento.HeaderText = "Evento";
+            this.colEvento.Name = "colEvento";
+            // 
+            // colReloj
+            // 
+            this.colReloj.HeaderText = "Reloj";
+            this.colReloj.Name = "colReloj";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.lblPagina);
+            this.Controls.Add(this.btnSiguiente);
+            this.Controls.Add(this.btnAnterior);
             this.Controls.Add(this.btnCamiones);
             this.Controls.Add(this.txtMedia);
             this.Controls.Add(this.media1);
             this.Controls.Add(this.txtCamiones);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.dgvPrueba);
+            this.Controls.Add(this.dgvSimulaciones);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
             this.Text = "TP5 Sistemas de colas";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPrueba)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSimulaciones)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -233,14 +287,19 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridView dgvPrueba;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colEvento;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colReloj;
+        private System.Windows.Forms.DataGridView dgvSimulaciones;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtCamiones;
         private System.Windows.Forms.Label media1;
         private System.Windows.Forms.TextBox txtMedia;
         private System.Windows.Forms.Button btnCamiones;
+        private System.Windows.Forms.Button btnAnterior;
+        private System.Windows.Forms.Button btnSiguiente;
+        private System.Windows.Forms.Label lblPagina;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNumeroSimulacion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colEvento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colReloj;
     }
 }
 

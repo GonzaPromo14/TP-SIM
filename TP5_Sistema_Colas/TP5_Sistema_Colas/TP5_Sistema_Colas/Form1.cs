@@ -15,22 +15,24 @@ namespace TP5_Sistema_Colas
     {
         ControladorSimulacion controlador;
         FormCamiones form2;
+        Paginador p;
 
         public Form1()
         {
             InitializeComponent();
             controlador = new ControladorSimulacion(this);
-
             cargarColumnas();
+            
         }
 
         public void cargarColumnas()
         {
             //Para que no se muevan las dos primeras
-            dgvPrueba.Columns[0].Frozen = true;
-            dgvPrueba.Columns[0].Width = 200;
-            dgvPrueba.Columns[1].Frozen = true;
-            dgvPrueba.Columns[1].DefaultCellStyle.BackColor = Color.LightBlue;
+            dgvSimulaciones.Columns[0].Frozen = true;
+            dgvSimulaciones.Columns[1].Width = 200;
+            dgvSimulaciones.Columns[1].Frozen = true;
+            dgvSimulaciones.Columns[2].DefaultCellStyle.BackColor = Color.LightBlue;
+            dgvSimulaciones.Columns[2].Frozen = true;
 
 
 
@@ -50,46 +52,46 @@ namespace TP5_Sistema_Colas
                 }
 
                 pos = "RNDllegada" + i.ToString();
-                dgvPrueba.Columns.Add(pos, "RND Llegada");
-                dgvPrueba.Columns[pos].HeaderCell.Style.BackColor = color;
+                dgvSimulaciones.Columns.Add(pos, "RND Llegada");
+                dgvSimulaciones.Columns[pos].HeaderCell.Style.BackColor = color;
 
                 pos = "tiempoLlegada" + i.ToString();
-                dgvPrueba.Columns.Add(pos, "Tiempo Llegada");
-                dgvPrueba.Columns[pos].HeaderCell.Style.BackColor = color;
+                dgvSimulaciones.Columns.Add(pos, "Tiempo Llegada");
+                dgvSimulaciones.Columns[pos].HeaderCell.Style.BackColor = color;
 
                 pos = "proximaLlegada" + i.ToString();
-                dgvPrueba.Columns.Add(pos, "Proxima llegada");
-                dgvPrueba.Columns[pos].HeaderCell.Style.BackColor = color;
-                dgvPrueba.Columns[pos].DefaultCellStyle.BackColor = Color.Yellow;
+                dgvSimulaciones.Columns.Add(pos, "Proxima llegada");
+                dgvSimulaciones.Columns[pos].HeaderCell.Style.BackColor = color;
+                dgvSimulaciones.Columns[pos].DefaultCellStyle.BackColor = Color.Yellow;
 
                 pos = "RNDRep1" + i.ToString();
-                dgvPrueba.Columns.Add(pos, "RND1");
-                dgvPrueba.Columns[pos].HeaderCell.Style.BackColor = color;
+                dgvSimulaciones.Columns.Add(pos, "RND1");
+                dgvSimulaciones.Columns[pos].HeaderCell.Style.BackColor = color;
 
                 pos = "RNDRep2" + i.ToString();
-                dgvPrueba.Columns.Add(pos, "RND2");
-                dgvPrueba.Columns[pos].HeaderCell.Style.BackColor = color;
+                dgvSimulaciones.Columns.Add(pos, "RND2");
+                dgvSimulaciones.Columns[pos].HeaderCell.Style.BackColor = color;
 
                 pos = "tiempoReparacion" + i.ToString();
-                dgvPrueba.Columns.Add(pos, "Tiempo reparacion");
-                dgvPrueba.Columns[pos].HeaderCell.Style.BackColor = color;
+                dgvSimulaciones.Columns.Add(pos, "Tiempo reparacion");
+                dgvSimulaciones.Columns[pos].HeaderCell.Style.BackColor = color;
 
                 pos = "finReparacion" + i.ToString();
-                dgvPrueba.Columns.Add(pos, "Proximo fin reparacion");
-                dgvPrueba.Columns[pos].HeaderCell.Style.BackColor = color;
-                dgvPrueba.Columns[pos].DefaultCellStyle.BackColor = Color.Yellow;
+                dgvSimulaciones.Columns.Add(pos, "Proximo fin reparacion");
+                dgvSimulaciones.Columns[pos].HeaderCell.Style.BackColor = color;
+                dgvSimulaciones.Columns[pos].DefaultCellStyle.BackColor = Color.Yellow;
 
                 pos = "seVaAOtraZona" + i.ToString();
-                dgvPrueba.Columns.Add(pos, "Se va a otra zona");
-                dgvPrueba.Columns[pos].HeaderCell.Style.BackColor = color;
+                dgvSimulaciones.Columns.Add(pos, "Se va a otra zona");
+                dgvSimulaciones.Columns[pos].HeaderCell.Style.BackColor = color;
 
                 pos = "cola" + i.ToString();
-                dgvPrueba.Columns.Add(pos, "Cola");
-                dgvPrueba.Columns[pos].HeaderCell.Style.BackColor = color;
+                dgvSimulaciones.Columns.Add(pos, "Cola");
+                dgvSimulaciones.Columns[pos].HeaderCell.Style.BackColor = color;
 
                 pos = "estado" + i.ToString();
-                dgvPrueba.Columns.Add(pos, "Estado");
-                dgvPrueba.Columns[pos].HeaderCell.Style.BackColor = color;
+                dgvSimulaciones.Columns.Add(pos, "Estado");
+                dgvSimulaciones.Columns[pos].HeaderCell.Style.BackColor = color;
             }
 
         }
@@ -114,24 +116,27 @@ namespace TP5_Sistema_Colas
             dgvPrueba.Rows.Add(linea);
         }*/
 
-        public void cargarLinea(dynamic[] vector)
+        public void cargarLinea(dynamic[] vector, int pos)
         {
             /*
             dynamic[] result = new dynamic[20];
             Array.Copy(vector, 0, result, 0, 20);
 */
-            dgvPrueba.Rows.Add(vector);
+            //simulaciones[pos] = vector;
+            dgvSimulaciones.Rows.Add(vector);
         }
 
 
 
         private void button1_Click(object sender, EventArgs e)
         {
-            dgvPrueba.Rows.Clear();
+            dgvSimulaciones.Rows.Clear();
             controlador.simular();
-
+            p = new Paginador(controlador.getSimulaciones(), 10);
+            p.obtenerPaginaActual(controlador.getSimulaciones(), dgvSimulaciones);
             txtCamiones.Text = controlador.contadorCamiones.ToString();
             txtMedia.Text = controlador.zonas[0].getMediaLlegadas().ToString();
+            lblPagina.Text = "Página 1 de " + p.getCantPaginas(); 
         }
 
         private void btnCamiones_Click(object sender, EventArgs e)
@@ -139,6 +144,27 @@ namespace TP5_Sistema_Colas
             form2 = new FormCamiones(controlador);
             form2.Show();
          
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            dgvSimulaciones.Columns[0].Visible = false;
+        }
+
+        private void btnAnterior_Click(object sender, EventArgs e)
+        {
+            dgvSimulaciones.Rows.Clear();
+            p.obtenerPaginaAnterior(controlador.getSimulaciones(), dgvSimulaciones);
+            lblPagina.Text = "Página " + p.getPaginaActual() + " de " + p.getCantPaginas();
+
+        }
+
+        private void btnSiguiente_Click(object sender, EventArgs e)
+        {
+            dgvSimulaciones.Rows.Clear();
+            p.obtenerPaginaSiguiente(controlador.getSimulaciones(), dgvSimulaciones);
+            lblPagina.Text = "Página " + p.getPaginaActual() + " de " + p.getCantPaginas();
+
         }
     }
 }

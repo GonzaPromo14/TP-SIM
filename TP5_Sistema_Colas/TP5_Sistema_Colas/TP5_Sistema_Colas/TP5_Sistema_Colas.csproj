@@ -62,6 +62,7 @@
     <Compile Include="Entidades\Eventos\Llegada_camion.cs" />
     <Compile Include="Entidades\Objetos\Camion.cs" />
     <Compile Include="Entidades\Objetos\Zona.cs" />
+    <Compile Include="Entidades\Paginador.cs" />
     <Compile Include="Entidades\Truncador.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

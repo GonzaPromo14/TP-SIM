@@ -12,13 +12,12 @@ namespace TP5_Sistema_Colas.Entidades
         int paginaActual;
         int cantPaginas;
         int cantItemsPorPag;
-        double[][] datos;
+        //dynamic[][] datos;
         bool ultimaPagina;
         bool primeraPagina;
 
-        public Paginador(double[][] datos, int cantItemsPorPag)
+        public Paginador(dynamic[][] datos, int cantItemsPorPag)
         {
-            this.datos = datos;
             this.cantItemsPorPag = cantItemsPorPag == 0 ? 10 : cantItemsPorPag;
             int cantPaginas = datos.Length / cantItemsPorPag;
             double resto = datos.Length % cantItemsPorPag;
@@ -33,7 +32,7 @@ namespace TP5_Sistema_Colas.Entidades
             this.ultimaPagina = false;
         }
 
-        public void obtenerPaginaActual(DataGridView view)
+        public void obtenerPaginaActual(dynamic[][] datos,DataGridView view)
         {
             int final = this.paginaActual * this.cantItemsPorPag;
             int inicio = final - this.cantItemsPorPag;
@@ -43,40 +42,25 @@ namespace TP5_Sistema_Colas.Entidades
                 {
                     break;
                 }
-                view.Rows.Add(new string[] {
-                    datos[i][0].ToString(),
-                    Truncador.Truncar(datos[i][1]).ToString(),
-                    datos[i][2].ToString(),
-                    datos[i][3].ToString(),
-                    datos[i][4].ToString(),
-                    Truncador.Truncar(datos[i][5]).ToString(),
-                    datos[i][6].ToString(),
-                    datos[i][7].ToString(),
-                    Truncador.Truncar(datos[i][8]).ToString(),
-                    Truncador.Truncar(datos[i][9]).ToString(),
-                    datos[i][10].ToString(),
-                    datos[i][11].ToString(),
-                    Truncador.Truncar(datos[i][12]).ToString(),
-                    datos[i][13].ToString(),
-                    datos[i][14].ToString(),
-                    Truncador.Truncar(datos[i][15]).ToString()
-
-
-                });
+                view.Rows.Add(datos[i]);
             }
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    view.Rows.Add(datos[i]);
+            //}
 
         }
 
-        public void obtenerPaginaAnterior(DataGridView view)
+        public void obtenerPaginaAnterior(dynamic[][] datos, DataGridView view)
         {
             this.setPaginaActual(this.paginaActual - 1);
-            this.obtenerPaginaActual(view);
+            this.obtenerPaginaActual(datos, view);
         }
 
-        public void obtenerPaginaSiguiente(DataGridView view)
+        public void obtenerPaginaSiguiente(dynamic[][] datos, DataGridView view)
         {
             this.setPaginaActual(this.paginaActual + 1);
-            this.obtenerPaginaActual(view);
+            this.obtenerPaginaActual(datos, view);
         }
 
         public void setPaginaActual(int pagina)
@@ -109,10 +93,10 @@ namespace TP5_Sistema_Colas.Entidades
             return this.primeraPagina;
         }
 
-        public void irAPagina(DataGridView view, int pagina)
+        public void irAPagina(dynamic[][] datos, DataGridView view, int pagina)
         {
             this.setPaginaActual(pagina);
-            this.obtenerPaginaActual(view);
+            this.obtenerPaginaActual(datos, view);
         }
 
         public int getCantPaginas()
