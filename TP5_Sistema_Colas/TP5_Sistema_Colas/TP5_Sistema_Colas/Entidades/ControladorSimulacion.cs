@@ -28,8 +28,8 @@ namespace TP5_Sistema_Colas.Entidades
         public int contadorCamiones; //para la capacidad
         int capacidadMAX = 93;
 
-        public int desde = 500;
-        public int hasta = 700;
+        public int desde;
+        public int hasta;
 
         public ControladorSimulacion(Form1 pantalla)
         {
@@ -99,6 +99,7 @@ namespace TP5_Sistema_Colas.Entidades
             //loop principal
             for (int i=1; i<=iteraciones; i++)
             {
+                if (contadorCamiones > 93 && pantalla.NoTieneExceso()) pantalla.cargarExceso();
 
                 vectorActual = vectorAnterior;
 

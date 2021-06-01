@@ -37,6 +37,9 @@
             this.txtCantSimulaciones = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.dgvSimulaciones = new System.Windows.Forms.DataGridView();
+            this.colNumeroSimulacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colEvento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colReloj = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label4 = new System.Windows.Forms.Label();
             this.txtCamiones = new System.Windows.Forms.TextBox();
             this.media1 = new System.Windows.Forms.Label();
@@ -46,14 +49,14 @@
             this.btnSiguiente = new System.Windows.Forms.Button();
             this.lblPagina = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
-            this.colNumeroSimulacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colEvento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colReloj = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnMostrarRnd = new System.Windows.Forms.Button();
             this.dgvFinal = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtExceso = new System.Windows.Forms.TextBox();
+            this.lblZona = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSimulaciones)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFinal)).BeginInit();
@@ -146,6 +149,21 @@
             this.dgvSimulaciones.Size = new System.Drawing.Size(1346, 291);
             this.dgvSimulaciones.TabIndex = 7;
             // 
+            // colNumeroSimulacion
+            // 
+            this.colNumeroSimulacion.HeaderText = "Número";
+            this.colNumeroSimulacion.Name = "colNumeroSimulacion";
+            // 
+            // colEvento
+            // 
+            this.colEvento.HeaderText = "Evento";
+            this.colEvento.Name = "colEvento";
+            // 
+            // colReloj
+            // 
+            this.colReloj.HeaderText = "Reloj";
+            this.colReloj.Name = "colReloj";
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -184,7 +202,7 @@
             // 
             // btnCamiones
             // 
-            this.btnCamiones.Location = new System.Drawing.Point(839, 107);
+            this.btnCamiones.Location = new System.Drawing.Point(777, 107);
             this.btnCamiones.Name = "btnCamiones";
             this.btnCamiones.Size = new System.Drawing.Size(99, 29);
             this.btnCamiones.TabIndex = 12;
@@ -231,21 +249,6 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // colNumeroSimulacion
-            // 
-            this.colNumeroSimulacion.HeaderText = "Número";
-            this.colNumeroSimulacion.Name = "colNumeroSimulacion";
-            // 
-            // colEvento
-            // 
-            this.colEvento.HeaderText = "Evento";
-            this.colEvento.Name = "colEvento";
-            // 
-            // colReloj
-            // 
-            this.colReloj.HeaderText = "Reloj";
-            this.colReloj.Name = "colReloj";
-            // 
             // btnMostrarRnd
             // 
             this.btnMostrarRnd.Location = new System.Drawing.Point(144, 142);
@@ -283,11 +286,40 @@
             this.dataGridViewTextBoxColumn3.HeaderText = "Reloj";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(308, 23);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(144, 13);
+            this.label5.TabIndex = 19;
+            this.label5.Text = "Primer exceso de capacidad:";
+            // 
+            // txtExceso
+            // 
+            this.txtExceso.Location = new System.Drawing.Point(458, 20);
+            this.txtExceso.Name = "txtExceso";
+            this.txtExceso.Size = new System.Drawing.Size(100, 20);
+            this.txtExceso.TabIndex = 20;
+            this.txtExceso.Text = "-";
+            // 
+            // lblZona
+            // 
+            this.lblZona.AutoSize = true;
+            this.lblZona.Location = new System.Drawing.Point(389, 107);
+            this.lblZona.Name = "lblZona";
+            this.lblZona.Size = new System.Drawing.Size(43, 13);
+            this.lblZona.TabIndex = 21;
+            this.lblZona.Text = "ZONA1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.Controls.Add(this.lblZona);
+            this.Controls.Add(this.txtExceso);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.dgvFinal);
             this.Controls.Add(this.btnMostrarRnd);
             this.Controls.Add(this.button2);
@@ -339,6 +371,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtExceso;
+        private System.Windows.Forms.Label lblZona;
     }
 }
 

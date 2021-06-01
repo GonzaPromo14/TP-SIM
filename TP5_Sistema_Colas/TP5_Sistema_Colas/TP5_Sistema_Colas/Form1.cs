@@ -118,6 +118,17 @@ namespace TP5_Sistema_Colas
             dgvPrueba.Rows.Add(linea);
         }*/
 
+        public bool NoTieneExceso()
+        {
+            //devuelve true si no hay numero
+            return (txtExceso.Text == "-");
+        }
+
+        public void cargarExceso()
+        {
+            
+            txtExceso.Text = controlador.vectorActual[Constantes.colReloj].ToString();
+        }
         public void cargarLinea(dynamic[] vector, int pos)
         {
             /*
@@ -132,6 +143,8 @@ namespace TP5_Sistema_Colas
 
         private void button1_Click(object sender, EventArgs e)
         {
+            txtExceso.Text = "-";
+
             controlador.iteraciones = int.Parse(txtCantSimulaciones.Text);
             int resultado;
             if (int.TryParse(txtDesde.Text, out resultado) && int.TryParse(txtHasta.Text, out resultado))
@@ -154,6 +167,9 @@ namespace TP5_Sistema_Colas
             lblPagina.Text = "Página 1 de " + p.getCantPaginas();
             dgvFinal.Rows.Clear();
             dgvFinal.Rows.Add(controlador.getUltimaSimulacion());
+
+            double aaaaa = (double)controlador.vectorActual[11] * 100 / (double)controlador.contadorCamiones;
+            lblZona.Text = (aaaaa).ToString()+"%";
         }
 
         private void btnCamiones_Click(object sender, EventArgs e)

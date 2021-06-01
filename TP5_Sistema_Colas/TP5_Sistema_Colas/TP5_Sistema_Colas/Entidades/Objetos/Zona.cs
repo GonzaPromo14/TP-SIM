@@ -19,6 +19,8 @@ namespace TP5_Sistema_Colas.Entidades.Objetos
         string estado;
         public string nombre;
         public int numero;
+        public int contadorCamiones;
+
 
         double mediaLlegadas;
         double mediaServicio;
@@ -37,6 +39,8 @@ namespace TP5_Sistema_Colas.Entidades.Objetos
             this.numero = num;
             this.semilla = new Random();
             this.cola = new List<Camion>();
+            this.contadorCamiones = 0;
+
 
             this.offset = (num - 1) * Constantes.cantidadColumnasZona;
         }
