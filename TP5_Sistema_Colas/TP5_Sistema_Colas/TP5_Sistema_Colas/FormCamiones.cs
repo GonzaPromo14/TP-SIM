@@ -23,14 +23,6 @@ namespace TP5_Sistema_Colas
             dataGridView1.Columns[2].Width = 50;
             dataGridView1.Columns[3].Width = 50;
             dataGridView1.Columns[5].Width = 200;
-
-            DataGridViewButtonColumn button = new DataGridViewButtonColumn();
-            
-            button.Name = "button";
-            button.HeaderText = "Historial";
-            button.Text = "Ver";
-            button.UseColumnTextForButtonValue = true;
-            dataGridView1.Columns.Add(button);
             
             cargarGrilla();
         }

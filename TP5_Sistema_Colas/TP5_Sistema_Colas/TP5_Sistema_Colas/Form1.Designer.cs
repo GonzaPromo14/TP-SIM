@@ -129,6 +129,7 @@
             this.txtCantSimulaciones.Name = "txtCantSimulaciones";
             this.txtCantSimulaciones.Size = new System.Drawing.Size(100, 20);
             this.txtCantSimulaciones.TabIndex = 6;
+            this.txtCantSimulaciones.Text = "500";
             // 
             // button1
             // 
