@@ -37,6 +37,11 @@
             this.txtCantSimulaciones = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.dgvSimulaciones = new System.Windows.Forms.DataGridView();
+            this.colNumeroSimulacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colEvento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colReloj = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColInstalacionesInadecuadas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPorcentaje = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label4 = new System.Windows.Forms.Label();
             this.txtCamiones = new System.Windows.Forms.TextBox();
             this.btnAnterior = new System.Windows.Forms.Button();
@@ -45,24 +50,21 @@
             this.button2 = new System.Windows.Forms.Button();
             this.btnMostrarRnd = new System.Windows.Forms.Button();
             this.dgvFinal = new System.Windows.Forms.DataGridView();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtExceso = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.lblPorcInsInadeciadas = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.colNumeroSimulacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colEvento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colReloj = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColInstalacionesInadecuadas = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPorcentaje = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPorcentajeInad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label7 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtExceso = new System.Windows.Forms.TextBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnCamiones = new System.Windows.Forms.Button();
             this.lblSemana = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.lblPorcInsInadeciadas = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSimulaciones)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFinal)).BeginInit();
@@ -98,16 +100,19 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Controls.Add(this.txtHasta);
             this.groupBox1.Controls.Add(this.txtDesde);
             this.groupBox1.Controls.Add(this.txtCantSimulaciones);
             this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.btnMostrarRnd);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(265, 124);
+            this.groupBox1.Size = new System.Drawing.Size(525, 124);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ingreso de datos";
@@ -161,6 +166,31 @@
             this.dgvSimulaciones.Size = new System.Drawing.Size(1346, 291);
             this.dgvSimulaciones.TabIndex = 7;
             // 
+            // colNumeroSimulacion
+            // 
+            this.colNumeroSimulacion.HeaderText = "Número";
+            this.colNumeroSimulacion.Name = "colNumeroSimulacion";
+            // 
+            // colEvento
+            // 
+            this.colEvento.HeaderText = "Evento";
+            this.colEvento.Name = "colEvento";
+            // 
+            // colReloj
+            // 
+            this.colReloj.HeaderText = "Reloj";
+            this.colReloj.Name = "colReloj";
+            // 
+            // ColInstalacionesInadecuadas
+            // 
+            this.ColInstalacionesInadecuadas.HeaderText = "Instalaciones Inadecuadas";
+            this.ColInstalacionesInadecuadas.Name = "ColInstalacionesInadecuadas";
+            // 
+            // colPorcentaje
+            // 
+            this.colPorcentaje.HeaderText = "Porcentaje de inadecuación";
+            this.colPorcentaje.Name = "colPorcentaje";
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -210,9 +240,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(145, 662);
+            this.button2.Location = new System.Drawing.Point(432, 72);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(127, 27);
+            this.button2.Size = new System.Drawing.Size(75, 46);
             this.button2.TabIndex = 16;
             this.button2.Text = "Ocultar columnas ";
             this.button2.UseVisualStyleBackColor = true;
@@ -220,9 +250,9 @@
             // 
             // btnMostrarRnd
             // 
-            this.btnMostrarRnd.Location = new System.Drawing.Point(12, 662);
+            this.btnMostrarRnd.Location = new System.Drawing.Point(351, 72);
             this.btnMostrarRnd.Name = "btnMostrarRnd";
-            this.btnMostrarRnd.Size = new System.Drawing.Size(127, 27);
+            this.btnMostrarRnd.Size = new System.Drawing.Size(75, 46);
             this.btnMostrarRnd.TabIndex = 17;
             this.btnMostrarRnd.Text = "Mostrar columnas";
             this.btnMostrarRnd.UseVisualStyleBackColor = true;
@@ -245,95 +275,6 @@
             this.dgvFinal.RowHeadersVisible = false;
             this.dgvFinal.Size = new System.Drawing.Size(1346, 104);
             this.dgvFinal.TabIndex = 18;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 27);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(153, 13);
-            this.label5.TabIndex = 19;
-            this.label5.Text = "Primer exceso de capacidad ---";
-            // 
-            // txtExceso
-            // 
-            this.txtExceso.Location = new System.Drawing.Point(159, 24);
-            this.txtExceso.Multiline = true;
-            this.txtExceso.Name = "txtExceso";
-            this.txtExceso.ReadOnly = true;
-            this.txtExceso.Size = new System.Drawing.Size(155, 20);
-            this.txtExceso.TabIndex = 20;
-            this.txtExceso.Text = "-";
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(5, 95);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(309, 23);
-            this.button3.TabIndex = 22;
-            this.button3.Text = "Resumen de zonas";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.lblSemana);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.button3);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.txtExceso);
-            this.groupBox2.Controls.Add(this.txtCamiones);
-            this.groupBox2.Location = new System.Drawing.Point(323, 12);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(737, 124);
-            this.groupBox2.TabIndex = 23;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Metricas";
-            // 
-            // lblPorcInsInadeciadas
-            // 
-            this.lblPorcInsInadeciadas.AutoSize = true;
-            this.lblPorcInsInadeciadas.ForeColor = System.Drawing.Color.Red;
-            this.lblPorcInsInadeciadas.Location = new System.Drawing.Point(970, 36);
-            this.lblPorcInsInadeciadas.Name = "lblPorcInsInadeciadas";
-            this.lblPorcInsInadeciadas.Size = new System.Drawing.Size(13, 13);
-            this.lblPorcInsInadeciadas.TabIndex = 24;
-            this.lblPorcInsInadeciadas.Text = "--";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(674, 36);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(297, 13);
-            this.label6.TabIndex = 25;
-            this.label6.Text = "Porcentaje de simulaciones donde hay exceso de capacidad:";
-            // 
-            // colNumeroSimulacion
-            // 
-            this.colNumeroSimulacion.HeaderText = "Número";
-            this.colNumeroSimulacion.Name = "colNumeroSimulacion";
-            // 
-            // colEvento
-            // 
-            this.colEvento.HeaderText = "Evento";
-            this.colEvento.Name = "colEvento";
-            // 
-            // colReloj
-            // 
-            this.colReloj.HeaderText = "Reloj";
-            this.colReloj.Name = "colReloj";
-            // 
-            // ColInstalacionesInadecuadas
-            // 
-            this.ColInstalacionesInadecuadas.HeaderText = "Instalaciones Inadecuadas";
-            this.ColInstalacionesInadecuadas.Name = "ColInstalacionesInadecuadas";
-            // 
-            // colPorcentaje
-            // 
-            this.colPorcentaje.HeaderText = "Porcentaje de inadecuación";
-            this.colPorcentaje.Name = "colPorcentaje";
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -360,14 +301,63 @@
             this.colPorcentajeInad.HeaderText = "Porcentaje de inadecuación";
             this.colPorcentajeInad.Name = "colPorcentajeInad";
             // 
-            // label7
+            // label5
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(354, 49);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(212, 13);
-            this.label7.TabIndex = 23;
-            this.label7.Text = "Aumentar capacidad a partir de la semana: ";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 27);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(153, 13);
+            this.label5.TabIndex = 19;
+            this.label5.Text = "Primer exceso de capacidad ---";
+            // 
+            // txtExceso
+            // 
+            this.txtExceso.Location = new System.Drawing.Point(159, 24);
+            this.txtExceso.Multiline = true;
+            this.txtExceso.Name = "txtExceso";
+            this.txtExceso.ReadOnly = true;
+            this.txtExceso.Size = new System.Drawing.Size(155, 20);
+            this.txtExceso.TabIndex = 20;
+            this.txtExceso.Text = "-";
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(5, 72);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(152, 46);
+            this.button3.TabIndex = 22;
+            this.button3.Text = "Resumen de zonas";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.lblPorcInsInadeciadas);
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.btnCamiones);
+            this.groupBox2.Controls.Add(this.lblSemana);
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.button3);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.txtExceso);
+            this.groupBox2.Controls.Add(this.txtCamiones);
+            this.groupBox2.Location = new System.Drawing.Point(621, 12);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(737, 124);
+            this.groupBox2.TabIndex = 23;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Metricas";
+            // 
+            // btnCamiones
+            // 
+            this.btnCamiones.Location = new System.Drawing.Point(162, 72);
+            this.btnCamiones.Name = "btnCamiones";
+            this.btnCamiones.Size = new System.Drawing.Size(152, 46);
+            this.btnCamiones.TabIndex = 26;
+            this.btnCamiones.Text = "Camiones";
+            this.btnCamiones.UseVisualStyleBackColor = true;
+            this.btnCamiones.Click += new System.EventHandler(this.btnCamiones_Click_1);
             // 
             // lblSemana
             // 
@@ -379,17 +369,50 @@
             this.lblSemana.TabIndex = 25;
             this.lblSemana.Text = "--";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(354, 49);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(212, 13);
+            this.label7.TabIndex = 23;
+            this.label7.Text = "Aumentar capacidad a partir de la semana: ";
+            // 
+            // lblPorcInsInadeciadas
+            // 
+            this.lblPorcInsInadeciadas.AutoSize = true;
+            this.lblPorcInsInadeciadas.ForeColor = System.Drawing.Color.Red;
+            this.lblPorcInsInadeciadas.Location = new System.Drawing.Point(657, 27);
+            this.lblPorcInsInadeciadas.Name = "lblPorcInsInadeciadas";
+            this.lblPorcInsInadeciadas.Size = new System.Drawing.Size(13, 13);
+            this.lblPorcInsInadeciadas.TabIndex = 24;
+            this.lblPorcInsInadeciadas.Text = "--";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(354, 27);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(297, 13);
+            this.label6.TabIndex = 25;
+            this.label6.Text = "Porcentaje de simulaciones donde hay exceso de capacidad:";
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(351, 19);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(156, 31);
+            this.button4.TabIndex = 8;
+            this.button4.Text = "Editar variables";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1370, 749);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.lblPorcInsInadeciadas);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.dgvFinal);
-            this.Controls.Add(this.btnMostrarRnd);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.lblPagina);
             this.Controls.Add(this.btnSiguiente);
             this.Controls.Add(this.btnAnterior);
@@ -444,6 +467,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colPorcentajeInad;
         private System.Windows.Forms.Label lblSemana;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btnCamiones;
+        private System.Windows.Forms.Button button4;
     }
 }
 

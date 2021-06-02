@@ -168,12 +168,7 @@ namespace TP5_Sistema_Colas
             if (txtExceso.Text == "-") txtExceso.Text = "No se superó la capacidad máxima";
         }
 
-        private void btnCamiones_Click(object sender, EventArgs e)
-        {
-            form2 = new FormCamiones(controlador);
-            form2.Show();
-         
-        }
+
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -243,6 +238,13 @@ namespace TP5_Sistema_Colas
         {
             form3 = new FormZonas(controlador);
             form3.Show();
+        }
+
+
+        private void btnCamiones_Click_1(object sender, EventArgs e)
+        {
+            form2 = new FormCamiones(controlador);
+            form2.Show();
         }
     }
 }
