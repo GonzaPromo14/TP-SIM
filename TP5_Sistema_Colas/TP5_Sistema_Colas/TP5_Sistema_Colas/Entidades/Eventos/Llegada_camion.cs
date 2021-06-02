@@ -20,7 +20,7 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
 
         public override void ocurrir(ControladorSimulacion controlador)
         {
-            zona.contadorCamiones++;
+            
             //actualizo contador y nombre del camion
             if (!camion.tienePrioridad)//si no viene de otra zona, es un camion nuevo, lo agrego a la lista
             {

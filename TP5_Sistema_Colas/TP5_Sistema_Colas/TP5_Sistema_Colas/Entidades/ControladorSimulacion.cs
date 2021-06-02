@@ -28,7 +28,8 @@ namespace TP5_Sistema_Colas.Entidades
 
         public int iteraciones;
         public int contadorCamiones; //para la capacidad
-        int capacidadMAX = 93;
+        int contadorInsInapropiadas;
+        int capacidadMAX = 85;
 
         public int desde;
         public int hasta;
@@ -45,8 +46,8 @@ namespace TP5_Sistema_Colas.Entidades
             Constantes.cantidadHorasSemana = 168;
 
             contadorCamiones = 0;
-            vectorAnterior = new dynamic[83];
-            vectorActual = new dynamic[83];
+            vectorAnterior = new dynamic[92];
+            vectorActual = new dynamic[92];
 
             camiones = new List<Camion>();
             zonas = new List<Zona>();
@@ -80,7 +81,7 @@ namespace TP5_Sistema_Colas.Entidades
             vectorActual[Constantes.colEvento] = "INICIALIZACION";
             vectorActual[Constantes.colReloj] = 0;
             vectorActual[Constantes.colNumeroSimulacion] = 0;
-
+            vectorActual[Constantes.colInsInaproiada] ="-";
             zona1.iniciarZona(vectorActual);
             zona2.iniciarZona(vectorActual);
             zona3.iniciarZona(vectorActual);
@@ -101,7 +102,7 @@ namespace TP5_Sistema_Colas.Entidades
             //loop principal
             for (int i=1; i<=iteraciones; i++)
             {
-                if (contadorCamiones > 93 && pantalla.NoTieneExceso()) pantalla.cargarExceso();
+                if (contadorCamiones > capacidadMAX*1.20 && pantalla.NoTieneExceso()) pantalla.cargarExceso();
 
                 vectorActual = vectorAnterior;
 
@@ -120,6 +121,15 @@ namespace TP5_Sistema_Colas.Entidades
 
                 evento.ocurrir(this);
 
+                if (contadorCamiones > capacidadMAX * 1.20)
+                {
+                    vectorActual[Constantes.colInsInaproiada] = "SI";
+                    contadorInsInapropiadas++;
+                }
+                else
+                {
+                    vectorActual[Constantes.colInsInaproiada] = "NO";
+                }
                 //cargar vectorActual a grilla
 
                 //pantalla.cargarLinea(vectorActual, i);
@@ -133,6 +143,12 @@ namespace TP5_Sistema_Colas.Entidades
             }
             
 
+        }
+
+        public double obtenerPorcDeSimulacionParaInsInadecuadas()
+        {
+
+            return (contadorInsInapropiadas * 100) / iteraciones;
         }
 
         public List<dynamic[]> getSimulaciones()

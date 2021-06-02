@@ -36,6 +36,9 @@ namespace TP5_Sistema_Colas
             dgv.Columns[1].Frozen = true;
             dgv.Columns[2].DefaultCellStyle.BackColor = Color.LightBlue;
             dgv.Columns[2].Frozen = true;
+            dgv.Columns[3].DefaultCellStyle.BackColor = Color.LightCoral;
+            dgv.Columns[3].Frozen = true;
+
 
 
 
@@ -95,6 +98,11 @@ namespace TP5_Sistema_Colas
                 pos = "estado" + i.ToString();
                 dgv.Columns.Add(pos, "Estado Zona "+(i + 1).ToString());
                 dgv.Columns[pos].HeaderCell.Style.BackColor = color;
+
+                pos = "tiempoTrabajado" + i.ToString();
+                dgv.Columns.Add(pos, "Tiempo Trabajado en Zona " + (i + 1).ToString());
+                dgv.Columns[pos].HeaderCell.Style.BackColor = color;
+                dgv.Columns[pos].DefaultCellStyle.BackColor = Color.LightBlue;
             }
 
         }
@@ -146,6 +154,7 @@ namespace TP5_Sistema_Colas
             p = new Paginador(controlador.getSimulaciones(), 10);
             p.obtenerPaginaActual(controlador.getSimulaciones(), dgvSimulaciones);
             txtCamiones.Text = controlador.contadorCamiones.ToString();
+            lblPorcInsInadeciadas.Text = controlador.obtenerPorcDeSimulacionParaInsInadecuadas().ToString() + "%";
 
             lblPagina.Text = "Página 1 de " + p.getCantPaginas();
             dgvFinal.Rows.Clear();
@@ -164,6 +173,7 @@ namespace TP5_Sistema_Colas
         private void button2_Click(object sender, EventArgs e)
         {
             dgvSimulaciones.Columns[0].Visible = false;
+            dgvFinal.Columns[0].Visible = false;
         }
 
         private void btnAnterior_Click(object sender, EventArgs e)
@@ -187,5 +197,13 @@ namespace TP5_Sistema_Colas
             form3 = new FormZonas(controlador);
             form3.Show();
         }
+
+        private void btnMostrarRnd_Click(object sender, EventArgs e)
+        {
+            dgvSimulaciones.Columns[0].Visible = true;
+            dgvFinal.Columns[0].Visible = true;
+        }
+
+        
     }
 }

@@ -13,6 +13,7 @@ namespace TP5_Sistema_Colas.Entidades.Objetos
         public string nombre;
         public double hora_llegada;
         public double hora_salida;
+        public double tiempo_reparacion;
         public double tiempo_espera;
         public bool tienePrioridad;
         public string zonasPasadas = "";
@@ -24,6 +25,7 @@ namespace TP5_Sistema_Colas.Entidades.Objetos
             this.hora_llegada = hora_llegada;
             this.tienePrioridad = false;
             this.tiempo_espera = 0;
+            this.tiempo_reparacion = 0;
         }
 
         public void setEstado(string estado)

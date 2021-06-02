@@ -66,10 +66,14 @@ namespace TP5_Sistema_Colas.Entidades.Objetos
 
             vector[Constantes.colRND1Reparacion + offset] = Truncador.Truncar(controlador.semilla.NextDouble());
             vector[Constantes.colRND2Reparacion + offset] = Truncador.Truncar(controlador.semilla.NextDouble());
+            double tiempoReparacion = Math.Abs(Truncador.Truncar(Normal.Sample(controlador.semilla, mediaServicio, desvServicio)));
             //vector[Constantes.colTiempoReparacion + offset] = Math.Abs(Truncador.Truncar(Distribuciones.NormalDist(vector[Constantes.colRND1Reparacion + offset], vector[Constantes.colRND2Reparacion + offset], mediaServicio, desvServicio)));
-            vector[Constantes.colTiempoReparacion + offset] = Math.Abs(Truncador.Truncar(Normal.Sample(controlador.semilla, mediaServicio, desvServicio)));//esto hay que ver si se cambia
+            vector[Constantes.colTiempoReparacion + offset] = tiempoReparacion;//esto hay que ver si se cambia
             vector[Constantes.colProximoFinReparacion + offset] = horaReloj + vector[Constantes.colTiempoReparacion + offset];
+
+            ocupado_con.tiempo_reparacion = tiempoReparacion; 
         }
+
 
         public bool estaOcupada()
         {
@@ -135,6 +139,7 @@ namespace TP5_Sistema_Colas.Entidades.Objetos
 
             vector[Constantes.colCola + offset] = 0;
             vector[Constantes.colEstado + offset] = "Libre";
+            vector[Constantes.ColTiempoTrabajado + offset] = 0;
         }
     }
 }

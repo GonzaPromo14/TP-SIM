@@ -54,14 +54,18 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
                 //para que no se cuente este evento como un nuevo camion
                 seFueAOtraZona = true;
                 controlador.contadorCamiones--;
-
+                zona.contadorCamiones++;
                 controlador.vectorActual[Constantes.colSeVaAOtraZona + zona.offset] = camion.nombre+ " se fue a: " + proximaZona.nombre;
+                controlador.vectorActual[Constantes.ColTiempoTrabajado + zona.offset] += camion.tiempo_reparacion;
+                camion.tiempo_reparacion = 0;
             }
 
             if (!seFueAOtraZona) // si no se fue a otra zona, se fue del predio
             {
                 controlador.contadorCamiones--;
+                zona.contadorCamiones++;
                 camion.hora_salida = controlador.vectorActual[Constantes.colReloj];
+                controlador.vectorActual[Constantes.ColTiempoTrabajado + zona.offset] += camion.tiempo_reparacion;
                 camion.setEstado("Reparacion Finalizada");
             }
 
