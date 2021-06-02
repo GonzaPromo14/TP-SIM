@@ -121,11 +121,6 @@ namespace TP5_Sistema_Colas
         }
         public void cargarLinea(dynamic[] vector, int pos)
         {
-            /*
-            dynamic[] result = new dynamic[20];
-            Array.Copy(vector, 0, result, 0, 20);
-*/
-            //simulaciones[pos] = vector;
             dgvSimulaciones.Rows.Add(vector);
         }
 

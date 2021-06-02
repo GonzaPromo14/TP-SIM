@@ -41,8 +41,8 @@ namespace TP5_Sistema_Colas.Entidades
         //-------------------------------------------------
         public void simular()
         {
+            contadorInsInapropiadas = 0;
             simulaciones = new List<dynamic[]>();
-            //simulaciones = new dynamic[hasta - desde][];
             Constantes.cantidadHorasSemana = 168;
 
             contadorCamiones = 0;
@@ -91,12 +91,9 @@ namespace TP5_Sistema_Colas.Entidades
             zona7.iniciarZona(vectorActual);
             zona8.iniciarZona(vectorActual);
 
-            //falta agregar la parte de metricas
-
-            //pantalla.cargarLinea(vectorActual, 0);
 
             if (desde == 0) simulaciones.Add(vectorActual.ToArray());
-            //simulaciones.Add(vectorActual.ToArray());
+
             vectorAnterior = vectorActual;//esto se hace solo la primera vez para que ande
 
             //loop principal
@@ -132,11 +129,9 @@ namespace TP5_Sistema_Colas.Entidades
                 }
                 //cargar vectorActual a grilla
 
-                //pantalla.cargarLinea(vectorActual, i);
-
                 //actualizo vectores
                 vectorActual[Constantes.colNumeroSimulacion] = i;
-                //if (i >= desde && i<=hasta) simulaciones[i - (hasta-desde) - 1] = vectorActual.ToArray();
+
                 if (i>=desde && i<=hasta) simulaciones.Add(vectorActual.ToArray());
                 vectorAnterior = vectorActual;
 
