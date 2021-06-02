@@ -17,7 +17,6 @@ namespace TP5_Sistema_Colas.Entidades
         public dynamic[] vectorAnterior;
         public dynamic[] vectorActual;
         public List<dynamic[]> simulaciones;
-        //public List[][] simulaciones;
 
         public Random semilla = new Random();
 
@@ -29,7 +28,11 @@ namespace TP5_Sistema_Colas.Entidades
         public int iteraciones;
         public int contadorCamiones; //para la capacidad
         int contadorInsInapropiadas;
-        int capacidadMAX = 85;
+        public int contadorLlegadas;
+        public double tiempoDeAumentar;
+        public int semanaActualizar;
+
+        int capacidadMAX = 93;
 
         public int desde;
         public int hasta;
@@ -42,12 +45,15 @@ namespace TP5_Sistema_Colas.Entidades
         public void simular()
         {
             contadorInsInapropiadas = 0;
+            contadorLlegadas = 0;
+            tiempoDeAumentar = 0;
+
             simulaciones = new List<dynamic[]>();
             Constantes.cantidadHorasSemana = 168;
 
             contadorCamiones = 0;
-            vectorAnterior = new dynamic[92];
-            vectorActual = new dynamic[92];
+            vectorAnterior = new dynamic[93];
+            vectorActual = new dynamic[93];
 
             camiones = new List<Camion>();
             zonas = new List<Zona>();
@@ -99,7 +105,7 @@ namespace TP5_Sistema_Colas.Entidades
             //loop principal
             for (int i=1; i<=iteraciones; i++)
             {
-                if (contadorCamiones > capacidadMAX*1.20 && pantalla.NoTieneExceso()) pantalla.cargarExceso();
+                if (contadorCamiones > capacidadMAX && pantalla.NoTieneExceso()) pantalla.cargarExceso();
 
                 vectorActual = vectorAnterior;
 
@@ -118,7 +124,7 @@ namespace TP5_Sistema_Colas.Entidades
 
                 evento.ocurrir(this);
 
-                if (contadorCamiones > capacidadMAX * 1.20)
+                if (contadorCamiones > capacidadMAX)
                 {
                     vectorActual[Constantes.colInsInaproiada] = "SI";
                     contadorInsInapropiadas++;
@@ -127,6 +133,11 @@ namespace TP5_Sistema_Colas.Entidades
                 {
                     vectorActual[Constantes.colInsInaproiada] = "NO";
                 }
+
+                double porcentaje = contadorInsInapropiadas * 100 / contadorLlegadas;
+                if (tiempoDeAumentar == 0 && porcentaje > 20) tiempoDeAumentar = vectorActual[Constantes.colReloj]; 
+                vectorActual[Constantes.colPorcentajeInap] = Truncador.Truncar(porcentaje).ToString()+"%";
+
                 //cargar vectorActual a grilla
 
                 //actualizo vectores

@@ -37,29 +37,32 @@
             this.txtCantSimulaciones = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.dgvSimulaciones = new System.Windows.Forms.DataGridView();
-            this.colNumeroSimulacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colEvento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colReloj = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColInstalacionesInadecuadas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label4 = new System.Windows.Forms.Label();
             this.txtCamiones = new System.Windows.Forms.TextBox();
-            this.btnCamiones = new System.Windows.Forms.Button();
             this.btnAnterior = new System.Windows.Forms.Button();
             this.btnSiguiente = new System.Windows.Forms.Button();
             this.lblPagina = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.btnMostrarRnd = new System.Windows.Forms.Button();
             this.dgvFinal = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label5 = new System.Windows.Forms.Label();
             this.txtExceso = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lblPorcInsInadeciadas = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.colNumeroSimulacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colEvento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colReloj = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColInstalacionesInadecuadas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPorcentaje = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPorcentajeInad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label7 = new System.Windows.Forms.Label();
+            this.lblSemana = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSimulaciones)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFinal)).BeginInit();
@@ -149,32 +152,14 @@
             this.colNumeroSimulacion,
             this.colEvento,
             this.colReloj,
-            this.ColInstalacionesInadecuadas});
+            this.ColInstalacionesInadecuadas,
+            this.colPorcentaje});
             this.dgvSimulaciones.EnableHeadersVisualStyles = false;
             this.dgvSimulaciones.Location = new System.Drawing.Point(12, 168);
             this.dgvSimulaciones.Name = "dgvSimulaciones";
+            this.dgvSimulaciones.RowHeadersVisible = false;
             this.dgvSimulaciones.Size = new System.Drawing.Size(1346, 291);
             this.dgvSimulaciones.TabIndex = 7;
-            // 
-            // colNumeroSimulacion
-            // 
-            this.colNumeroSimulacion.HeaderText = "Número";
-            this.colNumeroSimulacion.Name = "colNumeroSimulacion";
-            // 
-            // colEvento
-            // 
-            this.colEvento.HeaderText = "Evento";
-            this.colEvento.Name = "colEvento";
-            // 
-            // colReloj
-            // 
-            this.colReloj.HeaderText = "Reloj";
-            this.colReloj.Name = "colReloj";
-            // 
-            // ColInstalacionesInadecuadas
-            // 
-            this.ColInstalacionesInadecuadas.HeaderText = "Instalaciones Inadecuadas";
-            this.ColInstalacionesInadecuadas.Name = "ColInstalacionesInadecuadas";
             // 
             // label4
             // 
@@ -193,16 +178,6 @@
             this.txtCamiones.Size = new System.Drawing.Size(155, 20);
             this.txtCamiones.TabIndex = 9;
             this.txtCamiones.Text = "0";
-            // 
-            // btnCamiones
-            // 
-            this.btnCamiones.Location = new System.Drawing.Point(169, 91);
-            this.btnCamiones.Name = "btnCamiones";
-            this.btnCamiones.Size = new System.Drawing.Size(145, 27);
-            this.btnCamiones.TabIndex = 12;
-            this.btnCamiones.Text = "CAMIONES";
-            this.btnCamiones.UseVisualStyleBackColor = true;
-            this.btnCamiones.Click += new System.EventHandler(this.btnCamiones_Click);
             // 
             // btnAnterior
             // 
@@ -235,7 +210,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(810, 103);
+            this.button2.Location = new System.Drawing.Point(145, 662);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(127, 27);
             this.button2.TabIndex = 16;
@@ -245,7 +220,7 @@
             // 
             // btnMostrarRnd
             // 
-            this.btnMostrarRnd.Location = new System.Drawing.Point(677, 103);
+            this.btnMostrarRnd.Location = new System.Drawing.Point(12, 662);
             this.btnMostrarRnd.Name = "btnMostrarRnd";
             this.btnMostrarRnd.Size = new System.Drawing.Size(127, 27);
             this.btnMostrarRnd.TabIndex = 17;
@@ -262,32 +237,14 @@
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
-            this.DataGridViewTextBoxColumn4});
+            this.DataGridViewTextBoxColumn4,
+            this.colPorcentajeInad});
             this.dgvFinal.EnableHeadersVisualStyles = false;
             this.dgvFinal.Location = new System.Drawing.Point(12, 515);
             this.dgvFinal.Name = "dgvFinal";
+            this.dgvFinal.RowHeadersVisible = false;
             this.dgvFinal.Size = new System.Drawing.Size(1346, 104);
             this.dgvFinal.TabIndex = 18;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Número";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Evento";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "Reloj";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // DataGridViewTextBoxColumn4
-            // 
-            this.DataGridViewTextBoxColumn4.HeaderText = "Instalaciones inadecuadas";
-            this.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4";
             // 
             // label5
             // 
@@ -310,25 +267,26 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(9, 91);
+            this.button3.Location = new System.Drawing.Point(5, 95);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(154, 27);
+            this.button3.Size = new System.Drawing.Size(309, 23);
             this.button3.TabIndex = 22;
-            this.button3.Text = "ZONAS";
+            this.button3.Text = "Resumen de zonas";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.lblSemana);
+            this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.button3);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.txtExceso);
             this.groupBox2.Controls.Add(this.txtCamiones);
-            this.groupBox2.Controls.Add(this.btnCamiones);
             this.groupBox2.Location = new System.Drawing.Point(323, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(336, 124);
+            this.groupBox2.Size = new System.Drawing.Size(737, 124);
             this.groupBox2.TabIndex = 23;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Metricas";
@@ -351,6 +309,75 @@
             this.label6.Size = new System.Drawing.Size(297, 13);
             this.label6.TabIndex = 25;
             this.label6.Text = "Porcentaje de simulaciones donde hay exceso de capacidad:";
+            // 
+            // colNumeroSimulacion
+            // 
+            this.colNumeroSimulacion.HeaderText = "Número";
+            this.colNumeroSimulacion.Name = "colNumeroSimulacion";
+            // 
+            // colEvento
+            // 
+            this.colEvento.HeaderText = "Evento";
+            this.colEvento.Name = "colEvento";
+            // 
+            // colReloj
+            // 
+            this.colReloj.HeaderText = "Reloj";
+            this.colReloj.Name = "colReloj";
+            // 
+            // ColInstalacionesInadecuadas
+            // 
+            this.ColInstalacionesInadecuadas.HeaderText = "Instalaciones Inadecuadas";
+            this.ColInstalacionesInadecuadas.Name = "ColInstalacionesInadecuadas";
+            // 
+            // colPorcentaje
+            // 
+            this.colPorcentaje.HeaderText = "Porcentaje de inadecuación";
+            this.colPorcentaje.Name = "colPorcentaje";
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Número";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Evento";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Reloj";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // DataGridViewTextBoxColumn4
+            // 
+            this.DataGridViewTextBoxColumn4.HeaderText = "Instalaciones inadecuadas";
+            this.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4";
+            // 
+            // colPorcentajeInad
+            // 
+            this.colPorcentajeInad.HeaderText = "Porcentaje de inadecuación";
+            this.colPorcentajeInad.Name = "colPorcentajeInad";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(354, 49);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(212, 13);
+            this.label7.TabIndex = 23;
+            this.label7.Text = "Aumentar capacidad a partir de la semana: ";
+            // 
+            // lblSemana
+            // 
+            this.lblSemana.AutoSize = true;
+            this.lblSemana.ForeColor = System.Drawing.Color.Red;
+            this.lblSemana.Location = new System.Drawing.Point(572, 49);
+            this.lblSemana.Name = "lblSemana";
+            this.lblSemana.Size = new System.Drawing.Size(13, 13);
+            this.lblSemana.TabIndex = 25;
+            this.lblSemana.Text = "--";
             // 
             // Form1
             // 
@@ -393,27 +420,30 @@
         private System.Windows.Forms.DataGridView dgvSimulaciones;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtCamiones;
-        private System.Windows.Forms.Button btnCamiones;
         private System.Windows.Forms.Button btnAnterior;
         private System.Windows.Forms.Button btnSiguiente;
         private System.Windows.Forms.Label lblPagina;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colNumeroSimulacion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colEvento;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colReloj;
         private System.Windows.Forms.Button btnMostrarRnd;
         private System.Windows.Forms.DataGridView dgvFinal;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtExceso;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label lblPorcInsInadeciadas;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNumeroSimulacion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colEvento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colReloj;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColInstalacionesInadecuadas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colPorcentaje;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataGridViewTextBoxColumn4;
-        private System.Windows.Forms.Label lblPorcInsInadeciadas;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colPorcentajeInad;
+        private System.Windows.Forms.Label lblSemana;
+        private System.Windows.Forms.Label label7;
     }
 }
 

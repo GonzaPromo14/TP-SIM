@@ -31,6 +31,8 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
                 controlador.contadorCamiones++;
                 Camion.numeracion++;
 
+                controlador.contadorLlegadas++;
+
             }
 
             controlador.vectorActual[Constantes.colEvento] = "Llegada camion " + "(" + camion.nombre + ")" + "(" + zona.nombre + ")";

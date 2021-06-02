@@ -36,8 +36,9 @@ namespace TP5_Sistema_Colas
             dgv.Columns[1].Frozen = true;
             dgv.Columns[2].DefaultCellStyle.BackColor = Color.LightBlue;
             dgv.Columns[2].Frozen = true;
-            //dgv.Columns[3].DefaultCellStyle.BackColor = Color.LightCoral;
             dgv.Columns[3].Frozen = true;
+            dgv.Columns[4].Frozen = true;
+
 
 
 
@@ -154,6 +155,12 @@ namespace TP5_Sistema_Colas
             lblPagina.Text = "Página 1 de " + p.getCantPaginas();
             dgvFinal.Rows.Clear();
             dgvFinal.Rows.Add(controlador.getUltimaSimulacion());
+
+        
+
+            lblSemana.Text = (controlador.tiempoDeAumentar / 168 < 1 && controlador.tiempoDeAumentar !=0) ? "Antes de la primer semana" : ((int)controlador.tiempoDeAumentar / 168).ToString();
+
+
 
             if (dgvFinal.Rows[0].Cells[3].Value == "NO") dgvFinal.Rows[0].Cells[3].Style.BackColor = Color.LightGreen;
             if (dgvFinal.Rows[0].Cells[3].Value == "SI") dgvFinal.Rows[0].Cells[3].Style.BackColor = Color.LightCoral;
