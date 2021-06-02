@@ -235,21 +235,21 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(741, 70);
+            this.button2.Location = new System.Drawing.Point(810, 103);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(127, 27);
             this.button2.TabIndex = 16;
-            this.button2.Text = "Ocultar NRO Iteracion";
+            this.button2.Text = "Ocultar columnas ";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // btnMostrarRnd
             // 
-            this.btnMostrarRnd.Location = new System.Drawing.Point(741, 103);
+            this.btnMostrarRnd.Location = new System.Drawing.Point(677, 103);
             this.btnMostrarRnd.Name = "btnMostrarRnd";
             this.btnMostrarRnd.Size = new System.Drawing.Size(127, 27);
             this.btnMostrarRnd.TabIndex = 17;
-            this.btnMostrarRnd.Text = "Mostrar NRO Iteracion";
+            this.btnMostrarRnd.Text = "Mostrar columnas";
             this.btnMostrarRnd.UseVisualStyleBackColor = true;
             this.btnMostrarRnd.Click += new System.EventHandler(this.btnMostrarRnd_Click);
             // 

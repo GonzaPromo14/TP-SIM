@@ -36,7 +36,7 @@ namespace TP5_Sistema_Colas
             dgv.Columns[1].Frozen = true;
             dgv.Columns[2].DefaultCellStyle.BackColor = Color.LightBlue;
             dgv.Columns[2].Frozen = true;
-            dgv.Columns[3].DefaultCellStyle.BackColor = Color.LightCoral;
+            //dgv.Columns[3].DefaultCellStyle.BackColor = Color.LightCoral;
             dgv.Columns[3].Frozen = true;
 
 
@@ -66,7 +66,7 @@ namespace TP5_Sistema_Colas
                 dgv.Columns[pos].HeaderCell.Style.BackColor = color;
 
                 pos = "proximaLlegada" + i.ToString();
-                dgv.Columns.Add(pos, "Proxima llegada");
+                dgv.Columns.Add(pos, "Proxima llegada Z"+(i+1).ToString());
                 dgv.Columns[pos].HeaderCell.Style.BackColor = color;
                 dgv.Columns[pos].DefaultCellStyle.BackColor = Color.Yellow;
 
@@ -83,7 +83,7 @@ namespace TP5_Sistema_Colas
                 dgv.Columns[pos].HeaderCell.Style.BackColor = color;
 
                 pos = "finReparacion" + i.ToString();
-                dgv.Columns.Add(pos, "Proximo fin reparacion");
+                dgv.Columns.Add(pos, "Proximo fin reparacion Z"+(i+1).ToString());
                 dgv.Columns[pos].HeaderCell.Style.BackColor = color;
                 dgv.Columns[pos].DefaultCellStyle.BackColor = Color.Yellow;
 
@@ -92,11 +92,11 @@ namespace TP5_Sistema_Colas
                 dgv.Columns[pos].HeaderCell.Style.BackColor = color;
 
                 pos = "cola" + i.ToString();
-                dgv.Columns.Add(pos, "Cola Zona "+(i+1).ToString());
+                dgv.Columns.Add(pos, "Cola Z"+(i+1).ToString());
                 dgv.Columns[pos].HeaderCell.Style.BackColor = color;
 
                 pos = "estado" + i.ToString();
-                dgv.Columns.Add(pos, "Estado Zona "+(i + 1).ToString());
+                dgv.Columns.Add(pos, "Estado Z"+(i + 1).ToString());
                 dgv.Columns[pos].HeaderCell.Style.BackColor = color;
 
                 pos = "tiempoTrabajado" + i.ToString();
@@ -155,6 +155,9 @@ namespace TP5_Sistema_Colas
             dgvFinal.Rows.Clear();
             dgvFinal.Rows.Add(controlador.getUltimaSimulacion());
 
+            if (dgvFinal.Rows[0].Cells[3].Value == "NO") dgvFinal.Rows[0].Cells[3].Style.BackColor = Color.LightGreen;
+            if (dgvFinal.Rows[0].Cells[3].Value == "SI") dgvFinal.Rows[0].Cells[3].Style.BackColor = Color.LightCoral;
+
             if (txtExceso.Text == "-") txtExceso.Text = "No se superó la capacidad máxima";
         }
 
@@ -169,6 +172,48 @@ namespace TP5_Sistema_Colas
         {
             dgvSimulaciones.Columns[0].Visible = false;
             dgvFinal.Columns[0].Visible = false;
+
+            for(int i =0; i < 8; i++)
+            {
+                dgvSimulaciones.Columns[Constantes.colTiempoLlegada + i * Constantes.cantidadColumnasZona].Visible = false;
+                dgvSimulaciones.Columns[Constantes.colTiempoReparacion + i * Constantes.cantidadColumnasZona].Visible = false;
+                dgvSimulaciones.Columns[Constantes.colRNDLlegada + i * Constantes.cantidadColumnasZona].Visible = false;
+                dgvSimulaciones.Columns[Constantes.colRND1Reparacion + i * Constantes.cantidadColumnasZona].Visible = false;
+                dgvSimulaciones.Columns[Constantes.colRND2Reparacion + i * Constantes.cantidadColumnasZona].Visible = false;
+
+
+                dgvFinal.Columns[Constantes.colTiempoLlegada + i * Constantes.cantidadColumnasZona].Visible = false;
+                dgvFinal.Columns[Constantes.colTiempoReparacion + i * Constantes.cantidadColumnasZona].Visible = false;
+                dgvFinal.Columns[Constantes.colRNDLlegada + i * Constantes.cantidadColumnasZona].Visible = false;
+                dgvFinal.Columns[Constantes.colRND1Reparacion + i * Constantes.cantidadColumnasZona].Visible = false;
+                dgvFinal.Columns[Constantes.colRND2Reparacion + i * Constantes.cantidadColumnasZona].Visible = false;
+
+            }
+
+
+
+        }
+
+        private void btnMostrarRnd_Click(object sender, EventArgs e)
+        {
+            dgvSimulaciones.Columns[0].Visible = true;
+            dgvFinal.Columns[0].Visible = true;
+
+            for (int i = 0; i < 8; i++)
+            {
+                dgvSimulaciones.Columns[Constantes.colTiempoLlegada + i * Constantes.cantidadColumnasZona].Visible = true;
+                dgvSimulaciones.Columns[Constantes.colTiempoReparacion + i * Constantes.cantidadColumnasZona].Visible = true;
+                dgvSimulaciones.Columns[Constantes.colRNDLlegada + i * Constantes.cantidadColumnasZona].Visible = true;
+                dgvSimulaciones.Columns[Constantes.colRND1Reparacion + i * Constantes.cantidadColumnasZona].Visible = true;
+                dgvSimulaciones.Columns[Constantes.colRND2Reparacion + i * Constantes.cantidadColumnasZona].Visible = true;
+
+                dgvFinal.Columns[Constantes.colTiempoLlegada + i * Constantes.cantidadColumnasZona].Visible = true;
+                dgvFinal.Columns[Constantes.colTiempoReparacion + i * Constantes.cantidadColumnasZona].Visible = true;
+                dgvFinal.Columns[Constantes.colRNDLlegada + i * Constantes.cantidadColumnasZona].Visible = true;
+                dgvFinal.Columns[Constantes.colRND1Reparacion + i * Constantes.cantidadColumnasZona].Visible = true;
+                dgvFinal.Columns[Constantes.colRND2Reparacion + i * Constantes.cantidadColumnasZona].Visible = true;
+
+            }
         }
 
         private void btnAnterior_Click(object sender, EventArgs e)
@@ -192,13 +237,5 @@ namespace TP5_Sistema_Colas
             form3 = new FormZonas(controlador);
             form3.Show();
         }
-
-        private void btnMostrarRnd_Click(object sender, EventArgs e)
-        {
-            dgvSimulaciones.Columns[0].Visible = true;
-            dgvFinal.Columns[0].Visible = true;
-        }
-
-        
     }
 }

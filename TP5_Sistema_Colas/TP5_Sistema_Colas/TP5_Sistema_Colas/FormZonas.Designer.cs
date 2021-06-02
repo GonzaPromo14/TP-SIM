@@ -34,6 +34,7 @@ namespace TP5_Sistema_Colas
             this.colEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCola = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colMedias = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTiempoTrabajo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCantCamiones = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvZonas)).BeginInit();
             this.SuspendLayout();
@@ -47,6 +48,7 @@ namespace TP5_Sistema_Colas
             this.colEstado,
             this.colCola,
             this.colMedias,
+            this.colTiempoTrabajo,
             this.colCantCamiones});
             this.dgvZonas.Location = new System.Drawing.Point(12, 12);
             this.dgvZonas.Name = "dgvZonas";
@@ -74,6 +76,11 @@ namespace TP5_Sistema_Colas
             this.colMedias.HeaderText = "Media llegadas";
             this.colMedias.Name = "colMedias";
             // 
+            // colTiempoTrabajo
+            // 
+            this.colTiempoTrabajo.HeaderText = "Tiempo trabajado";
+            this.colTiempoTrabajo.Name = "colTiempoTrabajo";
+            // 
             // colCantCamiones
             // 
             this.colCantCamiones.HeaderText = "Cantidad de camiones que atendió";
@@ -99,6 +106,7 @@ namespace TP5_Sistema_Colas
         private System.Windows.Forms.DataGridViewTextBoxColumn colEstado;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCola;
         private System.Windows.Forms.DataGridViewTextBoxColumn colMedias;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTiempoTrabajo;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCantCamiones;
     }
 }

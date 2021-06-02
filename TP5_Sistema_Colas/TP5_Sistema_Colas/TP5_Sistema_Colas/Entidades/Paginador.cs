@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,6 +37,7 @@ namespace TP5_Sistema_Colas.Entidades
         {
             int final = this.paginaActual * this.cantItemsPorPag;
             int inicio = final - this.cantItemsPorPag;
+            int j = 0;
             for (int i = inicio; i < final; i++)
             {
                 if (i >= datos.Count)
@@ -43,7 +45,17 @@ namespace TP5_Sistema_Colas.Entidades
                     break;
                 }
                 view.Rows.Add(datos[i]);
+                
+
+                if(view.Rows[j].Cells[3].Value == "NO") view.Rows[j].Cells[3].Style.BackColor = Color.LightGreen;
+                if(view.Rows[j].Cells[3].Value == "SI") view.Rows[j].Cells[3].Style.BackColor = Color.LightCoral;
+                //dgv.Columns[3].DefaultCellStyle.BackColor = Color.LightCoral;
+
+                j++;
+
             }
+
+
             //for (int i = 0; i < 10; i++)
             //{
             //    view.Rows.Add(datos[i]);

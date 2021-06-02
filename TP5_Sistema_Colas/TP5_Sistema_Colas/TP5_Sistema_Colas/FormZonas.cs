@@ -43,7 +43,9 @@ namespace TP5_Sistema_Colas
 
                 double porcentaje = cantCola * 100 / cantidadCamiones;
 
-                object[] linea = { zona.nombre, zona.getEstado(), cantCola,zona.getMediaLlegadas(), zona.contadorCamiones, porcentaje };
+                double tiempoTrabajado = controlador.vectorActual[Constantes.ColTiempoTrabajado + zona.offset];
+
+                object[] linea = { zona.nombre, zona.getEstado(), cantCola,zona.getMediaLlegadas(), tiempoTrabajado, zona.contadorCamiones, porcentaje };
 
                 dgvZonas.Rows.Add(linea);
             }
