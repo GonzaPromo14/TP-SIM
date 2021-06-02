@@ -15,6 +15,7 @@ namespace TP5_Sistema_Colas
     {
         ControladorSimulacion controlador;
         FormCamiones form2;
+        FormZonas form3;
         Paginador p;
 
         public Form1()
@@ -88,35 +89,16 @@ namespace TP5_Sistema_Colas
                 dgv.Columns[pos].HeaderCell.Style.BackColor = color;
 
                 pos = "cola" + i.ToString();
-                dgv.Columns.Add(pos, "Cola");
+                dgv.Columns.Add(pos, "Cola Zona "+(i+1).ToString());
                 dgv.Columns[pos].HeaderCell.Style.BackColor = color;
 
                 pos = "estado" + i.ToString();
-                dgv.Columns.Add(pos, "Estado");
+                dgv.Columns.Add(pos, "Estado Zona "+(i + 1).ToString());
                 dgv.Columns[pos].HeaderCell.Style.BackColor = color;
             }
 
         }
 
-        /*
-        public void cargarLinea(List<dynamic[]> vector)
-        {
-            
-            dynamic[] linea = new dynamic[20];
-            
-            int pos = 0;
-            for (int m = 0; m < vector.Count(); m++)
-            {
-                for (int n = 0; n < vector[m].Length; n++)
-                {
-                    linea[pos] = vector[m][n];
-                    pos++;
-               
-                }
-            }
-
-            dgvPrueba.Rows.Add(linea);
-        }*/
 
         public bool NoTieneExceso()
         {
@@ -159,17 +141,17 @@ namespace TP5_Sistema_Colas
                 controlador.hasta = 500;
             }
             dgvSimulaciones.Rows.Clear();
+            //inicio simulacion
             controlador.simular();
             p = new Paginador(controlador.getSimulaciones(), 10);
             p.obtenerPaginaActual(controlador.getSimulaciones(), dgvSimulaciones);
             txtCamiones.Text = controlador.contadorCamiones.ToString();
-            txtMedia.Text = controlador.zonas[0].getMediaLlegadas().ToString();
+
             lblPagina.Text = "Página 1 de " + p.getCantPaginas();
             dgvFinal.Rows.Clear();
             dgvFinal.Rows.Add(controlador.getUltimaSimulacion());
 
-            double aaaaa = (double)controlador.vectorActual[11] * 100 / (double)controlador.contadorCamiones;
-            lblZona.Text = (aaaaa).ToString()+"%";
+            if (txtExceso.Text == "-") txtExceso.Text = "No se superó la capacidad máxima";
         }
 
         private void btnCamiones_Click(object sender, EventArgs e)
@@ -198,6 +180,12 @@ namespace TP5_Sistema_Colas
             p.obtenerPaginaSiguiente(controlador.getSimulaciones(), dgvSimulaciones);
             lblPagina.Text = "Página " + p.getPaginaActual() + " de " + p.getCantPaginas();
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            form3 = new FormZonas(controlador);
+            form3.Show();
         }
     }
 }

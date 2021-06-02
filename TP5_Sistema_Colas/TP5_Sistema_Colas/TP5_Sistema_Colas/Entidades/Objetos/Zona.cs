@@ -26,7 +26,7 @@ namespace TP5_Sistema_Colas.Entidades.Objetos
         double mediaServicio;
         double desvServicio;
 
-        public Random semilla;
+        //public Random semilla = new Random();
 
         public Zona(int num, string estado, ControladorSimulacion cont, double mediaLlegadas, double mediaServicio, double desvServicio)
         {
@@ -37,7 +37,7 @@ namespace TP5_Sistema_Colas.Entidades.Objetos
             this.mediaServicio = mediaServicio;
             this.desvServicio = desvServicio;
             this.numero = num;
-            this.semilla = new Random();
+            //this.semilla = new Random();
             this.cola = new List<Camion>();
             this.contadorCamiones = 0;
 
@@ -52,9 +52,8 @@ namespace TP5_Sistema_Colas.Entidades.Objetos
             //semilla = new Random();
             //double rnd = semilla.NextDouble();
 
-            vector[Constantes.colRNDLlegada + offset] = Truncador.Truncar(semilla.NextDouble());
-            //vector[Constantes.colTiempoLlegada + offset] = Truncador.Truncar(Distribuciones.Exponencial(rnd, mediaLlegadas));
-            vector[Constantes.colTiempoLlegada + offset] = Math.Abs(Truncador.Truncar(Exponential.Sample(semilla, mediaLlegadas))); //esto hay que ver si se cambia
+            vector[Constantes.colRNDLlegada + offset] = Truncador.Truncar(controlador.semilla.NextDouble());
+            vector[Constantes.colTiempoLlegada + offset] = Truncador.Truncar(Distribuciones.Exponencial(vector[Constantes.colRNDLlegada + offset], mediaLlegadas));
             vector[Constantes.colProximaLlegada + offset] = Truncador.Truncar(horaReloj + vector[Constantes.colTiempoLlegada + offset]);
 
         }
@@ -63,13 +62,12 @@ namespace TP5_Sistema_Colas.Entidades.Objetos
         public void generarProximoFinServicio(dynamic[] vector)
         {
             double horaReloj = controlador.vectorActual[Constantes.colReloj];
-            //double rnd1 = Truncador.Truncar(semilla.NextDouble());
-            //double rnd2 = Truncador.Truncar(semilla.NextDouble());
 
-            vector[Constantes.colRND1Reparacion + offset] = Truncador.Truncar(semilla.NextDouble());
-            vector[Constantes.colRND2Reparacion + offset] = Truncador.Truncar(semilla.NextDouble());
-            //vector[Constantes.colTiempoReparacion + offset] = Truncador.Truncar(Distribuciones.NormalDist(rnd1, rnd2, mediaServicio, desvServicio));
-            vector[Constantes.colTiempoReparacion + offset] = Math.Abs(Truncador.Truncar(Normal.Sample(semilla, mediaServicio, desvServicio)));//esto hay que ver si se cambia
+
+            vector[Constantes.colRND1Reparacion + offset] = Truncador.Truncar(controlador.semilla.NextDouble());
+            vector[Constantes.colRND2Reparacion + offset] = Truncador.Truncar(controlador.semilla.NextDouble());
+            //vector[Constantes.colTiempoReparacion + offset] = Math.Abs(Truncador.Truncar(Distribuciones.NormalDist(vector[Constantes.colRND1Reparacion + offset], vector[Constantes.colRND2Reparacion + offset], mediaServicio, desvServicio)));
+            vector[Constantes.colTiempoReparacion + offset] = Math.Abs(Truncador.Truncar(Normal.Sample(controlador.semilla, mediaServicio, desvServicio)));//esto hay que ver si se cambia
             vector[Constantes.colProximoFinReparacion + offset] = horaReloj + vector[Constantes.colTiempoReparacion + offset];
         }
 

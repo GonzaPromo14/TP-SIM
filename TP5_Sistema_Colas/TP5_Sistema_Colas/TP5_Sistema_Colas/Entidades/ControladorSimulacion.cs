@@ -19,6 +19,8 @@ namespace TP5_Sistema_Colas.Entidades
         public List<dynamic[]> simulaciones;
         //public List[][] simulaciones;
 
+        public Random semilla = new Random();
+
         public Evento evento;
         public PriorityQueue<Evento> eventos;
         public List<Camion> camiones;

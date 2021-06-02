@@ -42,8 +42,6 @@
             this.colReloj = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label4 = new System.Windows.Forms.Label();
             this.txtCamiones = new System.Windows.Forms.TextBox();
-            this.media1 = new System.Windows.Forms.Label();
-            this.txtMedia = new System.Windows.Forms.TextBox();
             this.btnCamiones = new System.Windows.Forms.Button();
             this.btnAnterior = new System.Windows.Forms.Button();
             this.btnSiguiente = new System.Windows.Forms.Button();
@@ -56,10 +54,12 @@
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label5 = new System.Windows.Forms.Label();
             this.txtExceso = new System.Windows.Forms.TextBox();
-            this.lblZona = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSimulaciones)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFinal)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -67,27 +67,27 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(6, 27);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(127, 13);
+            this.label1.Size = new System.Drawing.Size(148, 13);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Cantidad de simulaciones";
+            this.label1.Text = "Cantidad de simulaciones ------";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(6, 49);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 13);
+            this.label2.Size = new System.Drawing.Size(149, 13);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Desde";
+            this.label2.Text = "Desde ------------------------------------";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(6, 72);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.Size = new System.Drawing.Size(149, 13);
             this.label3.TabIndex = 3;
-            this.label3.Text = "Hasta";
+            this.label3.Text = "Hasta -------------------------------------";
             // 
             // groupBox1
             // 
@@ -107,37 +107,38 @@
             // 
             // txtHasta
             // 
-            this.txtHasta.Location = new System.Drawing.Point(50, 69);
+            this.txtHasta.Location = new System.Drawing.Point(159, 69);
             this.txtHasta.Name = "txtHasta";
             this.txtHasta.Size = new System.Drawing.Size(100, 20);
             this.txtHasta.TabIndex = 7;
             // 
             // txtDesde
             // 
-            this.txtDesde.Location = new System.Drawing.Point(50, 46);
+            this.txtDesde.Location = new System.Drawing.Point(159, 46);
             this.txtDesde.Name = "txtDesde";
             this.txtDesde.Size = new System.Drawing.Size(100, 20);
             this.txtDesde.TabIndex = 7;
             // 
             // txtCantSimulaciones
             // 
-            this.txtCantSimulaciones.Location = new System.Drawing.Point(139, 24);
+            this.txtCantSimulaciones.Location = new System.Drawing.Point(159, 24);
             this.txtCantSimulaciones.Name = "txtCantSimulaciones";
             this.txtCantSimulaciones.Size = new System.Drawing.Size(100, 20);
             this.txtCantSimulaciones.TabIndex = 6;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(192, 95);
+            this.button1.Location = new System.Drawing.Point(9, 95);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(67, 23);
+            this.button1.Size = new System.Drawing.Size(250, 23);
             this.button1.TabIndex = 6;
-            this.button1.Text = "Aceptar";
+            this.button1.Text = "SIMULAR";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // dgvSimulaciones
             // 
+            this.dgvSimulaciones.AllowUserToAddRows = false;
             this.dgvSimulaciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSimulaciones.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colNumeroSimulacion,
@@ -167,46 +168,28 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(774, 38);
+            this.label4.Location = new System.Drawing.Point(6, 49);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(100, 13);
+            this.label4.Size = new System.Drawing.Size(151, 13);
             this.label4.TabIndex = 8;
-            this.label4.Text = "Camiones en predio";
+            this.label4.Text = "Camiones en predio ----------------";
             // 
             // txtCamiones
             // 
-            this.txtCamiones.Location = new System.Drawing.Point(880, 35);
+            this.txtCamiones.Location = new System.Drawing.Point(159, 46);
             this.txtCamiones.Name = "txtCamiones";
             this.txtCamiones.ReadOnly = true;
-            this.txtCamiones.Size = new System.Drawing.Size(58, 20);
+            this.txtCamiones.Size = new System.Drawing.Size(155, 20);
             this.txtCamiones.TabIndex = 9;
             this.txtCamiones.Text = "0";
             // 
-            // media1
-            // 
-            this.media1.AutoSize = true;
-            this.media1.Location = new System.Drawing.Point(774, 68);
-            this.media1.Name = "media1";
-            this.media1.Size = new System.Drawing.Size(73, 13);
-            this.media1.TabIndex = 10;
-            this.media1.Text = "Media Zona 1";
-            // 
-            // txtMedia
-            // 
-            this.txtMedia.Location = new System.Drawing.Point(880, 65);
-            this.txtMedia.Name = "txtMedia";
-            this.txtMedia.ReadOnly = true;
-            this.txtMedia.Size = new System.Drawing.Size(58, 20);
-            this.txtMedia.TabIndex = 11;
-            this.txtMedia.Text = "0";
-            // 
             // btnCamiones
             // 
-            this.btnCamiones.Location = new System.Drawing.Point(777, 107);
+            this.btnCamiones.Location = new System.Drawing.Point(169, 91);
             this.btnCamiones.Name = "btnCamiones";
-            this.btnCamiones.Size = new System.Drawing.Size(99, 29);
+            this.btnCamiones.Size = new System.Drawing.Size(145, 27);
             this.btnCamiones.TabIndex = 12;
-            this.btnCamiones.Text = "Ver camiones";
+            this.btnCamiones.Text = "CAMIONES";
             this.btnCamiones.UseVisualStyleBackColor = true;
             this.btnCamiones.Click += new System.EventHandler(this.btnCamiones_Click);
             // 
@@ -241,9 +224,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(12, 142);
+            this.button2.Location = new System.Drawing.Point(741, 70);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(127, 23);
+            this.button2.Size = new System.Drawing.Size(127, 27);
             this.button2.TabIndex = 16;
             this.button2.Text = "Ocultar RND";
             this.button2.UseVisualStyleBackColor = true;
@@ -251,15 +234,17 @@
             // 
             // btnMostrarRnd
             // 
-            this.btnMostrarRnd.Location = new System.Drawing.Point(144, 142);
+            this.btnMostrarRnd.Location = new System.Drawing.Point(741, 103);
             this.btnMostrarRnd.Name = "btnMostrarRnd";
-            this.btnMostrarRnd.Size = new System.Drawing.Size(127, 23);
+            this.btnMostrarRnd.Size = new System.Drawing.Size(127, 27);
             this.btnMostrarRnd.TabIndex = 17;
             this.btnMostrarRnd.Text = "Mostrar RND";
             this.btnMostrarRnd.UseVisualStyleBackColor = true;
             // 
             // dgvFinal
             // 
+            this.dgvFinal.AllowUserToAddRows = false;
+            this.dgvFinal.AllowUserToResizeColumns = false;
             this.dgvFinal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFinal.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -289,48 +274,59 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(308, 23);
+            this.label5.Location = new System.Drawing.Point(6, 27);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(144, 13);
+            this.label5.Size = new System.Drawing.Size(153, 13);
             this.label5.TabIndex = 19;
-            this.label5.Text = "Primer exceso de capacidad:";
+            this.label5.Text = "Primer exceso de capacidad ---";
             // 
             // txtExceso
             // 
-            this.txtExceso.Location = new System.Drawing.Point(458, 20);
+            this.txtExceso.Location = new System.Drawing.Point(159, 24);
+            this.txtExceso.Multiline = true;
             this.txtExceso.Name = "txtExceso";
-            this.txtExceso.Size = new System.Drawing.Size(100, 20);
+            this.txtExceso.ReadOnly = true;
+            this.txtExceso.Size = new System.Drawing.Size(155, 20);
             this.txtExceso.TabIndex = 20;
             this.txtExceso.Text = "-";
             // 
-            // lblZona
+            // button3
             // 
-            this.lblZona.AutoSize = true;
-            this.lblZona.Location = new System.Drawing.Point(389, 107);
-            this.lblZona.Name = "lblZona";
-            this.lblZona.Size = new System.Drawing.Size(43, 13);
-            this.lblZona.TabIndex = 21;
-            this.lblZona.Text = "ZONA1";
+            this.button3.Location = new System.Drawing.Point(9, 91);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(154, 27);
+            this.button3.TabIndex = 22;
+            this.button3.Text = "ZONAS";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.button3);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.txtExceso);
+            this.groupBox2.Controls.Add(this.txtCamiones);
+            this.groupBox2.Controls.Add(this.btnCamiones);
+            this.groupBox2.Location = new System.Drawing.Point(323, 12);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(336, 124);
+            this.groupBox2.TabIndex = 23;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Metricas";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1370, 749);
-            this.Controls.Add(this.lblZona);
-            this.Controls.Add(this.txtExceso);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.dgvFinal);
             this.Controls.Add(this.btnMostrarRnd);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.lblPagina);
             this.Controls.Add(this.btnSiguiente);
             this.Controls.Add(this.btnAnterior);
-            this.Controls.Add(this.btnCamiones);
-            this.Controls.Add(this.txtMedia);
-            this.Controls.Add(this.media1);
-            this.Controls.Add(this.txtCamiones);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.dgvSimulaciones);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
@@ -339,6 +335,8 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSimulaciones)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFinal)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -356,8 +354,6 @@
         private System.Windows.Forms.DataGridView dgvSimulaciones;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtCamiones;
-        private System.Windows.Forms.Label media1;
-        private System.Windows.Forms.TextBox txtMedia;
         private System.Windows.Forms.Button btnCamiones;
         private System.Windows.Forms.Button btnAnterior;
         private System.Windows.Forms.Button btnSiguiente;
@@ -373,7 +369,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtExceso;
-        private System.Windows.Forms.Label lblZona;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }
 
