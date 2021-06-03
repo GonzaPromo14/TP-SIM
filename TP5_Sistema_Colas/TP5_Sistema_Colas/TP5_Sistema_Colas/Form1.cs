@@ -16,6 +16,8 @@ namespace TP5_Sistema_Colas
         ControladorSimulacion controlador;
         FormCamiones form2;
         FormZonas form3;
+        FormVariables formVariables;
+
         Paginador p;
 
         public Form1()
@@ -245,6 +247,12 @@ namespace TP5_Sistema_Colas
         {
             form2 = new FormCamiones(controlador);
             form2.Show();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            formVariables = new FormVariables(controlador);
+            formVariables.Show();
         }
     }
 }

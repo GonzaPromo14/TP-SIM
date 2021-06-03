@@ -240,9 +240,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(432, 72);
+            this.button2.Location = new System.Drawing.Point(351, 82);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 46);
+            this.button2.Size = new System.Drawing.Size(75, 36);
             this.button2.TabIndex = 16;
             this.button2.Text = "Ocultar columnas ";
             this.button2.UseVisualStyleBackColor = true;
@@ -250,9 +250,9 @@
             // 
             // btnMostrarRnd
             // 
-            this.btnMostrarRnd.Location = new System.Drawing.Point(351, 72);
+            this.btnMostrarRnd.Location = new System.Drawing.Point(432, 82);
             this.btnMostrarRnd.Name = "btnMostrarRnd";
-            this.btnMostrarRnd.Size = new System.Drawing.Size(75, 46);
+            this.btnMostrarRnd.Size = new System.Drawing.Size(75, 36);
             this.btnMostrarRnd.TabIndex = 17;
             this.btnMostrarRnd.Text = "Mostrar columnas";
             this.btnMostrarRnd.UseVisualStyleBackColor = true;
@@ -401,10 +401,11 @@
             // 
             this.button4.Location = new System.Drawing.Point(351, 19);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(156, 31);
+            this.button4.Size = new System.Drawing.Size(156, 43);
             this.button4.TabIndex = 8;
             this.button4.Text = "Editar variables";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // Form1
             // 

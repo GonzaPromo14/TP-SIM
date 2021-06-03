@@ -37,6 +37,36 @@ namespace TP5_Sistema_Colas.Entidades
         public int desde;
         public int hasta;
 
+        //-----------Parámetros zonas -------------------//
+        public double mediaLlegada1 = 0.43;
+        public double mediaLlegada2 = 0.16;
+        public double mediaLlegada3 = 0.14;
+        public double mediaLlegada4 = 0.1;
+        public double mediaLlegada5 = 0.09;
+        public double mediaLlegada6 = 0.08;
+        public double mediaLlegada7 = 0.05;
+        public double mediaLlegada8 = 0.05;
+
+        public double mediaServicio1 = 2;
+        public double mediaServicio2 = 5.8;
+        public double mediaServicio3 = 6.2;
+        public double mediaServicio4 = 6.1;
+        public double mediaServicio5 = 10.9;
+        public double mediaServicio6 = 11.2;
+        public double mediaServicio7 = 9;
+        public double mediaServicio8 = 18.7;
+
+        public double desvServicio1 = 1.1;
+        public double desvServicio2 = 3.1;
+        public double desvServicio3 = 2.7;
+        public double desvServicio4 = 6.1;
+        public double desvServicio5 = 5.2;
+        public double desvServicio6 = 3.9;
+        public double desvServicio7 = 5.8;
+        public double desvServicio8 = 13;
+
+        //-----------------------------------------------
+
         public ControladorSimulacion(Form1 pantalla)
         {
             this.pantalla = pantalla;
@@ -61,14 +91,14 @@ namespace TP5_Sistema_Colas.Entidades
 
             //creacion de las zonas
 
-            Zona zona1 = new Zona(1, "Libre", this, 0.43, 2, 1.1);
-            Zona zona2 = new Zona(2, "Libre", this, 0.16, 5.8, 3.1);
-            Zona zona3 = new Zona(3, "Libre", this, 0.14, 6.2, 2.7);
-            Zona zona4 = new Zona(4, "Libre", this, 0.1, 6.1, 6.1);
-            Zona zona5 = new Zona(5, "Libre", this, 0.09, 10.9, 5.2);
-            Zona zona6 = new Zona(6, "Libre", this, 0.08, 11.2, 3.9);
-            Zona zona7 = new Zona(7, "Libre", this, 0.05, 9, 5.8);
-            Zona zona8 = new Zona(8, "Libre", this, 0.05, 18.7, 13);
+            Zona zona1 = new Zona(1, "Libre", this, mediaLlegada1, mediaServicio1, desvServicio1);
+            Zona zona2 = new Zona(2, "Libre", this, mediaLlegada2, mediaServicio2, desvServicio2);
+            Zona zona3 = new Zona(3, "Libre", this, mediaLlegada3, mediaServicio3, desvServicio3);
+            Zona zona4 = new Zona(4, "Libre", this, mediaLlegada4, mediaServicio4, desvServicio4);
+            Zona zona5 = new Zona(5, "Libre", this, mediaLlegada5, mediaServicio5, desvServicio5);
+            Zona zona6 = new Zona(6, "Libre", this, mediaLlegada6, mediaServicio6, desvServicio6);
+            Zona zona7 = new Zona(7, "Libre", this, mediaLlegada7, mediaServicio7, desvServicio7);
+            Zona zona8 = new Zona(8, "Libre", this, mediaLlegada8, mediaServicio8, desvServicio8);
 
             zonas.Add(zona1);
             zonas.Add(zona2);
