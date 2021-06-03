@@ -14,7 +14,9 @@ namespace TP5_Sistema_Colas
 {
     public partial class FormCamiones : Form
     {
+        Paginador pag;
         ControladorSimulacion controlador;
+        List<dynamic[]> camionesLista = new List<dynamic[]>();
         public FormCamiones(ControladorSimulacion controlador)
         {
             InitializeComponent();
@@ -47,8 +49,38 @@ namespace TP5_Sistema_Colas
                 else salida = camion.hora_salida.ToString();
 
                 string[] fila = { camion.nombre, camion.estado,camion.hora_llegada.ToString(), salida, espera, camion.zonasPasadas };
-                dataGridView1.Rows.Add(fila);
+                this.camionesLista.Add(fila.ToArray());
             }
+            dataGridView1.Rows.Clear();
+            pag = new Paginador(camionesLista, 10);
+            pag.obtenerPaginaActual(camionesLista, dataGridView1);
+            lblPaginaCamiones.Text = "Página 1 de " + pag.getCantPaginas();
+            btnAnteriorPagina.Enabled = false;
+            btnSiguientePagina.Enabled = (pag.getCantPaginas() > 1 && !pag.esUltimaPagina()) ? true : false;
+
+        }
+
+        private void FormCamiones_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSiguientePagina_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Rows.Clear();
+            pag.obtenerPaginaSiguiente(camionesLista, dataGridView1);
+            lblPaginaCamiones.Text = "Página " + pag.getPaginaActual() + " de " + pag.getCantPaginas();
+            btnAnteriorPagina.Enabled = pag.getCantPaginas() > 1 ? true : false;
+            btnSiguientePagina.Enabled = (pag.getCantPaginas() > 1 && !pag.esUltimaPagina()) ? true : false;
+        }
+
+        private void btnAnteriorPagina_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Rows.Clear();
+            pag.obtenerPaginaAnterior(camionesLista, dataGridView1);
+            lblPaginaCamiones.Text = "Página " + pag.getPaginaActual() + " de " + pag.getCantPaginas();
+            btnSiguientePagina.Enabled = pag.getCantPaginas() > 1 ? true : false;
+            btnAnteriorPagina.Enabled = (pag.getCantPaginas() > 1 && !pag.esPaginaPrimera()) ? true : false;
         }
     }
 }

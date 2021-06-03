@@ -36,11 +36,15 @@ namespace TP5_Sistema_Colas
             this.horaSalida = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiempoEspera = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.zonas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnAnteriorPagina = new System.Windows.Forms.Button();
+            this.btnSiguientePagina = new System.Windows.Forms.Button();
+            this.lblPaginaCamiones = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Camion,
@@ -51,7 +55,7 @@ namespace TP5_Sistema_Colas
             this.zonas});
             this.dataGridView1.Location = new System.Drawing.Point(13, 13);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(700, 425);
+            this.dataGridView1.Size = new System.Drawing.Size(700, 270);
             this.dataGridView1.TabIndex = 0;
             // 
             // Camion
@@ -84,16 +88,50 @@ namespace TP5_Sistema_Colas
             this.zonas.HeaderText = "Pasó por zonas";
             this.zonas.Name = "zonas";
             // 
+            // btnAnteriorPagina
+            // 
+            this.btnAnteriorPagina.Location = new System.Drawing.Point(13, 289);
+            this.btnAnteriorPagina.Name = "btnAnteriorPagina";
+            this.btnAnteriorPagina.Size = new System.Drawing.Size(75, 23);
+            this.btnAnteriorPagina.TabIndex = 14;
+            this.btnAnteriorPagina.Text = "Anterior";
+            this.btnAnteriorPagina.UseVisualStyleBackColor = true;
+            this.btnAnteriorPagina.Click += new System.EventHandler(this.btnAnteriorPagina_Click);
+            // 
+            // btnSiguientePagina
+            // 
+            this.btnSiguientePagina.Location = new System.Drawing.Point(638, 289);
+            this.btnSiguientePagina.Name = "btnSiguientePagina";
+            this.btnSiguientePagina.Size = new System.Drawing.Size(75, 23);
+            this.btnSiguientePagina.TabIndex = 15;
+            this.btnSiguientePagina.Text = "Siguiente";
+            this.btnSiguientePagina.UseVisualStyleBackColor = true;
+            this.btnSiguientePagina.Click += new System.EventHandler(this.btnSiguientePagina_Click);
+            // 
+            // lblPaginaCamiones
+            // 
+            this.lblPaginaCamiones.AutoSize = true;
+            this.lblPaginaCamiones.Location = new System.Drawing.Point(322, 294);
+            this.lblPaginaCamiones.Name = "lblPaginaCamiones";
+            this.lblPaginaCamiones.Size = new System.Drawing.Size(73, 13);
+            this.lblPaginaCamiones.TabIndex = 16;
+            this.lblPaginaCamiones.Text = "Página 0 de 0";
+            // 
             // FormCamiones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(727, 450);
+            this.ClientSize = new System.Drawing.Size(727, 324);
+            this.Controls.Add(this.lblPaginaCamiones);
+            this.Controls.Add(this.btnSiguientePagina);
+            this.Controls.Add(this.btnAnteriorPagina);
             this.Controls.Add(this.dataGridView1);
             this.Name = "FormCamiones";
             this.Text = "FormCamiones";
+            this.Load += new System.EventHandler(this.FormCamiones_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -106,5 +144,8 @@ namespace TP5_Sistema_Colas
         private System.Windows.Forms.DataGridViewTextBoxColumn horaSalida;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiempoEspera;
         private System.Windows.Forms.DataGridViewTextBoxColumn zonas;
+        private System.Windows.Forms.Button btnAnteriorPagina;
+        private System.Windows.Forms.Button btnSiguientePagina;
+        private System.Windows.Forms.Label lblPaginaCamiones;
     }
 }

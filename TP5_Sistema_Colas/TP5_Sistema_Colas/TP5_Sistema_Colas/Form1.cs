@@ -168,6 +168,10 @@ namespace TP5_Sistema_Colas
             if (dgvFinal.Rows[0].Cells[3].Value == "SI") dgvFinal.Rows[0].Cells[3].Style.BackColor = Color.LightCoral;
 
             if (txtExceso.Text == "-") txtExceso.Text = "No se superó la capacidad máxima";
+            btnAnterior.Enabled = false;
+            btnSiguiente.Enabled = (p.getCantPaginas() > 1 && !p.esUltimaPagina()) ? true : false;
+            if (txtDesde.Text == "") txtDesde.Text = "0";
+            if (txtHasta.Text == "") txtHasta.Text = "500";
         }
 
 
@@ -225,7 +229,8 @@ namespace TP5_Sistema_Colas
             dgvSimulaciones.Rows.Clear();
             p.obtenerPaginaAnterior(controlador.getSimulaciones(), dgvSimulaciones);
             lblPagina.Text = "Página " + p.getPaginaActual() + " de " + p.getCantPaginas();
-
+            btnSiguiente.Enabled = p.getCantPaginas() > 1 ? true : false;
+            btnAnterior.Enabled = (p.getCantPaginas() > 1 && !p.esPaginaPrimera()) ? true : false;
         }
 
         private void btnSiguiente_Click(object sender, EventArgs e)
@@ -233,6 +238,8 @@ namespace TP5_Sistema_Colas
             dgvSimulaciones.Rows.Clear();
             p.obtenerPaginaSiguiente(controlador.getSimulaciones(), dgvSimulaciones);
             lblPagina.Text = "Página " + p.getPaginaActual() + " de " + p.getCantPaginas();
+            btnAnterior.Enabled = p.getCantPaginas() > 1 ? true : false;
+            btnSiguiente.Enabled = (p.getCantPaginas() > 1 && !p.esUltimaPagina()) ? true : false;
 
         }
 
