@@ -164,6 +164,8 @@ namespace TP5_Sistema_Colas.Entidades
                     vectorActual[Constantes.colInsInaproiada] = "NO";
                 }
 
+                //porcentaje de tiempo en el que las instalaciones son inadecuadas
+
                 double porcentaje = contadorInsInapropiadas * 100 / contadorLlegadas;
                 if (tiempoDeAumentar == 0 && porcentaje > 20) tiempoDeAumentar = vectorActual[Constantes.colReloj]; 
                 vectorActual[Constantes.colPorcentajeInap] = Truncador.Truncar(porcentaje).ToString()+"%";

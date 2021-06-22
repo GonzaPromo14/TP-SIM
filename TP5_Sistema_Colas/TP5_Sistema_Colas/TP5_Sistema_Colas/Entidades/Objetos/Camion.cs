@@ -17,6 +17,8 @@ namespace TP5_Sistema_Colas.Entidades.Objetos
         public double tiempo_espera;
         public bool tienePrioridad;
         public string zonasPasadas = "";
+        public List<int> zonasPosibles;
+        public int zonasPosiblesContador;
 
         public Camion(double hora_llegada, string estado)
         {
@@ -26,6 +28,10 @@ namespace TP5_Sistema_Colas.Entidades.Objetos
             this.tienePrioridad = false;
             this.tiempo_espera = 0;
             this.tiempo_reparacion = 0;
+            
+            this.zonasPosibles = new List<int>(new int[] { 1,2,3,4,5,6,7,8});
+            this.zonasPosiblesContador = 8;
+
         }
 
         public void setEstado(string estado)

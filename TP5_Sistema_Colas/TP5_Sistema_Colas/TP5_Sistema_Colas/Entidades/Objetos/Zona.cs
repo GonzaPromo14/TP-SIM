@@ -26,7 +26,6 @@ namespace TP5_Sistema_Colas.Entidades.Objetos
         double mediaServicio;
         double desvServicio;
 
-        //public Random semilla = new Random();
 
         public Zona(int num, string estado, ControladorSimulacion cont, double mediaLlegadas, double mediaServicio, double desvServicio)
         {
@@ -37,7 +36,6 @@ namespace TP5_Sistema_Colas.Entidades.Objetos
             this.mediaServicio = mediaServicio;
             this.desvServicio = desvServicio;
             this.numero = num;
-            //this.semilla = new Random();
             this.cola = new List<Camion>();
             this.contadorCamiones = 0;
 

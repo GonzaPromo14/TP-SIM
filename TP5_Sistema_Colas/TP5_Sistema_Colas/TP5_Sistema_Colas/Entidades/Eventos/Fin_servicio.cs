@@ -23,42 +23,49 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
         {
             bool seFueAOtraZona = false; // para manejar el contador
 
+            camion.zonasPosibles[zona.numero - 1] = 0; //setteo a 0 para decir que ya no puede ir a esa zona
+            camion.zonasPosiblesContador--;
+
             controlador.vectorActual[Constantes.colEvento] = "Fin servicio " + "(" + camion.nombre + ")" + "(" + zona.nombre + ")";
             controlador.vectorActual[Constantes.colRNDLlegada + zona.offset] = "-";
             controlador.vectorActual[Constantes.colTiempoLlegada + zona.offset] = "-";
 
-            //veo si el camion se va a ir a otra zona
-            double prob = rand.NextDouble();
-            if (prob >= 0.8 && prob < 1)
+            if(camion.zonasPosiblesContador != 0)
             {
-                //elijo la proxima zona, viendo que no sea la misma 
-                int index = rand.Next(controlador.zonas.Count);
-                Zona proximaZona = controlador.zonas[index];
+                //veo si el camion se va a ir a otra zona
+                //double prob = rand.NextDouble();
+                double prob = 0.8;
 
-                if(index + 1 == zona.numero)
+                if (prob >= 0.8 && prob < 1)
                 {
-                    while(index + 1 == zona.numero)
+                    int index = 0;
+                    //elijo la proxima zona, viendo que no sea la misma 
+                    while (index == 0)
                     {
-                        index = rand.Next(controlador.zonas.Count);
-                        proximaZona = controlador.zonas[index];
+                        rand = new Random();
+                        int i = rand.Next(8);
+                        index = camion.zonasPosibles[i];
                     }
+
+                    Zona proximaZona = controlador.zonas[index - 1];
+
+                    //le asigno prioridad al camion para que vaya al principio
+                    camion.tienePrioridad = true;
+
+                    //hago un evento llegada_camion con este camion a la proxima zona y con la hora actual (la llegada es instantanea)
+                    Evento llegadaCamionZonaNueva = new Llegada_camion(controlador.vectorActual[Constantes.colReloj], camion, proximaZona);
+                    controlador.eventos.Enqueue(llegadaCamionZonaNueva);
+
+                    //para que no se cuente este evento como un nuevo camion
+                    seFueAOtraZona = true;
+                    controlador.contadorCamiones--;
+                    zona.contadorCamiones++;
+                    controlador.vectorActual[Constantes.colSeVaAOtraZona + zona.offset] = camion.nombre + " se fue a: " + proximaZona.nombre;
+                    controlador.vectorActual[Constantes.ColTiempoTrabajado + zona.offset] += camion.tiempo_reparacion;
+                    camion.tiempo_reparacion = 0;
                 }
-
-                //le asigno prioridad al camion para que vaya al principio
-                camion.tienePrioridad = true;
-                 
-                //hago un evento llegada_camion con este camion a la proxima zona y con la hora actual (la llegada es instantanea)
-                Evento llegadaCamionZonaNueva = new Llegada_camion(controlador.vectorActual[Constantes.colReloj], camion, proximaZona);
-                controlador.eventos.Enqueue(llegadaCamionZonaNueva);
-
-                //para que no se cuente este evento como un nuevo camion
-                seFueAOtraZona = true;
-                controlador.contadorCamiones--;
-                zona.contadorCamiones++;
-                controlador.vectorActual[Constantes.colSeVaAOtraZona + zona.offset] = camion.nombre+ " se fue a: " + proximaZona.nombre;
-                controlador.vectorActual[Constantes.ColTiempoTrabajado + zona.offset] += camion.tiempo_reparacion;
-                camion.tiempo_reparacion = 0;
             }
+
 
             if (!seFueAOtraZona) // si no se fue a otra zona, se fue del predio
             {
@@ -76,7 +83,8 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
 
                 zona.asignarCamion(proximoCamion);
                 proximoCamion.setEstado("Siendo reparado");
-                camion.tiempo_espera = controlador.vectorActual[Constantes.colReloj] - camion.hora_llegada;
+                //camion.tiempo_espera = controlador.vectorActual[Constantes.colReloj] - camion.hora_llegada;
+                proximoCamion.tiempo_espera = controlador.vectorActual[Constantes.colReloj] - camion.hora_llegada;
                 zona.generarProximoFinServicio(controlador.vectorActual);
 
                 Evento proximoFin = new Fin_servicio(controlador.vectorActual[Constantes.colProximoFinReparacion + zona.offset], proximoCamion, zona);
