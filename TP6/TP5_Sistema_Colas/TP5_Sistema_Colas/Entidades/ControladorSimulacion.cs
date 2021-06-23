@@ -24,6 +24,8 @@ namespace TP5_Sistema_Colas.Entidades
         public PriorityQueue<Evento> eventos;
         public List<Camion> camiones;
         public List<Zona> zonas;
+        public RugenKutta RKInestable;
+        public RugenKutta RKPurga;
 
         public int iteraciones;
         public int contadorCamiones; //para la capacidad
@@ -89,6 +91,8 @@ namespace TP5_Sistema_Colas.Entidades
             zonas = new List<Zona>();
             Camion.numeracion = 1;// reinicia la numeracion de camiones
 
+            RKPurga = new RugenKutta(10,  RKInestable.h);
+
             //creacion de las zonas
 
             Zona zona1 = new Zona(1, "Libre", this, mediaLlegada1, mediaServicio1, desvServicio1);
@@ -109,6 +113,10 @@ namespace TP5_Sistema_Colas.Entidades
             zonas.Add(zona7);
             zonas.Add(zona8);
 
+            //inicializacion de la tablas RK
+            RKInestable.calcularAlfa();
+            RKInestable.correrRugenKuttaInestable();
+            RKPurga.setAlfa(RKInestable.getAlfa());
 
             // inicializacion 
             //los eventos se van a ir ordenando por tiempo de menor a mayor, entonces con eventos.Dequeue() siempre tengo el proximo evento
@@ -118,6 +126,7 @@ namespace TP5_Sistema_Colas.Entidades
             vectorActual[Constantes.colReloj] = 0;
             vectorActual[Constantes.colNumeroSimulacion] = 0;
             vectorActual[Constantes.colInsInaproiada] ="-";
+            vectorActual[Constantes.colCantTotalCamiones]= contadorCamiones;
             zona1.iniciarZona(vectorActual);
             zona2.iniciarZona(vectorActual);
             zona3.iniciarZona(vectorActual);
@@ -154,6 +163,8 @@ namespace TP5_Sistema_Colas.Entidades
 
                 evento.ocurrir(this);
 
+                vectorActual[Constantes.colCantTotalCamiones] = contadorCamiones;
+
                 if (contadorCamiones > capacidadMAX)
                 {
                     vectorActual[Constantes.colInsInaproiada] = "SI";
@@ -170,11 +181,7 @@ namespace TP5_Sistema_Colas.Entidades
                 if (tiempoDeAumentar == 0 && porcentaje > 20) tiempoDeAumentar = vectorActual[Constantes.colReloj]; 
                 vectorActual[Constantes.colPorcentajeInap] = Truncador.Truncar(porcentaje).ToString()+"%";
 
-                //Actualizo cola general
-
-                vectorActual[Constantes.colColaGeneral] = contadorCamiones;
-
-
+                //cargar vectorActual a grilla
 
                 //actualizo vectores
                 vectorActual[Constantes.colNumeroSimulacion] = i;

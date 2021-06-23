@@ -11,11 +11,10 @@ namespace TP5_Sistema_Colas.Entidades
         //------------- Columnas vector reloj evento
         public static int colNumeroSimulacion = 0;
         public static int colEvento = 1;
-        public static int colReloj = 2;
+        public static int colReloj = 2;        
         public static int colInsInaproiada = 3;
-        public static int colPorcentajeInap = 4;
-        public static int colColaGeneral = 5;
-
+        public static int colCantTotalCamiones = 4;
+        public static int colPorcentajeInap = 5;
 
 
         //------------- Columnas vector de zonas (hay que aplicar offset para cada zona)
@@ -37,6 +36,19 @@ namespace TP5_Sistema_Colas.Entidades
         //------------- Algunos valores esenciales
         public static int cantidadHorasSemana = 168;
 
-        //------------- Columnas Metricas
+        //------------- Columnas Rugen kutta
+        public static int colTiempo = 0;
+        public static int colE = 1;
+        public static int colK1 = 2;
+        public static int colTiempoK2 = 3;
+        public static int colEK2 = 4;
+        public static int colK2 = 5;
+        public static int colTiempoK3 = 6;
+        public static int colEK3 = 7;
+        public static int colK3 = 8;
+        public static int colTiempoK4 = 9;
+        public static int colEK4 = 10;
+        public static int colK4 = 11;
+        public static int colL1L0 = 12;
     }
 }
