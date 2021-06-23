@@ -40,14 +40,14 @@ namespace TP5_Sistema_Colas.Entidades
         public int hasta;
 
         //-----------Parámetros zonas -------------------//
-        public double mediaLlegada1 = 0.43;
-        public double mediaLlegada2 = 0.16;
-        public double mediaLlegada3 = 0.14;
-        public double mediaLlegada4 = 0.1;
-        public double mediaLlegada5 = 0.09;
-        public double mediaLlegada6 = 0.08;
-        public double mediaLlegada7 = 0.05;
-        public double mediaLlegada8 = 0.05;
+        public double mediaLlegada1 = 7.43;
+        public double mediaLlegada2 = 7.16;
+        public double mediaLlegada3 = 7.14;
+        public double mediaLlegada4 = 7.1;
+        public double mediaLlegada5 = 7.09;
+        public double mediaLlegada6 = 7.08;
+        public double mediaLlegada7 = 7.05;
+        public double mediaLlegada8 = 7.05;
 
         public double mediaServicio1 = 2;
         public double mediaServicio2 = 5.8;
@@ -159,7 +159,6 @@ namespace TP5_Sistema_Colas.Entidades
 
                 //saco el evento con tiempo más proximo de la cola
                 evento = eventos.Dequeue();
-
                 vectorActual[Constantes.colReloj] = evento.tiempo;
 
                 //aumento las medias en 0,24

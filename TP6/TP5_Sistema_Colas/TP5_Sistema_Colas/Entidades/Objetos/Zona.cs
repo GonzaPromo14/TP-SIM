@@ -82,6 +82,8 @@ namespace TP5_Sistema_Colas.Entidades.Objetos
 
         public string getEstado()
         {
+            if (this.estado == "Interrumpido")
+                return this.estado;
             return this.estaOcupada() ? "Ocupada" : "Libre";
         }
 

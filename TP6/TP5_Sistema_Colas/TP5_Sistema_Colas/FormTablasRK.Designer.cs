@@ -288,6 +288,7 @@ namespace TP5_Sistema_Colas
             this.Controls.Add(this.dgvRKInestale);
             this.Name = "FormTablasRK";
             this.Text = "FormTablasRK";
+            this.Load += new System.EventHandler(this.FormTablasRK_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvRKInestale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRKPurga)).EndInit();
             this.ResumeLayout(false);

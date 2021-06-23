@@ -16,18 +16,25 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
 
         }
 
-        public void ocurrir(ControladorSimulacion controlador)
+        public override void ocurrir(ControladorSimulacion controlador)
         {
             zona.estado = zona.ultimoEstado;
             controlador.vectorActual[Constantes.colEvento] = "FIN INTERRUPCIÓN (Zona 8)";
-            Fin_servicio nuevoFinServicio = new Fin_servicio(controlador.vectorActual[Constantes.colReloj] + controlador.vectorActual[Constantes.colTiempoFaltanteReparacion], zona.ultimoServicio.camion, zona);
-            controlador.eventos.Enqueue(nuevoFinServicio);
+            double resultado;
+            if (double.TryParse(controlador.vectorActual[Constantes.colTiempoFaltanteReparacion].ToString(), out resultado))
+            {
+                Fin_servicio nuevoFinServicio = new Fin_servicio(controlador.vectorActual[Constantes.colReloj] + controlador.vectorActual[Constantes.colTiempoFaltanteReparacion], zona.ultimoServicio.camion, zona);
+                controlador.eventos.Enqueue(nuevoFinServicio);
+                controlador.vectorActual[Constantes.colProximoFinReparacion + zona.offset] = nuevoFinServicio.tiempo;
+            }
+            controlador.vectorActual[Constantes.colEstado + zona.offset] = zona.estado;
             controlador.vectorActual[Constantes.colTiempoFaltanteReparacion] = "-";
             controlador.vectorActual[Constantes.colRndRK] = Truncador.Truncar(controlador.semilla.NextDouble());
             controlador.vectorActual[Constantes.colTiempoInestable] = controlador.RKInestable.valorTRandom(controlador.vectorActual[Constantes.colRndRK]);
             controlador.vectorActual[Constantes.colProximoInestable] = controlador.vectorActual[Constantes.colReloj] + controlador.vectorActual[Constantes.colTiempoInestable];
             Proxima_interrupcion_servidor proximaInterrupcionServidor = new Proxima_interrupcion_servidor(controlador.vectorActual[Constantes.colProximoInestable], zona);
             controlador.eventos.Enqueue(proximaInterrupcionServidor);
+            controlador.vectorActual[Constantes.colProximoFinPurga] = "-";
 
         }
     }

@@ -23,6 +23,16 @@ namespace TP5_Sistema_Colas
             {
                 dgvRKInestale.Rows.Add(controla.RKInestable.getSimulaciones().ElementAt(i));
             }
+            for (int i = 0; i<controla.RKPurga.getSimulaciones().Count; i++)
+            {
+                dgvRKPurga.Rows.Add(controla.RKPurga.getSimulaciones().ElementAt(i));
+
+            }
+
+        }
+
+        private void FormTablasRK_Load(object sender, EventArgs e)
+        {
 
         }
     }

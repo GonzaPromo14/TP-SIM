@@ -104,6 +104,9 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
             //cola y estado
             controlador.vectorActual[Constantes.colCola + zona.offset] = zona.cola.Count();
             controlador.vectorActual[Constantes.colEstado +zona.offset] = zona.getEstado();
+            controlador.vectorActual[Constantes.colRndRK] = "-";
+            controlador.vectorActual[Constantes.colTiempoInestable] = "-";
+            controlador.vectorActual[Constantes.colTiempoPurga] = "-";
 
         }
 

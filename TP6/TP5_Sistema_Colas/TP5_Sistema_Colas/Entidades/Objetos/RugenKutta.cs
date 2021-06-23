@@ -83,7 +83,7 @@ namespace TP5_Sistema_Colas.Entidades.Objetos
             return Truncador.Truncar(alfa * e);
         }
 
-        public double usarEDPurga (int ele)
+        public double usarEDPurga (double ele)
         {
             return Truncador.Truncar(-alfa * ele * 0.5);
         }
@@ -185,7 +185,8 @@ namespace TP5_Sistema_Colas.Entidades.Objetos
             vectorActual[Constantes.colTiempoK4] = vectorActual[Constantes.colTiempo] + h;
             vectorActual[Constantes.colEK4] = Truncador.Truncar(eIncial + (vectorActual[Constantes.colK3]) / 2);
             vectorActual[Constantes.colK4] = usarEDPurga(vectorActual[Constantes.colEK3]);
-            vectorActual[Constantes.colL1L0] = 1;
+            vectorActual[Constantes.colL1L0] = l;
+            simulaciones.Add(vectorActual.ToArray());
 
             
 
@@ -210,10 +211,16 @@ namespace TP5_Sistema_Colas.Entidades.Objetos
                 vectorActual[Constantes.colTiempoK4] = vectorActual[Constantes.colTiempo] + h;
                 vectorActual[Constantes.colEK4] = Truncador.Truncar(eIncial + (vectorActual[Constantes.colK3]) / 2);
                 vectorActual[Constantes.colK4] = usarEDPurga(vectorActual[Constantes.colEK3]);
-                vectorActual[Constantes.colL1L0] = Truncador.Truncar(
-                                           vectorActual[Constantes.colE] - vectorAnterior[Constantes.colE]);
+                double calculoCorte = Truncador.Truncar(vectorActual[Constantes.colE]
+                    + h / 6 * (vectorActual[Constantes.colK1] +
+                           2 * vectorActual[Constantes.colK2] +
+                           2 * vectorActual[Constantes.colK3] +
+                           vectorActual[Constantes.colK4]));
+                vectorActual[Constantes.colL1L0] = calculoCorte - Truncador.Truncar(
+                                           vectorActual[Constantes.colE]);
+                simulaciones.Add(vectorActual.ToArray());
 
-            } while (vectorActual[Constantes.colL1L0] > 0.02);
+            } while (Math.Abs(vectorActual[Constantes.colL1L0]) > 0.02);
 
 
 
