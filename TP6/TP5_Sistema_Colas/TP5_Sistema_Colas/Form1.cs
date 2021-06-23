@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TP5_Sistema_Colas.Entidades;
+using TP5_Sistema_Colas.Entidades.Objetos;
 
 namespace TP5_Sistema_Colas
 {
@@ -17,7 +18,7 @@ namespace TP5_Sistema_Colas
         FormCamiones form2;
         FormZonas form3;
         FormVariables formVariables;
-
+        FormTablasRK formTablasRK;
         Paginador p;
 
         public Form1()
@@ -32,7 +33,7 @@ namespace TP5_Sistema_Colas
 
         public void cargarColumnas(DataGridView dgv)
         {
-            //Para que no se muevan las primeras
+            //Para que no se muevan las dos primeras
             dgv.Columns[0].Frozen = true;
             dgv.Columns[1].Width = 200;
             dgv.Columns[1].Frozen = true;
@@ -40,9 +41,8 @@ namespace TP5_Sistema_Colas
             dgv.Columns[2].Frozen = true;
             dgv.Columns[3].Frozen = true;
             dgv.Columns[4].Frozen = true;
-            //dgv.Columns[5].Frozen = true;
-
-
+            dgv.Columns[5].Frozen = true;
+            
 
 
 
@@ -148,6 +148,16 @@ namespace TP5_Sistema_Colas
                 controlador.desde = 0;
                 controlador.hasta = 500;
             }
+            
+
+            if(txtEInicial.Text != "" && txtTFinal.Text != "" && txtEFinal.Text != "" && txtHache.Text != "")
+            {
+                controlador.RKInestable = new RugenKutta(int.Parse(txtEInicial.Text), 
+                                                        double.Parse(txtTFinal.Text), 
+                                                        int.Parse(txtEFinal.Text), 
+                                                        double.Parse(txtHache.Text));
+            }
+
             dgvSimulaciones.Rows.Clear();
             //inicio simulacion
             controlador.simular();
@@ -168,6 +178,7 @@ namespace TP5_Sistema_Colas
 
             if (dgvFinal.Rows[0].Cells[3].Value == "NO") dgvFinal.Rows[0].Cells[3].Style.BackColor = Color.LightGreen;
             if (dgvFinal.Rows[0].Cells[3].Value == "SI") dgvFinal.Rows[0].Cells[3].Style.BackColor = Color.LightCoral;
+          
 
             if (txtExceso.Text == "-") txtExceso.Text = "No se superó la capacidad máxima";
             btnAnterior.Enabled = false;
@@ -262,6 +273,12 @@ namespace TP5_Sistema_Colas
         {
             formVariables = new FormVariables(controlador);
             formVariables.Show();
+        }
+
+        private void btnTablasRK_Click(object sender, EventArgs e)
+        {
+            formTablasRK = new FormTablasRK(controlador);
+            formTablasRK.Show();
         }
     }
 }
