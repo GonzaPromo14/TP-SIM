@@ -32,6 +32,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtHache = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.btnTablasRK = new System.Windows.Forms.Button();
+            this.txtEFinal = new System.Windows.Forms.TextBox();
+            this.txtTFinal = new System.Windows.Forms.TextBox();
+            this.txtEInicial = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.txtHasta = new System.Windows.Forms.TextBox();
             this.txtDesde = new System.Windows.Forms.TextBox();
@@ -40,6 +49,12 @@
             this.btnMostrarRnd = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dgvSimulaciones = new System.Windows.Forms.DataGridView();
+            this.colNumeroSimulacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colEvento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colReloj = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColInstalacionesInadecuadas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColCantTotalCamiones = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPorcentaje = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label4 = new System.Windows.Forms.Label();
             this.txtCamiones = new System.Windows.Forms.TextBox();
             this.btnAnterior = new System.Windows.Forms.Button();
@@ -50,6 +65,7 @@
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColCantGCam = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPorcentajeInad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label5 = new System.Windows.Forms.Label();
             this.txtExceso = new System.Windows.Forms.TextBox();
@@ -60,12 +76,6 @@
             this.btnCamiones = new System.Windows.Forms.Button();
             this.lblSemana = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.colNumeroSimulacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colEvento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colReloj = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColInstalacionesInadecuadas = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPorcentaje = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colaGeneral = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSimulaciones)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFinal)).BeginInit();
@@ -77,30 +87,39 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(6, 27);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(148, 13);
+            this.label1.Size = new System.Drawing.Size(130, 13);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Cantidad de simulaciones ------";
+            this.label1.Text = "Cantidad de simulaciones ";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(6, 49);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(149, 13);
+            this.label2.Size = new System.Drawing.Size(131, 13);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Desde ------------------------------------";
+            this.label2.Text = "Desde ------------------------------";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(6, 72);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(149, 13);
+            this.label3.Size = new System.Drawing.Size(131, 13);
             this.label3.TabIndex = 3;
-            this.label3.Text = "Hasta -------------------------------------";
+            this.label3.Text = "Hasta -------------------------------";
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtHache);
+            this.groupBox1.Controls.Add(this.label11);
+            this.groupBox1.Controls.Add(this.btnTablasRK);
+            this.groupBox1.Controls.Add(this.txtEFinal);
+            this.groupBox1.Controls.Add(this.txtTFinal);
+            this.groupBox1.Controls.Add(this.txtEInicial);
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Controls.Add(this.txtHasta);
             this.groupBox1.Controls.Add(this.txtDesde);
@@ -113,14 +132,92 @@
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(525, 124);
+            this.groupBox1.Size = new System.Drawing.Size(585, 124);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ingreso de datos";
             // 
+            // txtHache
+            // 
+            this.txtHache.Location = new System.Drawing.Point(346, 24);
+            this.txtHache.Name = "txtHache";
+            this.txtHache.Size = new System.Drawing.Size(40, 20);
+            this.txtHache.TabIndex = 26;
+            this.txtHache.Text = "0,1";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(327, 27);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(13, 13);
+            this.label11.TabIndex = 25;
+            this.label11.Text = "h";
+            // 
+            // btnTablasRK
+            // 
+            this.btnTablasRK.Location = new System.Drawing.Point(210, 95);
+            this.btnTablasRK.Name = "btnTablasRK";
+            this.btnTablasRK.Size = new System.Drawing.Size(176, 23);
+            this.btnTablasRK.TabIndex = 24;
+            this.btnTablasRK.Text = "Tablas Rugen Kutta";
+            this.btnTablasRK.UseVisualStyleBackColor = true;
+            this.btnTablasRK.Click += new System.EventHandler(this.btnTablasRK_Click);
+            // 
+            // txtEFinal
+            // 
+            this.txtEFinal.Location = new System.Drawing.Point(257, 69);
+            this.txtEFinal.Name = "txtEFinal";
+            this.txtEFinal.Size = new System.Drawing.Size(64, 20);
+            this.txtEFinal.TabIndex = 23;
+            this.txtEFinal.Text = "100";
+            // 
+            // txtTFinal
+            // 
+            this.txtTFinal.Location = new System.Drawing.Point(257, 46);
+            this.txtTFinal.Name = "txtTFinal";
+            this.txtTFinal.Size = new System.Drawing.Size(64, 20);
+            this.txtTFinal.TabIndex = 22;
+            this.txtTFinal.Text = "0,9832";
+            // 
+            // txtEInicial
+            // 
+            this.txtEInicial.Location = new System.Drawing.Point(257, 24);
+            this.txtEInicial.Name = "txtEInicial";
+            this.txtEInicial.Size = new System.Drawing.Size(64, 20);
+            this.txtEInicial.TabIndex = 21;
+            this.txtEInicial.Text = "15";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(207, 27);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(44, 13);
+            this.label10.TabIndex = 20;
+            this.label10.Text = "E Inicial";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(207, 72);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(39, 13);
+            this.label9.TabIndex = 19;
+            this.label9.Text = "E Final";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(207, 49);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(39, 13);
+            this.label8.TabIndex = 18;
+            this.label8.Text = "T Final";
+            // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(351, 19);
+            this.button4.Location = new System.Drawing.Point(423, 19);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(156, 43);
             this.button4.TabIndex = 8;
@@ -130,29 +227,29 @@
             // 
             // txtHasta
             // 
-            this.txtHasta.Location = new System.Drawing.Point(159, 69);
+            this.txtHasta.Location = new System.Drawing.Point(130, 69);
             this.txtHasta.Name = "txtHasta";
-            this.txtHasta.Size = new System.Drawing.Size(100, 20);
+            this.txtHasta.Size = new System.Drawing.Size(71, 20);
             this.txtHasta.TabIndex = 7;
             // 
             // txtDesde
             // 
-            this.txtDesde.Location = new System.Drawing.Point(159, 46);
+            this.txtDesde.Location = new System.Drawing.Point(130, 46);
             this.txtDesde.Name = "txtDesde";
-            this.txtDesde.Size = new System.Drawing.Size(100, 20);
+            this.txtDesde.Size = new System.Drawing.Size(71, 20);
             this.txtDesde.TabIndex = 7;
             // 
             // txtCantSimulaciones
             // 
-            this.txtCantSimulaciones.Location = new System.Drawing.Point(159, 24);
+            this.txtCantSimulaciones.Location = new System.Drawing.Point(130, 24);
             this.txtCantSimulaciones.Name = "txtCantSimulaciones";
-            this.txtCantSimulaciones.Size = new System.Drawing.Size(100, 20);
+            this.txtCantSimulaciones.Size = new System.Drawing.Size(71, 20);
             this.txtCantSimulaciones.TabIndex = 6;
             this.txtCantSimulaciones.Text = "500";
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(351, 82);
+            this.button2.Location = new System.Drawing.Point(423, 82);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 36);
             this.button2.TabIndex = 16;
@@ -162,7 +259,7 @@
             // 
             // btnMostrarRnd
             // 
-            this.btnMostrarRnd.Location = new System.Drawing.Point(432, 82);
+            this.btnMostrarRnd.Location = new System.Drawing.Point(504, 82);
             this.btnMostrarRnd.Name = "btnMostrarRnd";
             this.btnMostrarRnd.Size = new System.Drawing.Size(75, 36);
             this.btnMostrarRnd.TabIndex = 17;
@@ -174,7 +271,7 @@
             // 
             this.button1.Location = new System.Drawing.Point(9, 95);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(250, 23);
+            this.button1.Size = new System.Drawing.Size(192, 23);
             this.button1.TabIndex = 6;
             this.button1.Text = "SIMULAR";
             this.button1.UseVisualStyleBackColor = true;
@@ -189,14 +286,44 @@
             this.colEvento,
             this.colReloj,
             this.ColInstalacionesInadecuadas,
-            this.colPorcentaje,
-            this.colaGeneral});
+            this.ColCantTotalCamiones,
+            this.colPorcentaje});
             this.dgvSimulaciones.EnableHeadersVisualStyles = false;
             this.dgvSimulaciones.Location = new System.Drawing.Point(12, 168);
             this.dgvSimulaciones.Name = "dgvSimulaciones";
             this.dgvSimulaciones.RowHeadersVisible = false;
             this.dgvSimulaciones.Size = new System.Drawing.Size(1346, 291);
             this.dgvSimulaciones.TabIndex = 7;
+            // 
+            // colNumeroSimulacion
+            // 
+            this.colNumeroSimulacion.HeaderText = "Número";
+            this.colNumeroSimulacion.Name = "colNumeroSimulacion";
+            // 
+            // colEvento
+            // 
+            this.colEvento.HeaderText = "Evento";
+            this.colEvento.Name = "colEvento";
+            // 
+            // colReloj
+            // 
+            this.colReloj.HeaderText = "Reloj";
+            this.colReloj.Name = "colReloj";
+            // 
+            // ColInstalacionesInadecuadas
+            // 
+            this.ColInstalacionesInadecuadas.HeaderText = "Instalaciones Inadecuadas";
+            this.ColInstalacionesInadecuadas.Name = "ColInstalacionesInadecuadas";
+            // 
+            // ColCantTotalCamiones
+            // 
+            this.ColCantTotalCamiones.HeaderText = "Cant Total de Camiones";
+            this.ColCantTotalCamiones.Name = "ColCantTotalCamiones";
+            // 
+            // colPorcentaje
+            // 
+            this.colPorcentaje.HeaderText = "Porcentaje de inadecuación";
+            this.colPorcentaje.Name = "colPorcentaje";
             // 
             // label4
             // 
@@ -255,6 +382,7 @@
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
             this.DataGridViewTextBoxColumn4,
+            this.ColCantGCam,
             this.colPorcentajeInad});
             this.dgvFinal.EnableHeadersVisualStyles = false;
             this.dgvFinal.Location = new System.Drawing.Point(12, 515);
@@ -282,6 +410,11 @@
             // 
             this.DataGridViewTextBoxColumn4.HeaderText = "Instalaciones inadecuadas";
             this.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4";
+            // 
+            // ColCantGCam
+            // 
+            this.ColCantGCam.HeaderText = "Cant Total de Camiones";
+            this.ColCantGCam.Name = "ColCantGCam";
             // 
             // colPorcentajeInad
             // 
@@ -384,36 +517,6 @@
             this.label7.TabIndex = 23;
             this.label7.Text = "Aumentar capacidad a partir de la semana: ";
             // 
-            // colNumeroSimulacion
-            // 
-            this.colNumeroSimulacion.HeaderText = "Número";
-            this.colNumeroSimulacion.Name = "colNumeroSimulacion";
-            // 
-            // colEvento
-            // 
-            this.colEvento.HeaderText = "Evento";
-            this.colEvento.Name = "colEvento";
-            // 
-            // colReloj
-            // 
-            this.colReloj.HeaderText = "Reloj";
-            this.colReloj.Name = "colReloj";
-            // 
-            // ColInstalacionesInadecuadas
-            // 
-            this.ColInstalacionesInadecuadas.HeaderText = "Instalaciones Inadecuadas";
-            this.ColInstalacionesInadecuadas.Name = "ColInstalacionesInadecuadas";
-            // 
-            // colPorcentaje
-            // 
-            this.colPorcentaje.HeaderText = "Porcentaje de inadecuación";
-            this.colPorcentaje.Name = "colPorcentaje";
-            // 
-            // colaGeneral
-            // 
-            this.colaGeneral.HeaderText = "Cola General";
-            this.colaGeneral.Name = "colaGeneral";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -463,21 +566,31 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label lblPorcInsInadeciadas;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colPorcentajeInad;
         private System.Windows.Forms.Label lblSemana;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnCamiones;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.TextBox txtEFinal;
+        private System.Windows.Forms.TextBox txtTFinal;
+        private System.Windows.Forms.TextBox txtEInicial;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNumeroSimulacion;
         private System.Windows.Forms.DataGridViewTextBoxColumn colEvento;
         private System.Windows.Forms.DataGridViewTextBoxColumn colReloj;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColInstalacionesInadecuadas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColCantTotalCamiones;
         private System.Windows.Forms.DataGridViewTextBoxColumn colPorcentaje;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colaGeneral;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColCantGCam;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colPorcentajeInad;
+        private System.Windows.Forms.Button btnTablasRK;
+        private System.Windows.Forms.TextBox txtHache;
+        private System.Windows.Forms.Label label11;
     }
 }
 
