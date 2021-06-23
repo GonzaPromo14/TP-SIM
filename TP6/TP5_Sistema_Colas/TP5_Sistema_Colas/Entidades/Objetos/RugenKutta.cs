@@ -64,6 +64,10 @@ namespace TP5_Sistema_Colas.Entidades.Objetos
             alfa = alf;
         }
 
+        public void setL(int l)
+        {
+            this.l = l;
+        }
         public double getAlfa()
         {
             return alfa;
@@ -215,7 +219,18 @@ namespace TP5_Sistema_Colas.Entidades.Objetos
 
         }
 
-
+        public double valorTRandom(double rnd)
+        {
+            if (rnd < 0.50)
+            {
+                return this.t100;
+            }
+            if (rnd < 0.80)
+            {
+                return this.t70;
+            }
+            return t50;
+        }
 
 
 

@@ -109,6 +109,14 @@ namespace TP5_Sistema_Colas
                 dgv.Columns[pos].HeaderCell.Style.BackColor = color;
                 dgv.Columns[pos].DefaultCellStyle.BackColor = Color.LightBlue;
             }
+            dgv.Columns.Add(Constantes.colTiempoFaltanteReparacion.ToString(), "Tiempo faltante");
+            dgv.Columns.Add(Constantes.colRndRK.ToString(), "RND RK");
+            dgv.Columns.Add(Constantes.colTiempoInestable.ToString(), "Tiempo inestable");
+            dgv.Columns.Add(Constantes.colProximoInestable.ToString(), "Próximo inestable");
+            dgv.Columns.Add(Constantes.colTiempoPurga.ToString(), "Tiempo purga");
+            dgv.Columns.Add(Constantes.colProximoFinPurga.ToString(), "Próximo fin purga");
+
+
 
         }
 
@@ -279,6 +287,11 @@ namespace TP5_Sistema_Colas
         {
             formTablasRK = new FormTablasRK(controlador);
             formTablasRK.Show();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

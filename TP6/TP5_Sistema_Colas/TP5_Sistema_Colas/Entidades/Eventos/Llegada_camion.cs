@@ -66,6 +66,7 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
                 zona.generarProximoFinServicio(controlador.vectorActual);
 
                 Evento proximoFin = new Fin_servicio(controlador.vectorActual[Constantes.colProximoFinReparacion+zona.offset], camion, zona);
+                zona.ultimoServicio = proximoFin;
                 controlador.eventos.Enqueue(proximoFin);
             }
 

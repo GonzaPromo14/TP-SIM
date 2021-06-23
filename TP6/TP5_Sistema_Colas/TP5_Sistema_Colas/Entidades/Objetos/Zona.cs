@@ -16,10 +16,12 @@ namespace TP5_Sistema_Colas.Entidades.Objetos
         public int offset; //para las columnas
 
         public List<Camion> cola;
-        string estado;
+        public string estado;
         public string nombre;
         public int numero;
         public int contadorCamiones;
+        public Evento ultimoServicio;
+        public string ultimoEstado;
 
 
         double mediaLlegadas;

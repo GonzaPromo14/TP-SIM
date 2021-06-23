@@ -84,8 +84,8 @@ namespace TP5_Sistema_Colas.Entidades
             Constantes.cantidadHorasSemana = 168;
 
             contadorCamiones = 0;
-            vectorAnterior = new dynamic[94];
-            vectorActual = new dynamic[94];
+            vectorAnterior = new dynamic[101];
+            vectorActual = new dynamic[101];
 
             camiones = new List<Camion>();
             zonas = new List<Zona>();
@@ -135,7 +135,16 @@ namespace TP5_Sistema_Colas.Entidades
             zona6.iniciarZona(vectorActual);
             zona7.iniciarZona(vectorActual);
             zona8.iniciarZona(vectorActual);
-
+            vectorActual[Constantes.colTiempoFaltanteReparacion] = "-";
+            double rndRK = Truncador.Truncar(semilla.NextDouble());
+            vectorActual[Constantes.colRndRK] = rndRK;
+            vectorActual[Constantes.colTiempoInestable] = RKInestable.valorTRandom(rndRK);
+            vectorActual[Constantes.colProximoInestable] = vectorActual[Constantes.colTiempoInestable];
+            vectorActual[Constantes.colTiempoPurga] = "-";
+            vectorActual[Constantes.colProximoFinPurga] = "-";
+            Proxima_interrupcion_servidor proximaInterrupcion = new Proxima_interrupcion_servidor(vectorActual[Constantes.colTiempoInestable], zona8);
+            //Proxima_interrupcion_servidor proximaInterrupcion = new Proxima_interrupcion_servidor(2, zona8);
+            eventos.Enqueue(proximaInterrupcion);
 
             if (desde == 0) simulaciones.Add(vectorActual.ToArray());
 

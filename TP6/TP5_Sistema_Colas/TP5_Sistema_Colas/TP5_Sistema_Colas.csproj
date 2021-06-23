@@ -58,8 +58,10 @@
     <Compile Include="Entidades\ControladorSimulacion.cs" />
     <Compile Include="Entidades\Distribuciones.cs" />
     <Compile Include="Entidades\Eventos\Evento.cs" />
+    <Compile Include="Entidades\Eventos\Fin_interrupcion.cs" />
     <Compile Include="Entidades\Eventos\Fin_servicio.cs" />
     <Compile Include="Entidades\Eventos\Llegada_camion.cs" />
+    <Compile Include="Entidades\Eventos\Proxima_interrupcion_servidor.cs" />
     <Compile Include="Entidades\Objetos\Camion.cs" />
     <Compile Include="Entidades\Objetos\RugenKutta.cs" />
     <Compile Include="Entidades\Objetos\Zona.cs" />
