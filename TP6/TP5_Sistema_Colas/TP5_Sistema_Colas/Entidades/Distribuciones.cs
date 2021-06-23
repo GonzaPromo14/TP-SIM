@@ -21,5 +21,16 @@ namespace TP5_Sistema_Colas.Entidades
             return (raiz * cos * desvEstandar) + media;
         }
 
+
+        public static decimal calculoProximaPurga(decimal alfa, decimal e)
+        {
+            return alfa * e;
+        }
+
+        public static decimal calculoFinPurga(decimal alfa, decimal e)
+        {
+            return -alfa * e * (decimal)0.5;
+        }
+
     }
 }

@@ -37,6 +37,14 @@ namespace TP5_Sistema_Colas.Entidades
         //------------- Algunos valores esenciales
         public static int cantidadHorasSemana = 168;
 
-        //------------- Columnas Metricas
+        //------------- Constantes runge kutta
+        public static int tInicial = 0;
+        public static int eInicial = 1;
+        public static int k1 = 2;
+        public static int k2 = 3;
+        public static int k3 = 4;
+        public static int k4 = 5;
+        public static int tProx = 6;
+        public static int eProx = 7;
     }
 }

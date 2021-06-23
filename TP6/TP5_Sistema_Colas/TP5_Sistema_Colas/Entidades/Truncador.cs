@@ -12,5 +12,10 @@ namespace TP5_Sistema_Colas.Entidades
         {
             return Math.Truncate(10000 * num) / 10000;
         }
+
+        public static double TruncarDosDecimales(double num)
+        {
+            return Math.Truncate(100 * num) / 100;
+        }
     }
 }
