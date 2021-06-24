@@ -33,8 +33,9 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
             if(camion.zonasPosiblesContador != 0)
             {
                 //veo si el camion se va a ir a otra zona
-                //double prob = rand.NextDouble();
-                double prob = 0.8;
+                double prob = rand.NextDouble();
+                prob = 0;
+                //double prob = 0.8;
 
                 if (prob >= 0.8 && prob < 1)
                 {
@@ -43,7 +44,7 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
                     while (index == 0)
                     {
                         rand = new Random();
-                        int i = rand.Next(8);
+                        int i = rand.Next(7);
                         index = camion.zonasPosibles[i];
                     }
 
@@ -98,7 +99,6 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
                 controlador.vectorActual[Constantes.colRND2Reparacion + zona.offset] = "-";
                 controlador.vectorActual[Constantes.colTiempoReparacion + zona.offset] = "-";
                 controlador.vectorActual[Constantes.colProximoFinReparacion + zona.offset] = "-";
-
             }
 
             //cola y estado

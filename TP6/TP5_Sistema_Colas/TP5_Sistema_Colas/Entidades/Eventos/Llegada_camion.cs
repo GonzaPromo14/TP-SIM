@@ -60,14 +60,25 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
             }
             else
             {
-                zona.asignarCamion(camion);
-                camion.setEstado("Siendo reparado");
-                //si el camion llega y pasa a ser atendido creo el proximo fin de servicio y guardo el evento
-                zona.generarProximoFinServicio(controlador.vectorActual);
+                if (zona.getEstado() != "Interrumpido")
+                {
+                    zona.asignarCamion(camion);
+                    camion.setEstado("Siendo reparado");
+                    //si el camion llega y pasa a ser atendido creo el proximo fin de servicio y guardo el evento
+                    zona.generarProximoFinServicio(controlador.vectorActual);
 
-                Evento proximoFin = new Fin_servicio(controlador.vectorActual[Constantes.colProximoFinReparacion+zona.offset], camion, zona);
-                zona.ultimoServicio = proximoFin;
-                controlador.eventos.Enqueue(proximoFin);
+                    Evento proximoFin = new Fin_servicio(controlador.vectorActual[Constantes.colProximoFinReparacion + zona.offset], camion, zona);
+                    zona.ultimoServicio = proximoFin;
+                    controlador.eventos.Enqueue(proximoFin);
+                }
+                else
+                {
+                    zona.mandarACola(camion);
+                    camion.setEstado("Esperando Atencion");
+                    controlador.vectorActual[Constantes.colRND1Reparacion + zona.offset] = "-";
+                    controlador.vectorActual[Constantes.colRND2Reparacion + zona.offset] = "-";
+                    controlador.vectorActual[Constantes.colTiempoReparacion + zona.offset] = "-";
+                }
             }
 
 

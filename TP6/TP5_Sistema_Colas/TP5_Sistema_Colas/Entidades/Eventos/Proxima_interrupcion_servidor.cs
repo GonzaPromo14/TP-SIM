@@ -21,8 +21,9 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
 
             zona.ultimoEstado = zona.getEstado();
             zona.estado = "Interrumpido";
-            
-            controlador.RKPurga.setL(zona.contadorCamiones);
+
+            controlador.RKPurga.setL(controlador.contadorCamiones);
+            //RugenKutta nuevaPurga = new RugenKutta(zona.contadorCamiones, controlador.RKInestable.h);
 
             //cuando la próxima interrupción
             controlador.vectorActual[Constantes.colTiempoFaltanteReparacion] = "-";
