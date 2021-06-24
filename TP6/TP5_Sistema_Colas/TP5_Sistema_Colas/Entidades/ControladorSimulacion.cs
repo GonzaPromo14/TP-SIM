@@ -95,22 +95,22 @@ namespace TP5_Sistema_Colas.Entidades
 
             //creacion de las zonas
 
-            //Zona zona1 = new Zona(1, "Libre", this, mediaLlegada1, mediaServicio1, desvServicio1);
-            //Zona zona2 = new Zona(2, "Libre", this, mediaLlegada2, mediaServicio2, desvServicio2);
-            //Zona zona3 = new Zona(3, "Libre", this, mediaLlegada3, mediaServicio3, desvServicio3);
-            //Zona zona4 = new Zona(4, "Libre", this, mediaLlegada4, mediaServicio4, desvServicio4);
-            //Zona zona5 = new Zona(5, "Libre", this, mediaLlegada5, mediaServicio5, desvServicio5);
-            //Zona zona6 = new Zona(6, "Libre", this, mediaLlegada6, mediaServicio6, desvServicio6);
-            //Zona zona7 = new Zona(7, "Libre", this, mediaLlegada7, mediaServicio7, desvServicio7);
+            Zona zona1 = new Zona(1, "Libre", this, mediaLlegada1, mediaServicio1, desvServicio1);
+            Zona zona2 = new Zona(2, "Libre", this, mediaLlegada2, mediaServicio2, desvServicio2);
+            Zona zona3 = new Zona(3, "Libre", this, mediaLlegada3, mediaServicio3, desvServicio3);
+            Zona zona4 = new Zona(4, "Libre", this, mediaLlegada4, mediaServicio4, desvServicio4);
+            Zona zona5 = new Zona(5, "Libre", this, mediaLlegada5, mediaServicio5, desvServicio5);
+            Zona zona6 = new Zona(6, "Libre", this, mediaLlegada6, mediaServicio6, desvServicio6);
+            Zona zona7 = new Zona(7, "Libre", this, mediaLlegada7, mediaServicio7, desvServicio7);
             Zona zona8 = new Zona(8, "Libre", this, mediaLlegada8, mediaServicio8, desvServicio8);
 
-            //zonas.Add(zona1);
-            //zonas.Add(zona2);
-            //zonas.Add(zona3);
-            //zonas.Add(zona4);
-            //zonas.Add(zona5);
-            //zonas.Add(zona6);
-            //zonas.Add(zona7);
+            zonas.Add(zona1);
+            zonas.Add(zona2);
+            zonas.Add(zona3);
+            zonas.Add(zona4);
+            zonas.Add(zona5);
+            zonas.Add(zona6);
+            zonas.Add(zona7);
             zonas.Add(zona8);
 
             //inicializacion de la tablas RK
@@ -127,14 +127,16 @@ namespace TP5_Sistema_Colas.Entidades
             vectorActual[Constantes.colNumeroSimulacion] = 0;
             vectorActual[Constantes.colInsInaproiada] ="-";
             vectorActual[Constantes.colCantTotalCamiones]= contadorCamiones;
-            //zona1.iniciarZona(vectorActual);
-            //zona2.iniciarZona(vectorActual);
-            //zona3.iniciarZona(vectorActual);
-            //zona4.iniciarZona(vectorActual);
-            //zona5.iniciarZona(vectorActual);
-            //zona6.iniciarZona(vectorActual);
-            //zona7.iniciarZona(vectorActual);
+
+            zona1.iniciarZona(vectorActual);
+            zona2.iniciarZona(vectorActual);
+            zona3.iniciarZona(vectorActual);
+            zona4.iniciarZona(vectorActual);
+            zona5.iniciarZona(vectorActual);
+            zona6.iniciarZona(vectorActual);
+            zona7.iniciarZona(vectorActual);
             zona8.iniciarZona(vectorActual);
+
             vectorActual[Constantes.colTiempoFaltanteReparacion] = "-";
             double rndRK = Truncador.Truncar(semilla.NextDouble());
             vectorActual[Constantes.colRndRK] = rndRK;
@@ -143,7 +145,7 @@ namespace TP5_Sistema_Colas.Entidades
             vectorActual[Constantes.colTiempoPurga] = "-";
             vectorActual[Constantes.colProximoFinPurga] = "-";
             Proxima_interrupcion_servidor proximaInterrupcion = new Proxima_interrupcion_servidor(vectorActual[Constantes.colTiempoInestable], zona8);
-            //Proxima_interrupcion_servidor proximaInterrupcion = new Proxima_interrupcion_servidor(2, zona8);
+
             eventos.Enqueue(proximaInterrupcion);
 
             if (desde == 0) simulaciones.Add(vectorActual.ToArray());

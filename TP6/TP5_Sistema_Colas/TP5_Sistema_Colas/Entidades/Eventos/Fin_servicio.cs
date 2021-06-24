@@ -34,7 +34,6 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
             {
                 //veo si el camion se va a ir a otra zona
                 double prob = rand.NextDouble();
-                prob = 0;
 
                 if (prob >= 0.8 && prob < 1)
                 {
@@ -83,7 +82,6 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
 
                 zona.asignarCamion(proximoCamion);
                 proximoCamion.setEstado("Siendo reparado");
-                //camion.tiempo_espera = controlador.vectorActual[Constantes.colReloj] - camion.hora_llegada;
                 proximoCamion.tiempo_espera = controlador.vectorActual[Constantes.colReloj] - camion.hora_llegada;
                 zona.generarProximoFinServicio(controlador.vectorActual);
 

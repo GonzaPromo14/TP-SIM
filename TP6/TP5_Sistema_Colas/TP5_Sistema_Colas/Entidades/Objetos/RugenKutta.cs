@@ -127,20 +127,20 @@ namespace TP5_Sistema_Colas.Entidades.Objetos
             {
                 vectorAnterior = vectorActual;
 
-                vectorActual[Constantes.colTiempo] = vectorAnterior[Constantes.colTiempoK4];
+                vectorActual[Constantes.colTiempo] = Truncador.Truncar(vectorAnterior[Constantes.colTiempoK4]);
                 vectorActual[Constantes.colE] = Truncador.Truncar(vectorAnterior[Constantes.colE] 
                     + h/6*(vectorAnterior[Constantes.colK1] + 
                            2* vectorAnterior[Constantes.colK2] +
                            2* vectorAnterior[Constantes.colK3] +
                            vectorAnterior[Constantes.colK4]));
                 vectorActual[Constantes.colK1] = usarEDInestable(vectorActual[Constantes.colE]);
-                vectorActual[Constantes.colTiempoK2] = vectorActual[Constantes.colTiempo] + (h / 2);
+                vectorActual[Constantes.colTiempoK2] = Truncador.Truncar(vectorActual[Constantes.colTiempo] + (h / 2));
                 vectorActual[Constantes.colEK2] = Truncador.Truncar(eIncial + ((vectorActual[Constantes.colK1] * h) / 2));
                 vectorActual[Constantes.colK2] = usarEDInestable(vectorActual[Constantes.colEK2]);
-                vectorActual[Constantes.colTiempoK3] = vectorActual[Constantes.colTiempo] + (h / 2);
+                vectorActual[Constantes.colTiempoK3] = Truncador.Truncar(vectorActual[Constantes.colTiempo] + (h / 2));
                 vectorActual[Constantes.colEK3] = Truncador.Truncar(eIncial + (vectorActual[Constantes.colK2] * h) / 2);
                 vectorActual[Constantes.colK3] = usarEDInestable(vectorActual[Constantes.colEK2]);
-                vectorActual[Constantes.colTiempoK4] = vectorActual[Constantes.colTiempo] + h;
+                vectorActual[Constantes.colTiempoK4] = Truncador.Truncar(vectorActual[Constantes.colTiempo] + h);
                 vectorActual[Constantes.colEK4] = Truncador.Truncar(eIncial + (vectorActual[Constantes.colK3]) / 2);
                 vectorActual[Constantes.colK4] = usarEDInestable(vectorActual[Constantes.colEK3]);
                 simulaciones.Add(vectorActual.ToArray());
@@ -176,13 +176,13 @@ namespace TP5_Sistema_Colas.Entidades.Objetos
             vectorActual[Constantes.colTiempo] = tIncial;
             vectorActual[Constantes.colE] = l;
             vectorActual[Constantes.colK1] = usarEDPurga(vectorActual[Constantes.colE]);
-            vectorActual[Constantes.colTiempoK2] = vectorActual[Constantes.colTiempo] + (h / 2);
+            vectorActual[Constantes.colTiempoK2] = Truncador.Truncar(vectorActual[Constantes.colTiempo] + (h / 2));
             vectorActual[Constantes.colEK2] = Truncador.Truncar(eIncial + ((vectorActual[Constantes.colK1] * h) / 2));
             vectorActual[Constantes.colK2] = usarEDPurga(vectorActual[Constantes.colEK2]);
-            vectorActual[Constantes.colTiempoK3] = vectorActual[Constantes.colTiempo] + (h / 2);
+            vectorActual[Constantes.colTiempoK3] = Truncador.Truncar(vectorActual[Constantes.colTiempo] + (h / 2));
             vectorActual[Constantes.colEK3] = Truncador.Truncar(eIncial + (vectorActual[Constantes.colK2] * h) / 2);
             vectorActual[Constantes.colK3] = usarEDPurga(vectorActual[Constantes.colEK2]);
-            vectorActual[Constantes.colTiempoK4] = vectorActual[Constantes.colTiempo] + h;
+            vectorActual[Constantes.colTiempoK4] = Truncador.Truncar(vectorActual[Constantes.colTiempo] + h);
             vectorActual[Constantes.colEK4] = Truncador.Truncar(eIncial + (vectorActual[Constantes.colK3]) / 2);
             vectorActual[Constantes.colK4] = usarEDPurga(vectorActual[Constantes.colEK3]);
             vectorActual[Constantes.colL1L0] = l;
@@ -202,13 +202,13 @@ namespace TP5_Sistema_Colas.Entidades.Objetos
                            2 * vectorAnterior[Constantes.colK3] +
                            vectorAnterior[Constantes.colK4])));
                 vectorActual[Constantes.colK1] = usarEDPurga(vectorActual[Constantes.colE]);
-                vectorActual[Constantes.colTiempoK2] = vectorActual[Constantes.colTiempo] + (h / 2);
+                vectorActual[Constantes.colTiempoK2] = Truncador.Truncar(vectorActual[Constantes.colTiempo] + (h / 2));
                 vectorActual[Constantes.colEK2] = Truncador.Truncar(eIncial + ((vectorActual[Constantes.colK1] * h) / 2));
                 vectorActual[Constantes.colK2] = usarEDPurga(vectorActual[Constantes.colEK2]);
-                vectorActual[Constantes.colTiempoK3] = vectorActual[Constantes.colTiempo] + (h / 2);
+                vectorActual[Constantes.colTiempoK3] = Truncador.Truncar(vectorActual[Constantes.colTiempo] + (h / 2));
                 vectorActual[Constantes.colEK3] = Truncador.Truncar(eIncial + (vectorActual[Constantes.colK2] * h) / 2);
                 vectorActual[Constantes.colK3] = usarEDPurga(vectorActual[Constantes.colEK2]);
-                vectorActual[Constantes.colTiempoK4] = vectorActual[Constantes.colTiempo] + h;
+                vectorActual[Constantes.colTiempoK4] = Truncador.Truncar(vectorActual[Constantes.colTiempo] + h);
                 vectorActual[Constantes.colEK4] = Truncador.Truncar(eIncial + (vectorActual[Constantes.colK3]) / 2);
                 vectorActual[Constantes.colK4] = usarEDPurga(vectorActual[Constantes.colEK3]);
                 double calculoCorte = Truncador.Truncar(vectorActual[Constantes.colE]

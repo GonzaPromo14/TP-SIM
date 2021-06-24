@@ -46,7 +46,7 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
             controlador.vectorActual[Constantes.colEstado + zona.offset] = zona.estado;
             controlador.vectorActual[Constantes.colTiempoFaltanteReparacion] = "-";
             controlador.vectorActual[Constantes.colRndRK] = Truncador.Truncar(controlador.semilla.NextDouble());
-            controlador.vectorActual[Constantes.colTiempoInestable] = controlador.RKInestable.valorTRandom(controlador.vectorActual[Constantes.colRndRK]);
+            controlador.vectorActual[Constantes.colTiempoInestable] = Truncador.Truncar(controlador.RKInestable.valorTRandom(controlador.vectorActual[Constantes.colRndRK]));
             controlador.vectorActual[Constantes.colProximoInestable] = controlador.vectorActual[Constantes.colReloj] + controlador.vectorActual[Constantes.colTiempoInestable];
             Proxima_interrupcion_servidor proximaInterrupcionServidor = new Proxima_interrupcion_servidor(controlador.vectorActual[Constantes.colProximoInestable], zona);
             controlador.eventos.Enqueue(proximaInterrupcionServidor);
