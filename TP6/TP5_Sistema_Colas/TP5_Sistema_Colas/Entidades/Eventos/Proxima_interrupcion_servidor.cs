@@ -31,6 +31,7 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
             controlador.vectorActual[Constantes.colEstado + zona.offset] = zona.estado;
 
             controlador.vectorActual[Constantes.colProximoFinReparacion + zona.offset] = "-";
+            controlador.RKPurga.setL(controlador.contadorCamiones);
             controlador.RKPurga.correrRugenKuttaPurga();
             controlador.vectorActual[Constantes.colTiempoPurga] = Truncador.Truncar(controlador.RKPurga.vectorActual[Constantes.colTiempo]);
             controlador.vectorActual[Constantes.colProximoFinPurga] = controlador.vectorActual[Constantes.colReloj] + controlador.vectorActual[Constantes.colTiempoPurga];

@@ -28,6 +28,10 @@ namespace TP5_Sistema_Colas
                 dgvRKPurga.Rows.Add(controla.RKPurga.getSimulaciones().ElementAt(i));
 
             }
+            lblT50.Text = controla.RKInestable.t50.ToString();
+            lblT70.Text = controla.RKInestable.t70.ToString();
+            lblT100.Text = controla.RKInestable.t100.ToString();
+
 
         }
 

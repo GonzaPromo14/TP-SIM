@@ -58,6 +58,9 @@ namespace TP5_Sistema_Colas
             this.ColL1L0 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.lblT50 = new System.Windows.Forms.Label();
+            this.lblT70 = new System.Windows.Forms.Label();
+            this.lblT100 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRKInestale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRKPurga)).BeginInit();
             this.SuspendLayout();
@@ -277,11 +280,41 @@ namespace TP5_Sistema_Colas
             this.label2.TabIndex = 3;
             this.label2.Text = "Tabla Rugen Kutta de Purgacion:";
             // 
+            // lblT50
+            // 
+            this.lblT50.AutoSize = true;
+            this.lblT50.Location = new System.Drawing.Point(12, 250);
+            this.lblT50.Name = "lblT50";
+            this.lblT50.Size = new System.Drawing.Size(35, 13);
+            this.lblT50.TabIndex = 4;
+            this.lblT50.Text = "label3";
+            // 
+            // lblT70
+            // 
+            this.lblT70.AutoSize = true;
+            this.lblT70.Location = new System.Drawing.Point(12, 263);
+            this.lblT70.Name = "lblT70";
+            this.lblT70.Size = new System.Drawing.Size(35, 13);
+            this.lblT70.TabIndex = 5;
+            this.lblT70.Text = "label4";
+            // 
+            // lblT100
+            // 
+            this.lblT100.AutoSize = true;
+            this.lblT100.Location = new System.Drawing.Point(12, 276);
+            this.lblT100.Name = "lblT100";
+            this.lblT100.Size = new System.Drawing.Size(35, 13);
+            this.lblT100.TabIndex = 6;
+            this.lblT100.Text = "label5";
+            // 
             // FormTablasRK
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(988, 568);
+            this.Controls.Add(this.lblT100);
+            this.Controls.Add(this.lblT70);
+            this.Controls.Add(this.lblT50);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvRKPurga);
@@ -327,5 +360,8 @@ namespace TP5_Sistema_Colas
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColL1L0;
+        private System.Windows.Forms.Label lblT50;
+        private System.Windows.Forms.Label lblT70;
+        private System.Windows.Forms.Label lblT100;
     }
 }
