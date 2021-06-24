@@ -82,9 +82,16 @@ namespace TP5_Sistema_Colas.Entidades.Objetos
 
         public string getEstado()
         {
-            if (this.estado == "Interrumpido")
+
+            if (this.estado == "Interrumpida")
                 return this.estado;
-            return this.estaOcupada() ? "Ocupada" : "Libre";
+            this.estado = this.estaOcupada() ? "Ocupada" : "Libre";
+            return this.estado;
+        }
+
+        public string getEstadoString()
+        {
+            return this.estado;
         }
 
         public void asignarCamion(Camion camion)

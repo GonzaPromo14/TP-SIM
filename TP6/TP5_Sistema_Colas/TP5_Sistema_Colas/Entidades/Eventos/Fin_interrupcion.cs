@@ -16,16 +16,32 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
 
         }
 
+
         public override void ocurrir(ControladorSimulacion controlador)
         {
             zona.estado = zona.ultimoEstado;
             controlador.vectorActual[Constantes.colEvento] = "FIN INTERRUPCIÓN (Zona 8)";
-            double resultado;
-            if (double.TryParse(controlador.vectorActual[Constantes.colTiempoFaltanteReparacion].ToString(), out resultado))
+            if (zona.estado == "Libre" && zona.quedanCamiones())
+            {
+                Camion proximoCamion = zona.traerDeCola();
+
+                zona.asignarCamion(proximoCamion);
+                proximoCamion.setEstado("Siendo reparado");
+                //camion.tiempo_espera = controlador.vectorActual[Constantes.colReloj] - camion.hora_llegada;
+                proximoCamion.tiempo_espera = controlador.vectorActual[Constantes.colReloj] - proximoCamion.hora_llegada;
+                zona.generarProximoFinServicio(controlador.vectorActual);
+
+                Evento proximoFin = new Fin_servicio(controlador.vectorActual[Constantes.colProximoFinReparacion + zona.offset], proximoCamion, zona);
+                controlador.eventos.Enqueue(proximoFin);
+                zona.ultimoServicio = proximoFin;
+                zona.estado = "Ocupada";
+            }
+            else if (zona.estado == "Ocupada" && controlador.vectorActual[Constantes.colTiempoFaltanteReparacion].ToString() != "-")
             {
                 Fin_servicio nuevoFinServicio = new Fin_servicio(controlador.vectorActual[Constantes.colReloj] + controlador.vectorActual[Constantes.colTiempoFaltanteReparacion], zona.ultimoServicio.camion, zona);
                 controlador.eventos.Enqueue(nuevoFinServicio);
-                controlador.vectorActual[Constantes.colProximoFinReparacion + zona.offset] = nuevoFinServicio.tiempo;
+                zona.ultimoServicio = nuevoFinServicio;
+                controlador.vectorActual[Constantes.colProximoFinReparacion + zona.offset] = controlador.vectorActual[Constantes.colReloj] + controlador.vectorActual[Constantes.colTiempoFaltanteReparacion];
             }
             controlador.vectorActual[Constantes.colEstado + zona.offset] = zona.estado;
             controlador.vectorActual[Constantes.colTiempoFaltanteReparacion] = "-";
@@ -35,7 +51,8 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
             Proxima_interrupcion_servidor proximaInterrupcionServidor = new Proxima_interrupcion_servidor(controlador.vectorActual[Constantes.colProximoInestable], zona);
             controlador.eventos.Enqueue(proximaInterrupcionServidor);
             controlador.vectorActual[Constantes.colProximoFinPurga] = "-";
-
         }
+
+
     }
 }

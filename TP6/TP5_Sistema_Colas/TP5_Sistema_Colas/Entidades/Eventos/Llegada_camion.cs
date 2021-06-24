@@ -50,7 +50,7 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
             controlador.eventos.Enqueue(proximaLlegada);
 
             //si la zona está ocupada mando el camion a la cola, sino lo atiendo
-            if (zona.estaOcupada())
+            if (zona.getEstadoString() == "Ocupada" | zona.getEstadoString() == "Interrumpida")
             {
                 zona.mandarACola(camion);
                 camion.setEstado("Esperando Atencion");
@@ -60,35 +60,27 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
             }
             else
             {
-                if (zona.getEstado() != "Interrumpido")
-                {
-                    zona.asignarCamion(camion);
-                    camion.setEstado("Siendo reparado");
-                    //si el camion llega y pasa a ser atendido creo el proximo fin de servicio y guardo el evento
-                    zona.generarProximoFinServicio(controlador.vectorActual);
+                zona.asignarCamion(camion);
+                camion.setEstado("Siendo reparado");
+                zona.estado = "Ocupada";
+                //si el camion llega y pasa a ser atendido creo el proximo fin de servicio y guardo el evento
+                zona.generarProximoFinServicio(controlador.vectorActual);
 
-                    Evento proximoFin = new Fin_servicio(controlador.vectorActual[Constantes.colProximoFinReparacion + zona.offset], camion, zona);
-                    zona.ultimoServicio = proximoFin;
-                    controlador.eventos.Enqueue(proximoFin);
-                }
-                else
-                {
-                    zona.mandarACola(camion);
-                    camion.setEstado("Esperando Atencion");
-                    controlador.vectorActual[Constantes.colRND1Reparacion + zona.offset] = "-";
-                    controlador.vectorActual[Constantes.colRND2Reparacion + zona.offset] = "-";
-                    controlador.vectorActual[Constantes.colTiempoReparacion + zona.offset] = "-";
-                }
+                Evento proximoFin = new Fin_servicio(controlador.vectorActual[Constantes.colProximoFinReparacion + zona.offset], camion, zona);
+                controlador.eventos.Enqueue(proximoFin);
+                zona.ultimoServicio = proximoFin;
+
             }
 
 
             controlador.vectorActual[Constantes.colSeVaAOtraZona + zona.offset] = "-";
             //cola y estado
             controlador.vectorActual[Constantes.colCola + zona.offset] = zona.cola.Count();
-            controlador.vectorActual[Constantes.colEstado+ zona.offset] = zona.getEstado();
+            controlador.vectorActual[Constantes.colEstado+ zona.offset] = zona.getEstadoString();
             controlador.vectorActual[Constantes.colRndRK] = "-";
             controlador.vectorActual[Constantes.colTiempoInestable] = "-";
             controlador.vectorActual[Constantes.colTiempoPurga] = "-";
+
         }
 
         public override string ToString()

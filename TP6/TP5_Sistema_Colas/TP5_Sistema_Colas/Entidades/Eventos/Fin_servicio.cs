@@ -35,7 +35,6 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
                 //veo si el camion se va a ir a otra zona
                 double prob = rand.NextDouble();
                 prob = 0;
-                //double prob = 0.8;
 
                 if (prob >= 0.8 && prob < 1)
                 {
@@ -90,10 +89,12 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
 
                 Evento proximoFin = new Fin_servicio(controlador.vectorActual[Constantes.colProximoFinReparacion + zona.offset], proximoCamion, zona);
                 controlador.eventos.Enqueue(proximoFin);
+                zona.ultimoServicio = proximoFin;
             }
             else
             {
                 zona.asignarCamion(null);
+                zona.estado = "Libre";
                 //no hay proxima reparacion
                 controlador.vectorActual[Constantes.colRND1Reparacion + zona.offset] = "-";
                 controlador.vectorActual[Constantes.colRND2Reparacion + zona.offset] = "-";
@@ -103,7 +104,7 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
 
             //cola y estado
             controlador.vectorActual[Constantes.colCola + zona.offset] = zona.cola.Count();
-            controlador.vectorActual[Constantes.colEstado +zona.offset] = zona.getEstado();
+            controlador.vectorActual[Constantes.colEstado +zona.offset] = zona.getEstadoString();
             controlador.vectorActual[Constantes.colRndRK] = "-";
             controlador.vectorActual[Constantes.colTiempoInestable] = "-";
             controlador.vectorActual[Constantes.colTiempoPurga] = "-";

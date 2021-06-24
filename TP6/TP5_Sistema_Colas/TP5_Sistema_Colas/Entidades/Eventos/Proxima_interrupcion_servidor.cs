@@ -14,42 +14,34 @@ namespace TP5_Sistema_Colas.Entidades.Eventos
             this.zona = zona;
             this.tiempo = tiempo;
         }
-
         public override void ocurrir(ControladorSimulacion controlador)
         {
-            controlador.vectorActual[Constantes.colEvento] = "INTERRUPCIÓN (Zona 8)";
+            controlador.vectorActual[Constantes.colEvento] = "INTERRUPCIÓN (ZONA 8)";
+            zona.ultimoEstado = zona.getEstadoString();
+            zona.estado = "Interrumpida";
 
-            zona.ultimoEstado = zona.getEstado();
-            zona.estado = "Interrumpido";
-
-            controlador.RKPurga.setL(controlador.contadorCamiones);
-            //RugenKutta nuevaPurga = new RugenKutta(zona.contadorCamiones, controlador.RKInestable.h);
-
-            //cuando la próxima interrupción
             controlador.vectorActual[Constantes.colTiempoFaltanteReparacion] = "-";
-            double resultado;
-            if (double.TryParse(controlador.vectorAnterior[Constantes.colProximoFinReparacion + zona.offset].ToString(), out resultado))
+
+            if (controlador.vectorAnterior[Constantes.colProximoFinReparacion + zona.offset].ToString() != "-")
             {
-                //if (controlador.vectorAnterior[Constantes.colProximoFinReparacion + zona.offset] != "-")
                 controlador.vectorActual[Constantes.colTiempoFaltanteReparacion] = controlador.vectorActual[Constantes.colProximoFinReparacion + zona.offset] - controlador.vectorActual[Constantes.colReloj];
-                controlador.eventos.Remove(zona.ultimoServicio);
+                bool eliminado = controlador.eventos.Remove(zona.ultimoServicio);
+                Console.WriteLine(eliminado);
             }
-            
             controlador.vectorActual[Constantes.colEstado + zona.offset] = zona.estado;
 
-            //Generar próximo Fin interrupcion
             controlador.vectorActual[Constantes.colProximoFinReparacion + zona.offset] = "-";
             controlador.RKPurga.correrRugenKuttaPurga();
             controlador.vectorActual[Constantes.colTiempoPurga] = controlador.RKPurga.vectorActual[Constantes.colTiempo];
-
-
-
             controlador.vectorActual[Constantes.colProximoFinPurga] = controlador.vectorActual[Constantes.colReloj] + controlador.vectorActual[Constantes.colTiempoPurga];
-            
+
             controlador.vectorActual[Constantes.colProximoInestable] = "-";
-            Fin_interrupcion proximaFinInterrupcion = new Fin_interrupcion(this.zona, controlador.vectorActual[Constantes.colProximoFinPurga]);
+
+            //Generar fin de interrupcion
+            Fin_interrupcion proximaFinInterrupcion = new Fin_interrupcion(this.zona,controlador.vectorActual[Constantes.colProximoFinPurga]);
             controlador.eventos.Enqueue(proximaFinInterrupcion);
 
         }
+
     }
 }
